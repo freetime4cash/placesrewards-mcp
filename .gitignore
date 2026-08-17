@@ -1,0 +1,12 @@
+.env
+.env.*
+node_modules/
+data/source-snapshots/
+data/backups/
+data/reports/
+data/patches/
+cron-worker.log
+*.log
+tmp/
+Value:*
+.DS_Store

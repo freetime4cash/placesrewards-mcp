@@ -1,0 +1,15 @@
+{
+  "name": "placesrewards-agent-server",
+  "version": "0.4.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "worker": "node worker.js",
+    "status": "node status.js",
+    "approve": "node approve.js",
+    "inspect:app": "node scripts/inspect-app.js",
+    "test:app": "node scripts/test-app.js"
+  },
+  "engines": { "node": ">=20" }
+}
