@@ -1,12 +1,15 @@
+
+# Campaign bridge local state
+cron-worker.log
+data/backups/
+data/github-campaign-processed.json
+data/patches/
+data/reports/
+data/source-snapshots/
+.DS_Store
 .env
 .env.*
-node_modules/
-data/source-snapshots/
-data/backups/
-data/reports/
-data/patches/
-cron-worker.log
 *.log
+node_modules/
 tmp/
 Value:*
-.DS_Store
