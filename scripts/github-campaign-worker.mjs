@@ -47,19 +47,11 @@ function run(command, args, cwd = AGENT_ROOT) {
     child.stderr?.on("data", d => stderr += d.toString());
 
     child.on("error", error => {
-      resolve({
-        exitCode: -1,
-        stdout,
-        stderr: `${stderr}\n${error.message}`.trim()
-      });
+      resolve({ exitCode: -1, stdout, stderr: `${stderr}\n${error.message}`.trim() });
     });
 
     child.on("close", code => {
-      resolve({
-        exitCode: code ?? -1,
-        stdout,
-        stderr
-      });
+      resolve({ exitCode: code ?? -1, stdout, stderr });
     });
   });
 }
@@ -71,6 +63,13 @@ function validRequest(req, filename) {
   if (typeof req.requestId !== "string" || !req.requestId.trim()) errors.push("requestId is required.");
   if (req.approved !== true) errors.push("approved must be true.");
   if (typeof req.campaignName !== "string" || !req.campaignName.trim()) errors.push("campaignName is required.");
+
+  if (req.requestType === "capability_snapshot") {
+    const fileBase = path.basename(filename, ".json");
+    if (req?.requestId && fileBase !== req.requestId) errors.push("Filename must equal requestId.json.");
+    return errors;
+  }
+
   if (!Array.isArray(req.steps) || req.steps.length === 0) errors.push("At least one campaign step is required.");
 
   if (Array.isArray(req.steps)) {
@@ -78,40 +77,21 @@ function validRequest(req, filename) {
       const method = String(step?.method ?? "").toUpperCase();
       const endpoint = String(step?.path ?? "");
 
-      if (!["GET","POST","PUT","PATCH","DELETE"].includes(method)) {
-        errors.push(`steps[${i}].method is invalid.`);
-      }
-
-      if (!endpoint.startsWith("/")) {
-        errors.push(`steps[${i}].path must begin with /.`);
-      }
-
-      if (endpoint.includes("..")) {
-        errors.push(`steps[${i}].path is invalid.`);
-      }
+      if (!["GET","POST","PUT","PATCH","DELETE"].includes(method)) errors.push(`steps[${i}].method is invalid.`);
+      if (!endpoint.startsWith("/")) errors.push(`steps[${i}].path must begin with /.`);
+      if (endpoint.includes("..")) errors.push(`steps[${i}].path is invalid.`);
     }
   }
 
   const fileBase = path.basename(filename, ".json");
-  if (req?.requestId && fileBase !== req.requestId) {
-    errors.push("Filename must equal requestId.json.");
-  }
-
+  if (req?.requestId && fileBase !== req.requestId) errors.push("Filename must equal requestId.json.");
   return errors;
 }
 
 const processed = await readProcessed();
-const files = (await fs.readdir(REQUEST_DIR))
-  .filter(name => name.endsWith(".json"))
-  .sort();
+const files = (await fs.readdir(REQUEST_DIR)).filter(name => name.endsWith(".json")).sort();
 
-const summary = {
-  scanned: files.length,
-  executed: 0,
-  skipped: 0,
-  failed: 0,
-  results: []
-};
+const summary = { scanned: files.length, executed: 0, skipped: 0, failed: 0, results: [] };
 
 for (const filename of files) {
   const full = path.join(REQUEST_DIR, filename);
@@ -121,11 +101,7 @@ for (const filename of files) {
     req = JSON.parse(await fs.readFile(full, "utf8"));
   } catch (error) {
     summary.failed += 1;
-    summary.results.push({
-      file: filename,
-      status: "invalid_json",
-      error: error instanceof Error ? error.message : String(error)
-    });
+    summary.results.push({ file: filename, status: "invalid_json", error: error instanceof Error ? error.message : String(error) });
     continue;
   }
 
@@ -139,125 +115,63 @@ for (const filename of files) {
   const errors = validRequest(req, filename);
 
   if (errors.length) {
-    const result = {
-      requestId,
-      campaignName: req.campaignName ?? null,
-      status: "blocked",
-      processedAt: new Date().toISOString(),
-      errors
-    };
-
-    await fs.writeFile(
-      path.join(RESULT_DIR, `${requestId}.json`),
-      JSON.stringify(result, null, 2),
-      "utf8"
-    );
-
-    processed[requestId] = {
-      status: "blocked",
-      processedAt: result.processedAt
-    };
-
+    const result = { requestId, campaignName: req.campaignName ?? null, status: "blocked", processedAt: new Date().toISOString(), errors };
+    await fs.writeFile(path.join(RESULT_DIR, `${requestId}.json`), JSON.stringify(result, null, 2), "utf8");
+    processed[requestId] = { status: "blocked", processedAt: result.processedAt };
     summary.failed += 1;
     summary.results.push(result);
     continue;
   }
 
-  // Refresh the currently allowed live Agent API tool catalog immediately before execution.
   const refresh = await run(NODE_BIN, [CAMPAIGN_CONTROL, "refresh"]);
 
   if (refresh.exitCode !== 0) {
-    const result = {
-      requestId,
-      campaignName: req.campaignName,
-      status: "failed",
-      processedAt: new Date().toISOString(),
-      stage: "capability_refresh",
-      error: refresh.stderr || refresh.stdout
-    };
-
-    await fs.writeFile(
-      path.join(RESULT_DIR, `${requestId}.json`),
-      JSON.stringify(result, null, 2),
-      "utf8"
-    );
-
-    processed[requestId] = {
-      status: "failed",
-      processedAt: result.processedAt
-    };
-
+    const result = { requestId, campaignName: req.campaignName, status: "failed", processedAt: new Date().toISOString(), stage: "capability_refresh", error: refresh.stderr || refresh.stdout };
+    await fs.writeFile(path.join(RESULT_DIR, `${requestId}.json`), JSON.stringify(result, null, 2), "utf8");
+    processed[requestId] = { status: "failed", processedAt: result.processedAt };
     summary.failed += 1;
     summary.results.push(result);
     continue;
   }
 
-  const execution = await run(
-    NODE_BIN,
-    [CAMPAIGN_CONTROL, "execute", full]
-  );
+  if (req.requestType === "capability_snapshot") {
+    let capabilities = null;
+    try {
+      capabilities = JSON.parse(await fs.readFile(path.join(DATA_DIR, "campaign-capabilities.json"), "utf8"));
+    } catch (error) {
+      capabilities = { error: error instanceof Error ? error.message : String(error) };
+    }
+
+    const result = { requestId, campaignName: req.campaignName, status: "completed", requestType: "capability_snapshot", processedAt: new Date().toISOString(), capabilities };
+    await fs.writeFile(path.join(RESULT_DIR, `${requestId}.json`), JSON.stringify(result, null, 2), "utf8");
+    processed[requestId] = { status: "completed", processedAt: result.processedAt, sha256: crypto.createHash("sha256").update(await fs.readFile(full)).digest("hex") };
+    summary.executed += 1;
+    summary.results.push({ requestId, campaignName: req.campaignName, status: "completed", requestType: "capability_snapshot" });
+    continue;
+  }
+
+  const execution = await run(NODE_BIN, [CAMPAIGN_CONTROL, "execute", full]);
 
   let executionPayload = null;
-
   try {
     executionPayload = JSON.parse(execution.stdout);
   } catch {
-    executionPayload = {
-      stdout: execution.stdout,
-      stderr: execution.stderr
-    };
+    executionPayload = { stdout: execution.stdout, stderr: execution.stderr };
   }
 
-  const executionSteps =
-    executionPayload?.audit?.steps ??
-    executionPayload?.auditFile
-      ? executionPayload?.audit?.steps ?? []
-      : [];
+  const executionSteps = executionPayload?.audit?.steps ?? (executionPayload?.auditFile ? executionPayload?.audit?.steps ?? [] : []);
+  const anyFailed = execution.exitCode !== 0 || executionSteps.some(step => ["failed","blocked"].includes(step?.status));
 
-  const anyFailed =
-    execution.exitCode !== 0 ||
-    executionSteps.some(step =>
-      ["failed","blocked"].includes(step?.status)
-    );
+  const result = { requestId, campaignName: req.campaignName, status: anyFailed ? "failed" : "completed", processedAt: new Date().toISOString(), sourceFile: filename, execution: executionPayload, stderr: execution.stderr || null };
+  await fs.writeFile(path.join(RESULT_DIR, `${requestId}.json`), JSON.stringify(result, null, 2), "utf8");
 
-  const result = {
-    requestId,
-    campaignName: req.campaignName,
-    status: anyFailed ? "failed" : "completed",
-    processedAt: new Date().toISOString(),
-    sourceFile: filename,
-    execution: executionPayload,
-    stderr: execution.stderr || null
-  };
+  processed[requestId] = { status: result.status, processedAt: result.processedAt, sha256: crypto.createHash("sha256").update(await fs.readFile(full)).digest("hex") };
 
-  await fs.writeFile(
-    path.join(RESULT_DIR, `${requestId}.json`),
-    JSON.stringify(result, null, 2),
-    "utf8"
-  );
+  if (result.status === "completed") summary.executed += 1;
+  else summary.failed += 1;
 
-  processed[requestId] = {
-    status: result.status,
-    processedAt: result.processedAt,
-    sha256: crypto
-      .createHash("sha256")
-      .update(await fs.readFile(full))
-      .digest("hex")
-  };
-
-  if (result.status === "completed") {
-    summary.executed += 1;
-  } else {
-    summary.failed += 1;
-  }
-
-  summary.results.push({
-    requestId,
-    campaignName: req.campaignName,
-    status: result.status
-  });
+  summary.results.push({ requestId, campaignName: req.campaignName, status: result.status });
 }
 
 await writeProcessed(processed);
-
 console.log(JSON.stringify(summary, null, 2));
