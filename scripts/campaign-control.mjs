@@ -10,8 +10,17 @@ const DATA = path.join(AGENT_ROOT, "data");
 const CAP_FILE = path.join(DATA, "campaign-capabilities.json");
 const TEMPLATE = path.join(DATA, "campaign-template.json");
 
+function normalizeEndpoint(endpoint) {
+  let value = String(endpoint ?? "").trim();
+  if (!value.startsWith("/")) value = `/${value}`;
+  if (value.startsWith("/api/agent/v1/")) value = value.slice("/api/agent/v1".length);
+  if (value === "/api/agent/v1") value = "/";
+  return value;
+}
+
 async function request(endpoint, options = {}) {
-  const response = await fetch(`${API_BASE}${endpoint}`, {
+  const normalized = normalizeEndpoint(endpoint);
+  const response = await fetch(`${API_BASE}${normalized}`, {
     ...options,
     headers: {
       Accept: "application/json",
@@ -43,7 +52,7 @@ function extractTools(value, out = [], lineage = []) {
     out.push({
       name: nameKey && typeof value[nameKey] === "string" ? value[nameKey] : lineage.join("."),
       method: value[methodKey].toUpperCase(),
-      path: value[pathKey],
+      path: normalizeEndpoint(value[pathKey]),
       raw: value
     });
   }
@@ -60,16 +69,29 @@ function campaignRelevant(tool) {
     .some(word => text.includes(word));
 }
 
+async function fetchToolPayload() {
+  try {
+    return { source: "/tools", payload: await request("/tools") };
+  } catch (primaryError) {
+    try {
+      return { source: "/campaign-tools", payload: await request("/campaign-tools") };
+    } catch (fallbackError) {
+      throw new Error(`Tool discovery failed. /tools: ${primaryError instanceof Error ? primaryError.message : String(primaryError)} | /campaign-tools: ${fallbackError instanceof Error ? fallbackError.message : String(fallbackError)}`);
+    }
+  }
+}
+
 async function refreshCapabilities() {
-  const toolsPayload = await request("/tools");
-  const extracted = extractTools(toolsPayload);
+  const discoveredPayload = await fetchToolPayload();
+  const extracted = extractTools(discoveredPayload.payload);
   const relevant = extracted.filter(campaignRelevant);
   await fs.mkdir(DATA, { recursive: true });
-  await fs.writeFile(path.join(DATA, "agent-tools-live.json"), JSON.stringify(toolsPayload, null, 2), "utf8");
+  await fs.writeFile(path.join(DATA, "agent-tools-live.json"), JSON.stringify(discoveredPayload.payload, null, 2), "utf8");
 
   const payload = {
     generatedAt: new Date().toISOString(),
     apiBase: API_BASE,
+    toolSource: discoveredPayload.source,
     totalDiscoveredTools: extracted.length,
     campaignRelevantTools: relevant
   };
@@ -102,34 +124,41 @@ async function makeTemplate() {
   return TEMPLATE;
 }
 
+function pathMatches(templatePath, actualPath) {
+  const t = normalizeEndpoint(templatePath);
+  const a = normalizeEndpoint(actualPath);
+  const escaped = t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const pattern = "^" + escaped.replace(/\\\{[^}]+\\\}/g, "[^/]+") + "$";
+  return new RegExp(pattern).test(a);
+}
+
 async function executePlan(file) {
   const plan = JSON.parse(await fs.readFile(file, "utf8"));
   if (plan.approved !== true) throw new Error("Campaign plan is not approved.");
 
   const caps = JSON.parse(await fs.readFile(CAP_FILE, "utf8"));
   const discovered = caps.campaignRelevantTools ?? [];
-  const audit = { campaignName: plan.campaignName ?? "Unnamed campaign", startedAt: new Date().toISOString(), steps: [] };
+  const audit = { campaignName: plan.campaignName ?? "Unnamed campaign", startedAt: new Date().toISOString(), toolSource: caps.toolSource ?? null, steps: [] };
 
   for (const step of plan.steps ?? []) {
     const method = String(step.method ?? "").toUpperCase();
-    const endpoint = String(step.path ?? "");
-    const allowed = discovered.some(tool => tool.method === method && (
-      tool.path === endpoint || endpoint.startsWith(tool.path.replace(/\{[^}]+\}/g, ""))
-    ));
+    const endpoint = normalizeEndpoint(step.path ?? "");
+    const allowedTool = discovered.find(tool => tool.method === method && pathMatches(tool.path, endpoint));
 
-    if (!allowed) {
-      audit.steps.push({ ...step, status: "blocked", reason: "Method/path not present in discovered Agent API tools." });
+    if (!allowedTool) {
+      audit.steps.push({ ...step, path: endpoint, status: "blocked", reason: "Method/path not present in discovered Agent API tools." });
       continue;
     }
 
     try {
+      const bodyPayload = step.body ?? {};
       const data = await request(endpoint, {
         method,
-        body: ["GET","HEAD"].includes(method) ? undefined : JSON.stringify(step.body ?? {})
+        body: ["GET","HEAD"].includes(method) ? undefined : JSON.stringify(bodyPayload)
       });
-      audit.steps.push({ name: step.name, method, path: endpoint, status: "completed", response: data });
+      audit.steps.push({ name: step.name, method, path: endpoint, matchedTool: allowedTool.name, status: "completed", response: data });
     } catch (error) {
-      audit.steps.push({ name: step.name, method, path: endpoint, status: "failed", error: error instanceof Error ? error.message : String(error) });
+      audit.steps.push({ name: step.name, method, path: endpoint, matchedTool: allowedTool.name, status: "failed", error: error instanceof Error ? error.message : String(error) });
       break;
     }
   }
