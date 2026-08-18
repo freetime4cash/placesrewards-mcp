@@ -1,0 +1,8 @@
+{
+  "requestId": "chatgpt-capability-snapshot-20260818-1900",
+  "campaignName": "ChatGPT Campaign Capability Snapshot",
+  "status": "failed",
+  "processedAt": "2026-08-18T23:05:23.905Z",
+  "stage": "capability_refresh",
+  "error": "file:///home/placevle/placesrewards-agent-server/scripts/campaign-control.mjs:26\n  if (!response.ok) throw new Error(`HTTP ${response.status}: ${typeof data === \"string\" ? data : JSON.stringify(data)}`);\n                          ^\n\nError: HTTP 500: {\"message\":\"Server Error\"}\n    at request (file:///home/placevle/placesrewards-agent-server/scripts/campaign-control.mjs:26:27)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async refreshCapabilities (file:///home/placevle/placesrewards-agent-server/scripts/campaign-control.mjs:64:24)\n    at async file:///home/placevle/placesrewards-agent-server/scripts/campaign-control.mjs:148:32\n\nNode.js v24.18.1\n"
+}
