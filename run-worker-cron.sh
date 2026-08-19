@@ -8,6 +8,8 @@ LOG="$AGENT/cron-worker.log"
 SCHEMA_OUT="$AGENT/results/campaigns/live-agent-tools-export.txt"
 PHP_DIAG="$AGENT/results/campaigns/php-cli-diagnostic.txt"
 TOOL_SNIPPET="$AGENT/results/campaigns/agent-tool-service-snippet.txt"
+REPAIR_OUT="$AGENT/results/campaigns/agent-tool-service-repair.txt"
+TOOL_FILE="$APP/app/Services/Agent/AgentToolService.php"
 
 cd "$AGENT" || exit 1
 
@@ -33,7 +35,7 @@ for CANDIDATE in \
   fi
 done
 
-mkdir -p "$AGENT/bin"
+mkdir -p "$AGENT/bin" "$AGENT/data/backups"
 if [ -n "$PHPCLI" ]; then
   ln -sf "$PHPCLI" "$AGENT/bin/php"
   export PATH="$AGENT/bin:$PATH"
@@ -60,11 +62,43 @@ fi
     export PATH="$AGENT/bin:$PATH"
   fi
 
+  # Surgical repair of the exact v0.9 corruption, once.
+  if grep -q '\$tools = array_merge(\$tools, \$this->placesRewardsCampaignTools());' "$TOOL_FILE" 2>/dev/null; then
+    BACKUP="$AGENT/data/backups/AgentToolService-pre-repair-$(date +%Y%m%d-%H%M%S).php"
+    cp -p "$TOOL_FILE" "$BACKUP"
+
+    python3 - "$TOOL_FILE" <<'PY'
+from pathlib import Path
+import sys
+p = Path(sys.argv[1])
+s = p.read_text(encoding='utf-8')
+old = '''                // If the partner doesn't have that permission, the endpoint would \n        $tools = array_merge($tools, $this->placesRewardsCampaignTools());\n\n        return\n                // 403 FEATURE_DISABLED, so don't advertise it as an available tool.\n'''
+new = '''                // If the partner doesn't have that permission, the endpoint would\n                // 403 FEATURE_DISABLED, so don't advertise it as an available tool.\n'''
+if old not in s:
+    raise SystemExit('Exact corruption block not found; no change made.')
+p.write_text(s.replace(old, new, 1), encoding='utf-8')
+PY
+    PATCH_RC=$?
+
+    if [ "$PATCH_RC" -eq 0 ] && [ -n "$PHPCLI" ]; then
+      "$PHPCLI" -l "$TOOL_FILE" > "$REPAIR_OUT" 2>&1
+      LINT_RC=$?
+      if [ "$LINT_RC" -ne 0 ]; then
+        cp -p "$BACKUP" "$TOOL_FILE"
+        echo "ROLLBACK: php lint failed; restored $BACKUP" >> "$REPAIR_OUT"
+      else
+        echo "REPAIR_APPLIED backup=$BACKUP" >> "$REPAIR_OUT"
+      fi
+    else
+      cp -p "$BACKUP" "$TOOL_FILE"
+      echo "ROLLBACK: surgical patch failed; restored $BACKUP" > "$REPAIR_OUT"
+    fi
+  fi
+
   "$NODE" worker.js
   "$NODE" scripts/github-campaign-worker.mjs
 
-  # Capture only the affected AgentToolService section for a surgical repair.
-  sed -n '190,255p' "$APP/app/Services/Agent/AgentToolService.php" > "$TOOL_SNIPPET" 2>&1 || true
+  sed -n '190,255p' "$TOOL_FILE" > "$TOOL_SNIPPET" 2>&1 || true
 
   if [ -n "$PHPCLI" ]; then
     rm -f "$SCHEMA_OUT"
