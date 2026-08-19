@@ -1,0 +1,3671 @@
+{
+    "generated_at": "2026-08-19T14:56:34+00:00",
+    "partner_id": "019dbfc5-e395-7082-9214-20859f344cce",
+    "tables": {
+        "cards": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "club_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "type",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": "'loyalty'",
+                    "key": "MUL"
+                },
+                {
+                    "name": "icon",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "head",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "title",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "description",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "unique_identifier",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "UNI"
+                },
+                {
+                    "name": "issue_date",
+                    "type": "datetime",
+                    "nullable": "NO",
+                    "default": "current_timestamp()",
+                    "key": "MUL"
+                },
+                {
+                    "name": "expiration_date",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "bg_color",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "bg_color_opacity",
+                    "type": "tinyint",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "text_color",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "text_label_color",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "qr_color_light",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "qr_color_dark",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "initial_bonus_points",
+                    "type": "int",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "points_expiration_months",
+                    "type": "int",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "currency_unit_amount",
+                    "type": "int",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "points_per_currency",
+                    "type": "int",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "point_value",
+                    "type": "decimal",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "min_points_per_purchase",
+                    "type": "bigint",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "max_points_per_purchase",
+                    "type": "bigint",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "min_points_per_redemption",
+                    "type": "bigint",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "max_points_per_redemption",
+                    "type": "bigint",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "custom_rule1",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "custom_rule2",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "custom_rule3",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "is_active",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "1",
+                    "key": "MUL"
+                },
+                {
+                    "name": "is_visible_by_default",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "is_visible_when_logged_in",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "is_undeletable",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "is_uneditable",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "total_amount_purchased",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "number_of_points_issued",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": "MUL"
+                },
+                {
+                    "name": "last_points_issued_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "number_of_points_redeemed",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "number_of_rewards_redeemed",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "last_reward_redeemed_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "views",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": "MUL"
+                },
+                {
+                    "name": "last_view",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "meta",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "deleted_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "updated_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "deleted_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": [
+                {
+                    "id": "019fbc33-04e2-7387-85be-bb53ff1f7459",
+                    "club_id": "019dc14a-adae-73eb-b837-79b042032b4f",
+                    "name": "[DEMO] Radio Cigars Rewards Card",
+                    "type": "loyalty",
+                    "icon": null,
+                    "head": null,
+                    "title": "{\"en\":\"Radio Cigars Rewards\"}",
+                    "description": "{\"en\":\"Earn points on every purchase. Redeem for gear, sampler packs, and founders-only perks.\"}",
+                    "unique_identifier": "798-254-460-443",
+                    "issue_date": "2026-08-01 03:21:28",
+                    "expiration_date": null,
+                    "bg_color": null,
+                    "bg_color_opacity": null,
+                    "text_color": null,
+                    "text_label_color": null,
+                    "qr_color_light": null,
+                    "qr_color_dark": null,
+                    "currency": "USD",
+                    "initial_bonus_points": 100,
+                    "points_expiration_months": null,
+                    "currency_unit_amount": 1,
+                    "points_per_currency": 10,
+                    "point_value": null,
+                    "min_points_per_purchase": null,
+                    "max_points_per_purchase": null,
+                    "min_points_per_redemption": null,
+                    "max_points_per_redemption": null,
+                    "custom_rule1": null,
+                    "custom_rule2": null,
+                    "custom_rule3": null,
+                    "is_active": 1,
+                    "is_visible_by_default": 1,
+                    "is_visible_when_logged_in": 0,
+                    "is_undeletable": 0,
+                    "is_uneditable": 0,
+                    "total_amount_purchased": 0,
+                    "number_of_points_issued": 0,
+                    "last_points_issued_at": null,
+                    "number_of_points_redeemed": 0,
+                    "number_of_rewards_redeemed": 0,
+                    "last_reward_redeemed_at": null,
+                    "views": 4,
+                    "last_view": "2026-08-18 22:48:54",
+                    "meta": null,
+                    "created_by": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "deleted_by": null,
+                    "updated_by": null,
+                    "deleted_at": null,
+                    "created_at": "2026-08-01 07:21:28",
+                    "updated_at": "2026-08-18 22:48:54"
+                }
+            ]
+        },
+        "card_member": {
+            "columns": [
+                {
+                    "name": "card_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "member_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        },
+        "card_reward": {
+            "columns": [
+                {
+                    "name": "card_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "reward_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        },
+        "clubs": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "description",
+                    "type": "text",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "time_zone",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "is_active",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "1",
+                    "key": "MUL"
+                },
+                {
+                    "name": "is_primary",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": "MUL"
+                },
+                {
+                    "name": "is_undeletable",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "is_uneditable",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "meta",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "deleted_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "updated_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "deleted_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": [
+                {
+                    "id": "019dbfc5-e3bd-7321-88bc-2007143672cf",
+                    "name": "General",
+                    "description": null,
+                    "locale": null,
+                    "currency": null,
+                    "time_zone": null,
+                    "is_active": 1,
+                    "is_primary": 0,
+                    "is_undeletable": 0,
+                    "is_uneditable": 0,
+                    "meta": null,
+                    "created_by": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "deleted_by": null,
+                    "updated_by": null,
+                    "deleted_at": null,
+                    "created_at": "2026-04-24 13:55:10",
+                    "updated_at": "2026-04-24 13:55:10"
+                },
+                {
+                    "id": "019dc14a-29b6-73ea-ac3c-1647421a0295",
+                    "name": "ELEVATION FOUNDATION - DOCTAH B SIRIUS",
+                    "description": null,
+                    "locale": null,
+                    "currency": null,
+                    "time_zone": null,
+                    "is_active": 1,
+                    "is_primary": 0,
+                    "is_undeletable": 0,
+                    "is_uneditable": 0,
+                    "meta": null,
+                    "created_by": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "deleted_by": null,
+                    "updated_by": null,
+                    "deleted_at": null,
+                    "created_at": "2026-04-24 20:59:16",
+                    "updated_at": "2026-04-24 20:59:16"
+                },
+                {
+                    "id": "019dc14a-adae-73eb-b837-79b042032b4f",
+                    "name": "BLACKEMPIRE363",
+                    "description": null,
+                    "locale": null,
+                    "currency": null,
+                    "time_zone": null,
+                    "is_active": 1,
+                    "is_primary": 0,
+                    "is_undeletable": 0,
+                    "is_uneditable": 0,
+                    "meta": null,
+                    "created_by": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "deleted_by": null,
+                    "updated_by": null,
+                    "deleted_at": null,
+                    "created_at": "2026-04-24 20:59:50",
+                    "updated_at": "2026-04-24 20:59:50"
+                },
+                {
+                    "id": "019dc14a-fc38-7387-b5b4-21fe084956fa",
+                    "name": "4BIDDENKNOWLEDGE - BILLY CARSON",
+                    "description": null,
+                    "locale": null,
+                    "currency": null,
+                    "time_zone": null,
+                    "is_active": 1,
+                    "is_primary": 0,
+                    "is_undeletable": 0,
+                    "is_uneditable": 0,
+                    "meta": null,
+                    "created_by": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "deleted_by": null,
+                    "updated_by": null,
+                    "deleted_at": null,
+                    "created_at": "2026-04-24 21:00:10",
+                    "updated_at": "2026-04-24 21:00:10"
+                },
+                {
+                    "id": "019dc14b-d57c-739c-a19d-8c9961463630",
+                    "name": "ONPURPOSEWITHVICKI - VICKI DILLARD",
+                    "description": null,
+                    "locale": null,
+                    "currency": null,
+                    "time_zone": null,
+                    "is_active": 1,
+                    "is_primary": 0,
+                    "is_undeletable": 0,
+                    "is_uneditable": 0,
+                    "meta": null,
+                    "created_by": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "deleted_by": null,
+                    "updated_by": null,
+                    "deleted_at": null,
+                    "created_at": "2026-04-24 21:01:05",
+                    "updated_at": "2026-04-24 21:01:05"
+                },
+                {
+                    "id": "019dc14c-0178-70b2-a8de-1c216923a74a",
+                    "name": "PLACES REWARDS",
+                    "description": null,
+                    "locale": null,
+                    "currency": null,
+                    "time_zone": null,
+                    "is_active": 1,
+                    "is_primary": 0,
+                    "is_undeletable": 0,
+                    "is_uneditable": 0,
+                    "meta": null,
+                    "created_by": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "deleted_by": null,
+                    "updated_by": null,
+                    "deleted_at": null,
+                    "created_at": "2026-04-24 21:01:17",
+                    "updated_at": "2026-04-24 21:01:17"
+                }
+            ]
+        },
+        "club_integrations": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "club_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "platform",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "status",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": "'pending'",
+                    "key": "MUL"
+                },
+                {
+                    "name": "store_identifier",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "access_token",
+                    "type": "text",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "webhook_secret",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "public_api_key",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "UNI"
+                },
+                {
+                    "name": "settings",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "last_sync_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "last_error",
+                    "type": "text",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "last_error_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "deleted_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        },
+        "email_campaigns": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "partner_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "subject",
+                    "type": "longtext",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "body",
+                    "type": "longtext",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "segment_type",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "segment_config",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "status",
+                    "type": "enum",
+                    "nullable": "NO",
+                    "default": "'draft'",
+                    "key": "MUL"
+                },
+                {
+                    "name": "recipient_count",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "sent_count",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "failed_count",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "scheduled_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "started_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "completed_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "deleted_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        },
+        "email_campaign_recipients": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "campaign_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "member_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "email",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "status",
+                    "type": "enum",
+                    "nullable": "NO",
+                    "default": "'pending'",
+                    "key": ""
+                },
+                {
+                    "name": "error_message",
+                    "type": "text",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "sent_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        },
+        "member_referral_codes": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "referral_setting_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "member_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "code",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "UNI"
+                },
+                {
+                    "name": "referral_count",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "successful_count",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "points_earned",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        },
+        "member_tiers": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "member_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "tier_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "club_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "achieved_at",
+                    "type": "datetime",
+                    "nullable": "NO",
+                    "default": "current_timestamp()",
+                    "key": ""
+                },
+                {
+                    "name": "expires_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "qualifying_points",
+                    "type": "bigint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "qualifying_spend",
+                    "type": "bigint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "qualifying_transactions",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "previous_tier_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "is_active",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "1",
+                    "key": ""
+                },
+                {
+                    "name": "meta",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        },
+        "member_voucher": {
+            "columns": [
+                {
+                    "name": "member_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "voucher_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "claimed_via",
+                    "type": "enum",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        },
+        "referrals": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "referral_code_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "referrer_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "referee_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "status",
+                    "type": "enum",
+                    "nullable": "NO",
+                    "default": "'pending'",
+                    "key": ""
+                },
+                {
+                    "name": "signed_up_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "completed_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "referrer_transaction_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "referee_transaction_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        },
+        "referral_settings": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "description",
+                    "type": "text",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_by",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "is_enabled",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "referrer_points",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "referrer_card_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "referee_points",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "referee_card_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        },
+        "rewards": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "unique_identifier",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "UNI"
+                },
+                {
+                    "name": "title",
+                    "type": "longtext",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "description",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "max_number_to_redeem",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "points",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "active_from",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "expiration_date",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "is_active",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "1",
+                    "key": "MUL"
+                },
+                {
+                    "name": "is_undeletable",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "is_uneditable",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "number_of_times_redeemed",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "views",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "last_view",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "meta",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "ecommerce_settings",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "deleted_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "updated_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "deleted_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": [
+                {
+                    "id": "019fbc34-46ad-71c5-a702-a5a0f4a51352",
+                    "name": "[DEMO] Radio Cigars 5-Pack Sampler",
+                    "unique_identifier": null,
+                    "title": "{\"en\":\"Radio Cigars 5-Pack Sampler\"}",
+                    "description": "{\"en\":\"A curated 5-cigar sampler from the Radio Cigars lineup.\"}",
+                    "max_number_to_redeem": 0,
+                    "points": 500,
+                    "active_from": null,
+                    "expiration_date": null,
+                    "is_active": 1,
+                    "is_undeletable": 0,
+                    "is_uneditable": 0,
+                    "number_of_times_redeemed": 0,
+                    "views": 0,
+                    "last_view": null,
+                    "meta": null,
+                    "ecommerce_settings": null,
+                    "created_by": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "deleted_by": null,
+                    "updated_by": null,
+                    "deleted_at": null,
+                    "created_at": "2026-08-01 07:22:50",
+                    "updated_at": "2026-08-01 07:22:50"
+                },
+                {
+                    "id": "019fbc34-46bc-7116-b30a-abf7e80c2682",
+                    "name": "[DEMO] 363 Empire Branded Lighter",
+                    "unique_identifier": null,
+                    "title": "{\"en\":\"363 Empire Branded Lighter\"}",
+                    "description": "{\"en\":\"Engraved 363 Empire zippo-style lighter.\"}",
+                    "max_number_to_redeem": 0,
+                    "points": 250,
+                    "active_from": null,
+                    "expiration_date": null,
+                    "is_active": 1,
+                    "is_undeletable": 0,
+                    "is_uneditable": 0,
+                    "number_of_times_redeemed": 0,
+                    "views": 0,
+                    "last_view": null,
+                    "meta": null,
+                    "ecommerce_settings": null,
+                    "created_by": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "deleted_by": null,
+                    "updated_by": null,
+                    "deleted_at": null,
+                    "created_at": "2026-08-01 07:22:50",
+                    "updated_at": "2026-08-01 07:22:50"
+                },
+                {
+                    "id": "019fbc34-46c1-70f1-ac4f-dbc458d06c8d",
+                    "name": "[DEMO] Radio Cigars Gear: Snapback Hat",
+                    "unique_identifier": null,
+                    "title": "{\"en\":\"Radio Cigars Gear: Snapback Hat\"}",
+                    "description": "{\"en\":\"Embroidered Radio Cigars snapback.\"}",
+                    "max_number_to_redeem": 0,
+                    "points": 400,
+                    "active_from": null,
+                    "expiration_date": null,
+                    "is_active": 1,
+                    "is_undeletable": 0,
+                    "is_uneditable": 0,
+                    "number_of_times_redeemed": 0,
+                    "views": 0,
+                    "last_view": null,
+                    "meta": null,
+                    "ecommerce_settings": null,
+                    "created_by": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "deleted_by": null,
+                    "updated_by": null,
+                    "deleted_at": null,
+                    "created_at": "2026-08-01 07:22:50",
+                    "updated_at": "2026-08-01 07:22:50"
+                },
+                {
+                    "id": "019fbc34-46c7-71df-b053-19ef512530a1",
+                    "name": "[DEMO] Radio Cigars Gear: T-Shirt",
+                    "unique_identifier": null,
+                    "title": "{\"en\":\"Radio Cigars Gear: T-Shirt\"}",
+                    "description": "{\"en\":\"Radio Cigars logo tee, unisex fit.\"}",
+                    "max_number_to_redeem": 0,
+                    "points": 600,
+                    "active_from": null,
+                    "expiration_date": null,
+                    "is_active": 1,
+                    "is_undeletable": 0,
+                    "is_uneditable": 0,
+                    "number_of_times_redeemed": 0,
+                    "views": 0,
+                    "last_view": null,
+                    "meta": null,
+                    "ecommerce_settings": null,
+                    "created_by": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "deleted_by": null,
+                    "updated_by": null,
+                    "deleted_at": null,
+                    "created_at": "2026-08-01 07:22:50",
+                    "updated_at": "2026-08-01 07:22:50"
+                },
+                {
+                    "id": "019fbc34-46cb-7126-9bac-99cd23434134",
+                    "name": "[DEMO] VIP Front Row at Malcolm X Fest",
+                    "unique_identifier": null,
+                    "title": "{\"en\":\"VIP Front Row at Malcolm X Fest\"}",
+                    "description": "{\"en\":\"Front-row placement at the next Malcolm X Fest, redeemed through the 363 Founders program.\"}",
+                    "max_number_to_redeem": 0,
+                    "points": 1000,
+                    "active_from": null,
+                    "expiration_date": null,
+                    "is_active": 1,
+                    "is_undeletable": 0,
+                    "is_uneditable": 0,
+                    "number_of_times_redeemed": 0,
+                    "views": 0,
+                    "last_view": null,
+                    "meta": null,
+                    "ecommerce_settings": null,
+                    "created_by": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "deleted_by": null,
+                    "updated_by": null,
+                    "deleted_at": null,
+                    "created_at": "2026-08-01 07:22:50",
+                    "updated_at": "2026-08-01 07:22:50"
+                }
+            ]
+        },
+        "reward_loyalty_updates": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "bigint",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "from_version",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "to_version",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "status",
+                    "type": "enum",
+                    "nullable": "NO",
+                    "default": "'pending'",
+                    "key": "MUL"
+                },
+                {
+                    "name": "started_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "completed_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "duration_seconds",
+                    "type": "int",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "package_url",
+                    "type": "text",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "package_hash",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "package_size",
+                    "type": "bigint",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "backup_path",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "backup_kept",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "error_message",
+                    "type": "text",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "error_trace",
+                    "type": "text",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "initiated_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "ip_address",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "metadata",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        },
+        "scratch_cards": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "scratch_game_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "member_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "partner_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "issued_by_staff_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "is_played",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "is_winner",
+                    "type": "tinyint",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "played_at",
+                    "type": "timestamp",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "identifier",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "UNI"
+                },
+                {
+                    "name": "created_at",
+                    "type": "timestamp",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "timestamp",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": [
+                {
+                    "id": "57cddebf-e8c1-40bd-bf96-7a42057acaad",
+                    "scratch_game_id": "8dfc3a86-e284-4b44-a865-31ec00bc78bb",
+                    "member_id": "019fbc33-049b-72be-8038-77ee93758782",
+                    "partner_id": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "issued_by_staff_id": null,
+                    "is_played": 1,
+                    "is_winner": 1,
+                    "played_at": "2026-07-29 07:21:27",
+                    "identifier": "RC-DEMO-RSWTP99W",
+                    "created_at": "2026-08-01 07:21:27",
+                    "updated_at": "2026-08-01 07:21:27"
+                },
+                {
+                    "id": "802734cb-7119-450f-938a-77dfbabea8f8",
+                    "scratch_game_id": "8dfc3a86-e284-4b44-a865-31ec00bc78bb",
+                    "member_id": "019fbc33-04ac-70f2-adb6-c4e3525b3d9d",
+                    "partner_id": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "issued_by_staff_id": null,
+                    "is_played": 0,
+                    "is_winner": null,
+                    "played_at": null,
+                    "identifier": "RC-DEMO-T4EE8ZWT",
+                    "created_at": "2026-08-01 07:21:28",
+                    "updated_at": "2026-08-01 07:21:28"
+                },
+                {
+                    "id": "e30c2584-4f0a-4728-9a54-f002123fce57",
+                    "scratch_game_id": "8dfc3a86-e284-4b44-a865-31ec00bc78bb",
+                    "member_id": "019fbc33-04a5-727f-9fbe-cecb73159080",
+                    "partner_id": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "issued_by_staff_id": null,
+                    "is_played": 1,
+                    "is_winner": 0,
+                    "played_at": "2026-07-31 07:21:28",
+                    "identifier": "RC-DEMO-QYQNMKV1",
+                    "created_at": "2026-08-01 07:21:28",
+                    "updated_at": "2026-08-01 07:21:28"
+                },
+                {
+                    "id": "eb95abaf-4297-4339-9382-434795a47430",
+                    "scratch_game_id": "8dfc3a86-e284-4b44-a865-31ec00bc78bb",
+                    "member_id": "019fbc33-0482-73db-9d2f-361059b6058b",
+                    "partner_id": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "issued_by_staff_id": null,
+                    "is_played": 1,
+                    "is_winner": 1,
+                    "played_at": "2026-07-29 07:21:27",
+                    "identifier": "RC-DEMO-QBJP4DZ6",
+                    "created_at": "2026-08-01 07:21:27",
+                    "updated_at": "2026-08-01 07:21:27"
+                },
+                {
+                    "id": "f945d167-623c-410a-aa2a-830bd5f031d6",
+                    "scratch_game_id": "8dfc3a86-e284-4b44-a865-31ec00bc78bb",
+                    "member_id": "019fbc33-049f-7386-a164-5db2d113a1c8",
+                    "partner_id": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "issued_by_staff_id": null,
+                    "is_played": 1,
+                    "is_winner": 0,
+                    "played_at": "2026-07-29 07:21:28",
+                    "identifier": "RC-DEMO-YDSZY0NY",
+                    "created_at": "2026-08-01 07:21:28",
+                    "updated_at": "2026-08-01 07:21:28"
+                }
+            ]
+        },
+        "scratch_games": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "partner_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "description",
+                    "type": "text",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "cover_image",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "win_image",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "loss_image",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "win_rate",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "20",
+                    "key": ""
+                },
+                {
+                    "name": "is_active",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "1",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "timestamp",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "timestamp",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "deleted_at",
+                    "type": "timestamp",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": [
+                {
+                    "id": "8dfc3a86-e284-4b44-a865-31ec00bc78bb",
+                    "partner_id": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "name": "[DEMO] Radio Cigars Scratch & Win",
+                    "description": "Scratch for a chance to win a free Radio Cigars sampler, branded gear, or bonus loyalty points.",
+                    "cover_image": null,
+                    "win_image": null,
+                    "loss_image": null,
+                    "win_rate": 25,
+                    "is_active": 1,
+                    "created_at": "2026-08-01 07:21:27",
+                    "updated_at": "2026-08-01 07:21:27",
+                    "deleted_at": null
+                }
+            ]
+        },
+        "stamp_cards": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "club_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "unique_identifier",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "UNI"
+                },
+                {
+                    "name": "title",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "description",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "stamps_required",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "10",
+                    "key": ""
+                },
+                {
+                    "name": "stamps_per_purchase",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "1",
+                    "key": ""
+                },
+                {
+                    "name": "max_stamps_per_day",
+                    "type": "tinyint",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "max_stamps_per_transaction",
+                    "type": "tinyint",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "min_purchase_amount",
+                    "type": "decimal",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "qualifying_products",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "reward_title",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "reward_description",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "reward_value",
+                    "type": "decimal",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "reward_points",
+                    "type": "int",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "reward_card_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "requires_physical_claim",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "bg_color",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": "'#1F2937'",
+                    "key": ""
+                },
+                {
+                    "name": "bg_color_opacity",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "75",
+                    "key": ""
+                },
+                {
+                    "name": "text_color",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": "'#FFFFFF'",
+                    "key": ""
+                },
+                {
+                    "name": "stamp_color",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": "'#10B981'",
+                    "key": ""
+                },
+                {
+                    "name": "empty_stamp_color",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": "'#4B5563'",
+                    "key": ""
+                },
+                {
+                    "name": "stamp_icon",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": "'\u2615'",
+                    "key": ""
+                },
+                {
+                    "name": "valid_from",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "valid_until",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "stamps_expire_days",
+                    "type": "int",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "is_active",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "1",
+                    "key": "MUL"
+                },
+                {
+                    "name": "is_visible_by_default",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "views",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": "MUL"
+                },
+                {
+                    "name": "last_view",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "is_undeletable",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "show_monetary_value",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "total_stamps_issued",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "total_completions",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "total_redemptions",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "meta",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "updated_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "deleted_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "deleted_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": [
+                {
+                    "id": "019fbc33-04cd-7330-828a-e162ca786862",
+                    "club_id": "019dc14a-adae-73eb-b837-79b042032b4f",
+                    "name": "[DEMO] Radio Cigars Founders Stamp Card",
+                    "unique_identifier": "RC-STAMP-Y3QJLZ91",
+                    "title": "{\"en\":\"Radio Cigars Founders Card\"}",
+                    "description": "{\"en\":\"Collect a stamp with every Radio Cigars purchase. 8 stamps unlocks free founders-only gear.\"}",
+                    "stamps_required": 8,
+                    "stamps_per_purchase": 1,
+                    "max_stamps_per_day": null,
+                    "max_stamps_per_transaction": null,
+                    "min_purchase_amount": null,
+                    "qualifying_products": null,
+                    "reward_title": "{\"en\":\"Free Radio Cigars Founders Gear\"}",
+                    "reward_description": "{\"en\":\"Redeem 8 stamps for a free piece of Radio Cigars branded gear - hat, tee, or lighter - while supplies last.\"}",
+                    "reward_value": null,
+                    "currency": null,
+                    "reward_points": null,
+                    "reward_card_id": null,
+                    "requires_physical_claim": 1,
+                    "bg_color": "#080B14",
+                    "bg_color_opacity": 75,
+                    "text_color": "#FFFFFF",
+                    "stamp_color": "#FFD700",
+                    "empty_stamp_color": "#2a1a3e",
+                    "stamp_icon": "\ud83d\udd25",
+                    "valid_from": null,
+                    "valid_until": null,
+                    "stamps_expire_days": null,
+                    "is_active": 1,
+                    "is_visible_by_default": 1,
+                    "views": 2,
+                    "last_view": "2026-08-12 02:03:34",
+                    "is_undeletable": 0,
+                    "show_monetary_value": 0,
+                    "total_stamps_issued": 0,
+                    "total_completions": 0,
+                    "total_redemptions": 0,
+                    "meta": null,
+                    "created_by": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "updated_by": null,
+                    "deleted_by": null,
+                    "deleted_at": null,
+                    "created_at": "2026-08-01 07:21:28",
+                    "updated_at": "2026-08-12 02:03:34"
+                }
+            ]
+        },
+        "stamp_card_member": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "stamp_card_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "member_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "current_stamps",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "lifetime_stamps",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "completed_count",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "redeemed_count",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "pending_rewards",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "enrolled_at",
+                    "type": "datetime",
+                    "nullable": "NO",
+                    "default": "current_timestamp()",
+                    "key": ""
+                },
+                {
+                    "name": "last_stamp_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "last_completed_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "last_redeemed_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "next_stamp_expires_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "is_active",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "1",
+                    "key": ""
+                },
+                {
+                    "name": "meta",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        },
+        "stamp_transactions": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "stamp_card_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "member_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "staff_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "location_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "stamps",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "stamps_before",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "stamps_after",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "event",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "purchase_amount",
+                    "type": "decimal",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "order_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "note",
+                    "type": "text",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "meta",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        },
+        "tiers": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "club_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "display_name",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "description",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "icon",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "color",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "level",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "points_threshold",
+                    "type": "bigint",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "spend_threshold",
+                    "type": "bigint",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "transactions_threshold",
+                    "type": "int",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "points_multiplier",
+                    "type": "decimal",
+                    "nullable": "NO",
+                    "default": "1.00",
+                    "key": ""
+                },
+                {
+                    "name": "redemption_discount",
+                    "type": "decimal",
+                    "nullable": "NO",
+                    "default": "0.00",
+                    "key": ""
+                },
+                {
+                    "name": "benefits",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "is_default",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "is_active",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "1",
+                    "key": ""
+                },
+                {
+                    "name": "is_undeletable",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "meta",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "updated_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        },
+        "treasure_hunt_campaigns": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "slug",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "UNI"
+                },
+                {
+                    "name": "description",
+                    "type": "text",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "status",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": "'draft'",
+                    "key": ""
+                },
+                {
+                    "name": "start_date",
+                    "type": "date",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "end_date",
+                    "type": "date",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "prize_vault_total",
+                    "type": "decimal",
+                    "nullable": "NO",
+                    "default": "0.00",
+                    "key": ""
+                },
+                {
+                    "name": "prize_vault_goal",
+                    "type": "decimal",
+                    "nullable": "NO",
+                    "default": "0.00",
+                    "key": ""
+                },
+                {
+                    "name": "grand_prize_description",
+                    "type": "text",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "timestamp",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "timestamp",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        },
+        "vouchers": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "club_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "code",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "unique_identifier",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "UNI"
+                },
+                {
+                    "name": "title",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "description",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "type",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": "'percentage'",
+                    "key": ""
+                },
+                {
+                    "name": "value",
+                    "type": "bigint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "points_value",
+                    "type": "int",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "reward_card_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "batch_id",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "min_purchase_amount",
+                    "type": "bigint",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "max_discount_amount",
+                    "type": "bigint",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "free_product_name",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "applicable_products",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "applicable_categories",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "excluded_products",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "valid_from",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "valid_until",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "max_uses_total",
+                    "type": "int",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "max_uses_per_member",
+                    "type": "int",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "target_member_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "target_tiers",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "first_order_only",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "new_members_only",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "new_members_days",
+                    "type": "int",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "is_active",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "1",
+                    "key": "MUL"
+                },
+                {
+                    "name": "is_public",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "is_visible_by_default",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "is_single_use",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "is_auto_apply",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "stackable",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "source",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": "'manual'",
+                    "key": ""
+                },
+                {
+                    "name": "source_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "claimed_via",
+                    "type": "enum",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "claimed_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "claimed_by_member_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "times_used",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "total_discount_given",
+                    "type": "bigint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "unique_members_used",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "views",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "last_view",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "bg_color",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": "'#7C3AED'",
+                    "key": ""
+                },
+                {
+                    "name": "bg_color_opacity",
+                    "type": "tinyint",
+                    "nullable": "NO",
+                    "default": "85",
+                    "key": ""
+                },
+                {
+                    "name": "text_color",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": "'#FFFFFF'",
+                    "key": ""
+                },
+                {
+                    "name": "meta",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "updated_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "deleted_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "deleted_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": [
+                {
+                    "id": "019fbc34-46d1-727a-a158-21f8c2d33958",
+                    "club_id": "019dc14a-adae-73eb-b837-79b042032b4f",
+                    "code": "RADIOCIGARS20",
+                    "name": "[DEMO] Radio Cigars Launch Discount",
+                    "unique_identifier": "524-351-234-897",
+                    "title": "{\"en\":\"20% Off Your First Order\"}",
+                    "description": "{\"en\":\"Welcome to Radio Cigars - enjoy 20% off your first purchase.\"}",
+                    "type": "percentage",
+                    "value": 2000,
+                    "currency": null,
+                    "points_value": null,
+                    "reward_card_id": null,
+                    "batch_id": null,
+                    "min_purchase_amount": null,
+                    "max_discount_amount": null,
+                    "free_product_name": null,
+                    "applicable_products": null,
+                    "applicable_categories": null,
+                    "excluded_products": null,
+                    "valid_from": null,
+                    "valid_until": null,
+                    "max_uses_total": null,
+                    "max_uses_per_member": null,
+                    "target_member_id": null,
+                    "target_tiers": null,
+                    "first_order_only": 1,
+                    "new_members_only": 0,
+                    "new_members_days": null,
+                    "is_active": 1,
+                    "is_public": 1,
+                    "is_visible_by_default": 1,
+                    "is_single_use": 0,
+                    "is_auto_apply": 0,
+                    "stackable": 0,
+                    "source": "manual",
+                    "source_id": null,
+                    "claimed_via": null,
+                    "claimed_at": null,
+                    "claimed_by_member_id": null,
+                    "times_used": 0,
+                    "total_discount_given": 0,
+                    "unique_members_used": 0,
+                    "views": 7,
+                    "last_view": "2026-08-12 02:03:23",
+                    "bg_color": "#7C3AED",
+                    "bg_color_opacity": 85,
+                    "text_color": "#FFFFFF",
+                    "meta": null,
+                    "created_by": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "updated_by": null,
+                    "deleted_by": null,
+                    "deleted_at": null,
+                    "created_at": "2026-08-01 07:22:50",
+                    "updated_at": "2026-08-12 02:03:23"
+                },
+                {
+                    "id": "019fbc34-46d6-71b6-ba7d-f9dd3a8473ad",
+                    "club_id": "019dc14a-adae-73eb-b837-79b042032b4f",
+                    "code": "FOUNDERSGEAR",
+                    "name": "[DEMO] Founders Free Sticker Pack",
+                    "unique_identifier": "854-530-843-580",
+                    "title": "{\"en\":\"Free 363 Founders Sticker Pack\"}",
+                    "description": "{\"en\":\"Founders-only free sticker pack with any order.\"}",
+                    "type": "free_product",
+                    "value": 0,
+                    "currency": null,
+                    "points_value": null,
+                    "reward_card_id": null,
+                    "batch_id": null,
+                    "min_purchase_amount": null,
+                    "max_discount_amount": null,
+                    "free_product_name": "{\"en_US\":\"363 Empire Sticker Pack\"}",
+                    "applicable_products": null,
+                    "applicable_categories": null,
+                    "excluded_products": null,
+                    "valid_from": null,
+                    "valid_until": null,
+                    "max_uses_total": null,
+                    "max_uses_per_member": null,
+                    "target_member_id": null,
+                    "target_tiers": null,
+                    "first_order_only": 0,
+                    "new_members_only": 0,
+                    "new_members_days": null,
+                    "is_active": 1,
+                    "is_public": 0,
+                    "is_visible_by_default": 0,
+                    "is_single_use": 0,
+                    "is_auto_apply": 0,
+                    "stackable": 0,
+                    "source": "manual",
+                    "source_id": null,
+                    "claimed_via": null,
+                    "claimed_at": null,
+                    "claimed_by_member_id": null,
+                    "times_used": 0,
+                    "total_discount_given": 0,
+                    "unique_members_used": 0,
+                    "views": 0,
+                    "last_view": null,
+                    "bg_color": "#7C3AED",
+                    "bg_color_opacity": 85,
+                    "text_color": "#FFFFFF",
+                    "meta": null,
+                    "created_by": "019dbfc5-e395-7082-9214-20859f344cce",
+                    "updated_by": null,
+                    "deleted_by": null,
+                    "deleted_at": null,
+                    "created_at": "2026-08-01 07:22:50",
+                    "updated_at": "2026-08-01 07:22:50"
+                }
+            ]
+        },
+        "voucher_batches": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "club_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "partner_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "description",
+                    "type": "text",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "quantity",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "code_prefix",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "config",
+                    "type": "longtext",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": ""
+                },
+                {
+                    "name": "status",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": "'active'",
+                    "key": "MUL"
+                },
+                {
+                    "name": "vouchers_created",
+                    "type": "int",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "claim_token",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "UNI"
+                },
+                {
+                    "name": "meta",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        },
+        "voucher_redemptions": {
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "PRI"
+                },
+                {
+                    "name": "voucher_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "member_id",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": null,
+                    "key": "MUL"
+                },
+                {
+                    "name": "staff_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "location_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "order_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "order_reference",
+                    "type": "varchar",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "discount_amount",
+                    "type": "bigint",
+                    "nullable": "NO",
+                    "default": "0",
+                    "key": ""
+                },
+                {
+                    "name": "original_amount",
+                    "type": "bigint",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "final_amount",
+                    "type": "bigint",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "char",
+                    "nullable": "NO",
+                    "default": "'USD'",
+                    "key": ""
+                },
+                {
+                    "name": "points_awarded",
+                    "type": "int",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "transaction_id",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "status",
+                    "type": "varchar",
+                    "nullable": "NO",
+                    "default": "'completed'",
+                    "key": "MUL"
+                },
+                {
+                    "name": "voided_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "voided_by",
+                    "type": "char",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": "MUL"
+                },
+                {
+                    "name": "void_reason",
+                    "type": "text",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "redeemed_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "meta",
+                    "type": "longtext",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "datetime",
+                    "nullable": "YES",
+                    "default": "NULL",
+                    "key": ""
+                }
+            ],
+            "sample_rows": []
+        }
+    }
+}
