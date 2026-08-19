@@ -68,6 +68,9 @@ NODE
     if [ -f "$AGENT/scripts/363-schema-inspector.php" ]; then
       "$PHPCLI" "$AGENT/scripts/363-schema-inspector.php" || true
     fi
+    if [ -f "$AGENT/scripts/install-363-foundation-demo.php" ]; then
+      "$PHPCLI" "$AGENT/scripts/install-363-foundation-demo.php" || true
+    fi
   fi
 
   git add requests/campaigns results/campaigns 2>/dev/null || true
