@@ -37,6 +37,27 @@ function run(command, args, cwd = AGENT_ROOT) {
   });
 }
 
+function parseJsonFromNoisyOutput(text) {
+  const source = String(text ?? "").trim();
+  try { return JSON.parse(source); } catch {}
+
+  const arrayStart = source.indexOf("[");
+  const arrayEnd = source.lastIndexOf("]");
+  if (arrayStart >= 0 && arrayEnd > arrayStart) {
+    const candidate = source.slice(arrayStart, arrayEnd + 1);
+    try { return JSON.parse(candidate); } catch {}
+  }
+
+  const objectStart = source.indexOf("{");
+  const objectEnd = source.lastIndexOf("}");
+  if (objectStart >= 0 && objectEnd > objectStart) {
+    const candidate = source.slice(objectStart, objectEnd + 1);
+    try { return JSON.parse(candidate); } catch {}
+  }
+
+  throw new Error(`Could not extract JSON from command output. First 200 chars: ${source.slice(0, 200)}`);
+}
+
 function validRequest(req, filename) {
   const errors = [];
   if (!req || typeof req !== "object") errors.push("Request must be a JSON object.");
@@ -115,7 +136,7 @@ for (const filename of files) {
     let routes = [];
     let parseError = null;
     if (routeRun.exitCode === 0) {
-      try { routes = JSON.parse(routeRun.stdout); }
+      try { routes = parseJsonFromNoisyOutput(routeRun.stdout); }
       catch (error) { parseError = error instanceof Error ? error.message : String(error); }
     }
 
