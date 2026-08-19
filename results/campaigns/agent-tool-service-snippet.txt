@@ -30,10 +30,7 @@
 
                 // Permission filtering — exclude endpoints gated by a disabled feature.
                 // x-agent-permission declares the partner feature flag checked at runtime.
-                // If the partner doesn't have that permission, the endpoint would 
-        $tools = array_merge($tools, $this->placesRewardsCampaignTools());
-
-        return
+                // If the partner doesn't have that permission, the endpoint would
                 // 403 FEATURE_DISABLED, so don't advertise it as an available tool.
                 $requiredPermission = $operation['x-agent-permission'] ?? null;
                 if ($requiredPermission && in_array($requiredPermission, $disabledPermissions, true)) {
@@ -64,3 +61,6 @@
     /**
      * Extract path parameters (e.g., {id}) as simple schema objects.
      *
+     * @return array<int, array{name: string, schema: array}>
+     */
+    private function extractPathParams(array $operation): array

@@ -1,18 +1,19 @@
 {
   "requestId": "chatgpt-capability-snapshot-20260818-1912",
   "campaignName": "ChatGPT Campaign Capability Snapshot Retry",
-  "status": "failed",
+  "status": "completed",
   "requestType": "capability_snapshot",
-  "processedAt": "2026-08-19T14:14:34.293Z",
+  "processedAt": "2026-08-19T14:15:40.796Z",
   "capabilities": {
-    "generatedAt": "2026-08-18T22:19:40.884Z",
+    "generatedAt": "2026-08-19T14:15:40.745Z",
     "apiBase": "https://app.placesrewards.com/api/agent/v1",
+    "toolSource": "/tools",
     "totalDiscoveredTools": 10,
     "campaignRelevantTools": [
       {
         "name": "admin_partner_metrics",
         "method": "GET",
-        "path": "/api/agent/v1/admin/analytics/partners/{id}",
+        "path": "/admin/analytics/partners/{id}",
         "raw": {
           "name": "admin_partner_metrics",
           "description": "Get per-partner analytics\nReturns usage metrics for a specific partner.",
@@ -39,7 +40,7 @@
       {
         "name": "admin_list_partners",
         "method": "GET",
-        "path": "/api/agent/v1/admin/partners",
+        "path": "/admin/partners",
         "raw": {
           "name": "admin_list_partners",
           "description": "List all partners\nReturns paginated partners with optional filters. Admin-only endpoint.",
@@ -76,7 +77,7 @@
       {
         "name": "admin_get_partner",
         "method": "GET",
-        "path": "/api/agent/v1/admin/partners/{id}",
+        "path": "/admin/partners/{id}",
         "raw": {
           "name": "admin_get_partner",
           "description": "Get a specific partner with permissions and usage\nReturns partner details including permissions, limits, and usage counts.",
@@ -103,7 +104,7 @@
       {
         "name": "admin_update_partner_permissions",
         "method": "PATCH",
-        "path": "/api/agent/v1/admin/partners/{id}/permissions",
+        "path": "/admin/partners/{id}/permissions",
         "raw": {
           "name": "admin_update_partner_permissions",
           "description": "Update partner permissions and limits\nUpdates feature flags and resource limits for a partner.",
@@ -179,7 +180,7 @@
       {
         "name": "admin_activate_partner",
         "method": "POST",
-        "path": "/api/agent/v1/admin/partners/{id}/activate",
+        "path": "/admin/partners/{id}/activate",
         "raw": {
           "name": "admin_activate_partner",
           "description": "Activate a partner\nReactivates a previously deactivated partner.",
@@ -206,7 +207,7 @@
       {
         "name": "admin_deactivate_partner",
         "method": "POST",
-        "path": "/api/agent/v1/admin/partners/{id}/deactivate",
+        "path": "/admin/partners/{id}/deactivate",
         "raw": {
           "name": "admin_deactivate_partner",
           "description": "Deactivate a partner\nDeactivates a partner. All associated agent keys become invalid.",
@@ -232,5 +233,5 @@
       }
     ]
   },
-  "error": "file:///home/placevle/placesrewards-agent-server/scripts/campaign-control.mjs:79\n      throw new Error(`Tool discovery failed. /tools: ${primaryError instanceof Error ? primaryError.message : String(primaryError)} | /campaign-tools: ${fallbackError instanceof Error ? fallbackError.message : String(fallbackError)}`);\n            ^\n\nError: Tool discovery failed. /tools: HTTP 500: {\"message\":\"Server Error\"} | /campaign-tools: HTTP 404: {\"message\":\"The route api/agent/v1/campaign-tools could not be found.\"}\n    at fetchToolPayload (file:///home/placevle/placesrewards-agent-server/scripts/campaign-control.mjs:79:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async refreshCapabilities (file:///home/placevle/placesrewards-agent-server/scripts/campaign-control.mjs:85:29)\n    at async file:///home/placevle/placesrewards-agent-server/scripts/campaign-control.mjs:177:32\n\nNode.js v24.18.1\n"
+  "error": null
 }
