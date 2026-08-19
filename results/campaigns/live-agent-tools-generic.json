@@ -1,0 +1,1815 @@
+{
+    "api_name": "Reward Loyalty Agent API",
+    "api_version": "1.0.0",
+    "base_url": "/api/agent/v1",
+    "auth": {
+        "type": "api_key",
+        "header": "X-Agent-Key",
+        "description": "Agent API key (prefix: rl_admin_*, rl_agent_*, rl_member_*)"
+    },
+    "tools": [
+        {
+            "name": "check_health",
+            "description": "Check API health and key identity\nReturns the authenticated key's identity, role, scopes, rate limit, and owner information. Use this as a connectivity and configuration check before calling business endpoints.",
+            "method": "GET",
+            "path": "/api/agent/v1/health",
+            "required_scopes": [],
+            "parameters": {
+                "type": "object",
+                "properties": {},
+                "required": []
+            }
+        },
+        {
+            "name": "list_loyalty_cards",
+            "description": "List all loyalty cards for this partner\nReturns paginated loyalty cards owned by the authenticated partner. Supports pagination via page and per_page query parameters.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/cards",
+            "required_scopes": [
+                "read",
+                "write:cards"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "page": {
+                        "type": "integer",
+                        "default": 1
+                    },
+                    "per_page": {
+                        "type": "integer",
+                        "default": 25,
+                        "maximum": 100,
+                        "minimum": 1
+                    }
+                },
+                "required": []
+            }
+        },
+        {
+            "name": "create_loyalty_card",
+            "description": "Create a new loyalty card\nCreates a loyalty card with the specified points economy configuration. Requires the club_id of an existing club owned by this partner.",
+            "method": "POST",
+            "path": "/api/agent/v1/partner/cards",
+            "required_scopes": [
+                "write:cards"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "club_id": {
+                        "description": "Club this card belongs to",
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "description": "Internal name (not shown to members)",
+                        "type": "string",
+                        "maxLength": 250
+                    },
+                    "head": {
+                        "description": "Translatable header text",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "title": {
+                        "description": "Display title (translatable)",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "description": {
+                        "description": "Description (translatable)",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "currency": {
+                        "description": "ISO 4217 currency code",
+                        "type": "string",
+                        "example": "EUR",
+                        "maxLength": 3,
+                        "minLength": 3
+                    },
+                    "points_per_currency": {
+                        "type": "number",
+                        "maximum": 100000,
+                        "minimum": 0
+                    },
+                    "currency_unit_amount": {
+                        "type": "number",
+                        "maximum": 1000000,
+                        "minimum": 1
+                    },
+                    "min_points_per_purchase": {
+                        "type": "number",
+                        "maximum": 10000000,
+                        "minimum": 0
+                    },
+                    "max_points_per_purchase": {
+                        "type": "number",
+                        "maximum": 10000000,
+                        "minimum": 0
+                    },
+                    "initial_bonus_points": {
+                        "type": "number",
+                        "maximum": 10000000,
+                        "minimum": 0
+                    },
+                    "points_expiration_months": {
+                        "type": "number",
+                        "maximum": 1200,
+                        "minimum": 1
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "bg_color": {
+                        "type": "string",
+                        "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+                        "example": "#4F46E5"
+                    }
+                },
+                "required": [
+                    "club_id",
+                    "name",
+                    "currency",
+                    "points_per_currency",
+                    "currency_unit_amount",
+                    "min_points_per_purchase",
+                    "max_points_per_purchase",
+                    "points_expiration_months"
+                ]
+            }
+        },
+        {
+            "name": "get_loyalty_card",
+            "description": "Get a specific loyalty card\nReturns a single loyalty card by ID. The card must belong to the authenticated partner.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/cards/{id}",
+            "required_scopes": [
+                "read",
+                "write:cards"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "update_loyalty_card",
+            "description": "Update an existing loyalty card\nUpdates a loyalty card owned by the authenticated partner. Only provided fields are updated.",
+            "method": "PUT",
+            "path": "/api/agent/v1/partner/cards/{id}",
+            "required_scopes": [
+                "write:cards"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    },
+                    "club_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string",
+                        "maxLength": 250
+                    },
+                    "head": {
+                        "description": "Translatable header text",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "title": {
+                        "description": "Display title (translatable)",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "description": {
+                        "description": "Description (translatable)",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "currency": {
+                        "type": "string",
+                        "maxLength": 3,
+                        "minLength": 3
+                    },
+                    "points_per_currency": {
+                        "type": "number",
+                        "maximum": 100000,
+                        "minimum": 0
+                    },
+                    "currency_unit_amount": {
+                        "type": "number",
+                        "maximum": 1000000,
+                        "minimum": 1
+                    },
+                    "min_points_per_purchase": {
+                        "type": "number",
+                        "maximum": 10000000,
+                        "minimum": 0
+                    },
+                    "max_points_per_purchase": {
+                        "type": "number",
+                        "maximum": 10000000,
+                        "minimum": 0
+                    },
+                    "initial_bonus_points": {
+                        "type": "number",
+                        "maximum": 10000000,
+                        "minimum": 0
+                    },
+                    "points_expiration_months": {
+                        "type": "number",
+                        "maximum": 1200,
+                        "minimum": 1
+                    },
+                    "is_active": {
+                        "type": "boolean"
+                    },
+                    "bg_color": {
+                        "type": "string",
+                        "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "delete_loyalty_card",
+            "description": "Delete a loyalty card\nPermanently deletes a loyalty card owned by the authenticated partner.",
+            "method": "DELETE",
+            "path": "/api/agent/v1/partner/cards/{id}",
+            "required_scopes": [
+                "write:cards"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "list_clubs",
+            "description": "List all clubs for this partner\nReturns paginated clubs owned by the authenticated partner.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/clubs",
+            "required_scopes": [
+                "read",
+                "write:clubs"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "page": {
+                        "type": "integer",
+                        "default": 1
+                    },
+                    "per_page": {
+                        "type": "integer",
+                        "default": 25,
+                        "maximum": 100,
+                        "minimum": 1
+                    }
+                },
+                "required": []
+            }
+        },
+        {
+            "name": "create_club",
+            "description": "Create a new club\nCreates a club owned by the authenticated partner.",
+            "method": "POST",
+            "path": "/api/agent/v1/partner/clubs",
+            "required_scopes": [
+                "write:clubs"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "Club name",
+                        "type": "string",
+                        "maxLength": 120
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "default": true
+                    }
+                },
+                "required": [
+                    "name"
+                ]
+            }
+        },
+        {
+            "name": "get_club",
+            "description": "Get a specific club\nReturns a single club by ID. The club must belong to the authenticated partner.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/clubs/{id}",
+            "required_scopes": [
+                "read",
+                "write:clubs"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "update_club",
+            "description": "Update an existing club\nUpdates a club owned by the authenticated partner. Only provided fields are updated.",
+            "method": "PUT",
+            "path": "/api/agent/v1/partner/clubs/{id}",
+            "required_scopes": [
+                "write:clubs"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    },
+                    "name": {
+                        "type": "string",
+                        "maxLength": 120
+                    },
+                    "is_active": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "delete_club",
+            "description": "Delete a club\nDeletes a club owned by the authenticated partner. Protected clubs cannot be deleted.",
+            "method": "DELETE",
+            "path": "/api/agent/v1/partner/clubs/{id}",
+            "required_scopes": [
+                "write:clubs"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "list_members",
+            "description": "List members who interacted with this partner\nReturns paginated members that have transactions with this partner's cards. Searchable by name, email, member number, or unique identifier.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/members",
+            "required_scopes": [
+                "read"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "page": {
+                        "type": "integer",
+                        "default": 1
+                    },
+                    "per_page": {
+                        "type": "integer",
+                        "default": 25,
+                        "maximum": 100,
+                        "minimum": 1
+                    },
+                    "search": {
+                        "type": "string",
+                        "description": "Search by name, email, member number, or unique identifier"
+                    }
+                },
+                "required": []
+            }
+        },
+        {
+            "name": "get_member",
+            "description": "Get a specific member\nReturns member details. Accepts UUID as path parameter. Member must have interacted with this partner's cards.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/members/{id}",
+            "required_scopes": [
+                "read"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Member UUID (path parameter)"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "get_member_balance",
+            "description": "Get a member's balance on a specific card\nReturns the member's point balance for a specific loyalty card. Both the member and card must belong to this partner.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/members/{id}/balance/{cardId}",
+            "required_scopes": [
+                "read"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Member UUID (path parameter)"
+                    },
+                    "cardId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Loyalty card UUID (path parameter)"
+                    }
+                },
+                "required": [
+                    "id",
+                    "cardId"
+                ]
+            }
+        },
+        {
+            "name": "list_rewards",
+            "description": "List all rewards for this partner\nReturns paginated rewards owned by the authenticated partner. Requires loyalty cards feature to be enabled.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/rewards",
+            "required_scopes": [
+                "read",
+                "write:rewards"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "page": {
+                        "type": "integer",
+                        "default": 1
+                    },
+                    "per_page": {
+                        "type": "integer",
+                        "default": 25,
+                        "maximum": 100,
+                        "minimum": 1
+                    }
+                },
+                "required": []
+            }
+        },
+        {
+            "name": "create_reward",
+            "description": "Create a new reward\nCreates a reward that members can claim by spending loyalty points.",
+            "method": "POST",
+            "path": "/api/agent/v1/partner/rewards",
+            "required_scopes": [
+                "write:rewards"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "Internal reward name",
+                        "type": "string",
+                        "maxLength": 120
+                    },
+                    "title": {
+                        "description": "Display title (translatable)",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "description": {
+                        "description": "Description (translatable)",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "points": {
+                        "description": "Points required to claim this reward",
+                        "type": "number",
+                        "maximum": 10000000,
+                        "minimum": 0
+                    },
+                    "active_from": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                    },
+                    "expiration_date": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "default": true
+                    }
+                },
+                "required": [
+                    "name",
+                    "points"
+                ]
+            }
+        },
+        {
+            "name": "get_reward",
+            "description": "Get a specific reward\nReturns a single reward by ID. The reward must belong to the authenticated partner.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/rewards/{id}",
+            "required_scopes": [
+                "read",
+                "write:rewards"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "update_reward",
+            "description": "Update an existing reward\nUpdates a reward owned by the authenticated partner. Only provided fields are updated.",
+            "method": "PUT",
+            "path": "/api/agent/v1/partner/rewards/{id}",
+            "required_scopes": [
+                "write:rewards"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    },
+                    "name": {
+                        "type": "string",
+                        "maxLength": 120
+                    },
+                    "title": {
+                        "description": "Display title (translatable)",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "description": {
+                        "description": "Description (translatable)",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "points": {
+                        "type": "number",
+                        "maximum": 10000000,
+                        "minimum": 0
+                    },
+                    "active_from": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                    },
+                    "expiration_date": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                    },
+                    "is_active": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "delete_reward",
+            "description": "Delete a reward\nPermanently deletes a reward owned by the authenticated partner.",
+            "method": "DELETE",
+            "path": "/api/agent/v1/partner/rewards/{id}",
+            "required_scopes": [
+                "write:rewards"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "list_staff",
+            "description": "List all staff members for this partner\nReturns paginated staff members owned by the authenticated partner.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/staff",
+            "required_scopes": [
+                "read",
+                "write:staff"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "page": {
+                        "type": "integer",
+                        "default": 1
+                    },
+                    "per_page": {
+                        "type": "integer",
+                        "default": 25,
+                        "maximum": 100,
+                        "minimum": 1
+                    }
+                },
+                "required": []
+            }
+        },
+        {
+            "name": "create_staff_member",
+            "description": "Create a new staff member\nCreates a staff member who can perform loyalty operations.",
+            "method": "POST",
+            "path": "/api/agent/v1/partner/staff",
+            "required_scopes": [
+                "write:staff"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "maxLength": 120
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 120
+                    },
+                    "password": {
+                        "type": "string",
+                        "maxLength": 48,
+                        "minLength": 6
+                    },
+                    "club_id": {
+                        "description": "Assign to a specific club",
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "default": true
+                    }
+                },
+                "required": [
+                    "name",
+                    "email",
+                    "password"
+                ]
+            }
+        },
+        {
+            "name": "get_staff_member",
+            "description": "Get a specific staff member\nReturns a single staff member by ID.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/staff/{id}",
+            "required_scopes": [
+                "read",
+                "write:staff"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "update_staff_member",
+            "description": "Update an existing staff member\nUpdates a staff member owned by the authenticated partner.",
+            "method": "PUT",
+            "path": "/api/agent/v1/partner/staff/{id}",
+            "required_scopes": [
+                "write:staff"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    },
+                    "name": {
+                        "type": "string",
+                        "maxLength": 120
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 120
+                    },
+                    "password": {
+                        "type": "string",
+                        "maxLength": 48,
+                        "minLength": 6
+                    },
+                    "club_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "is_active": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "delete_staff_member",
+            "description": "Delete a staff member\nPermanently deletes a staff member owned by the authenticated partner.",
+            "method": "DELETE",
+            "path": "/api/agent/v1/partner/staff/{id}",
+            "required_scopes": [
+                "write:staff"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "list_stamp_cards",
+            "description": "List all stamp cards for this partner\nReturns paginated stamp cards owned by the authenticated partner.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/stamp-cards",
+            "required_scopes": [
+                "read",
+                "write:stamps"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "page": {
+                        "type": "integer",
+                        "default": 1
+                    },
+                    "per_page": {
+                        "type": "integer",
+                        "default": 25,
+                        "maximum": 100,
+                        "minimum": 1
+                    }
+                },
+                "required": []
+            }
+        },
+        {
+            "name": "create_stamp_card",
+            "description": "Create a new stamp card\nCreates a stamp card with the specified configuration. Requires stamp cards feature to be enabled.",
+            "method": "POST",
+            "path": "/api/agent/v1/partner/stamp-cards",
+            "required_scopes": [
+                "write:stamps"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "club_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string",
+                        "maxLength": 250
+                    },
+                    "head": {
+                        "description": "Translatable header",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "title": {
+                        "description": "Display title (translatable)",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "description": {
+                        "description": "Description (translatable)",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "reward_title": {
+                        "description": "Reward title (translatable)",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "stamps_required": {
+                        "type": "integer",
+                        "maximum": 100,
+                        "minimum": 1
+                    },
+                    "stamps_per_purchase": {
+                        "type": "integer",
+                        "maximum": 100,
+                        "minimum": 1
+                    },
+                    "max_stamps_per_transaction": {
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "max_stamps_per_day": {
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "stamps_expire_days": {
+                        "type": "integer",
+                        "maximum": 365,
+                        "minimum": 1
+                    },
+                    "min_purchase_amount": {
+                        "type": "number",
+                        "minimum": 0
+                    },
+                    "currency": {
+                        "type": "string",
+                        "maxLength": 3,
+                        "minLength": 3
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "default": true
+                    }
+                },
+                "required": [
+                    "club_id",
+                    "name",
+                    "stamps_required"
+                ]
+            }
+        },
+        {
+            "name": "get_stamp_card",
+            "description": "Get a specific stamp card\nReturns a single stamp card by ID.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/stamp-cards/{id}",
+            "required_scopes": [
+                "read",
+                "write:stamps"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "update_stamp_card",
+            "description": "Update an existing stamp card\nUpdates a stamp card owned by the authenticated partner. Only provided fields are updated.",
+            "method": "PUT",
+            "path": "/api/agent/v1/partner/stamp-cards/{id}",
+            "required_scopes": [
+                "write:stamps"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    },
+                    "club_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string",
+                        "maxLength": 250
+                    },
+                    "stamps_required": {
+                        "type": "integer",
+                        "maximum": 100,
+                        "minimum": 1
+                    },
+                    "is_active": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "delete_stamp_card",
+            "description": "Delete a stamp card\nPermanently deletes a stamp card owned by the authenticated partner.",
+            "method": "DELETE",
+            "path": "/api/agent/v1/partner/stamp-cards/{id}",
+            "required_scopes": [
+                "write:stamps"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "add_stamps",
+            "description": "Add stamps to a member's stamp card\nAwards stamp(s) to a member on the specified stamp card. If the card is completed, a pending reward is created.",
+            "method": "POST",
+            "path": "/api/agent/v1/partner/stamp-cards/{id}/stamps",
+            "required_scopes": [
+                "write:stamps"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Stamp card UUID (path parameter)"
+                    },
+                    "member_identifier": {
+                        "description": "UUID, email, member number, or unique identifier",
+                        "type": "string"
+                    },
+                    "stamps": {
+                        "description": "Number of stamps to add",
+                        "type": "integer",
+                        "default": 1,
+                        "maximum": 100,
+                        "minimum": 1
+                    },
+                    "purchase_amount": {
+                        "description": "Purchase amount (for minimum purchase validation)",
+                        "type": "number",
+                        "minimum": 0
+                    },
+                    "note": {
+                        "type": "string",
+                        "maxLength": 500
+                    }
+                },
+                "required": [
+                    "id",
+                    "member_identifier"
+                ]
+            }
+        },
+        {
+            "name": "redeem_stamp_reward",
+            "description": "Redeem a pending stamp reward\nRedeems one pending reward for a member on the specified stamp card. The member must have a completed card with an unclaimed reward.",
+            "method": "POST",
+            "path": "/api/agent/v1/partner/stamp-cards/{id}/redeem",
+            "required_scopes": [
+                "write:stamps"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Stamp card UUID (path parameter)"
+                    },
+                    "member_identifier": {
+                        "description": "UUID, email, member number, or unique identifier",
+                        "type": "string"
+                    },
+                    "note": {
+                        "type": "string",
+                        "maxLength": 500
+                    }
+                },
+                "required": [
+                    "id",
+                    "member_identifier"
+                ]
+            }
+        },
+        {
+            "name": "list_tiers",
+            "description": "List all tiers for this partner\nReturns paginated tiers owned by the authenticated partner, ordered by level.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/tiers",
+            "required_scopes": [
+                "read",
+                "write:tiers"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "page": {
+                        "type": "integer",
+                        "default": 1
+                    },
+                    "per_page": {
+                        "type": "integer",
+                        "default": 25,
+                        "maximum": 100,
+                        "minimum": 1
+                    }
+                },
+                "required": []
+            }
+        },
+        {
+            "name": "create_tier",
+            "description": "Create a new tier\nCreates a loyalty tier within a club.",
+            "method": "POST",
+            "path": "/api/agent/v1/partner/tiers",
+            "required_scopes": [
+                "write:tiers"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "club_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description (translatable)",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "level": {
+                        "description": "Sort order / tier level",
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "points_threshold": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "points_multiplier": {
+                        "type": "number",
+                        "maximum": 100,
+                        "minimum": 1
+                    },
+                    "color": {
+                        "type": "string",
+                        "example": "#FFD700",
+                        "maxLength": 7
+                    },
+                    "icon": {
+                        "type": "string",
+                        "maxLength": 50
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "default": true
+                    }
+                },
+                "required": [
+                    "club_id",
+                    "name",
+                    "level"
+                ]
+            }
+        },
+        {
+            "name": "get_tier",
+            "description": "Get a specific tier\nReturns a single tier by ID.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/tiers/{id}",
+            "required_scopes": [
+                "read",
+                "write:tiers"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "update_tier",
+            "description": "Update an existing tier\nUpdates a tier owned by the authenticated partner.",
+            "method": "PUT",
+            "path": "/api/agent/v1/partner/tiers/{id}",
+            "required_scopes": [
+                "write:tiers"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "level": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "points_threshold": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "is_active": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "delete_tier",
+            "description": "Delete a tier\nPermanently deletes a tier owned by the authenticated partner.",
+            "method": "DELETE",
+            "path": "/api/agent/v1/partner/tiers/{id}",
+            "required_scopes": [
+                "write:tiers"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "list_transactions",
+            "description": "List transactions for this partner\nReturns paginated transactions with optional filters by member, card, event type, and date range.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/transactions",
+            "required_scopes": [
+                "read",
+                "write:transactions"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "page": {
+                        "type": "integer",
+                        "default": 1
+                    },
+                    "per_page": {
+                        "type": "integer",
+                        "default": 25,
+                        "maximum": 100,
+                        "minimum": 1
+                    },
+                    "member_identifier": {
+                        "type": "string",
+                        "description": "Filter by member (UUID, email, member number, or unique identifier)"
+                    },
+                    "card_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Filter by loyalty card"
+                    },
+                    "event": {
+                        "type": "string",
+                        "description": "Filter by event type"
+                    },
+                    "from": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Start date (Y-m-d)"
+                    },
+                    "to": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "End date (Y-m-d)"
+                    }
+                },
+                "required": []
+            }
+        },
+        {
+            "name": "record_purchase",
+            "description": "Record a purchase and award loyalty points\nRecords a purchase transaction. Points awarded are calculated from the card's points_per_currency ratio, or can be set explicitly via the points parameter. The member_identifier accepts UUID, email, member number, or unique identifier.",
+            "method": "POST",
+            "path": "/api/agent/v1/partner/transactions/purchase",
+            "required_scopes": [
+                "write:transactions"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "card_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "member_identifier": {
+                        "description": "UUID, email, member number, or unique identifier",
+                        "type": "string"
+                    },
+                    "purchase_amount": {
+                        "description": "Required unless points is set",
+                        "type": "number",
+                        "minimum": 0.01
+                    },
+                    "points": {
+                        "description": "Override calculated points",
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "staff_id": {
+                        "description": "Attribute to a staff member",
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "note": {
+                        "type": "string",
+                        "maxLength": 500
+                    }
+                },
+                "required": [
+                    "card_id",
+                    "member_identifier"
+                ]
+            }
+        },
+        {
+            "name": "redeem_reward",
+            "description": "Redeem a reward and deduct loyalty points\nClaims a reward for a member, deducting the required points from their balance. The reward must be linked to the specified card.",
+            "method": "POST",
+            "path": "/api/agent/v1/partner/transactions/redeem",
+            "required_scopes": [
+                "write:rewards"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "card_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "reward_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "member_identifier": {
+                        "description": "UUID, email, member number, or unique identifier",
+                        "type": "string"
+                    },
+                    "staff_id": {
+                        "description": "Attribute to a staff member",
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "note": {
+                        "type": "string",
+                        "maxLength": 500
+                    }
+                },
+                "required": [
+                    "card_id",
+                    "reward_id",
+                    "member_identifier"
+                ]
+            }
+        },
+        {
+            "name": "list_vouchers",
+            "description": "List all vouchers for this partner\nReturns paginated vouchers owned by the authenticated partner.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/vouchers",
+            "required_scopes": [
+                "read",
+                "write:vouchers"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "page": {
+                        "type": "integer",
+                        "default": 1
+                    },
+                    "per_page": {
+                        "type": "integer",
+                        "default": 25,
+                        "maximum": 100,
+                        "minimum": 1
+                    }
+                },
+                "required": []
+            }
+        },
+        {
+            "name": "create_voucher",
+            "description": "Create a new voucher\nCreates a voucher with the specified type and value. If no code is provided, one is generated automatically.",
+            "method": "POST",
+            "path": "/api/agent/v1/partner/vouchers",
+            "required_scopes": [
+                "write:vouchers"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "club_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string",
+                        "maxLength": 128
+                    },
+                    "title": {
+                        "description": "Display title (translatable)",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "description": {
+                        "description": "Description (translatable)",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "code": {
+                        "description": "Voucher code (auto-generated if omitted)",
+                        "type": "string",
+                        "maxLength": 32
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "percentage",
+                            "fixed_amount",
+                            "free_product",
+                            "bonus_points"
+                        ]
+                    },
+                    "value": {
+                        "description": "Discount value (required for percentage/fixed_amount)",
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "currency": {
+                        "type": "string",
+                        "maxLength": 3,
+                        "minLength": 3
+                    },
+                    "points_value": {
+                        "description": "Points to award (for bonus_points type)",
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "max_uses_total": {
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "max_uses_per_member": {
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "valid_from": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "valid_until": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "is_public": {
+                        "type": "boolean",
+                        "default": false
+                    }
+                },
+                "required": [
+                    "club_id",
+                    "name",
+                    "type"
+                ]
+            }
+        },
+        {
+            "name": "get_voucher",
+            "description": "Get a specific voucher\nReturns a single voucher by ID.",
+            "method": "GET",
+            "path": "/api/agent/v1/partner/vouchers/{id}",
+            "required_scopes": [
+                "read",
+                "write:vouchers"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "update_voucher",
+            "description": "Update an existing voucher\nUpdates a voucher owned by the authenticated partner. Only provided fields are updated.",
+            "method": "PUT",
+            "path": "/api/agent/v1/partner/vouchers/{id}",
+            "required_scopes": [
+                "write:vouchers"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    },
+                    "name": {
+                        "type": "string",
+                        "maxLength": 128
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "percentage",
+                            "fixed_amount",
+                            "free_product",
+                            "bonus_points"
+                        ]
+                    },
+                    "value": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "valid_until": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "is_active": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "delete_voucher",
+            "description": "Delete a voucher\nSoft-deletes a voucher owned by the authenticated partner.",
+            "method": "DELETE",
+            "path": "/api/agent/v1/partner/vouchers/{id}",
+            "required_scopes": [
+                "write:vouchers"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "(path parameter)"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "validate_voucher",
+            "description": "Validate a voucher code without redeeming\nChecks if a voucher code is valid for a member and optionally calculates the discount for a given order amount.",
+            "method": "POST",
+            "path": "/api/agent/v1/partner/vouchers/validate",
+            "required_scopes": [
+                "write:vouchers"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "description": "Voucher code to validate",
+                        "type": "string"
+                    },
+                    "member_identifier": {
+                        "description": "UUID, email, member number, or unique identifier",
+                        "type": "string"
+                    },
+                    "club_id": {
+                        "description": "Club the voucher belongs to",
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "order_amount": {
+                        "description": "Order amount in cents for discount calculation",
+                        "type": "integer",
+                        "minimum": 0
+                    }
+                },
+                "required": [
+                    "code",
+                    "member_identifier",
+                    "club_id"
+                ]
+            }
+        },
+        {
+            "name": "redeem_voucher",
+            "description": "Redeem a voucher for a member\nRedeems a voucher for a member, applying the discount/bonus and recording the usage. Uses transactional locking to prevent race conditions.",
+            "method": "POST",
+            "path": "/api/agent/v1/partner/vouchers/{id}/redeem",
+            "required_scopes": [
+                "write:vouchers"
+            ],
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Voucher UUID (path parameter)"
+                    },
+                    "member_identifier": {
+                        "description": "UUID, email, member number, or unique identifier",
+                        "type": "string"
+                    },
+                    "order_amount": {
+                        "description": "Order amount in cents",
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order_reference": {
+                        "description": "External order reference",
+                        "type": "string",
+                        "maxLength": 64
+                    }
+                },
+                "required": [
+                    "id",
+                    "member_identifier"
+                ]
+            }
+        }
+    ]
+}
