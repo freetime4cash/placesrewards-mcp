@@ -3,7 +3,9 @@ set -u
 
 AGENT="/home/placevle/placesrewards-agent-server"
 NODE="/home/placevle/nodevenv/placesrewards-agent-server/24/bin/node"
+APP="/home/placevle/app.placesrewards.com"
 LOG="$AGENT/cron-worker.log"
+SCHEMA_OUT="$AGENT/results/campaigns/live-agent-tools-export.txt"
 
 cd "$AGENT" || exit 1
 
@@ -29,7 +31,15 @@ CLEANED="$(printf '%s\n' "$CURRENT" | grep -v '/placesrewards-agent-server/run-w
   # GitHub campaign request queue.
   "$NODE" scripts/github-campaign-worker.mjs
 
-  # Publish campaign results back to GitHub.
+  # Export the live Agent API tool schemas once for authoritative payload definitions.
+  if [ ! -s "$SCHEMA_OUT" ]; then
+    (
+      cd "$APP" || exit 1
+      php artisan agent:export-tools
+    ) > "$SCHEMA_OUT" 2>&1 || true
+  fi
+
+  # Publish campaign results and schema export back to GitHub.
   git add requests/campaigns results/campaigns 2>/dev/null || true
 
   if ! git diff --cached --quiet; then
