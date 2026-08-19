@@ -9,6 +9,7 @@ const NODE_BIN = "/home/placevle/nodevenv/placesrewards-agent-server/24/bin/node
 const REQUEST_DIR = path.join(AGENT_ROOT, "requests", "campaigns");
 const RESULT_DIR = path.join(AGENT_ROOT, "results", "campaigns");
 const DATA_DIR = path.join(AGENT_ROOT, "data");
+const REPORT_DIR = path.join(DATA_DIR, "reports");
 const PROCESSED_FILE = path.join(DATA_DIR, "github-campaign-processed.json");
 const CAMPAIGN_CONTROL = path.join(AGENT_ROOT, "scripts", "campaign-control.mjs");
 
@@ -65,7 +66,7 @@ function validRequest(req, filename) {
   if (req.approved !== true) errors.push("approved must be true.");
   if (typeof req.campaignName !== "string" || !req.campaignName.trim()) errors.push("campaignName is required.");
 
-  if (["capability_snapshot", "route_snapshot"].includes(req.requestType)) {
+  if (["capability_snapshot", "route_snapshot", "report_snapshot"].includes(req.requestType)) {
     const fileBase = path.basename(filename, ".json");
     if (req?.requestId && fileBase !== req.requestId) errors.push("Filename must equal requestId.json.");
     return errors;
@@ -92,7 +93,7 @@ function campaignWriteRoutes(routes) {
   const writeMethods = new Set(["POST","PUT","PATCH","DELETE"]);
   return routes.flatMap(route => {
     const methods = String(route.method ?? "").split("|").map(x => x.trim());
-    const uri = String(route.uri ?? "");
+    const uri = String(route.uri ?? route.path ?? "");
     if (!keywords.some(k => uri.toLowerCase().includes(k))) return [];
     return methods.filter(m => writeMethods.has(m)).map(method => ({
       method,
@@ -102,6 +103,14 @@ function campaignWriteRoutes(routes) {
       middleware: route.middleware ?? null
     }));
   });
+}
+
+async function latestMatchingReport(prefix) {
+  const files = await fs.readdir(REPORT_DIR);
+  const matches = files.filter(name => name.startsWith(prefix) && name.endsWith(".json")).sort().reverse();
+  if (!matches.length) throw new Error(`No report matching ${prefix}*.json`);
+  const file = path.join(REPORT_DIR, matches[0]);
+  return { file, data: JSON.parse(await fs.readFile(file, "utf8")) };
 }
 
 const processed = await readProcessed();
@@ -128,6 +137,40 @@ for (const filename of files) {
     processed[requestId] = { status: "blocked", processedAt: result.processedAt };
     summary.failed += 1;
     summary.results.push(result);
+    continue;
+  }
+
+  if (req.requestType === "report_snapshot") {
+    let status = "completed";
+    let reportFile = null;
+    let reportData = null;
+    let error = null;
+    try {
+      const report = await latestMatchingReport(req.reportPrefix ?? "v0.9-write-routes-");
+      reportFile = report.file;
+      reportData = report.data;
+    } catch (e) {
+      status = "failed";
+      error = e instanceof Error ? e.message : String(e);
+    }
+
+    const writes = Array.isArray(reportData) ? reportData : [];
+    const result = {
+      requestId,
+      campaignName: req.campaignName,
+      status,
+      requestType: "report_snapshot",
+      processedAt: new Date().toISOString(),
+      reportFile,
+      campaignWriteRoutes: writes,
+      campaignWriteRouteCount: writes.length,
+      error
+    };
+
+    await fs.writeFile(path.join(RESULT_DIR, `${requestId}.json`), JSON.stringify(result, null, 2), "utf8");
+    processed[requestId] = { status, processedAt: result.processedAt, sha256: crypto.createHash("sha256").update(await fs.readFile(full)).digest("hex") };
+    if (status === "completed") summary.executed += 1; else summary.failed += 1;
+    summary.results.push({ requestId, campaignName: req.campaignName, status, requestType: "report_snapshot", campaignWriteRoutes: writes.length });
     continue;
   }
 
