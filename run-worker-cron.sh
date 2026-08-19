@@ -7,10 +7,10 @@ APP="/home/placevle/app.placesrewards.com"
 LOG="$AGENT/cron-worker.log"
 SCHEMA_OUT="$AGENT/results/campaigns/live-agent-tools-export.txt"
 PHP_DIAG="$AGENT/results/campaigns/php-cli-diagnostic.txt"
+TOOL_SNIPPET="$AGENT/results/campaigns/agent-tool-service-snippet.txt"
 
 cd "$AGENT" || exit 1
 
-# Self-heal the cron schedule to every minute.
 DESIRED="* * * * * /bin/bash $AGENT/run-worker-cron.sh"
 CURRENT="$(crontab -l 2>/dev/null || true)"
 CLEANED="$(printf '%s\n' "$CURRENT" | grep -v '/placesrewards-agent-server/run-worker-cron\.sh' || true)"
@@ -19,7 +19,6 @@ CLEANED="$(printf '%s\n' "$CURRENT" | grep -v '/placesrewards-agent-server/run-w
   printf '%s\n' "$DESIRED"
 } | awk 'NF && !seen[$0]++' | crontab -
 
-# Discover a genuine PHP CLI binary instead of php-cgi.
 PHPCLI=""
 for CANDIDATE in \
   /opt/cpanel/ea-php84/root/usr/bin/php \
@@ -28,11 +27,9 @@ for CANDIDATE in \
   /usr/local/bin/ea-php84 \
   /opt/alt/php84/usr/bin/php
  do
-  if [ -x "$CANDIDATE" ]; then
-    if "$CANDIDATE" -r 'exit(PHP_SAPI === "cli" ? 0 : 1);' >/dev/null 2>&1; then
-      PHPCLI="$CANDIDATE"
-      break
-    fi
+  if [ -x "$CANDIDATE" ] && "$CANDIDATE" -r 'exit(PHP_SAPI === "cli" ? 0 : 1);' >/dev/null 2>&1; then
+    PHPCLI="$CANDIDATE"
+    break
   fi
 done
 
@@ -54,24 +51,21 @@ fi
 {
   echo "===== $(date -Iseconds) ====="
 
-  # Pull ChatGPT/GitHub-authored campaign requests.
   git fetch origin server-runtime
   git reset --hard origin/server-runtime
 
-  # Recreate the CLI shim after reset in case repo cleanup touched it.
   mkdir -p "$AGENT/bin"
   if [ -n "$PHPCLI" ]; then
     ln -sf "$PHPCLI" "$AGENT/bin/php"
     export PATH="$AGENT/bin:$PATH"
   fi
 
-  # Existing autonomous job queue.
   "$NODE" worker.js
-
-  # GitHub campaign request queue.
   "$NODE" scripts/github-campaign-worker.mjs
 
-  # Re-export live Agent API tool schemas with the correct CLI binary.
+  # Capture only the affected AgentToolService section for a surgical repair.
+  sed -n '190,255p' "$APP/app/Services/Agent/AgentToolService.php" > "$TOOL_SNIPPET" 2>&1 || true
+
   if [ -n "$PHPCLI" ]; then
     rm -f "$SCHEMA_OUT"
     (
@@ -80,7 +74,6 @@ fi
     ) > "$SCHEMA_OUT" 2>&1 || true
   fi
 
-  # Publish campaign results and diagnostics back to GitHub.
   git add requests/campaigns results/campaigns 2>/dev/null || true
 
   if ! git diff --cached --quiet; then
