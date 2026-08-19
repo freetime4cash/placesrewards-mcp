@@ -16,6 +16,7 @@ $keywords=['card','reward','stamp','voucher','scratch','club'];
 $routes=[];
 foreach(Route::getRoutes() as $route){
     $uri=$route->uri();
+    if(str_starts_with($uri,'api/')) continue;
     $lower=strtolower($uri);
     $match=false; foreach($keywords as $k){if(str_contains($lower,$k)){$match=true;break;}}
     if(!$match)continue;
