@@ -1,0 +1,384 @@
+{
+  "requestId": "chatgpt-363-foundation-v09-report-snapshot-20260819-1000",
+  "campaignName": "363 Foundation Demo Campaign v0.9 Route Report",
+  "status": "completed",
+  "requestType": "report_snapshot",
+  "processedAt": "2026-08-19T14:00:46.922Z",
+  "reportFile": "/home/placevle/placesrewards-agent-server/data/reports/v0.9-write-routes-20260818-183404.json",
+  "campaignWriteRoutes": [
+    {
+      "method": "POST",
+      "uri": "api/agent/v1/admin/partners/{partnerId}/cards",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Admin\\AgentAdminCardController@store",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:admin"
+      ]
+    },
+    {
+      "method": "POST",
+      "uri": "api/agent/v1/admin/partners/{partnerId}/clubs",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Admin\\AgentAdminClubController@store",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:admin"
+      ]
+    },
+    {
+      "method": "POST",
+      "uri": "api/agent/v1/member/rewards/{id}/claim",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Member\\AgentMemberRewardController@claim",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:member"
+      ]
+    },
+    {
+      "method": "POST",
+      "uri": "api/agent/v1/partner/cards",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentCardController@store",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "PUT",
+      "uri": "api/agent/v1/partner/cards/{id}",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentCardController@update",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "uri": "api/agent/v1/partner/cards/{id}",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentCardController@destroy",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "POST",
+      "uri": "api/agent/v1/partner/clubs",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentClubController@store",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "PUT",
+      "uri": "api/agent/v1/partner/clubs/{id}",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentClubController@update",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "uri": "api/agent/v1/partner/clubs/{id}",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentClubController@destroy",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "POST",
+      "uri": "api/agent/v1/partner/rewards",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentRewardController@store",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "PUT",
+      "uri": "api/agent/v1/partner/rewards/{id}",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentRewardController@update",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "uri": "api/agent/v1/partner/rewards/{id}",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentRewardController@destroy",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "POST",
+      "uri": "api/agent/v1/partner/stamp-cards",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentStampCardController@store",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "PUT",
+      "uri": "api/agent/v1/partner/stamp-cards/{id}",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentStampCardController@update",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "uri": "api/agent/v1/partner/stamp-cards/{id}",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentStampCardController@destroy",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "POST",
+      "uri": "api/agent/v1/partner/stamp-cards/{id}/redeem",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentStampCardController@redeemStampReward",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "POST",
+      "uri": "api/agent/v1/partner/stamp-cards/{id}/stamps",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentStampCardController@addStamps",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "POST",
+      "uri": "api/agent/v1/partner/tiers",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentTierController@store",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "PUT",
+      "uri": "api/agent/v1/partner/tiers/{id}",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentTierController@update",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "uri": "api/agent/v1/partner/tiers/{id}",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentTierController@destroy",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "POST",
+      "uri": "api/agent/v1/partner/vouchers",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentVoucherController@store",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "POST",
+      "uri": "api/agent/v1/partner/vouchers/validate",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentVoucherController@validateVoucher",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "PUT",
+      "uri": "api/agent/v1/partner/vouchers/{id}",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentVoucherController@update",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "uri": "api/agent/v1/partner/vouchers/{id}",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentVoucherController@destroy",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    },
+    {
+      "method": "POST",
+      "uri": "api/agent/v1/partner/vouchers/{id}/redeem",
+      "name": null,
+      "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentVoucherController@redeemVoucher",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\AuthenticateAgent",
+        "App\\Http\\Middleware\\AgentRateLimiter",
+        "App\\Http\\Middleware\\SetAgentLocale",
+        "App\\Http\\Middleware\\LogAgentActivity",
+        "App\\Http\\Middleware\\EnforceAgentRole:partner",
+        "App\\Http\\Middleware\\EnsurePartnerAgentApiEnabled"
+      ]
+    }
+  ],
+  "campaignWriteRouteCount": 25,
+  "error": null
+}
