@@ -2,7 +2,7 @@
   "requestId": "chatgpt-capability-snapshot-20260818-1912",
   "campaignName": "ChatGPT Campaign Capability Snapshot Retry",
   "status": "failed",
-  "processedAt": "2026-08-19T02:15:31.379Z",
+  "processedAt": "2026-08-19T02:20:40.850Z",
   "stage": "capability_refresh",
   "error": "file:///home/placevle/placesrewards-agent-server/scripts/campaign-control.mjs:79\n      throw new Error(`Tool discovery failed. /tools: ${primaryError instanceof Error ? primaryError.message : String(primaryError)} | /campaign-tools: ${fallbackError instanceof Error ? fallbackError.message : String(fallbackError)}`);\n            ^\n\nError: Tool discovery failed. /tools: HTTP 500: {\"message\":\"Server Error\"} | /campaign-tools: HTTP 404: {\"message\":\"The route api/agent/v1/campaign-tools could not be found.\"}\n    at fetchToolPayload (file:///home/placevle/placesrewards-agent-server/scripts/campaign-control.mjs:79:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async refreshCapabilities (file:///home/placevle/placesrewards-agent-server/scripts/campaign-control.mjs:85:29)\n    at async file:///home/placevle/placesrewards-agent-server/scripts/campaign-control.mjs:177:32\n\nNode.js v24.18.1\n"
 }
