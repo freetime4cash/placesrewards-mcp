@@ -1,0 +1,12 @@
+{
+  "requestId": "chatgpt-list-partners-for-363-20260819-1040",
+  "approved": true,
+  "campaignName": "Locate 363 Foundation Partner",
+  "steps": [
+    {
+      "name": "List partners",
+      "method": "GET",
+      "path": "/admin/partners"
+    }
+  ]
+}
