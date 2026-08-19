@@ -6,6 +6,7 @@ NODE="/home/placevle/nodevenv/placesrewards-agent-server/24/bin/node"
 APP="/home/placevle/app.placesrewards.com"
 LOG="$AGENT/cron-worker.log"
 SCHEMA_OUT="$AGENT/results/campaigns/live-agent-tools-export.txt"
+SCHEMA_JSON="$AGENT/results/campaigns/live-agent-tools-generic.json"
 PHP_DIAG="$AGENT/results/campaigns/php-cli-diagnostic.txt"
 TOOL_SNIPPET="$AGENT/results/campaigns/agent-tool-service-snippet.txt"
 REPAIR_OUT="$AGENT/results/campaigns/agent-tool-service-repair.txt"
@@ -106,6 +107,10 @@ PY
       cd "$APP" || exit 1
       "$PHPCLI" artisan agent:export-tools
     ) > "$SCHEMA_OUT" 2>&1 || true
+
+    if [ -s "$APP/storage/api-docs/agent-tools-generic.json" ]; then
+      cp -f "$APP/storage/api-docs/agent-tools-generic.json" "$SCHEMA_JSON"
+    fi
   fi
 
   git add requests/campaigns results/campaigns 2>/dev/null || true
