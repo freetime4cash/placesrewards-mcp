@@ -37,7 +37,6 @@ if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT
   "$NODE" worker.js
   "$NODE" scripts/github-campaign-worker.mjs
 
-  # Probe whether the admin key can access partner-scoped routes and list existing clubs for every live partner.
   "$NODE" - "$ROLE_PROBE" <<'NODE'
 import { promises as fs } from 'node:fs';
 const out = process.argv[2];
@@ -66,6 +65,9 @@ NODE
     [ -s "$APP/storage/api-docs/agent-tools-generic.json" ] && cp -f "$APP/storage/api-docs/agent-tools-generic.json" "$SCHEMA_JSON"
     (cd "$APP" && "$PHPCLI" artisan route:list --path=api/agent/v1 --json) > "$ROUTES_JSON" 2>&1 || true
     (cd "$APP" && "$PHPCLI" artisan help agent:export-tools) > "$EXPORT_HELP" 2>&1 || true
+    if [ -f "$AGENT/scripts/363-schema-inspector.php" ]; then
+      "$PHPCLI" "$AGENT/scripts/363-schema-inspector.php" || true
+    fi
   fi
 
   git add requests/campaigns results/campaigns 2>/dev/null || true
