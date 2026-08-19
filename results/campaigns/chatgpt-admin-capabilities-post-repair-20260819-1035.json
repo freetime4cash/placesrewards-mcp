@@ -1,0 +1,237 @@
+{
+  "requestId": "chatgpt-admin-capabilities-post-repair-20260819-1035",
+  "campaignName": "Post-Repair Admin Capability Snapshot",
+  "status": "completed",
+  "requestType": "capability_snapshot",
+  "processedAt": "2026-08-19T14:22:21.258Z",
+  "capabilities": {
+    "generatedAt": "2026-08-19T14:22:21.215Z",
+    "apiBase": "https://app.placesrewards.com/api/agent/v1",
+    "toolSource": "/tools",
+    "totalDiscoveredTools": 10,
+    "campaignRelevantTools": [
+      {
+        "name": "admin_partner_metrics",
+        "method": "GET",
+        "path": "/admin/analytics/partners/{id}",
+        "raw": {
+          "name": "admin_partner_metrics",
+          "description": "Get per-partner analytics\nReturns usage metrics for a specific partner.",
+          "method": "GET",
+          "path": "/api/agent/v1/admin/analytics/partners/{id}",
+          "required_scopes": [
+            "read:analytics"
+          ],
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid",
+                "description": "(path parameter)"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        }
+      },
+      {
+        "name": "admin_list_partners",
+        "method": "GET",
+        "path": "/admin/partners",
+        "raw": {
+          "name": "admin_list_partners",
+          "description": "List all partners\nReturns paginated partners with optional filters. Admin-only endpoint.",
+          "method": "GET",
+          "path": "/api/agent/v1/admin/partners",
+          "required_scopes": [
+            "read:partners"
+          ],
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "page": {
+                "type": "integer",
+                "default": 1
+              },
+              "per_page": {
+                "type": "integer",
+                "default": 25,
+                "maximum": 100,
+                "minimum": 1
+              },
+              "is_active": {
+                "type": "boolean"
+              },
+              "search": {
+                "type": "string",
+                "description": "Search by name or email"
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      {
+        "name": "admin_get_partner",
+        "method": "GET",
+        "path": "/admin/partners/{id}",
+        "raw": {
+          "name": "admin_get_partner",
+          "description": "Get a specific partner with permissions and usage\nReturns partner details including permissions, limits, and usage counts.",
+          "method": "GET",
+          "path": "/api/agent/v1/admin/partners/{id}",
+          "required_scopes": [
+            "read:partners"
+          ],
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid",
+                "description": "(path parameter)"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        }
+      },
+      {
+        "name": "admin_update_partner_permissions",
+        "method": "PATCH",
+        "path": "/admin/partners/{id}/permissions",
+        "raw": {
+          "name": "admin_update_partner_permissions",
+          "description": "Update partner permissions and limits\nUpdates feature flags and resource limits for a partner.",
+          "method": "PATCH",
+          "path": "/api/agent/v1/admin/partners/{id}/permissions",
+          "required_scopes": [
+            "write:partners"
+          ],
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid",
+                "description": "(path parameter)"
+              },
+              "loyalty_cards_permission": {
+                "type": "boolean"
+              },
+              "loyalty_cards_limit": {
+                "description": "-1 = unlimited",
+                "type": "integer",
+                "minimum": -1
+              },
+              "stamp_cards_permission": {
+                "type": "boolean"
+              },
+              "stamp_cards_limit": {
+                "type": "integer",
+                "minimum": -1
+              },
+              "vouchers_permission": {
+                "type": "boolean"
+              },
+              "voucher_batches_permission": {
+                "type": "boolean"
+              },
+              "vouchers_limit": {
+                "type": "integer",
+                "minimum": -1
+              },
+              "rewards_limit": {
+                "type": "integer",
+                "minimum": -1
+              },
+              "staff_members_limit": {
+                "type": "integer",
+                "minimum": -1
+              },
+              "email_campaigns_permission": {
+                "type": "boolean"
+              },
+              "activity_permission": {
+                "type": "boolean"
+              },
+              "agent_api_permission": {
+                "type": "boolean"
+              },
+              "agent_keys_limit": {
+                "type": "integer",
+                "minimum": -1
+              },
+              "cards_on_homepage": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        }
+      },
+      {
+        "name": "admin_activate_partner",
+        "method": "POST",
+        "path": "/admin/partners/{id}/activate",
+        "raw": {
+          "name": "admin_activate_partner",
+          "description": "Activate a partner\nReactivates a previously deactivated partner.",
+          "method": "POST",
+          "path": "/api/agent/v1/admin/partners/{id}/activate",
+          "required_scopes": [
+            "write:partners"
+          ],
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid",
+                "description": "(path parameter)"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        }
+      },
+      {
+        "name": "admin_deactivate_partner",
+        "method": "POST",
+        "path": "/admin/partners/{id}/deactivate",
+        "raw": {
+          "name": "admin_deactivate_partner",
+          "description": "Deactivate a partner\nDeactivates a partner. All associated agent keys become invalid.",
+          "method": "POST",
+          "path": "/api/agent/v1/admin/partners/{id}/deactivate",
+          "required_scopes": [
+            "write:partners"
+          ],
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid",
+                "description": "(path parameter)"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "error": null
+}
