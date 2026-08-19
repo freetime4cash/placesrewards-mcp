@@ -1,0 +1,66 @@
+    {
+        $tools = [];
+        // Spec paths are relative to the server base URL (/api/agent/v1),
+        // so partner endpoints are /partner/*, admin are /admin/*, etc.
+        $rolePrefix = "/{$role}/";
+
+        foreach ($spec['paths'] ?? [] as $path => $methods) {
+            // Role filtering: include own-role paths + health (shared)
+            if (! str_starts_with($path, $rolePrefix) && $path !== '/health') {
+                continue;
+            }
+
+            // Exclude /tools from exported tool lists — meta endpoint, not a user-facing tool
+            if ($path === '/tools') {
+                continue;
+            }
+
+            foreach ($methods as $method => $operation) {
+                if (! in_array($method, ['get', 'post', 'put', 'patch', 'delete'], true)) {
+                    continue;
+                }
+
+                // Scope filtering (admin super-scope bypasses)
+                $endpointScopes = $operation['x-agent-scopes'] ?? [];
+                if (! $hasAdminScope && $scopes !== null && ! empty($endpointScopes)) {
+                    if (empty(array_intersect($scopes, $endpointScopes))) {
+                        continue;
+                    }
+                }
+
+                // Permission filtering — exclude endpoints gated by a disabled feature.
+                // x-agent-permission declares the partner feature flag checked at runtime.
+                // If the partner doesn't have that permission, the endpoint would 
+        $tools = array_merge($tools, $this->placesRewardsCampaignTools());
+
+        return
+                // 403 FEATURE_DISABLED, so don't advertise it as an available tool.
+                $requiredPermission = $operation['x-agent-permission'] ?? null;
+                if ($requiredPermission && in_array($requiredPermission, $disabledPermissions, true)) {
+                    continue;
+                }
+
+                $tools[] = [
+                    'name'            => $operation['operationId'] ?? $this->deriveToolName($method, $path),
+                    'description'     => trim(($operation['summary'] ?? '') . "\n" . ($operation['description'] ?? '')),
+                    'method'          => strtoupper($method),
+                    'path'            => $path,
+                    'full_path'       => self::BASE_PATH . $path,
+                    'path_params'     => $this->extractPathParams($operation),
+                    'query_params'    => $this->extractQueryParams($operation),
+                    'body_schema'     => $this->extractBodySchema($operation, $spec),
+                    'required_scopes' => $endpointScopes,
+                ];
+            }
+        }
+
+        return $tools;
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // PARAMETER EXTRACTION — preserves full JSON Schema
+    // ═══════════════════════════════════════════════════════════════════════
+
+    /**
+     * Extract path parameters (e.g., {id}) as simple schema objects.
+     *
