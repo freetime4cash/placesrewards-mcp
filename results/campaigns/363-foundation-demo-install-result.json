@@ -3,7 +3,7 @@
     "partner_id": "019dbfc5-e395-7082-9214-20859f344cce",
     "club_id": "019dc14a-adae-73eb-b837-79b042032b4f",
     "club_name": "BLACKEMPIRE363",
-    "started_at": "2026-08-19T14:59:18+00:00",
+    "started_at": "2026-08-19T15:01:21+00:00",
     "records": [
         {
             "status": "updated",
@@ -14,61 +14,61 @@
         {
             "status": "created",
             "table": "cards",
-            "id": "af0c72cd-26fa-4fdb-b0da-e24eebcef72a",
+            "id": "3298eb55-ac06-4f55-aff4-275ddf3ec084",
             "name": "[DEMO] 363 Foundation Community Rewards"
         },
         {
             "status": "created",
             "table": "cards",
-            "id": "4cb45194-bacc-45ae-8dba-1d1a1f06b784",
+            "id": "7d4beb70-0b9e-4718-9eb4-5392e620170c",
             "name": "[DEMO] 363 Foundation Founder Momentum Card"
         },
         {
             "status": "created",
             "table": "rewards",
-            "id": "44b4a512-3ea3-4cf6-bb7d-85319ab5ae2b",
+            "id": "a4420c93-25be-4cc3-a0d4-2eade8283b67",
             "name": "[DEMO] 363 Foundation Supporter Welcome Reward"
         },
         {
             "status": "created",
             "table": "rewards",
-            "id": "043cd18a-0e11-428e-bf37-2ab02fed8988",
+            "id": "8f402811-c3e0-4b17-9bc5-8818cde1c632",
             "name": "[DEMO] 363 Foundation Community Builder Reward"
         },
         {
             "status": "created",
             "table": "rewards",
-            "id": "c9abcb19-35a7-457b-ae68-f7126006dc62",
+            "id": "8fa619d8-4383-4691-ad17-2be48ddd855a",
             "name": "[DEMO] 363 Foundation Event VIP Reward"
         },
         {
             "status": "created",
             "table": "rewards",
-            "id": "b005b9b7-8380-4e6a-bee4-781ffc79d4c7",
+            "id": "ab621c38-eaa4-4857-bdd0-5259e64db407",
             "name": "[DEMO] 363 Foundation Milestone Reward"
         },
         {
             "status": "created",
             "table": "stamp_cards",
-            "id": "1005db38-234e-4010-b8e2-e616913cb0a9",
+            "id": "db551df8-316a-4d73-91ac-1c302a07444f",
             "name": "[DEMO] 363 Foundation Action Streak"
         },
         {
             "status": "created",
             "table": "stamp_cards",
-            "id": "499110aa-647e-4146-a016-19e883baee82",
+            "id": "8a6675ae-f7e6-43a4-84f6-861975165ee1",
             "name": "[DEMO] 363 Foundation Live & Event Streak"
         },
         {
             "status": "created",
             "table": "vouchers",
-            "id": "bee366e2-e6c1-43c6-8709-5383bf913e7f",
+            "id": "130071c8-3c77-4177-b664-04e30c891913",
             "name": "[DEMO] 363 Foundation Event Access Pass"
         },
         {
             "status": "created",
             "table": "vouchers",
-            "id": "12d21296-ef43-4978-ba43-c6b815fd0e38",
+            "id": "7fac6495-5258-40b8-8d30-ad2d76603356",
             "name": "[DEMO] 363 Foundation Community Thank-You"
         },
         {
@@ -89,11 +89,11 @@
     ],
     "errors": [
         {
-            "message": "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'RC-DEMO-T4EE8ZWT' for key 'scratch_cards_identifier_unique' (Connection: mysql, Host: 127.0.0.1, Port: 3306, Database: placevle_appplaces, SQL: insert into `scratch_cards` (`id`, `scratch_game_id`, `member_id`, `partner_id`, `issued_by_staff_id`, `is_played`, `is_winner`, `played_at`, `identifier`, `created_at`, `updated_at`) values (e3aa4248-cc49-4081-b8b4-2f6625495725, 8dfc3a86-e284-4b44-a865-31ec00bc78bb, 019fbc33-04ac-70f2-adb6-c4e3525b3d9d, 019dbfc5-e395-7082-9214-20859f344cce, ?, 0, ?, ?, RC-DEMO-T4EE8ZWT, 2026-08-19 14:59:18, 2026-08-19 14:59:18))",
+            "message": "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'RC-DEMO-T4EE8ZWT' for key 'scratch_cards_identifier_unique' (Connection: mysql, Host: 127.0.0.1, Port: 3306, Database: placevle_appplaces, SQL: insert into `scratch_cards` (`id`, `scratch_game_id`, `member_id`, `partner_id`, `issued_by_staff_id`, `is_played`, `is_winner`, `played_at`, `identifier`, `created_at`, `updated_at`) values (0feafdc3-8d2a-4462-aa63-96b883a456e9, 8dfc3a86-e284-4b44-a865-31ec00bc78bb, 019fbc33-04ac-70f2-adb6-c4e3525b3d9d, 019dbfc5-e395-7082-9214-20859f344cce, ?, 0, ?, ?, RC-DEMO-T4EE8ZWT, 2026-08-19 15:01:21, 2026-08-19 15:01:21))",
             "file": "/home/placevle/app.placesrewards.com/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
             "line": 841
         }
     ],
     "status": "rolled_back",
-    "completed_at": "2026-08-19T14:59:18+00:00"
+    "completed_at": "2026-08-19T15:01:21+00:00"
 }
