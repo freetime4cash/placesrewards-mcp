@@ -7,6 +7,15 @@ LOG="$AGENT/cron-worker.log"
 
 cd "$AGENT" || exit 1
 
+# Self-heal the cron schedule to every minute.
+DESIRED="* * * * * /bin/bash $AGENT/run-worker-cron.sh"
+CURRENT="$(crontab -l 2>/dev/null || true)"
+CLEANED="$(printf '%s\n' "$CURRENT" | grep -v '/placesrewards-agent-server/run-worker-cron\.sh' || true)"
+{
+  printf '%s\n' "$CLEANED"
+  printf '%s\n' "$DESIRED"
+} | awk 'NF && !seen[$0]++' | crontab -
+
 {
   echo "===== $(date -Iseconds) ====="
 
