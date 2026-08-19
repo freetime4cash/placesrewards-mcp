@@ -68,8 +68,8 @@ NODE
     if [ -f "$AGENT/scripts/363-schema-inspector.php" ]; then
       "$PHPCLI" "$AGENT/scripts/363-schema-inspector.php" || true
     fi
-    if [ -f "$AGENT/scripts/install-363-foundation-demo.php" ]; then
-      "$PHPCLI" "$AGENT/scripts/install-363-foundation-demo.php" || true
+    if [ -f "$AGENT/scripts/install-363-foundation-demo-v2.php" ]; then
+      "$PHPCLI" "$AGENT/scripts/install-363-foundation-demo-v2.php" || true
     fi
   fi
 
