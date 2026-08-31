@@ -1,72 +1,15 @@
 {
-  "generatedAt": "2026-08-31T15:13:14.692Z",
+  "generatedAt": "2026-08-31T15:11:28.085Z",
   "partnerScopedProbe": {
-    "status": 403,
+    "status": 525,
     "ok": false,
-    "body": {
-      "error": true,
-      "code": "AUTH_WRONG_ROLE",
-      "message": "This endpoint requires a partner agent key.",
-      "retry_strategy": "no_retry",
-      "details": {
-        "required_role": "partner",
-        "provided_role": "admin"
-      }
-    }
+    "body": ""
   },
   "adminPartnerClubs": {
     "019dc1d1-772a-7024-b79e-75e5413ca154": {
-      "status": 200,
-      "ok": true,
-      "body": {
-        "error": false,
-        "data": [
-          {
-            "id": "019dc726-6b0b-702f-987f-5435ee105666",
-            "name": "Elevation Journey Club",
-            "description": null,
-            "locale": null,
-            "currency": null,
-            "time_zone": null,
-            "is_active": 1,
-            "is_primary": 0,
-            "is_undeletable": 0,
-            "is_uneditable": 0,
-            "meta": null,
-            "created_by": "019dc1d1-772a-7024-b79e-75e5413ca154",
-            "deleted_by": null,
-            "updated_by": null,
-            "deleted_at": null,
-            "created_at": "2026-04-26T00:17:57.000000Z",
-            "updated_at": "2026-04-26T00:17:57.000000Z"
-          },
-          {
-            "id": "019dc1d1-7735-7333-9297-429700dd59e1",
-            "name": "General",
-            "description": null,
-            "locale": null,
-            "currency": null,
-            "time_zone": null,
-            "is_active": 1,
-            "is_primary": 0,
-            "is_undeletable": 0,
-            "is_uneditable": 0,
-            "meta": null,
-            "created_by": "019dc1d1-772a-7024-b79e-75e5413ca154",
-            "deleted_by": null,
-            "updated_by": null,
-            "deleted_at": null,
-            "created_at": "2026-04-24T23:27:03.000000Z",
-            "updated_at": "2026-04-24T23:27:03.000000Z"
-          }
-        ],
-        "pagination": {
-          "current_page": 1,
-          "last_page": 1,
-          "per_page": 25,
-          "total": 2
-        }
-      }
+      "status": 522,
+      "ok": false,
+      "body": ""
     },
     "019dbfc9-ddf9-7136-951a-124574cf7b3e": {
       "status": 200,
@@ -311,7 +254,7 @@
             "updated_by": null,
             "deleted_at": null,
             "created_at": "2026-04-24T20:59:50.000000Z",
-            "updated_at": "2026-08-31T15:12:37.000000Z"
+            "updated_at": "2026-08-31T15:13:18.000000Z"
           },
           {
             "id": "019dc14a-29b6-73ea-ac3c-1647421a0295",
