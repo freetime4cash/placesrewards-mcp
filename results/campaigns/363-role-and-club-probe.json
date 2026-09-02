@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T14:56:39.108Z",
+  "generatedAt": "2026-09-02T14:57:52.519Z",
   "partnerScopedProbe": {
     "status": 403,
     "ok": false,
@@ -16,14 +16,186 @@
   },
   "adminPartnerClubs": {
     "019dc1d1-772a-7024-b79e-75e5413ca154": {
-      "status": 522,
-      "ok": false,
-      "body": ""
+      "status": 200,
+      "ok": true,
+      "body": {
+        "error": false,
+        "data": [
+          {
+            "id": "019dc726-6b0b-702f-987f-5435ee105666",
+            "name": "Elevation Journey Club",
+            "description": null,
+            "locale": null,
+            "currency": null,
+            "time_zone": null,
+            "is_active": 1,
+            "is_primary": 0,
+            "is_undeletable": 0,
+            "is_uneditable": 0,
+            "meta": null,
+            "created_by": "019dc1d1-772a-7024-b79e-75e5413ca154",
+            "deleted_by": null,
+            "updated_by": null,
+            "deleted_at": null,
+            "created_at": "2026-04-26T00:17:57.000000Z",
+            "updated_at": "2026-04-26T00:17:57.000000Z"
+          },
+          {
+            "id": "019dc1d1-7735-7333-9297-429700dd59e1",
+            "name": "General",
+            "description": null,
+            "locale": null,
+            "currency": null,
+            "time_zone": null,
+            "is_active": 1,
+            "is_primary": 0,
+            "is_undeletable": 0,
+            "is_uneditable": 0,
+            "meta": null,
+            "created_by": "019dc1d1-772a-7024-b79e-75e5413ca154",
+            "deleted_by": null,
+            "updated_by": null,
+            "deleted_at": null,
+            "created_at": "2026-04-24T23:27:03.000000Z",
+            "updated_at": "2026-04-24T23:27:03.000000Z"
+          }
+        ],
+        "pagination": {
+          "current_page": 1,
+          "last_page": 1,
+          "per_page": 25,
+          "total": 2
+        }
+      }
     },
     "019dbfc9-ddf9-7136-951a-124574cf7b3e": {
-      "status": 522,
-      "ok": false,
-      "body": ""
+      "status": 200,
+      "ok": true,
+      "body": {
+        "error": false,
+        "data": [
+          {
+            "id": "1cd47010-0bd0-4b4d-b5e1-4a861daa9112",
+            "name": "[DEMO] Main Street Market",
+            "description": "Demo participating business in the Northeast Ohio Treasure Hunt post-hunt Places Rewards network.",
+            "locale": null,
+            "currency": null,
+            "time_zone": null,
+            "is_active": 1,
+            "is_primary": 0,
+            "is_undeletable": 0,
+            "is_uneditable": 0,
+            "meta": null,
+            "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+            "deleted_by": null,
+            "updated_by": null,
+            "deleted_at": null,
+            "created_at": "2026-08-15T03:25:38.000000Z",
+            "updated_at": "2026-08-15T03:25:38.000000Z"
+          },
+          {
+            "id": "6aaf4811-2763-479d-8315-229adfc1b708",
+            "name": "[DEMO] Falls Family Diner",
+            "description": "Demo participating business in the Northeast Ohio Treasure Hunt post-hunt Places Rewards network.",
+            "locale": null,
+            "currency": null,
+            "time_zone": null,
+            "is_active": 1,
+            "is_primary": 0,
+            "is_undeletable": 0,
+            "is_uneditable": 0,
+            "meta": null,
+            "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+            "deleted_by": null,
+            "updated_by": null,
+            "deleted_at": null,
+            "created_at": "2026-08-15T03:25:38.000000Z",
+            "updated_at": "2026-08-15T03:25:38.000000Z"
+          },
+          {
+            "id": "8ff9b672-d78f-4839-b2af-823b31cc1cc3",
+            "name": "[DEMO] Treasure Trail Coffee",
+            "description": "Demo participating business in the Northeast Ohio Treasure Hunt post-hunt Places Rewards network.",
+            "locale": null,
+            "currency": null,
+            "time_zone": null,
+            "is_active": 1,
+            "is_primary": 0,
+            "is_undeletable": 0,
+            "is_uneditable": 0,
+            "meta": null,
+            "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+            "deleted_by": null,
+            "updated_by": null,
+            "deleted_at": null,
+            "created_at": "2026-08-15T03:25:38.000000Z",
+            "updated_at": "2026-08-15T03:25:38.000000Z"
+          },
+          {
+            "id": "01a000ce-0595-7254-8141-7411cd036ba4",
+            "name": "[DEMO] Northeast Ohio Treasure Hunt — Post-Hunt Growth Club",
+            "description": "The original hunt has ended. This live demo shows how Places Rewards keeps the customer relationship producing repeat visits, referrals, loyalty, reactivation and measurable ROI afterward.",
+            "locale": null,
+            "currency": null,
+            "time_zone": null,
+            "is_active": 1,
+            "is_primary": 0,
+            "is_undeletable": 0,
+            "is_uneditable": 0,
+            "meta": null,
+            "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+            "deleted_by": null,
+            "updated_by": null,
+            "deleted_at": null,
+            "created_at": "2026-08-14T15:04:56.000000Z",
+            "updated_at": "2026-08-15T03:25:37.000000Z"
+          },
+          {
+            "id": "019dc717-708f-7331-888a-0cae09121c24",
+            "name": "Elevation Journey Club",
+            "description": null,
+            "locale": null,
+            "currency": null,
+            "time_zone": null,
+            "is_active": 1,
+            "is_primary": 0,
+            "is_undeletable": 0,
+            "is_uneditable": 0,
+            "meta": null,
+            "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+            "deleted_by": null,
+            "updated_by": null,
+            "deleted_at": null,
+            "created_at": "2026-04-26T00:01:35.000000Z",
+            "updated_at": "2026-04-26T00:01:35.000000Z"
+          },
+          {
+            "id": "019dbfc9-ddfc-7210-96d1-88c6e91fb065",
+            "name": "General",
+            "description": null,
+            "locale": null,
+            "currency": null,
+            "time_zone": null,
+            "is_active": 1,
+            "is_primary": 0,
+            "is_undeletable": 0,
+            "is_uneditable": 0,
+            "meta": null,
+            "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+            "deleted_by": null,
+            "updated_by": null,
+            "deleted_at": null,
+            "created_at": "2026-04-24T13:59:31.000000Z",
+            "updated_at": "2026-04-24T13:59:31.000000Z"
+          }
+        ],
+        "pagination": {
+          "current_page": 1,
+          "last_page": 1,
+          "per_page": 25,
+          "total": 6
+        }
+      }
     },
     "019dbfc7-eb89-726a-9e31-3cd7ee21452d": {
       "status": 200,
@@ -139,7 +311,7 @@
             "updated_by": null,
             "deleted_at": null,
             "created_at": "2026-04-24T20:59:50.000000Z",
-            "updated_at": "2026-09-02T14:56:56.000000Z"
+            "updated_at": "2026-09-02T14:57:21.000000Z"
           },
           {
             "id": "019dc14a-29b6-73ea-ac3c-1647421a0295",
