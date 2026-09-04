@@ -9,7 +9,8 @@
     "status": "node status.js",
     "approve": "node approve.js",
     "inspect:app": "node scripts/inspect-app.js",
-    "test:app": "node scripts/test-app.js"
+    "test:app": "node scripts/test-app.js",
+    "test:revenue": "node --test revenue-engine/test.js"
   },
   "engines": { "node": ">=20" }
 }
