@@ -43,7 +43,8 @@ const server = http.createServer(async (req, res) => {
       return send(res, 200, {
         ok: true,
         service: "placesrewards-agent-server",
-        version: "0.4.0",
+        version: "1.0.0",
+        architecture: "permanent-multi-agent",
         basePath: APP_BASE_PATH,
         laravelRoot: process.env.PLACESREWARDS_LARAVEL_ROOT ?? "/home/placevle/app.placesrewards.com"
       });
@@ -59,6 +60,10 @@ const server = http.createServer(async (req, res) => {
     if (bearer(req) !== CONTROL_TOKEN) return send(res, 401, { ok: false, error: "Unauthorized" });
 
     const { orchestrator } = createRuntime();
+
+    if (req.method === "GET" && pathname === "/agents") {
+      return send(res, 200, { ok: true, agents: orchestrator.listAgents() });
+    }
 
     if (req.method === "GET" && pathname === "/status") {
       const jobs = await orchestrator.listJobs();
@@ -104,5 +109,5 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, "0.0.0.0", () => {
-  console.log(`PlacesRewards Agent Server v0.4.0 listening on port ${PORT}`);
+  console.log(`PlacesRewards Agent Server v1.0.0 listening on port ${PORT}`);
 });
