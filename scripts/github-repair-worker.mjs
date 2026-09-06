@@ -4,6 +4,7 @@ import crypto from "node:crypto";
 import { gunzipSync } from "node:zlib";
 import { createRuntime } from "../lib/runtime.js";
 import { isAllowedRelativePath } from "../lib/code-tools.js";
+import "./reassemble-artifacts.mjs";
 
 const ROOT = process.env.PLACESREWARDS_AGENT_ROOT ?? "/home/placevle/placesrewards-agent-server";
 const REQUEST_DIR = path.join(ROOT, "requests", "repairs");
@@ -160,8 +161,6 @@ for (const filename of files) {
   const previous = state.requests[requestId] ?? null;
   const { store, orchestrator } = createRuntime();
 
-  // Resume the exact waiting job if the request was changed only to add a
-  // hash-bound protected-write approval.
   if (previous?.status === "waiting_approval" && previous.applyJobId) {
     const applyJob = await store.get(previous.applyJobId);
     const preparedFiles = previous.preparedFiles ?? [];
