@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260906-salon-fusion",
+  "observedAt": "2026-09-06T17:06:03-04:00",
+  "business": {
+    "name": "Salon Fusion",
+    "city": "Painesville, OH",
+    "website": "https://salon-fusion.com/",
+    "category": "hair salon"
+  },
+  "fitScore": 78,
+  "evidence": [
+    {
+      "url": "https://salon-fusion.com/",
+      "observedFact": "The public homepage says Salon Fusion's success is supported by loyal clientele, operates by scheduled appointment, offers online or phone booking, and includes a newsletter signup.",
+      "observedAt": "2026-09-06T17:06:03-04:00"
+    },
+    {
+      "url": "https://salon-fusion.com/services",
+      "observedFact": "The public services page promotes a referral program that gives the referring client a $5 coupon toward a future salon service; no visit-based points, stamp-card, tier, or repeat-visit rewards mechanic is visible on the reviewed home and services pages.",
+      "observedAt": "2026-09-06T17:06:03-04:00"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "loyalty_gap",
+      "confidence": 0.72,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Validate current repeat-visit behavior, then demonstrate a digital repeat-visit loyalty or stamp-card layer that complements the salon's existing referral coupon instead of replacing it."
+    }
+  ],
+  "recommendedEntryOffer": "Repeat-Visit Revenue Engine",
+  "notes": "This is a public-fit hypothesis, not proof that Salon Fusion lacks any offline or private loyalty process. The existing referral program and stated loyal clientele indicate retention matters to the business; validate the current baseline before making any revenue claim."
+}
