@@ -34,6 +34,10 @@ if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT
   mkdir -p "$AGENT/bin"
   if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT/bin:$PATH"; fi
 
+  # Verify the control plane once per new Git head. Verification state is
+  # local-only so a test result cannot create its own commit/test feedback loop.
+  "$NODE" scripts/verify-on-change.mjs || true
+
   # Drain previously queued control-plane work first.
   "$NODE" worker.js
 
