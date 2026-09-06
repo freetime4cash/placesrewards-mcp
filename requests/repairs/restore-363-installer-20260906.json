@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "requestId": "restore-363-installer-20260906",
+  "requestType": "patch_job",
+  "objective": "Restore the canonical Places Rewards 363 Empire demo Artisan command so the existing 363 campaign workflow can inspect, dry-run, install and verify the full demo ecosystem.",
+  "rationale": "The live campaign bridge repeatedly reports that placesrewards:install-363-demo is not registered. The canonical schema-aware installer already exists in the user's file library and has been imported byte-for-byte as a cryptographically verified control-plane artifact. Restore that known artifact rather than inventing another competing installer.",
+  "files": [
+    {
+      "artifactPath": "artifacts/laravel/Install363EmpireDemo.php.gz.b64",
+      "artifactEncoding": "gzip-base64",
+      "targetPath": "app/Console/Commands/Install363EmpireDemo.php",
+      "proposedSha256": "0e9696d715ee81fa47e6d3d635a32dfa9bfd7f26085c24bd400eb9c4f27cb500"
+    }
+  ],
+  "approval": {
+    "approved": false,
+    "scope": "protected_write",
+    "files": []
+  }
+}
