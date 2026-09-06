@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260906-julias-1902",
+  "observedAt": "2026-09-06T17:06:03-04:00",
+  "business": {
+    "name": "Julia's 1902",
+    "city": "Willoughby, OH",
+    "website": "https://www.julias1902.com/",
+    "category": "restaurant and bar"
+  },
+  "fitScore": 84,
+  "evidence": [
+    {
+      "url": "https://www.julias1902.com/events",
+      "observedFact": "The public events page lists recurring live-music nights and special dining events including a wine dinner, brunches, and an anniversary celebration, demonstrating an established event-driven customer-acquisition channel.",
+      "observedAt": "2026-09-06T17:06:03-04:00"
+    },
+    {
+      "url": "https://www.julias1902.com/",
+      "observedFact": "The public homepage invites satisfied guests to tell friends and family and to come back often; on the reviewed homepage and events page, no visible event-specific post-visit rewards, tracked referral, or repeat-visit retention mechanic is presented.",
+      "observedAt": "2026-09-06T17:06:03-04:00"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.82,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Validate how event guests are currently retained, then demonstrate a permissioned post-event journey that converts event attendance into measurable return visits and referrals."
+    },
+    {
+      "category": "referral_gap",
+      "confidence": 0.68,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Validate whether referrals are currently tracked, then demonstrate a simple attributable referral loop that complements the restaurant's existing word-of-mouth invitation."
+    }
+  ],
+  "recommendedEntryOffer": "Post-Event Retention Loop",
+  "notes": "The website supports the existence of recurring events and an explicit word-of-mouth/return invitation. Absence of a visible tracking mechanic on the reviewed pages is only a public sales hypothesis; confirm current CRM, loyalty, email, reservation, and referral processes with the merchant before claiming a gap or monetary value."
+}
