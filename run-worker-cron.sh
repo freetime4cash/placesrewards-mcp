@@ -11,6 +11,7 @@ ROUTES_JSON="$AGENT/results/campaigns/live-agent-routes.json"
 EXPORT_HELP="$AGENT/results/campaigns/agent-export-tools-help.txt"
 PHP_DIAG="$AGENT/results/campaigns/php-cli-diagnostic.txt"
 ROLE_PROBE="$AGENT/results/campaigns/363-role-and-club-probe.json"
+TOM_DEPLOY_LOG="$AGENT/results/campaigns/northeast-ohio-tom-v2-deploy.txt"
 TOOL_FILE="$APP/app/Services/Agent/AgentToolService.php"
 
 cd "$AGENT" || exit 1
@@ -74,7 +75,7 @@ NODE
       "$PHPCLI" "$AGENT/scripts/inspect-northeast-ohio-media.php" || true
     fi
     if [ -f "$AGENT/scripts/deploy-northeast-ohio-tom-v2.php" ]; then
-      "$PHPCLI" "$AGENT/scripts/deploy-northeast-ohio-tom-v2.php" || true
+      "$PHPCLI" "$AGENT/scripts/deploy-northeast-ohio-tom-v2.php" > "$TOM_DEPLOY_LOG" 2>&1 || true
     fi
     if [ -f "$AGENT/scripts/install-363-foundation-demo-v2.php" ]; then
       "$PHPCLI" "$AGENT/scripts/install-363-foundation-demo-v2.php" || true
