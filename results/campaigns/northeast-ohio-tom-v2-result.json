@@ -62,7 +62,7 @@
             "reason": "table_missing"
         },
         {
-            "status": "created",
+            "status": "updated",
             "table": "email_campaigns",
             "id": "96f8bf84-e62e-4ae9-a012-7b8565bc923f",
             "name": "{\"en\":\"[TOM DEMO 11] Your Hunt rewards and trail progress are still waiting\"}"
@@ -86,10 +86,10 @@
         },
         {
             "asset": "routes/web.php",
-            "status": "include_added"
+            "status": "include_existing"
         }
     ],
-    "started_at": "2026-09-06T23:07:52+00:00",
+    "started_at": "2026-09-06T23:08:53+00:00",
     "presentation_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom",
     "image_manager_url": "https://app.placesrewards.com/partner/demo/northeast-ohio-treasure-hunt/tom",
     "modules": [
@@ -202,5 +202,5 @@
             "merchant_image_upload": "https://app.placesrewards.com/partner/demo/northeast-ohio-treasure-hunt/tom"
         }
     ],
-    "completed_at": "2026-09-06T23:07:53+00:00"
+    "completed_at": "2026-09-06T23:08:53+00:00"
 }
