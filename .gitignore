@@ -2,10 +2,12 @@
 # Campaign and autonomous control-plane local state
 cron-worker.log
 data/backups/
+data/agent-jobs.json
 data/github-campaign-processed.json
 data/github-repair-processed.json
 data/autopilot-ledger.json
 data/control-state.json
+data/control-plane-verification.json
 data/patches/
 data/reports/
 data/source-snapshots/
