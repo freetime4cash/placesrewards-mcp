@@ -16,7 +16,13 @@ One JSON file represents one evidence-backed local-business prospect. The server
     "name": "Example Business",
     "city": "Mentor, OH",
     "website": "https://example.com",
-    "category": "restaurant"
+    "category": "restaurant",
+    "publicContact": {
+      "email": "hello@example.com",
+      "phone": "+1-440-555-0100",
+      "sourceUrl": "https://example.com/contact",
+      "observedAt": "2026-09-07T12:00:00Z"
+    }
   },
   "fitScore": 72,
   "evidence": [
@@ -39,6 +45,8 @@ One JSON file represents one evidence-backed local-business prospect. The server
 }
 ```
 
+`business.publicContact` is optional. Include only contact information the business itself publishes or another clearly public business directory publishes. `sourceUrl` is required whenever an email or phone is supplied so the contact remains traceable. Do not infer email addresses from names or domains.
+
 ## Allowed gap categories
 
 - `reputation`
@@ -56,4 +64,5 @@ One JSON file represents one evidence-backed local-business prospect. The server
 - Every gap must cite one or more evidence indexes.
 - Public evidence must be a concrete observed fact from the cited source.
 - Absence of a visible feature is a sales hypothesis, not proof of lost revenue.
+- Public contact data must be observed, source-linked and business-facing; never guess or synthesize an address.
 - The intake worker never sends outreach and never writes production campaign data.
