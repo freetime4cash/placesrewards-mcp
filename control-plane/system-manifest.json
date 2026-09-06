@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "name": "Places Rewards Autonomous Company OS",
+  "purpose": "Maintain one durable control plane that reconciles system state, prioritizes revenue-producing work, executes safe reversible actions automatically, and escalates only protected decisions.",
+  "sourcesOfTruth": {
+    "controlPlaneRepository": "freetime4cash/placesrewards-mcp",
+    "controlPlaneBranch": "server-runtime",
+    "productionApplication": "https://app.placesrewards.com",
+    "marketingSite": "https://placesrewards.com",
+    "directory": "https://dir.placesrewards.com"
+  },
+  "operatingPriorities": [
+    "stabilize and reconcile discrepancies before adding overlapping features",
+    "restore or complete revenue-critical capabilities",
+    "generate measurable merchant and Places Rewards revenue",
+    "reduce required human attention through resumable state and event-driven work",
+    "measure outcomes and optimize only from observed results"
+  ],
+  "activeDomains": [
+    "Places Rewards core",
+    "Northeast Ohio Treasure Hunt",
+    "363 Foundation / 363 Empire / Radio Cigars demos",
+    "Mystery Rewards",
+    "Revenue Leak Detection and Recovery",
+    "merchant acquisition and conversion",
+    "analytics and ROI",
+    "licensing and entitlement infrastructure"
+  ],
+  "autonomy": {
+    "read": "automatic",
+    "analysis": "automatic",
+    "safeReversibleWrite": "automatic when policy classifies it as safe_write and autonomy level permits",
+    "productionProtectedWrite": "approval safeguard required",
+    "destructiveAction": "approval safeguard required",
+    "credentialOrSecretChange": "never inferred from broad authorization"
+  },
+  "controlLoops": [
+    "observe",
+    "detect discrepancy",
+    "deduplicate",
+    "prioritize",
+    "route to specialist",
+    "prepare reversible repair",
+    "validate",
+    "execute within policy",
+    "measure",
+    "record durable state",
+    "repeat"
+  ]
+}

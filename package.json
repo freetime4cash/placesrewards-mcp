@@ -1,6 +1,6 @@
 {
   "name": "placesrewards-agent-server",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,9 +8,12 @@
     "worker": "node worker.js",
     "status": "node status.js",
     "approve": "node approve.js",
+    "autopilot": "node scripts/autopilot.mjs",
     "inspect:app": "node scripts/inspect-app.js",
     "test:app": "node scripts/test-app.js",
-    "test:architecture": "node scripts/verify-agent-architecture.js"
+    "test:architecture": "node scripts/verify-agent-architecture.js",
+    "test:autonomy": "node scripts/verify-autonomy.js",
+    "test": "npm run test:architecture && npm run test:autonomy"
   },
   "engines": { "node": ">=20" }
 }

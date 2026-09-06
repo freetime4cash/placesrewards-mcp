@@ -34,7 +34,10 @@ if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT
   mkdir -p "$AGENT/bin"
   if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT/bin:$PATH"; fi
 
+  # Drain previously queued control-plane work first.
   "$NODE" worker.js
+
+  # Refresh campaign execution results and live capability observations.
   "$NODE" scripts/github-campaign-worker.mjs
 
   "$NODE" - "$ROLE_PROBE" <<'NODE'
@@ -76,9 +79,21 @@ NODE
     fi
   fi
 
+  # Turn newly observed failures into durable reconciliation work. The
+  # autopilot ledger prevents the same unchanged discrepancy from being
+  # re-enqueued every minute.
+  "$NODE" scripts/autopilot.mjs || true
+
+  # Keep Git as an audit trail of meaningful state transitions, not a log of
+  # timestamp refreshes. Requests are always meaningful; JSON result changes
+  # are compared after volatile timestamp fields are removed.
   git add requests/campaigns results/campaigns 2>/dev/null || true
   if ! git diff --cached --quiet; then
-    git commit -m "PlacesRewards campaign result sync $(date -Iseconds)" || true
-    git push origin HEAD:server-runtime || true
+    if "$NODE" scripts/semantic-result-diff.mjs; then
+      git commit -m "PlacesRewards meaningful campaign state sync $(date -Iseconds)" || true
+      git push origin HEAD:server-runtime || true
+    else
+      git restore --staged --worktree -- requests/campaigns results/campaigns 2>/dev/null || true
+    fi
   fi
 } >> "$LOG" 2>&1
