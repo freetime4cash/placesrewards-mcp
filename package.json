@@ -1,6 +1,6 @@
 {
   "name": "placesrewards-agent-server",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,12 +9,14 @@
     "status": "node status.js",
     "approve": "node approve.js",
     "autopilot": "node scripts/autopilot.mjs",
+    "repair": "node scripts/github-repair-worker.mjs",
     "inspect:app": "node scripts/inspect-app.js",
     "test:app": "node scripts/test-app.js",
     "test:architecture": "node scripts/verify-agent-architecture.js",
     "test:autonomy": "node scripts/verify-autonomy.js",
     "test:approval": "node scripts/verify-approval-gate.js",
-    "test": "npm run test:architecture && npm run test:autonomy && npm run test:approval"
+    "test:repair": "node scripts/verify-repair-bridge.js",
+    "test": "npm run test:architecture && npm run test:autonomy && npm run test:approval && npm run test:repair"
   },
   "engines": { "node": ">=20" }
 }
