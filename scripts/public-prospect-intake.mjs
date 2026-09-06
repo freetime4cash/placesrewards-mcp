@@ -18,41 +18,13 @@ const ALLOWED_GAPS = new Set([
 ]);
 
 const GAP_PLAYBOOK = Object.freeze({
-  reputation: {
-    title: "Public reputation signals suggest a trust/conversion opportunity",
-    recommendedFix: "Build a measured review and customer-feedback loop that turns satisfied customers into current social proof.",
-    module: "reviews / reputation"
-  },
-  booking_friction: {
-    title: "Public booking path appears to contain avoidable conversion friction",
-    recommendedFix: "Demonstrate a simpler capture, booking and follow-up flow with measurable completion rate.",
-    module: "lead / booking follow-up"
-  },
-  loyalty_gap: {
-    title: "No visible repeat-visit loyalty mechanic was found in the public customer journey",
-    recommendedFix: "Demonstrate a measurable loyalty or stamp-card workflow designed to increase repeat visits.",
-    module: "loyalty/stamp-cards"
-  },
-  referral_gap: {
-    title: "No visible referral loop was found in the public customer journey",
-    recommendedFix: "Demonstrate a trackable customer referral workflow with clear attribution.",
-    module: "referrals"
-  },
-  event_retention: {
-    title: "Public events or promotions appear to lack a visible post-event retention loop",
-    recommendedFix: "Capture participants into a post-event rewards, return-visit and referral journey.",
-    module: "campaigns / loyalty / referrals"
-  },
-  reactivation_signal: {
-    title: "Public activity suggests a reactivation opportunity worth validating",
-    recommendedFix: "Validate the dormant-customer baseline, then demonstrate a segmented win-back campaign.",
-    module: "offers/campaigns"
-  },
-  followup_friction: {
-    title: "Public lead/contact journey suggests follow-up friction worth validating",
-    recommendedFix: "Demonstrate immediate follow-up, escalation and attribution without claiming unobserved lost revenue.",
-    module: "follow-up automation"
-  }
+  reputation: { title: "Public reputation signals suggest a trust/conversion opportunity", recommendedFix: "Build a measured review and customer-feedback loop that turns satisfied customers into current social proof.", module: "reviews / reputation" },
+  booking_friction: { title: "Public booking path appears to contain avoidable conversion friction", recommendedFix: "Demonstrate a simpler capture, booking and follow-up flow with measurable completion rate.", module: "lead / booking follow-up" },
+  loyalty_gap: { title: "No visible repeat-visit loyalty mechanic was found in the public customer journey", recommendedFix: "Demonstrate a measurable loyalty or stamp-card workflow designed to increase repeat visits.", module: "loyalty/stamp-cards" },
+  referral_gap: { title: "No visible referral loop was found in the public customer journey", recommendedFix: "Demonstrate a trackable customer referral workflow with clear attribution.", module: "referrals" },
+  event_retention: { title: "Public events or promotions appear to lack a visible post-event retention loop", recommendedFix: "Capture participants into a post-event rewards, return-visit and referral journey.", module: "campaigns / loyalty / referrals" },
+  reactivation_signal: { title: "Public activity suggests a reactivation opportunity worth validating", recommendedFix: "Validate the dormant-customer baseline, then demonstrate a segmented win-back campaign.", module: "offers/campaigns" },
+  followup_friction: { title: "Public lead/contact journey suggests follow-up friction worth validating", recommendedFix: "Demonstrate immediate follow-up, escalation and attribution without claiming unobserved lost revenue.", module: "follow-up automation" }
 });
 
 async function readJson(file, fallback = null) {
@@ -74,6 +46,24 @@ function validPublicUrl(value) {
   } catch { return false; }
 }
 
+function validEmail(value) {
+  return typeof value === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+}
+
+function sanitizePublicContact(contact) {
+  if (!contact || typeof contact !== "object") return null;
+  const email = validEmail(contact.email) ? contact.email.trim().toLowerCase() : null;
+  const phone = typeof contact.phone === "string" && contact.phone.trim() ? contact.phone.trim() : null;
+  const sourceUrl = validPublicUrl(contact.sourceUrl) ? String(contact.sourceUrl) : null;
+  if (!email && !phone) return null;
+  return {
+    ...(email ? { email } : {}),
+    ...(phone ? { phone } : {}),
+    sourceUrl,
+    observedAt: contact.observedAt ?? null
+  };
+}
+
 function validate(req, filename) {
   const errors = [];
   const base = path.basename(filename, ".json");
@@ -85,6 +75,16 @@ function validate(req, filename) {
   if (!req.business || typeof req.business !== "object" || typeof req.business.name !== "string" || !req.business.name.trim()) errors.push("business.name is required");
   const fit = Number(req.fitScore);
   if (!Number.isFinite(fit) || fit < 0 || fit > 100) errors.push("fitScore must be 0-100");
+  const contact = req.business?.publicContact;
+  if (contact !== undefined) {
+    if (!contact || typeof contact !== "object") errors.push("business.publicContact must be an object");
+    else {
+      const hasEmail = contact.email !== undefined && contact.email !== null && String(contact.email).trim() !== "";
+      const hasPhone = contact.phone !== undefined && contact.phone !== null && String(contact.phone).trim() !== "";
+      if (hasEmail && !validEmail(contact.email)) errors.push("business.publicContact.email must be a valid public business email");
+      if ((hasEmail || hasPhone) && !validPublicUrl(contact.sourceUrl)) errors.push("business.publicContact.sourceUrl is required when public contact data is supplied");
+    }
+  }
   if (!Array.isArray(req.evidence) || !req.evidence.length) errors.push("evidence must contain at least one item");
   for (const [index, item] of (req.evidence ?? []).entries()) {
     if (!item || typeof item !== "object") { errors.push(`evidence[${index}] must be an object`); continue; }
@@ -108,16 +108,11 @@ function buildOpportunity(req, filename) {
   const observedAt = req.observedAt ?? new Date().toISOString();
   const signals = req.gaps.map(gap => {
     const evidence = gap.evidenceIndexes.map(index => req.evidence[index]?.url).filter(Boolean);
-    return {
-      key: `public_${gap.category}`,
-      value: true,
-      source: evidence[0] ?? "public-web-research",
-      observedAt,
-      evidence: evidence.join(" | ")
-    };
+    return { key: `public_${gap.category}`, value: true, source: evidence[0] ?? "public-web-research", observedAt, evidence: evidence.join(" | ") };
   });
   const quality = evidenceQuality(signals);
   const businessId = `public:${req.requestId}`;
+  const publicContact = sanitizePublicContact(req.business?.publicContact);
   const leaks = req.gaps.map((gap, index) => {
     const playbook = GAP_PLAYBOOK[gap.category];
     const evidence = gap.evidenceIndexes.map(evidenceIndex => req.evidence[evidenceIndex]?.observedFact).filter(Boolean);
@@ -149,6 +144,7 @@ function buildOpportunity(req, filename) {
       city: req.business.city ?? null,
       website: req.business.website ?? null,
       category: req.business.category ?? null,
+      ...(publicContact ? { publicContact } : {}),
       signals
     },
     report: {
@@ -176,22 +172,11 @@ const rejected = [];
 for (const filename of files) {
   const req = await readJson(path.join(REQUEST_DIR, filename), null);
   const errors = validate(req, filename);
-  if (errors.length) {
-    rejected.push({ filename, errors });
-    continue;
-  }
+  if (errors.length) { rejected.push({ filename, errors }); continue; }
   opportunities.push(buildOpportunity(req, filename));
 }
 
 opportunities.sort((a, b) => b.score - a.score || b.evidenceQuality.score - a.evidenceQuality.score);
-const output = {
-  schemaVersion: 1,
-  generatedAt: new Date().toISOString(),
-  source: "requests/prospects",
-  opportunityCount: opportunities.length,
-  rejectedCount: rejected.length,
-  opportunities,
-  rejected
-};
+const output = { schemaVersion: 1, generatedAt: new Date().toISOString(), source: "requests/prospects", opportunityCount: opportunities.length, rejectedCount: rejected.length, opportunities, rejected };
 await writeJsonAtomic(OUT_FILE, output);
 console.log(JSON.stringify({ ok: true, opportunityCount: opportunities.length, rejectedCount: rejected.length }, null, 2));
