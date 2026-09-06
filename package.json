@@ -1,6 +1,6 @@
 {
   "name": "placesrewards-agent-server",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,6 +12,7 @@
     "repair": "node scripts/github-repair-worker.mjs",
     "revenue:scan": "node scripts/revenue-live-scan.mjs",
     "revenue:route": "node scripts/revenue-opportunity-autopilot.mjs",
+    "commercial:queue": "node scripts/commercial-queue.mjs",
     "inspect:app": "node scripts/inspect-app.js",
     "test:app": "node scripts/test-app.js",
     "test:architecture": "node scripts/verify-agent-architecture.js",
@@ -21,8 +22,9 @@
     "test:revenue": "node scripts/verify-revenue-engine.js",
     "test:revenue-lifecycle": "node scripts/verify-revenue-opportunity.js",
     "test:revenue-scan": "node --check scripts/revenue-live-scan.mjs",
-    "test:revenue-route": "node --check scripts/revenue-opportunity-autopilot.mjs && node --check worker.js",
-    "test": "npm run test:architecture && npm run test:autonomy && npm run test:approval && npm run test:repair && npm run test:revenue && npm run test:revenue-lifecycle && npm run test:revenue-scan && npm run test:revenue-route"
+    "test:revenue-route": "node --check scripts/revenue-opportunity-autopilot.mjs",
+    "test:commercial": "node scripts/verify-commercial-agents.js && node --check scripts/commercial-queue.mjs && node --check worker.js",
+    "test": "npm run test:architecture && npm run test:autonomy && npm run test:approval && npm run test:repair && npm run test:revenue && npm run test:revenue-lifecycle && npm run test:revenue-scan && npm run test:revenue-route && npm run test:commercial"
   },
   "engines": { "node": ">=20" }
 }
