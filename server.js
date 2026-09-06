@@ -1,4 +1,6 @@
 import http from "node:http";
+import { promises as fs } from "node:fs";
+import path from "node:path";
 import { URL } from "node:url";
 import { createRuntime, summarizeJobs } from "./lib/runtime.js";
 
@@ -6,6 +8,7 @@ const PORT = Number(process.env.PORT ?? 3000);
 const CONTROL_TOKEN = process.env.SERVER_CONTROL_TOKEN;
 const CRON_SECRET = process.env.CRON_SECRET;
 const APP_BASE_PATH = (process.env.APP_BASE_PATH ?? "/agent").replace(/\/+$/, "");
+const AGENT_ROOT = process.env.PLACESREWARDS_AGENT_ROOT ?? "/home/placevle/placesrewards-agent-server";
 
 if (!CONTROL_TOKEN || CONTROL_TOKEN.length < 32) throw new Error("SERVER_CONTROL_TOKEN must be at least 32 characters.");
 if (!CRON_SECRET || CRON_SECRET.length < 32) throw new Error("CRON_SECRET must be at least 32 characters.");
@@ -20,6 +23,11 @@ async function readJson(req) {
   const chunks = [];
   for await (const chunk of req) chunks.push(chunk);
   return chunks.length ? JSON.parse(Buffer.concat(chunks).toString("utf8")) : {};
+}
+
+async function readLocalState(file) {
+  try { return JSON.parse(await fs.readFile(path.join(AGENT_ROOT, "data", file), "utf8")); }
+  catch { return null; }
 }
 
 function bearer(req) {
@@ -40,13 +48,25 @@ const server = http.createServer(async (req, res) => {
     const pathname = normalize(url.pathname);
 
     if (req.method === "GET" && pathname === "/health") {
+      const [verification, revenueScan] = await Promise.all([
+        readLocalState("control-plane-verification.json"),
+        readLocalState("revenue-scan-state.json")
+      ]);
       return send(res, 200, {
-        ok: true,
+        ok: verification?.status !== "failed" && revenueScan?.status !== "failed",
         service: "placesrewards-agent-server",
-        version: "1.0.0",
-        architecture: "permanent-multi-agent",
+        version: "1.5.0",
+        architecture: "autonomous-company-os",
         basePath: APP_BASE_PATH,
-        laravelRoot: process.env.PLACESREWARDS_LARAVEL_ROOT ?? "/home/placevle/app.placesrewards.com"
+        verification: verification ? {
+          status: verification.status ?? "unknown",
+          lastTestedHead: verification.lastTestedHead ?? null,
+          completedAt: verification.completedAt ?? null
+        } : { status: "not-yet-recorded" },
+        revenueScanner: revenueScan ? {
+          status: revenueScan.status ?? "unknown",
+          completedAt: revenueScan.completedAt ?? null
+        } : { status: "not-yet-recorded" }
       });
     }
 
@@ -66,10 +86,16 @@ const server = http.createServer(async (req, res) => {
     }
 
     if (req.method === "GET" && pathname === "/status") {
-      const jobs = await orchestrator.listJobs();
+      const [jobs, verification, revenueScan] = await Promise.all([
+        orchestrator.listJobs(),
+        readLocalState("control-plane-verification.json"),
+        readLocalState("revenue-scan-state.json")
+      ]);
       return send(res, 200, {
         ok: true,
         status: summarizeJobs(jobs),
+        verification,
+        revenueScan,
         waiting: jobs.filter(j => j.status === "waiting_approval").map(j => ({ id: j.id, agent: j.agent, objective: j.objective, result: j.result }))
       });
     }
@@ -109,5 +135,5 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, "0.0.0.0", () => {
-  console.log(`PlacesRewards Agent Server v1.0.0 listening on port ${PORT}`);
+  console.log(`PlacesRewards Agent Server v1.5.0 listening on port ${PORT}`);
 });
