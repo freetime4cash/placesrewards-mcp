@@ -27,15 +27,18 @@ const { orchestrator } = createRuntime();
 const processed = await orchestrator.runUntilIdle();
 const jobs = await orchestrator.listJobs();
 
-// Revenue scan is read-only and internally throttled. The opportunity autopilot
-// only queues planning work for strong evidence-backed opportunities; it does
-// not contact merchants or mutate production campaign data.
+// Revenue scan is read-only and internally throttled. Qualified opportunities
+// are routed to executable commercial specialists, then consolidated into a
+// private resumable queue. No merchant contact or production campaign write is
+// performed by this worker.
 const revenueScan = await runChild("scripts/revenue-live-scan.mjs");
 const revenueAutopilot = await runChild("scripts/revenue-opportunity-autopilot.mjs");
+const commercialQueue = await runChild("scripts/commercial-queue.mjs");
 
 console.log(JSON.stringify({
   processed: processed.length,
   status: summarizeJobs(jobs),
   revenueScan,
-  revenueAutopilot
+  revenueAutopilot,
+  commercialQueue
 }, null, 2));
