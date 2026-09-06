@@ -27,19 +27,12 @@ function findOpportunity(artifact, businessId) {
 
 function compactJob(job) {
   if (!job) return null;
-  return {
-    id: job.id,
-    agent: job.agent,
-    status: job.status,
-    updatedAt: job.updatedAt ?? null,
-    error: job.error ?? null,
-    result: job.result ?? null
-  };
+  return { id: job.id, agent: job.agent, status: job.status, updatedAt: job.updatedAt ?? null, error: job.error ?? null, result: job.result ?? null };
 }
 
-function nextActionFor(stage) {
+function nextActionFor(stage, contact) {
   switch (stage) {
-    case "ready_for_outreach_draft": return "prepare_contact_specific_outreach_draft";
+    case "ready_for_outreach_draft": return contact?.email ? "prepare_addressed_outreach_draft" : "resolve_public_business_contact_then_prepare_draft";
     case "needs_more_evidence": return "collect_or_validate_additional_evidence";
     case "specialist_failed": return "diagnose_and_requeue_failed_specialist";
     case "awaiting_specialists": return "allow_specialist_jobs_to_complete";
@@ -65,6 +58,7 @@ for (const [key, entry] of Object.entries(ledger?.opportunities ?? {})) {
   const failedJobs = routedJobs.filter(job => job.status === "failed");
   const incompleteJobs = routedJobs.filter(job => !["completed", "failed"].includes(job.status));
   const opportunity = findOpportunity(artifact, entry.businessId);
+  const publicContact = opportunity?.business?.publicContact ?? null;
 
   let stage = "awaiting_specialists";
   if (failedJobs.length) stage = "specialist_failed";
@@ -79,6 +73,11 @@ for (const [key, entry] of Object.entries(ledger?.opportunities ?? {})) {
     key,
     businessId: entry.businessId ?? null,
     businessName: entry.businessName ?? opportunity?.business?.name ?? null,
+    city: opportunity?.business?.city ?? null,
+    website: opportunity?.business?.website ?? null,
+    category: opportunity?.business?.category ?? null,
+    publicContact,
+    recommendedEntryOffer: opportunity?.recommendedEntryOffer ?? null,
     stage,
     firstSeenAt: prior.firstSeenAt ?? entry.firstQueuedAt ?? now,
     stageChangedAt: stageChanged ? now : (prior.stageChangedAt ?? now),
@@ -87,20 +86,16 @@ for (const [key, entry] of Object.entries(ledger?.opportunities ?? {})) {
     evidenceQuality: entry.evidenceQuality ?? opportunity?.evidenceQuality?.score ?? null,
     modeledMonthlyOpportunity: entry.modeledMonthlyOpportunity ?? opportunity?.report?.totalEstimatedMonthlyLoss ?? null,
     categories: entry.categories ?? (opportunity?.report?.leaks ?? []).map(leak => leak.category),
-    nextAction: nextActionFor(stage),
+    nextAction: nextActionFor(stage, publicContact),
     missingAgents,
-    specialistJobs: Object.fromEntries(expectedAgents.map(agent => [agent, compactJob(byAgent[agent])] )),
+    specialistJobs: Object.fromEntries(expectedAgents.map(agent => [agent, compactJob(byAgent[agent])])),
     commercialPacket: stage === "ready_for_outreach_draft" || stage === "needs_more_evidence" ? {
       qualification: byAgent.sales?.result?.qualification ?? null,
       sales: byAgent.sales?.result ?? null,
       campaign: byAgent.campaign_architect?.result ?? null,
       demo: byAgent.demo_factory?.result ?? null,
       evidence: byAgent.sales?.result?.evidence ?? null,
-      guardrails: {
-        outreachSent: false,
-        productionWritesPerformed: false,
-        modeledRevenueIsNotGuaranteed: true
-      }
+      guardrails: { outreachSent: false, productionWritesPerformed: false, modeledRevenueIsNotGuaranteed: true }
     } : null
   };
 }
@@ -109,17 +104,13 @@ const values = Object.values(merchants);
 const summary = {
   total: values.length,
   readyForOutreachDraft: values.filter(item => item.stage === "ready_for_outreach_draft").length,
+  readyWithVerifiedEmail: values.filter(item => item.stage === "ready_for_outreach_draft" && item.publicContact?.email).length,
+  needsContactResolution: values.filter(item => item.stage === "ready_for_outreach_draft" && !item.publicContact?.email).length,
   needsMoreEvidence: values.filter(item => item.stage === "needs_more_evidence").length,
   awaitingSpecialists: values.filter(item => item.stage === "awaiting_specialists").length,
   specialistFailed: values.filter(item => item.stage === "specialist_failed").length
 };
 
-const queue = {
-  schemaVersion: 1,
-  generatedAt: now,
-  source: "revenue-opportunity-autopilot",
-  summary,
-  merchants
-};
+const queue = { schemaVersion: 1, generatedAt: now, source: "revenue-opportunity-autopilot", summary, merchants };
 await writeJsonAtomic(QUEUE_FILE, queue);
 console.log(JSON.stringify({ ok: true, summary }, null, 2));
