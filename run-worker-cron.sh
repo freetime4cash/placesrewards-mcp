@@ -24,7 +24,7 @@ PHPCLI=""
 for CANDIDATE in /opt/cpanel/ea-php84/root/usr/bin/php /usr/local/bin/php /usr/bin/php /usr/local/bin/ea-php84 /opt/alt/php84/usr/bin/php; do
   if [ -x "$CANDIDATE" ] && "$CANDIDATE" -r 'exit(PHP_SAPI === "cli" ? 0 : 1);' >/dev/null 2>&1; then PHPCLI="$CANDIDATE"; break; fi
 done
-mkdir -p "$AGENT/bin" "$AGENT/data/backups"
+mkdir -p "$AGENT/bin" "$AGENT/data/backups" "$AGENT/requests/repairs" "$AGENT/results/repairs"
 if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT/bin:$PATH"; fi
 
 {
@@ -36,6 +36,12 @@ if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT
 
   # Drain previously queued control-plane work first.
   "$NODE" worker.js
+
+  # Apply only hash-bound repair requests. Protected writes must pass the
+  # orchestrator's explicit approval transition; an autonomy level alone is
+  # never sufficient. Repairs run before campaign execution so a restored
+  # capability can be used by the campaign worker in the same cycle.
+  "$NODE" scripts/github-repair-worker.mjs || true
 
   # Refresh campaign execution results and live capability observations.
   "$NODE" scripts/github-campaign-worker.mjs
@@ -84,16 +90,23 @@ NODE
   # re-enqueued every minute.
   "$NODE" scripts/autopilot.mjs || true
 
-  # Keep Git as an audit trail of meaningful state transitions, not a log of
-  # timestamp refreshes. Requests are always meaningful; JSON result changes
-  # are compared after volatile timestamp fields are removed.
+  # Keep Git as an audit trail of meaningful campaign transitions, not a log
+  # of timestamp refreshes.
   git add requests/campaigns results/campaigns 2>/dev/null || true
-  if ! git diff --cached --quiet; then
+  if ! git diff --cached --quiet -- requests/campaigns results/campaigns; then
     if "$NODE" scripts/semantic-result-diff.mjs; then
       git commit -m "PlacesRewards meaningful campaign state sync $(date -Iseconds)" || true
       git push origin HEAD:server-runtime || true
     else
       git restore --staged --worktree -- requests/campaigns results/campaigns 2>/dev/null || true
     fi
+  fi
+
+  # Repair results change only on material lifecycle transitions (blocked,
+  # waiting approval, completed, failed), so they can be committed directly.
+  git add requests/repairs results/repairs 2>/dev/null || true
+  if ! git diff --cached --quiet -- requests/repairs results/repairs; then
+    git commit -m "PlacesRewards repair state sync $(date -Iseconds)" || true
+    git push origin HEAD:server-runtime || true
   fi
 } >> "$LOG" 2>&1

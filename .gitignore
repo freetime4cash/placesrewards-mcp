@@ -1,8 +1,9 @@
 
-# Campaign bridge local state
+# Campaign and autonomous control-plane local state
 cron-worker.log
 data/backups/
 data/github-campaign-processed.json
+data/github-repair-processed.json
 data/autopilot-ledger.json
 data/control-state.json
 data/patches/
