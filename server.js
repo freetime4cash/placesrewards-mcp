@@ -9,6 +9,7 @@ const CONTROL_TOKEN = process.env.SERVER_CONTROL_TOKEN;
 const CRON_SECRET = process.env.CRON_SECRET;
 const APP_BASE_PATH = (process.env.APP_BASE_PATH ?? "/agent").replace(/\/+$/, "");
 const AGENT_ROOT = process.env.PLACESREWARDS_AGENT_ROOT ?? "/home/placevle/placesrewards-agent-server";
+const VERSION = "2.1.0";
 
 if (!CONTROL_TOKEN || CONTROL_TOKEN.length < 32) throw new Error("SERVER_CONTROL_TOKEN must be at least 32 characters.");
 if (!CRON_SECRET || CRON_SECRET.length < 32) throw new Error("CRON_SECRET must be at least 32 characters.");
@@ -25,9 +26,17 @@ async function readJson(req) {
   return chunks.length ? JSON.parse(Buffer.concat(chunks).toString("utf8")) : {};
 }
 
-async function readLocalState(file) {
-  try { return JSON.parse(await fs.readFile(path.join(AGENT_ROOT, "data", file), "utf8")); }
+async function readJsonFile(file) {
+  try { return JSON.parse(await fs.readFile(file, "utf8")); }
   catch { return null; }
+}
+
+function readLocalState(file) {
+  return readJsonFile(path.join(AGENT_ROOT, "data", file));
+}
+
+function readResultState(...parts) {
+  return readJsonFile(path.join(AGENT_ROOT, "results", ...parts));
 }
 
 function bearer(req) {
@@ -48,14 +57,18 @@ const server = http.createServer(async (req, res) => {
     const pathname = normalize(url.pathname);
 
     if (req.method === "GET" && pathname === "/health") {
-      const [verification, revenueScan] = await Promise.all([
+      const [verification, revenueScan, commercial] = await Promise.all([
         readLocalState("control-plane-verification.json"),
-        readLocalState("revenue-scan-state.json")
+        readLocalState("revenue-scan-state.json"),
+        readResultState("control", "commercial-status.json")
       ]);
+      const verificationFailed = verification?.status === "failed";
+      const scanFailed = revenueScan?.status === "failed";
+      const commercialFailed = (commercial?.commercialQueue?.specialistFailed ?? 0) > 0;
       return send(res, 200, {
-        ok: verification?.status !== "failed" && revenueScan?.status !== "failed",
+        ok: !verificationFailed && !scanFailed && !commercialFailed,
         service: "placesrewards-agent-server",
-        version: "1.5.0",
+        version: VERSION,
         architecture: "autonomous-company-os",
         basePath: APP_BASE_PATH,
         verification: verification ? {
@@ -66,6 +79,15 @@ const server = http.createServer(async (req, res) => {
         revenueScanner: revenueScan ? {
           status: revenueScan.status ?? "unknown",
           completedAt: revenueScan.completedAt ?? null
+        } : { status: "not-yet-recorded" },
+        commercial: commercial ? {
+          publicProspects: commercial.publicProspectIntake?.opportunityCount ?? 0,
+          readyForOutreachDraft: commercial.commercialQueue?.readyForOutreachDraft ?? 0,
+          needsMoreEvidence: commercial.commercialQueue?.needsMoreEvidence ?? 0,
+          awaitingSpecialists: commercial.commercialQueue?.awaitingSpecialists ?? 0,
+          specialistFailed: commercial.commercialQueue?.specialistFailed ?? 0,
+          unsentDrafts: commercial.outreachDrafts?.draftCount ?? 0,
+          sendAuthorized: commercial.outreachDrafts?.sendAuthorizedCount ?? 0
         } : { status: "not-yet-recorded" }
       });
     }
@@ -86,16 +108,19 @@ const server = http.createServer(async (req, res) => {
     }
 
     if (req.method === "GET" && pathname === "/status") {
-      const [jobs, verification, revenueScan] = await Promise.all([
+      const [jobs, verification, revenueScan, commercial] = await Promise.all([
         orchestrator.listJobs(),
         readLocalState("control-plane-verification.json"),
-        readLocalState("revenue-scan-state.json")
+        readLocalState("revenue-scan-state.json"),
+        readResultState("control", "commercial-status.json")
       ]);
       return send(res, 200, {
         ok: true,
+        version: VERSION,
         status: summarizeJobs(jobs),
         verification,
         revenueScan,
+        commercial,
         waiting: jobs.filter(j => j.status === "waiting_approval").map(j => ({ id: j.id, agent: j.agent, objective: j.objective, result: j.result }))
       });
     }
@@ -135,5 +160,5 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, "0.0.0.0", () => {
-  console.log(`PlacesRewards Agent Server v1.5.0 listening on port ${PORT}`);
+  console.log(`PlacesRewards Agent Server v${VERSION} listening on port ${PORT}`);
 });
