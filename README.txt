@@ -1,30 +1,15 @@
-PlacesRewards Apply Test Bootstrap Repair v0.6.3
+Places Rewards MCP control plane repository.
 
-This package automatically locates the newest isolated proposal whose manifest
-type is:
+This repository contains the production server-runtime control plane, orchestration agents, campaign request bridge, reconciliation tooling, revenue engine, and automation scripts for Places Rewards.
 
-test-bootstrap-repair
+The primary source-of-truth branch is `server-runtime`.
 
-It does not require you to copy or type the proposal ID.
+Important production principles:
+- preserve the live Laravel application and its security controls
+- use the GitHub/server-runtime bridge for autonomous work
+- keep merchant analytics and sensitive operational data out of Git
+- treat modeled revenue estimates separately from observed evidence
+- validate changes before production execution
+- use protected-write approval gates for destructive or high-risk changes
 
-Upload to:
-
-/home/placevle/placesrewards-agent-server/
-
-Extract there.
-
-Run ONE command:
-
-bash /home/placevle/placesrewards-agent-server/Apply-Test-Bootstrap-Repair.sh
-
-The script will:
-- locate the latest bootstrap repair proposal
-- show the test files to be changed
-- require explicit APPLY approval
-- create timestamped backups
-- apply the test-only patch
-- run ConversionsTest and StampServiceTest
-- auto-rollback if either targeted test file still fails
-- if targeted tests pass, run the full suite to expose the next remaining issue
-- leave UpdateServicePhpBinaryTest for a separate minimal repair if needed
-- never run migrations or touch .env
+Active strategic programs include the Northeast Ohio Treasure Hunt, 363 Foundation / Radio Cigars demos, Mystery Rewards, Revenue Leak Detection + Recovery, and merchant acquisition automation.
