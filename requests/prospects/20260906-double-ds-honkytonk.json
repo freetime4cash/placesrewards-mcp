@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260906-double-ds-honkytonk",
+  "observedAt": "2026-09-06T17:46:44-04:00",
+  "business": {
+    "name": "Double D's Honkytonk and Smokehouse",
+    "city": "Willoughby, OH",
+    "website": "https://ddhonkytonk.com/",
+    "category": "restaurant, bar and live-event venue",
+    "publicContact": {
+      "email": "contactus@ddhonkytonk.com",
+      "phone": "440-306-8509",
+      "sourceUrl": "https://ddhonkytonk.com/",
+      "observedAt": "2026-09-06T17:46:44-04:00"
+    }
+  },
+  "fitScore": 87,
+  "evidence": [
+    {
+      "url": "https://ddhonkytonk.com/events-%26-band-bookings",
+      "observedFact": "The official events page promotes live music, a packed dance floor, band bookings, and private-party space, showing that events are a core customer-acquisition channel.",
+      "observedAt": "2026-09-06T17:46:44-04:00"
+    },
+    {
+      "url": "https://ddhonkytonk.com/",
+      "observedFact": "The official homepage provides direct business contact information and ordering, but no visible loyalty, rewards, or VIP mechanic was found on the reviewed homepage.",
+      "observedAt": "2026-09-06T17:46:44-04:00"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.86,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Validate how event and live-music guests are currently retained, then demonstrate a permissioned event-to-return-visit rewards journey with attributable follow-up."
+    },
+    {
+      "category": "loyalty_gap",
+      "confidence": 0.78,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Validate any existing private or offline loyalty process, then demonstrate a simple digital repeat-visit mechanic tied to event attendance and restaurant visits."
+    }
+  ],
+  "recommendedEntryOffer": "Event-to-Repeat-Visit Revenue Loop",
+  "notes": "The recurring live-music and private-event activity is directly observed. Absence of a visible loyalty mechanic on reviewed public pages is only a sales hypothesis. Confirm current POS, email, reservation, loyalty, and event-follow-up processes before claiming a gap or monetary value."
+}
