@@ -31,14 +31,15 @@ const jobs = await orchestrator.listJobs();
 // recording merchant values, then runs the read-only internal scan. Public
 // evidence-backed prospect requests are separately validated into private
 // opportunity state. Both sources feed the same commercial routing, queue and
-// unsent-draft pipeline. No merchant contact or production campaign write is
-// performed by this worker.
+// unsent-draft pipeline. Only aggregate privacy-safe status is exported.
+// No merchant contact or production campaign write is performed by this worker.
 const revenueContract = await runChild("scripts/revenue-analytics-contract.mjs");
 const revenueScan = await runChild("scripts/revenue-live-scan.mjs");
 const publicProspectIntake = await runChild("scripts/public-prospect-intake.mjs");
 const revenueAutopilot = await runChild("scripts/revenue-opportunity-autopilot.mjs");
 const commercialQueue = await runChild("scripts/commercial-queue.mjs");
 const outreachDrafts = await runChild("scripts/outreach-draft-builder.mjs");
+const commercialStatus = await runChild("scripts/commercial-status-export.mjs");
 
 console.log(JSON.stringify({
   processed: processed.length,
@@ -48,5 +49,6 @@ console.log(JSON.stringify({
   publicProspectIntake,
   revenueAutopilot,
   commercialQueue,
-  outreachDrafts
+  outreachDrafts,
+  commercialStatus
 }, null, 2));
