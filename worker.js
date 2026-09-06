@@ -27,10 +27,12 @@ const { orchestrator } = createRuntime();
 const processed = await orchestrator.runUntilIdle();
 const jobs = await orchestrator.listJobs();
 
-// Revenue scan is read-only and internally throttled. Qualified opportunities
-// are routed to executable commercial specialists, consolidated into a private
-// resumable queue, and converted into unsent outreach assets. No merchant
-// contact or production campaign write is performed by this worker.
+// Revenue intelligence first inspects the live analytics schema without
+// recording merchant values, then runs the read-only scan. Qualified
+// opportunities are routed to executable commercial specialists, consolidated
+// into a private resumable queue, and converted into unsent outreach assets.
+// No merchant contact or production campaign write is performed by this worker.
+const revenueContract = await runChild("scripts/revenue-analytics-contract.mjs");
 const revenueScan = await runChild("scripts/revenue-live-scan.mjs");
 const revenueAutopilot = await runChild("scripts/revenue-opportunity-autopilot.mjs");
 const commercialQueue = await runChild("scripts/commercial-queue.mjs");
@@ -39,6 +41,7 @@ const outreachDrafts = await runChild("scripts/outreach-draft-builder.mjs");
 console.log(JSON.stringify({
   processed: processed.length,
   status: summarizeJobs(jobs),
+  revenueContract,
   revenueScan,
   revenueAutopilot,
   commercialQueue,
