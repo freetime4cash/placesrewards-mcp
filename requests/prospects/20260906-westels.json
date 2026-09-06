@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260906-westels",
+  "observedAt": "2026-09-06T17:46:44-04:00",
+  "business": {
+    "name": "Westel's Alibi & Hush",
+    "city": "Willoughby, OH",
+    "website": "https://westelswlby.com/",
+    "category": "cocktail bar and private-event venue",
+    "publicContact": {
+      "email": "cocktails@westelswlby.com",
+      "phone": "440-710-6030",
+      "sourceUrl": "https://westelswlby.com/about-us",
+      "observedAt": "2026-09-06T17:46:44-04:00"
+    }
+  },
+  "fitScore": 83,
+  "evidence": [
+    {
+      "url": "https://westelswlby.com/about-us",
+      "observedFact": "The official site positions Westel's as a neighborhood social venue, promotes its hidden speakeasy/party room for private events, and publishes a dedicated event-reservation email.",
+      "observedAt": "2026-09-06T17:46:44-04:00"
+    },
+    {
+      "url": "https://westelswlby.com/contact-us",
+      "observedFact": "The official contact page states private parties are welcome and provides direct business contact details; no visible loyalty or rewards mechanic was found on the reviewed contact/about pages.",
+      "observedAt": "2026-09-06T17:46:44-04:00"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.81,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Validate the current private-event follow-up process, then demonstrate a permissioned post-event return-visit and referral loop tied to speakeasy and party bookings."
+    },
+    {
+      "category": "loyalty_gap",
+      "confidence": 0.74,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Validate any existing private loyalty process and demonstrate a lightweight repeat-visit reward that complements the venue's neighborhood positioning."
+    }
+  ],
+  "recommendedEntryOffer": "Private-Event Retention Loop",
+  "notes": "Private-event activity and public business contact are directly observed. Absence of a visible rewards mechanic on reviewed public pages is only a hypothesis. Confirm current CRM, POS, email, loyalty, and event follow-up before claiming a gap or revenue impact."
+}
