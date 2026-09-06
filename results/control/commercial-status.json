@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-06T21:46:18.098Z",
+  "generatedAt": "2026-09-06T21:48:01.561Z",
   "privacy": "aggregate counts and control-plane state only; no merchant identity, contact data, metric values or outreach copy",
   "verification": {
     "status": "passed",
-    "lastTestedHead": "a8239d04cae507e204336a035f5eaac65796fdfd"
+    "lastTestedHead": "04b7b00b82dcbcc4d7069abb2ed0d7382fa6a1c1"
   },
   "internalRevenueScan": {
     "status": "completed",
@@ -20,14 +20,14 @@
     "schemaChanged": true
   },
   "publicProspectIntake": {
-    "opportunityCount": 2,
+    "opportunityCount": 4,
     "rejectedCount": 0
   },
   "commercialQueue": {
-    "total": 3,
+    "total": 5,
     "readyForOutreachDraft": 3,
     "needsMoreEvidence": 0,
-    "awaitingSpecialists": 0,
+    "awaitingSpecialists": 2,
     "specialistFailed": 0
   },
   "outreachDrafts": {
