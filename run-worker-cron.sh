@@ -24,21 +24,22 @@ PHPCLI=""
 for CANDIDATE in /opt/cpanel/ea-php84/root/usr/bin/php /usr/local/bin/php /usr/bin/php /usr/local/bin/ea-php84 /opt/alt/php84/usr/bin/php; do
   if [ -x "$CANDIDATE" ] && "$CANDIDATE" -r 'exit(PHP_SAPI === "cli" ? 0 : 1);' >/dev/null 2>&1; then PHPCLI="$CANDIDATE"; break; fi
 done
-mkdir -p "$AGENT/bin" "$AGENT/data/backups" "$AGENT/requests/repairs" "$AGENT/results/repairs"
+mkdir -p "$AGENT/bin" "$AGENT/data/backups" "$AGENT/requests/repairs" "$AGENT/results/repairs" "$AGENT/results/revenue"
 if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT/bin:$PATH"; fi
 
 {
   echo "===== $(date -Iseconds) ====="
   git fetch origin server-runtime
   git reset --hard origin/server-runtime
-  mkdir -p "$AGENT/bin"
+  mkdir -p "$AGENT/bin" "$AGENT/results/revenue"
   if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT/bin:$PATH"; fi
 
   # Verify the control plane once per new Git head. Verification state is
   # local-only so a test result cannot create its own commit/test feedback loop.
   "$NODE" scripts/verify-on-change.mjs || true
 
-  # Drain previously queued control-plane work first.
+  # Drain queued work and run read-only revenue intelligence. Merchant-level
+  # revenue artifacts remain under data/ and are ignored by Git.
   "$NODE" worker.js
 
   # Apply only hash-bound repair requests. Protected writes must pass the
@@ -116,6 +117,15 @@ NODE
   git add requests/repairs results/repairs 2>/dev/null || true
   if ! git diff --cached --quiet -- requests/repairs results/repairs; then
     git commit -m "PlacesRewards repair state sync $(date -Iseconds)" || true
+    git push origin HEAD:server-runtime || true
+  fi
+
+  # The revenue contract inspector writes schema-only metadata and rewrites the
+  # tracked file only when the analytics field/type contract materially changes.
+  # Merchant IDs, names, contact details and metric values never enter this path.
+  git add results/revenue 2>/dev/null || true
+  if ! git diff --cached --quiet -- results/revenue; then
+    git commit -m "PlacesRewards revenue analytics contract sync $(date -Iseconds)" || true
     git push origin HEAD:server-runtime || true
   fi
 } >> "$LOG" 2>&1
