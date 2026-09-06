@@ -34,21 +34,9 @@ if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT
   mkdir -p "$AGENT/bin" "$AGENT/results/revenue" "$AGENT/results/control"
   if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT/bin:$PATH"; fi
 
-  # Verify the control plane once per new Git head. Verification state is
-  # local-only so a test result cannot create its own commit/test feedback loop.
   "$NODE" scripts/verify-on-change.mjs || true
-
-  # Drain queued work and run read-only revenue intelligence. Merchant-level
-  # revenue artifacts remain under data/ and are ignored by Git.
   "$NODE" worker.js
-
-  # Apply only hash-bound repair requests. Protected writes must pass the
-  # orchestrator's explicit approval transition; an autonomy level alone is
-  # never sufficient. Repairs run before campaign execution so a restored
-  # capability can be used by the campaign worker in the same cycle.
   "$NODE" scripts/github-repair-worker.mjs || true
-
-  # Refresh campaign execution results and live capability observations.
   "$NODE" scripts/github-campaign-worker.mjs
 
   "$NODE" - "$ROLE_PROBE" <<'NODE'
@@ -82,6 +70,9 @@ NODE
     if [ -f "$AGENT/scripts/363-schema-inspector.php" ]; then
       "$PHPCLI" "$AGENT/scripts/363-schema-inspector.php" || true
     fi
+    if [ -f "$AGENT/scripts/inspect-northeast-ohio-media.php" ]; then
+      "$PHPCLI" "$AGENT/scripts/inspect-northeast-ohio-media.php" || true
+    fi
     if [ -f "$AGENT/scripts/install-363-foundation-demo-v2.php" ]; then
       "$PHPCLI" "$AGENT/scripts/install-363-foundation-demo-v2.php" || true
     fi
@@ -90,18 +81,9 @@ NODE
     fi
   fi
 
-  # Reconcile the old 363 Artisan request against the verified agent-side
-  # installer. This avoids adding redundant production code solely to satisfy
-  # a stale request contract.
   "$NODE" scripts/resolve-legacy-363-request.mjs || true
-
-  # Turn newly observed failures into durable reconciliation work. The
-  # autopilot ledger prevents the same unchanged discrepancy from being
-  # re-enqueued every minute.
   "$NODE" scripts/autopilot.mjs || true
 
-  # Keep Git as an audit trail of meaningful campaign transitions, not a log
-  # of timestamp refreshes.
   git add requests/campaigns results/campaigns 2>/dev/null || true
   if ! git diff --cached --quiet -- requests/campaigns results/campaigns; then
     if "$NODE" scripts/semantic-result-diff.mjs; then
@@ -112,25 +94,18 @@ NODE
     fi
   fi
 
-  # Repair results change only on material lifecycle transitions (blocked,
-  # waiting approval, completed, failed), so they can be committed directly.
   git add requests/repairs results/repairs 2>/dev/null || true
   if ! git diff --cached --quiet -- requests/repairs results/repairs; then
     git commit -m "PlacesRewards repair state sync $(date -Iseconds)" || true
     git push origin HEAD:server-runtime || true
   fi
 
-  # The revenue contract inspector writes schema-only metadata and rewrites the
-  # tracked file only when the analytics field/type contract materially changes.
-  # Merchant IDs, names, contact details and metric values never enter this path.
   git add results/revenue 2>/dev/null || true
   if ! git diff --cached --quiet -- results/revenue; then
     git commit -m "PlacesRewards revenue analytics contract sync $(date -Iseconds)" || true
     git push origin HEAD:server-runtime || true
   fi
 
-  # Commercial status is aggregate-only and changes only when pipeline state
-  # changes. Merchant identities, private analytics and draft copy remain local.
   git add results/control 2>/dev/null || true
   if ! git diff --cached --quiet -- results/control; then
     git commit -m "PlacesRewards commercial control status sync $(date -Iseconds)" || true
