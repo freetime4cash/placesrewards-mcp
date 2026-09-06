@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-06T21:09:45.293Z",
+  "privacy": "aggregate counts and control-plane state only; no merchant identity, contact data, metric values or outreach copy",
+  "verification": {
+    "status": "passed",
+    "lastTestedHead": "687ade0ff9e8f95ed36e188ef833702e4e75cde8"
+  },
+  "internalRevenueScan": {
+    "status": "completed",
+    "partnersScanned": 5,
+    "opportunitiesFound": 0,
+    "partnersWithDiagnosticSignals": 0,
+    "errors": 0
+  },
+  "analyticsContract": {
+    "status": "completed",
+    "partnersSampled": 5,
+    "samplesWithErrors": 0,
+    "schemaChanged": true
+  },
+  "publicProspectIntake": {
+    "opportunityCount": 2,
+    "rejectedCount": 0
+  },
+  "commercialQueue": {
+    "total": 2,
+    "readyForOutreachDraft": 2,
+    "needsMoreEvidence": 0,
+    "awaitingSpecialists": 0,
+    "specialistFailed": 0
+  },
+  "outreachDrafts": {
+    "draftCount": 2,
+    "sendAuthorizedCount": 0
+  }
+}
