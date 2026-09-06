@@ -2,8 +2,8 @@ import { execFileSync } from "node:child_process";
 import { promises as fs } from "node:fs";
 import { normalizeForComparison } from "../lib/discrepancy.js";
 
-function runGit(args) {
-  return execFileSync("git", args, { encoding: "utf8" }).trim();
+function runGit(args, options = {}) {
+  return execFileSync("git", args, { encoding: "utf8", ...options }).trim();
 }
 
 function parseJson(text) {
@@ -31,6 +31,7 @@ for (const file of staged) {
     meaningful.push(file);
     continue;
   }
+
   if (!file.endsWith(".json")) {
     meaningful.push(file);
     continue;
@@ -49,6 +50,16 @@ for (const file of staged) {
 
   if (previous === null || !equivalentJson(current, previous)) meaningful.push(file);
   else volatileOnly.push(file);
+}
+
+// Never allow timestamp-only refreshes to hitchhike on a meaningful commit.
+// Reset those paths in both index and worktree so the minute worker starts its
+// next cycle from the canonical committed state.
+for (const file of volatileOnly) {
+  try { runGit(["restore", "--staged", "--worktree", "--", file]); }
+  catch {
+    try { runGit(["reset", "HEAD", "--", file]); } catch {}
+  }
 }
 
 console.log(JSON.stringify({ staged, meaningful, volatileOnly }, null, 2));
