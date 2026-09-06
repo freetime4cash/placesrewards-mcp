@@ -85,6 +85,11 @@ NODE
     fi
   fi
 
+  # Reconcile the old 363 Artisan request against the verified agent-side
+  # installer. This avoids adding redundant production code solely to satisfy
+  # a stale request contract.
+  "$NODE" scripts/resolve-legacy-363-request.mjs || true
+
   # Turn newly observed failures into durable reconciliation work. The
   # autopilot ledger prevents the same unchanged discrepancy from being
   # re-enqueued every minute.
