@@ -1,6 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
+import { gunzipSync } from "node:zlib";
 import { createRuntime } from "../lib/runtime.js";
 import { isAllowedRelativePath } from "../lib/code-tools.js";
 
@@ -10,6 +11,7 @@ const RESULT_DIR = path.join(ROOT, "results", "repairs");
 const DATA_DIR = path.join(ROOT, "data");
 const STATE_FILE = path.join(DATA_DIR, "github-repair-processed.json");
 const ARTIFACT_PREFIX = "artifacts/laravel/";
+const ARTIFACT_ENCODINGS = new Set(["utf8", "gzip-base64"]);
 
 await fs.mkdir(REQUEST_DIR, { recursive: true });
 await fs.mkdir(RESULT_DIR, { recursive: true });
@@ -50,6 +52,7 @@ function validateRequest(req, filename) {
   for (const [index, file] of (req.files ?? []).entries()) {
     if (!file || typeof file !== "object") { errors.push(`files[${index}] must be an object.`); continue; }
     if (typeof file.artifactPath !== "string" || !file.artifactPath.startsWith(ARTIFACT_PREFIX)) errors.push(`files[${index}].artifactPath must be under ${ARTIFACT_PREFIX}.`);
+    if (!ARTIFACT_ENCODINGS.has(file.artifactEncoding ?? "utf8")) errors.push(`files[${index}].artifactEncoding must be utf8 or gzip-base64.`);
     if (typeof file.targetPath !== "string" || !isAllowedRelativePath(file.targetPath)) errors.push(`files[${index}].targetPath is not an allowed Laravel path.`);
     if (!/^[a-f0-9]{64}$/i.test(String(file.proposedSha256 ?? ""))) errors.push(`files[${index}].proposedSha256 must be SHA-256.`);
     if (file.expectedCurrentSha256 !== null && file.expectedCurrentSha256 !== undefined && !/^[a-f0-9]{64}$/i.test(String(file.expectedCurrentSha256))) errors.push(`files[${index}].expectedCurrentSha256 must be null or SHA-256.`);
@@ -64,10 +67,16 @@ function validateRequest(req, filename) {
 function approvalMatches(req, preparedFiles) {
   if (req.approval?.approved !== true || req.approval.scope !== "protected_write") return false;
   const approved = Array.isArray(req.approval.files) ? req.approval.files : [];
-  const expected = preparedFiles.map(file => ({ targetPath: file.path, proposedSha256: file.proposedSha256 }))
-    .sort((a,b) => a.targetPath.localeCompare(b.targetPath));
-  const actual = approved.map(file => ({ targetPath: file.targetPath, proposedSha256: file.proposedSha256 }))
-    .sort((a,b) => String(a.targetPath).localeCompare(String(b.targetPath)));
+  const expected = preparedFiles.map(file => ({
+    targetPath: file.path,
+    proposedSha256: file.proposedSha256,
+    originalSha256: file.originalSha256 ?? null
+  })).sort((a,b) => a.targetPath.localeCompare(b.targetPath));
+  const actual = approved.map(file => ({
+    targetPath: file.targetPath,
+    proposedSha256: file.proposedSha256,
+    originalSha256: file.originalSha256 ?? null
+  })).sort((a,b) => String(a.targetPath).localeCompare(String(b.targetPath)));
   return JSON.stringify(actual) === JSON.stringify(expected);
 }
 
@@ -75,7 +84,15 @@ async function loadFiles(req) {
   const files = [];
   for (const descriptor of req.files) {
     const { absolute } = safeArtifactPath(descriptor.artifactPath);
-    const content = await fs.readFile(absolute, "utf8");
+    const encoded = await fs.readFile(absolute, "utf8");
+    const encoding = descriptor.artifactEncoding ?? "utf8";
+    let content;
+    if (encoding === "gzip-base64") {
+      try { content = gunzipSync(Buffer.from(encoded.replace(/\s+/g, ""), "base64")).toString("utf8"); }
+      catch (error) { throw new Error(`Could not decode gzip-base64 artifact ${descriptor.artifactPath}: ${error instanceof Error ? error.message : String(error)}`); }
+    } else {
+      content = encoded;
+    }
     const proposedSha256 = sha256(content);
     if (proposedSha256 !== descriptor.proposedSha256) {
       throw new Error(`Artifact hash mismatch for ${descriptor.artifactPath}: expected ${descriptor.proposedSha256}, got ${proposedSha256}`);
@@ -154,7 +171,7 @@ for (const filename of files) {
       continue;
     }
     if (!approvalMatches(req, preparedFiles)) {
-      const result = { requestId, status: "blocked", error: "Approval does not exactly match the prepared target paths and proposed SHA-256 hashes." };
+      const result = { requestId, status: "blocked", error: "Approval does not exactly match the prepared target path, original SHA-256 and proposed SHA-256 bindings." };
       await writeJson(path.join(RESULT_DIR, `${requestId}.json`), result);
       summary.failed += 1;
       summary.results.push(result);
@@ -249,7 +266,7 @@ for (const filename of files) {
       applyJob: compactJob(waitingJob),
       approvalRequired: {
         scope: "protected_write",
-        files: preparedFileBindings.map(file => ({ targetPath: file.path, proposedSha256: file.proposedSha256 }))
+        files: preparedFileBindings.map(file => ({ targetPath: file.path, originalSha256: file.originalSha256 ?? null, proposedSha256: file.proposedSha256 }))
       }
     };
     await writeJson(path.join(RESULT_DIR, `${requestId}.json`), waitingResult);
