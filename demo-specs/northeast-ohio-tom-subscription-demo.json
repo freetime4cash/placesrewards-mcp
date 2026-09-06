@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "demoId": "northeast-ohio-tom-subscription-demo",
+  "partner": "Places Rewards",
+  "partnerId": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+  "audience": "Tom Colosimo / Northeast Ohio Treasure Hunt organizer",
+  "purpose": "Show how Places Rewards turns the next Treasure Hunt into an ongoing, measurable merchant growth system and justify a recurring subscription.",
+  "positioning": "The Hunt creates attention and foot traffic. Places Rewards captures the relationship, circulates visitors among merchants, creates repeat visits and referrals, and proves what happened after the event.",
+  "presentationRule": "Always present modules in sequence order. Never reuse generic copy or the same default artwork across modules.",
+  "imagePolicy": {
+    "merchantReplaceable": true,
+    "recommendedRatio": "16:9",
+    "requireUniqueImagePerModule": true,
+    "defaultAssetRoot": "assets/northeast-ohio-tom-demo"
+  },
+  "modules": [
+    {
+      "sequence": 1,
+      "module": "club",
+      "internalName": "[TOM DEMO 01] Northeast Ohio Treasure Hunt Command Center",
+      "title": "01 — Treasure Hunt Command Center",
+      "head": "Run the next Hunt like a measurable business engine.",
+      "description": "One campaign home for participating merchants, rewards, visitor activity and the post-Hunt growth system. This is the organizer's starting point.",
+      "whyTomCares": "One place to organize the system instead of treating the Hunt as a one-time promotion.",
+      "image": "01-command-center.jpg"
+    },
+    {
+      "sequence": 2,
+      "module": "loyalty_card",
+      "internalName": "[TOM DEMO 02] Hunter Rewards Passport",
+      "title": "02 — Hunter Rewards Passport",
+      "head": "Capture the participant before the excitement disappears.",
+      "description": "Hunters join once, earn points for purchases and participation, keep rewards in their wallet and remain reachable after the treasure is found.",
+      "whyTomCares": "The Hunt ends; the customer relationship does not.",
+      "economy": {"currency":"USD","pointsPerCurrency":1,"currencyUnitAmount":1,"initialBonusPoints":100,"expirationMonths":24},
+      "image": "02-hunter-rewards-passport.jpg"
+    },
+    {
+      "sequence": 3,
+      "module": "stamp_card",
+      "internalName": "[TOM DEMO 03] Newton Falls Explorer Trail",
+      "title": "03 — Newton Falls Explorer Trail",
+      "head": "Move hunters across participating businesses.",
+      "description": "A five-stop digital merchant trail rewards verified visits and gives participants a reason to explore more than one business.",
+      "whyTomCares": "Traffic is intentionally distributed across town instead of concentrating around a single clue location.",
+      "targetStamps": 5,
+      "image": "03-explorer-trail.jpg"
+    },
+    {
+      "sequence": 4,
+      "module": "scratch_game",
+      "internalName": "[TOM DEMO 04] Mystery Bonus Scratch & Win",
+      "title": "04 — Mystery Bonus Scratch & Win",
+      "head": "Add instant excitement without touching the official clues.",
+      "description": "Participating merchants can issue bonus scratch cards for local prizes. The bonus game stays separate from the official treasure and never changes treasure-finding odds.",
+      "whyTomCares": "More merchant interaction and fun without compromising the integrity of the Hunt.",
+      "image": "04-mystery-bonus.jpg"
+    },
+    {
+      "sequence": 5,
+      "module": "voucher",
+      "internalName": "[TOM DEMO 05] Hunter Comeback",
+      "title": "05 — Hunter Comeback",
+      "head": "Turn the Hunt visit into the next purchase.",
+      "description": "$5 off a qualifying $25 return purchase gives a hunter a clear reason to come back after the event-generated visit.",
+      "whyTomCares": "This is where event traffic begins turning into repeat business.",
+      "offer": {"type":"fixed","value":5,"minimumPurchase":25,"code":"TOMHUNTRETURN"},
+      "image": "05-hunter-comeback.jpg"
+    },
+    {
+      "sequence": 6,
+      "module": "referral_program",
+      "internalName": "[TOM DEMO 06] Bring Another Hunter",
+      "title": "06 — Bring Another Hunter",
+      "head": "Let participants grow the next Hunt for you.",
+      "description": "Reward the existing hunter and the new hunter after a qualified referral action, creating trackable word-of-mouth growth.",
+      "whyTomCares": "Every participant can become an acquisition channel without adding another ad campaign.",
+      "referrerPoints": 100,
+      "referredPoints": 50,
+      "image": "06-bring-another-hunter.jpg"
+    },
+    {
+      "sequence": 7,
+      "module": "reward",
+      "internalName": "[TOM DEMO 07] Local Legend Reward Unlock",
+      "title": "07 — Local Legend Reward Unlock",
+      "head": "Make continued participation worth something.",
+      "description": "Unlock a meaningful local reward when a hunter reaches a defined engagement milestone through visits, purchases or participation.",
+      "whyTomCares": "The system gives hunters a reason to continue interacting after the novelty of the Hunt fades.",
+      "image": "07-local-legend-reward.jpg"
+    },
+    {
+      "sequence": 8,
+      "module": "tier",
+      "internalName": "[TOM DEMO 08] Local Legend VIP",
+      "title": "08 — Local Legend VIP",
+      "head": "Recognize the people who become the strongest local supporters.",
+      "description": "A premium tier can unlock exclusive offers, early access, special experiences and recognition for highly engaged hunters.",
+      "whyTomCares": "Turns the most engaged participants into a durable community around the Hunt and its merchants.",
+      "image": "08-local-legend-vip.jpg"
+    },
+    {
+      "sequence": 9,
+      "module": "giveaway",
+      "internalName": "[TOM DEMO 09] Local Legend Bonus Draw",
+      "title": "09 — Local Legend Bonus Draw",
+      "head": "Keep participation building between major clues and events.",
+      "description": "A separate community giveaway rewards defined engagement actions and can showcase sponsor-provided prizes without replacing the official treasure.",
+      "whyTomCares": "Creates sponsor inventory and sustained engagement between Hunt moments.",
+      "image": "09-local-legend-giveaway.jpg"
+    },
+    {
+      "sequence": 10,
+      "module": "review_campaign",
+      "internalName": "[TOM DEMO 10] Share the Adventure",
+      "title": "10 — Share the Adventure",
+      "head": "Turn a good Hunt experience into proof for local businesses.",
+      "description": "Ask satisfied participants for feedback or a review after a verified interaction, helping merchants turn Hunt traffic into durable social proof.",
+      "whyTomCares": "Participating businesses get value they can still benefit from after the event is over.",
+      "image": "10-share-the-adventure.jpg"
+    },
+    {
+      "sequence": 11,
+      "module": "segment_email",
+      "internalName": "[TOM DEMO 11] Win Back Hunters",
+      "title": "11 — Win Back Hunters",
+      "head": "Automatically re-engage participants who stop returning.",
+      "description": "Segment inactive hunters and trigger a relevant comeback message, saved reward reminder or progress nudge instead of letting the relationship disappear.",
+      "whyTomCares": "The system keeps working after the Hunt without requiring Tom or each merchant to manually chase customers.",
+      "image": "11-win-back-hunters.jpg"
+    },
+    {
+      "sequence": 12,
+      "module": "analytics",
+      "internalName": "[TOM DEMO 12] Hunt-to-Revenue Analytics",
+      "title": "12 — Hunt-to-Revenue Analytics",
+      "head": "Prove what the Hunt produced beyond foot traffic.",
+      "description": "Track visits, loyalty activity, stamp progress, voucher redemptions, referrals, repeat behavior and campaign activity so organizers and merchants can see measurable outcomes.",
+      "whyTomCares": "This is the subscription closer: evidence for sponsors, merchants and the decision to run the next Hunt even bigger.",
+      "image": "12-hunt-to-revenue-analytics.jpg"
+    }
+  ]
+}
