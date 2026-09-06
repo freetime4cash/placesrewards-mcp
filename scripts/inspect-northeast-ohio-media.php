@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 
 $agentRoot = '/home/placevle/placesrewards-agent-server';
@@ -21,10 +22,10 @@ $knownIds = [
 ];
 
 $result = [
-  'generated_at' => now()->toIso8601String(),
   'media_table' => null,
   'known_demo_media' => [],
   'relevant_tables' => [],
+  'relevant_routes' => [],
 ];
 
 if (Schema::hasTable('media')) {
@@ -42,11 +43,36 @@ if (Schema::hasTable('media')) {
 }
 
 foreach (['clubs','cards','rewards','stamp_cards','vouchers','scratch_games','giveaways','referral_programs','tiers','segments','email_campaigns','review_campaigns'] as $table) {
-  if (!Schema::hasTable($table)) continue;
+  if (!Schema::hasTable($table)) {
+    $result['relevant_tables'][$table] = ['exists'=>false,'columns'=>[]];
+    continue;
+  }
   $result['relevant_tables'][$table] = [
+    'exists'=>true,
     'columns' => Schema::getColumnListing($table),
   ];
 }
 
+foreach (Route::getRoutes() as $route) {
+  $uri = $route->uri();
+  $name = $route->getName();
+  $action = $route->getActionName();
+  $middleware = $route->gatherMiddleware();
+  $haystack = strtolower($uri.' '.($name ?? '').' '.$action.' '.implode(' ', $middleware));
+  $wanted = false;
+  foreach (['card','stamp','voucher','scratch','referral','review','giveaway','analytics','reward','tier','discover','partner'] as $needle) {
+    if (str_contains($haystack, $needle)) { $wanted = true; break; }
+  }
+  if (!$wanted) continue;
+  $result['relevant_routes'][] = [
+    'methods'=>$route->methods(),
+    'uri'=>$uri,
+    'name'=>$name,
+    'action'=>$action,
+    'middleware'=>$middleware,
+  ];
+  if (count($result['relevant_routes']) >= 400) break;
+}
+
 file_put_contents($out, json_encode($result, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES));
-echo json_encode($result, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES), "\n";
+echo json_encode(['status'=>'completed','output'=>$out,'route_count'=>count($result['relevant_routes'])], JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES), "\n";
