@@ -1,0 +1,28 @@
+name: Places Rewards Autonomous OS CI
+
+on:
+  push:
+    branches: [server-runtime]
+  pull_request:
+    branches: [server-runtime]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: placesrewards-control-plane-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify control plane
+        run: npm test
