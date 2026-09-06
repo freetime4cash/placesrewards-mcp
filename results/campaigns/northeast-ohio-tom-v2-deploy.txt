@@ -1,22 +1,7 @@
-
-   Illuminate\Database\QueryException 
-
-  SQLSTATE[23000]: Integrity constraint violation: 4025 CONSTRAINT `email_campaigns.subject` failed for `placevle_appplaces`.`email_campaigns` (Connection: mysql, Host: 127.0.0.1, Port: 3306, Database: placevle_appplaces, SQL: insert into `email_campaigns` (`id`, `partner_id`, `subject`, `body`, `segment_type`, `segment_config`, `status`, `recipient_count`, `sent_count`, `failed_count`, `scheduled_at`, `started_at`, `completed_at`, `created_at`, `updated_at`, `deleted_at`) values (3fcb4cea-2fea-4788-8941-92f0154e1695, 019dbfc9-ddf9-7136-951a-124574cf7b3e, [TOM DEMO 11] Your Hunt rewards and trail progress are still waiting, Thanks for exploring Northeast Ohio. Your saved rewards, unfinished trail progress and local offers give you a reason to come back. This is a draft demonstration and is not sent automatically., custom, {"tom_demo_sequence":11,"audience":"inactive_hunters"}, draft, 0, 0, 0, ?, ?, ?, 2026-09-06 23:06:38, 2026-09-06 23:06:38, ?))
-
-  at /home/placevle/app.placesrewards.com/vendor/laravel/framework/src/Illuminate/Database/Connection.php:841
-    837▕             $exceptionType = ($isUniqueConstraintError = $this->isUniqueConstraintError($e))
-    838▕                 ? UniqueConstraintViolationException::class
-    839▕                 : QueryException::class;
-    840▕ 
-  ➜ 841▕             $exception = new $exceptionType(
-    842▕                 $this->getNameWithReadWriteType(),
-    843▕                 $query,
-    844▕                 $this->prepareBindings($bindings),
-    845▕                 $e,
-
-      [2m+6 vendor frames [22m
-
-  7   /tmp/placesrewards-tom-v2-fixed.php:72
-      Illuminate\Database\Query\Builder::insert()
-  8   /tmp/placesrewards-tom-v2-fixed.php:211
-
+{
+    "status": "completed",
+    "presentation_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom",
+    "image_manager_url": "https://app.placesrewards.com/partner/demo/northeast-ohio-treasure-hunt/tom",
+    "module_count": 12,
+    "record_count": 12
+}
