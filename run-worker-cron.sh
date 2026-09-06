@@ -24,14 +24,14 @@ PHPCLI=""
 for CANDIDATE in /opt/cpanel/ea-php84/root/usr/bin/php /usr/local/bin/php /usr/bin/php /usr/local/bin/ea-php84 /opt/alt/php84/usr/bin/php; do
   if [ -x "$CANDIDATE" ] && "$CANDIDATE" -r 'exit(PHP_SAPI === "cli" ? 0 : 1);' >/dev/null 2>&1; then PHPCLI="$CANDIDATE"; break; fi
 done
-mkdir -p "$AGENT/bin" "$AGENT/data/backups" "$AGENT/requests/repairs" "$AGENT/results/repairs" "$AGENT/results/revenue"
+mkdir -p "$AGENT/bin" "$AGENT/data/backups" "$AGENT/requests/repairs" "$AGENT/results/repairs" "$AGENT/results/revenue" "$AGENT/results/control"
 if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT/bin:$PATH"; fi
 
 {
   echo "===== $(date -Iseconds) ====="
   git fetch origin server-runtime
   git reset --hard origin/server-runtime
-  mkdir -p "$AGENT/bin" "$AGENT/results/revenue"
+  mkdir -p "$AGENT/bin" "$AGENT/results/revenue" "$AGENT/results/control"
   if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT/bin:$PATH"; fi
 
   # Verify the control plane once per new Git head. Verification state is
@@ -126,6 +126,14 @@ NODE
   git add results/revenue 2>/dev/null || true
   if ! git diff --cached --quiet -- results/revenue; then
     git commit -m "PlacesRewards revenue analytics contract sync $(date -Iseconds)" || true
+    git push origin HEAD:server-runtime || true
+  fi
+
+  # Commercial status is aggregate-only and changes only when pipeline state
+  # changes. Merchant identities, private analytics and draft copy remain local.
+  git add results/control 2>/dev/null || true
+  if ! git diff --cached --quiet -- results/control; then
+    git commit -m "PlacesRewards commercial control status sync $(date -Iseconds)" || true
     git push origin HEAD:server-runtime || true
   fi
 } >> "$LOG" 2>&1
