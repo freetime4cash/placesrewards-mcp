@@ -1,6 +1,6 @@
 {
   "name": "placesrewards-agent-server",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -11,6 +11,7 @@
     "autopilot": "node scripts/autopilot.mjs",
     "repair": "node scripts/github-repair-worker.mjs",
     "revenue:scan": "node scripts/revenue-live-scan.mjs",
+    "revenue:route": "node scripts/revenue-opportunity-autopilot.mjs",
     "inspect:app": "node scripts/inspect-app.js",
     "test:app": "node scripts/test-app.js",
     "test:architecture": "node scripts/verify-agent-architecture.js",
@@ -20,7 +21,8 @@
     "test:revenue": "node scripts/verify-revenue-engine.js",
     "test:revenue-lifecycle": "node scripts/verify-revenue-opportunity.js",
     "test:revenue-scan": "node --check scripts/revenue-live-scan.mjs",
-    "test": "npm run test:architecture && npm run test:autonomy && npm run test:approval && npm run test:repair && npm run test:revenue && npm run test:revenue-lifecycle && npm run test:revenue-scan"
+    "test:revenue-route": "node --check scripts/revenue-opportunity-autopilot.mjs && node --check worker.js",
+    "test": "npm run test:architecture && npm run test:autonomy && npm run test:approval && npm run test:repair && npm run test:revenue && npm run test:revenue-lifecycle && npm run test:revenue-scan && npm run test:revenue-route"
   },
   "engines": { "node": ">=20" }
 }
