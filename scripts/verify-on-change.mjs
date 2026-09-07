@@ -11,8 +11,8 @@ function git(args) {
 
 async function patchTreasureHuntScratchLink() {
   const target = path.join(ROOT, "assets", "treasure-hunt-v4", "TreasureHuntDemoController.php");
-  const oldUrl = "https://app.placesrewards.com/demo/scratch-win";
-  const newUrl = "https://app.placesrewards.com/demo/treasure-hunt/scratch/play";
+  const oldUrl = "/demo/scratch-win";
+  const newUrl = "/demo/treasure-hunt/scratch/play";
   try {
     const before = await fs.readFile(target, "utf8");
     const after = before.split(oldUrl).join(newUrl);
