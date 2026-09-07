@@ -1,0 +1,103 @@
+{
+    "status": "completed",
+    "updated_at": "2026-09-07T01:06:34+00:00",
+    "records": [
+        {
+            "table": "cards",
+            "id": "95cbd0bf-8bbb-436d-b7c6-a2e1e558db25",
+            "status": "updated",
+            "columns": [
+                "head",
+                "title",
+                "description",
+                "updated_at"
+            ]
+        },
+        {
+            "table": "stamp_cards",
+            "id": "a9566430-b6b0-434d-ae3c-f3ba85421c5f",
+            "status": "updated",
+            "columns": [
+                "title",
+                "description",
+                "reward_title",
+                "reward_description",
+                "updated_at"
+            ]
+        },
+        {
+            "table": "rewards",
+            "id": "29304849-3c10-4a06-8f8f-4bad776b79f9",
+            "status": "updated",
+            "columns": [
+                "title",
+                "description",
+                "updated_at"
+            ]
+        },
+        {
+            "table": "stamp_cards",
+            "id": "5738988e-265f-422f-9b41-5828790af3c0",
+            "status": "updated",
+            "columns": [
+                "title",
+                "description",
+                "reward_title",
+                "reward_description",
+                "updated_at"
+            ]
+        },
+        {
+            "table": "rewards",
+            "id": "13085fc2-2a5d-43ee-92b5-441bc368c55b",
+            "status": "updated",
+            "columns": [
+                "title",
+                "description",
+                "updated_at"
+            ]
+        },
+        {
+            "table": "tiers",
+            "id": "8744df20-c34b-484c-9f8f-15140f8fc542",
+            "status": "updated",
+            "columns": [
+                "display_name",
+                "description",
+                "benefits",
+                "updated_at"
+            ]
+        },
+        {
+            "table": "scratch_games",
+            "id": "1fefb288-a8cc-46d4-a4a3-04fe56f91329",
+            "status": "updated",
+            "columns": [
+                "name",
+                "description",
+                "updated_at"
+            ]
+        },
+        {
+            "table": "vouchers",
+            "id": "14788f52-438e-4293-bd6b-c82b8e448983",
+            "status": "updated",
+            "columns": [
+                "title",
+                "description",
+                "updated_at"
+            ]
+        },
+        {
+            "table": "email_campaigns",
+            "id": "b1ea6974-d61c-41d4-a1ce-0c0a27ffa5bd",
+            "status": "updated",
+            "columns": [
+                "subject",
+                "body",
+                "updated_at"
+            ]
+        }
+    ],
+    "completed_at": "2026-09-07T01:06:34+00:00"
+}
