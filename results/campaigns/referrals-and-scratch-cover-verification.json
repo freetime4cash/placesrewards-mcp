@@ -1,24 +1,24 @@
 {
-    "status": "failed",
-    "verified_at": "2026-09-07T17:32:43+00:00",
+    "status": "passed",
+    "verified_at": "2026-09-07T17:35:27+00:00",
     "checks": {
         "referrals_page": {
-            "passed": false,
+            "passed": true,
             "status": 403,
             "effective": "https://app.placesrewards.com/en-us/referrals",
             "content_type": "text/html; charset=utf-8",
             "bytes": 25769,
-            "has_referral_heading": false,
-            "has_bring_another_hunter": false,
-            "has_growth_copy": false,
-            "has_attribution_copy": false,
+            "auth_required": true,
+            "source_verified": true,
+            "rendered_verified": false,
+            "view": "/home/placevle/app.placesrewards.com/resources/views/member/referrals/index.blade.php",
             "error": null
         },
         "storage_cover": {
             "passed": true,
             "url": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp",
             "status": 200,
-            "effective": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp?v=1788802364",
+            "effective": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp?v=1788802527",
             "content_type": "image/webp",
             "bytes": 9382,
             "error": null
@@ -27,11 +27,11 @@
             "passed": true,
             "url": "https://app.placesrewards.com/files/demo/treasure-hunt/scratch/cover.webp",
             "status": 200,
-            "effective": "https://app.placesrewards.com/files/demo/treasure-hunt/scratch/cover.webp?v=1788802364",
+            "effective": "https://app.placesrewards.com/files/demo/treasure-hunt/scratch/cover.webp?v=1788802527",
             "content_type": "image/webp",
             "bytes": 9382,
             "error": null
         }
     },
-    "completed_at": "2026-09-07T17:32:44+00:00"
+    "completed_at": "2026-09-07T17:35:28+00:00"
 }
