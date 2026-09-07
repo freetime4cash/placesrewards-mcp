@@ -10,6 +10,19 @@ $source = (string) file_get_contents($sourcePath);
 // without colliding with the inactive legacy demo record.
 $source = str_replace("'code'=>'TOMHUNTRETURN'", "'code'=>'TOMHUNTRETURN10'", $source);
 
+// Push each module's unique card copy into the underlying Places Rewards
+// record too, so native card/module views do not fall back to generic text.
+$source = str_replace(
+    "tomTr(\$m['description'])",
+    "tomTr(\$m['description'].' Demo card content: '.(\$m['example_content']??''))",
+    $source
+);
+$source = str_replace(
+    "'description'=>\$m['description']",
+    "'description'=>\$m['description'].' Demo card content: '.(\$m['example_content']??'')",
+    $source
+);
+
 $tmp = sys_get_temp_dir().'/placesrewards-tom-v2-fixed.php';
 file_put_contents($tmp, $source, LOCK_EX);
 $command = escapeshellarg(PHP_BINARY).' '.escapeshellarg($tmp);
