@@ -1,0 +1,37 @@
+{
+    "status": "failed",
+    "verified_at": "2026-09-07T17:27:57+00:00",
+    "checks": {
+        "referrals_page": {
+            "passed": false,
+            "status": 403,
+            "effective": "https://app.placesrewards.com/en-us/referrals",
+            "content_type": "text/html; charset=utf-8",
+            "bytes": 25769,
+            "has_referral_heading": false,
+            "has_bring_another_hunter": false,
+            "has_growth_copy": false,
+            "has_attribution_copy": false,
+            "error": null
+        },
+        "storage_cover": {
+            "passed": true,
+            "url": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp",
+            "status": 200,
+            "effective": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp?v=1788802077",
+            "content_type": "image/webp",
+            "bytes": 9382,
+            "error": null
+        },
+        "files_cover": {
+            "passed": true,
+            "url": "https://app.placesrewards.com/files/demo/treasure-hunt/scratch/cover.webp",
+            "status": 200,
+            "effective": "https://app.placesrewards.com/files/demo/treasure-hunt/scratch/cover.webp?v=1788802078",
+            "content_type": "image/webp",
+            "bytes": 9382,
+            "error": null
+        }
+    },
+    "completed_at": "2026-09-07T17:27:58+00:00"
+}
