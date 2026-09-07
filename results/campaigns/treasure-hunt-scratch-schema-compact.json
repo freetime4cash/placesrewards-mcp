@@ -1,0 +1,748 @@
+{
+    "status": "completed",
+    "generated_at": "2026-09-07T02:42:29+00:00",
+    "scratch_cards_columns": [
+        {
+            "Field": "id",
+            "Type": "char(36)",
+            "Null": "NO",
+            "Key": "PRI",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "scratch_game_id",
+            "Type": "char(36)",
+            "Null": "NO",
+            "Key": "MUL",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "member_id",
+            "Type": "char(36)",
+            "Null": "NO",
+            "Key": "MUL",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "partner_id",
+            "Type": "char(36)",
+            "Null": "NO",
+            "Key": "MUL",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "issued_by_staff_id",
+            "Type": "char(36)",
+            "Null": "YES",
+            "Key": "MUL",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "is_played",
+            "Type": "tinyint(1)",
+            "Null": "NO",
+            "Key": "",
+            "Default": "0",
+            "Extra": ""
+        },
+        {
+            "Field": "is_winner",
+            "Type": "tinyint(1)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "played_at",
+            "Type": "timestamp",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "identifier",
+            "Type": "varchar(64)",
+            "Null": "NO",
+            "Key": "UNI",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "created_at",
+            "Type": "timestamp",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "updated_at",
+            "Type": "timestamp",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        }
+    ],
+    "members_columns": [
+        {
+            "Field": "id",
+            "Type": "char(36)",
+            "Null": "NO",
+            "Key": "PRI",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "affiliate_id",
+            "Type": "char(36)",
+            "Null": "YES",
+            "Key": "MUL",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "role",
+            "Type": "tinyint(4)",
+            "Null": "NO",
+            "Key": "",
+            "Default": "1",
+            "Extra": ""
+        },
+        {
+            "Field": "member_number",
+            "Type": "varchar(32)",
+            "Null": "YES",
+            "Key": "UNI",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "unique_identifier",
+            "Type": "varchar(32)",
+            "Null": "YES",
+            "Key": "UNI",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "device_code",
+            "Type": "varchar(12)",
+            "Null": "YES",
+            "Key": "UNI",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "device_uuid",
+            "Type": "char(36)",
+            "Null": "YES",
+            "Key": "MUL",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "first_interaction_at",
+            "Type": "datetime",
+            "Null": "YES",
+            "Key": "MUL",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "display_name",
+            "Type": "varchar(64)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "name",
+            "Type": "varchar(128)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "email",
+            "Type": "varchar(128)",
+            "Null": "YES",
+            "Key": "UNI",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "email_verified_at",
+            "Type": "datetime",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "password",
+            "Type": "varchar(191)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "remember_token",
+            "Type": "varchar(100)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "birthday",
+            "Type": "date",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "gender",
+            "Type": "tinyint(4)",
+            "Null": "NO",
+            "Key": "",
+            "Default": "0",
+            "Extra": ""
+        },
+        {
+            "Field": "two_factor_enabled",
+            "Type": "tinyint(1)",
+            "Null": "NO",
+            "Key": "",
+            "Default": "0",
+            "Extra": ""
+        },
+        {
+            "Field": "two_factor_secret",
+            "Type": "varchar(191)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "two_factor_recovery_codes",
+            "Type": "varchar(191)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "account_expires_at",
+            "Type": "datetime",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "premium_expires_at",
+            "Type": "datetime",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "locale",
+            "Type": "varchar(12)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "country_code",
+            "Type": "char(2)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "currency",
+            "Type": "char(3)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "time_zone",
+            "Type": "varchar(48)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "phone_prefix",
+            "Type": "varchar(4)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "phone_country",
+            "Type": "varchar(2)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "phone",
+            "Type": "varchar(24)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "phone_e164",
+            "Type": "varchar(24)",
+            "Null": "YES",
+            "Key": "MUL",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "is_active",
+            "Type": "tinyint(1)",
+            "Null": "NO",
+            "Key": "MUL",
+            "Default": "1",
+            "Extra": ""
+        },
+        {
+            "Field": "is_vip",
+            "Type": "tinyint(1)",
+            "Null": "NO",
+            "Key": "MUL",
+            "Default": "0",
+            "Extra": ""
+        },
+        {
+            "Field": "is_363_founder",
+            "Type": "tinyint(1)",
+            "Null": "NO",
+            "Key": "MUL",
+            "Default": "0",
+            "Extra": ""
+        },
+        {
+            "Field": "founder_number",
+            "Type": "int(10) unsigned",
+            "Null": "YES",
+            "Key": "MUL",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "founder_source",
+            "Type": "varchar(32)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "radio_cigars_claimed_at",
+            "Type": "timestamp",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "xp",
+            "Type": "bigint(20) unsigned",
+            "Null": "NO",
+            "Key": "",
+            "Default": "0",
+            "Extra": ""
+        },
+        {
+            "Field": "xp_level",
+            "Type": "varchar(32)",
+            "Null": "NO",
+            "Key": "",
+            "Default": "bronze",
+            "Extra": ""
+        },
+        {
+            "Field": "xp_streak_days",
+            "Type": "int(10) unsigned",
+            "Null": "NO",
+            "Key": "",
+            "Default": "0",
+            "Extra": ""
+        },
+        {
+            "Field": "xp_last_checkin",
+            "Type": "date",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "accepts_emails",
+            "Type": "tinyint(1)",
+            "Null": "NO",
+            "Key": "MUL",
+            "Default": "0",
+            "Extra": ""
+        },
+        {
+            "Field": "accepts_text_messages",
+            "Type": "tinyint(1)",
+            "Null": "NO",
+            "Key": "",
+            "Default": "0",
+            "Extra": ""
+        },
+        {
+            "Field": "is_undeletable",
+            "Type": "tinyint(1)",
+            "Null": "NO",
+            "Key": "",
+            "Default": "0",
+            "Extra": ""
+        },
+        {
+            "Field": "is_uneditable",
+            "Type": "tinyint(1)",
+            "Null": "NO",
+            "Key": "",
+            "Default": "0",
+            "Extra": ""
+        },
+        {
+            "Field": "number_of_times_logged_in",
+            "Type": "int(10) unsigned",
+            "Null": "NO",
+            "Key": "",
+            "Default": "0",
+            "Extra": ""
+        },
+        {
+            "Field": "last_login_at",
+            "Type": "datetime",
+            "Null": "YES",
+            "Key": "MUL",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "number_of_emails_received",
+            "Type": "int(10) unsigned",
+            "Null": "NO",
+            "Key": "",
+            "Default": "0",
+            "Extra": ""
+        },
+        {
+            "Field": "number_of_text_messages_received",
+            "Type": "int(10) unsigned",
+            "Null": "NO",
+            "Key": "",
+            "Default": "0",
+            "Extra": ""
+        },
+        {
+            "Field": "number_of_reviews_written",
+            "Type": "int(10) unsigned",
+            "Null": "NO",
+            "Key": "",
+            "Default": "0",
+            "Extra": ""
+        },
+        {
+            "Field": "number_of_ratings_given",
+            "Type": "int(10) unsigned",
+            "Null": "NO",
+            "Key": "",
+            "Default": "0",
+            "Extra": ""
+        },
+        {
+            "Field": "meta",
+            "Type": "longtext",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "created_by",
+            "Type": "char(36)",
+            "Null": "YES",
+            "Key": "MUL",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "deleted_by",
+            "Type": "char(36)",
+            "Null": "YES",
+            "Key": "MUL",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "updated_by",
+            "Type": "char(36)",
+            "Null": "YES",
+            "Key": "MUL",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "deleted_at",
+            "Type": "datetime",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "created_at",
+            "Type": "datetime",
+            "Null": "YES",
+            "Key": "MUL",
+            "Default": null,
+            "Extra": ""
+        },
+        {
+            "Field": "updated_at",
+            "Type": "datetime",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        }
+    ],
+    "related_tables": {
+        "card_member": [
+            "card_id",
+            "member_id",
+            "created_at",
+            "updated_at"
+        ],
+        "clubs": [
+            "id",
+            "name",
+            "description",
+            "locale",
+            "currency",
+            "time_zone",
+            "is_active",
+            "is_primary",
+            "is_undeletable",
+            "is_uneditable",
+            "meta",
+            "created_by",
+            "deleted_by",
+            "updated_by",
+            "deleted_at",
+            "created_at",
+            "updated_at"
+        ],
+        "club_integrations": [
+            "id",
+            "club_id",
+            "platform",
+            "status",
+            "store_identifier",
+            "access_token",
+            "webhook_secret",
+            "public_api_key",
+            "settings",
+            "last_sync_at",
+            "last_error",
+            "last_error_at",
+            "deleted_at",
+            "created_at",
+            "updated_at"
+        ],
+        "members": [
+            "id",
+            "affiliate_id",
+            "role",
+            "member_number",
+            "unique_identifier",
+            "device_code",
+            "device_uuid",
+            "first_interaction_at",
+            "display_name",
+            "name",
+            "email",
+            "email_verified_at",
+            "password",
+            "remember_token",
+            "birthday",
+            "gender",
+            "two_factor_enabled",
+            "two_factor_secret",
+            "two_factor_recovery_codes",
+            "account_expires_at",
+            "premium_expires_at",
+            "locale",
+            "country_code",
+            "currency",
+            "time_zone",
+            "phone_prefix",
+            "phone_country",
+            "phone",
+            "phone_e164",
+            "is_active",
+            "is_vip",
+            "is_363_founder",
+            "founder_number",
+            "founder_source",
+            "radio_cigars_claimed_at",
+            "xp",
+            "xp_level",
+            "xp_streak_days",
+            "xp_last_checkin",
+            "accepts_emails",
+            "accepts_text_messages",
+            "is_undeletable",
+            "is_uneditable",
+            "number_of_times_logged_in",
+            "last_login_at",
+            "number_of_emails_received",
+            "number_of_text_messages_received",
+            "number_of_reviews_written",
+            "number_of_ratings_given",
+            "meta",
+            "created_by",
+            "deleted_by",
+            "updated_by",
+            "deleted_at",
+            "created_at",
+            "updated_at"
+        ],
+        "member_badges": [
+            "id",
+            "member_id",
+            "badge_key",
+            "earned_at",
+            "created_at",
+            "updated_at"
+        ],
+        "member_referral_codes": [
+            "id",
+            "referral_setting_id",
+            "member_id",
+            "code",
+            "referral_count",
+            "successful_count",
+            "points_earned",
+            "created_at",
+            "updated_at"
+        ],
+        "member_tiers": [
+            "id",
+            "member_id",
+            "tier_id",
+            "club_id",
+            "achieved_at",
+            "expires_at",
+            "qualifying_points",
+            "qualifying_spend",
+            "qualifying_transactions",
+            "previous_tier_id",
+            "is_active",
+            "meta",
+            "created_at",
+            "updated_at"
+        ],
+        "member_voucher": [
+            "member_id",
+            "voucher_id",
+            "claimed_via",
+            "created_at",
+            "updated_at"
+        ],
+        "scratch_cards": [
+            "id",
+            "scratch_game_id",
+            "member_id",
+            "partner_id",
+            "issued_by_staff_id",
+            "is_played",
+            "is_winner",
+            "played_at",
+            "identifier",
+            "created_at",
+            "updated_at"
+        ],
+        "scratch_games": [
+            "id",
+            "partner_id",
+            "name",
+            "description",
+            "cover_image",
+            "win_image",
+            "loss_image",
+            "win_rate",
+            "is_active",
+            "created_at",
+            "updated_at",
+            "deleted_at"
+        ],
+        "stamp_card_member": [
+            "id",
+            "stamp_card_id",
+            "member_id",
+            "current_stamps",
+            "lifetime_stamps",
+            "completed_count",
+            "redeemed_count",
+            "pending_rewards",
+            "enrolled_at",
+            "last_stamp_at",
+            "last_completed_at",
+            "last_redeemed_at",
+            "next_stamp_expires_at",
+            "is_active",
+            "meta",
+            "created_at",
+            "updated_at"
+        ]
+    },
+    "game": {
+        "id": "1fefb288-a8cc-46d4-a4a3-04fe56f91329",
+        "partner_id": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+        "name": "09 \u2014 Mystery Bonus Scratch & Win",
+        "description": "MYSTERY BONUS: a qualifying participating-business visit can unlock one digital scratch opportunity. The prize pool can contain merchant perks, bonus points or discounts according to the configured win rate and inventory. Scratch rewards are an engagement layer only and never affect the real treasure or official Hunt odds.",
+        "cover_image": "/files/demo/treasure-hunt/scratch/cover.webp",
+        "win_image": "/files/demo/treasure-hunt/scratch/winner.webp",
+        "loss_image": "/files/demo/treasure-hunt/scratch/loser.webp",
+        "win_rate": 25,
+        "is_active": 1,
+        "created_at": "2026-09-07 00:11:48",
+        "updated_at": "2026-09-07 02:42:28",
+        "deleted_at": null
+    }
+}
