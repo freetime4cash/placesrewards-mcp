@@ -39,6 +39,7 @@ try {
     $result['card_controller_source']=is_file($controller)?$clip((string)file_get_contents($controller),40000):null;
 
     $matches=[];
+    $named=[];
     $root=$appRoot.'/resources/views';
     if(is_dir($root)){
         $it=new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root,FilesystemIterator::SKIP_DOTS));
@@ -46,16 +47,21 @@ try {
             if(!$file->isFile()) continue;
             $path=$file->getPathname();
             if(!str_ends_with($path,'.php')) continue;
+            $rel=str_replace($appRoot.'/','',$path);
             $src=(string)@file_get_contents($path);
             $needles=['$card->description','$card->title','$card->head','card.description','card.title','card.head','showCard'];
             $hit=false; foreach($needles as $needle){ if(str_contains($src,$needle)){ $hit=true; break; } }
-            if(!$hit) continue;
-            $rel=str_replace($appRoot.'/','',$path);
-            $matches[$rel]=$clip($src,20000);
-            if(count($matches)>=20) break;
+            if($hit && count($matches)<20) $matches[$rel]=$clip($src,20000);
+
+            $base=strtolower(basename($path));
+            $relLower=strtolower($rel);
+            $interesting=(str_contains($base,'card') || str_contains($base,'stamp') || str_contains($base,'voucher') || str_contains($base,'scratch') || str_contains($base,'reward'))
+                && (str_contains($relLower,'member') || str_contains($relLower,'components/member'));
+            if($interesting && count($named)<30) $named[$rel]=$clip($src,12000);
         }
     }
     $result['candidate_views']=$matches;
+    $result['named_native_views']=$named;
 
     $result['expected_markers']=[
       'hunter_passport'=>'Northeast Ohio Treasure Hunt Hunter Passport',
