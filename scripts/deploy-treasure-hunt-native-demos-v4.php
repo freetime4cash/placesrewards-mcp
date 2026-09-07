@@ -84,6 +84,14 @@ if(is_file($runtimeScript)){
     $runtimeInspection=$runtimeExit===0?'completed':'failed';
 }
 
+$destinationInspection='not_run';
+$destinationScript=$agentRoot.'/scripts/inspect-treasure-hunt-native-destinations.php';
+if(is_file($destinationScript)){
+    $command=escapeshellarg(PHP_BINARY).' '.escapeshellarg($destinationScript);
+    passthru($command,$destinationExit);
+    $destinationInspection=$destinationExit===0?'completed':'failed';
+}
+
 $middlewareInspection='not_run';
 $middlewareScript=$agentRoot.'/scripts/inspect-web-middleware.php';
 if(is_file($middlewareScript)){
@@ -114,9 +122,10 @@ $result=[
   'native_card_content'=>$nativeContentStatus,
   'native_card_visuals'=>$nativeVisualStatus,
   'runtime_inspection'=>$runtimeInspection,
+  'destination_inspection'=>$destinationInspection,
   'middleware_inspection'=>$middlewareInspection,
   'deployed_at'=>now()->toIso8601String(),
 ];
 @mkdir(dirname($resultPath),0755,true);
 file_put_contents($resultPath,json_encode($result,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES),LOCK_EX);
-echo json_encode(['status'=>'completed','module_count'=>12,'locale_demo_bypass'=>$localeBypassStatus,'native_card_content'=>$nativeContentStatus,'native_card_visuals'=>$nativeVisualStatus,'runtime_inspection'=>$runtimeInspection,'workflow_url'=>$result['workflow_url']]),"\n";
+echo json_encode(['status'=>'completed','module_count'=>12,'locale_demo_bypass'=>$localeBypassStatus,'native_card_content'=>$nativeContentStatus,'native_card_visuals'=>$nativeVisualStatus,'runtime_inspection'=>$runtimeInspection,'destination_inspection'=>$destinationInspection,'workflow_url'=>$result['workflow_url']]),"\n";
