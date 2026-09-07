@@ -24,6 +24,20 @@ if ($exitCode === 0) {
         @mkdir(dirname($moduleViewTarget), 0755, true);
         copy($moduleViewSource, $moduleViewTarget);
     }
+
+    foreach (['northeast-ohio-tom-v2-result.json','northeast-ohio-tom-v2-links.json'] as $resultFile) {
+        $path = $agentRoot.'/results/campaigns/'.$resultFile;
+        if (!is_file($path)) continue;
+        $payload = json_decode((string) file_get_contents($path), true);
+        if (!is_array($payload)) continue;
+        $payload['workflow_version'] = 4;
+        foreach (($payload['modules'] ?? []) as $i => $module) {
+            $sequence = (int)($module['sequence'] ?? 0);
+            if ($sequence < 1 || $sequence > 12) continue;
+            $payload['modules'][$i]['module_url'] = 'https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom/module/'.str_pad((string)$sequence, 2, '0', STR_PAD_LEFT);
+        }
+        file_put_contents($path, json_encode($payload, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES), LOCK_EX);
+    }
 }
 
 // Only retire the old public Northeast Ohio demo cards after the new 01–12
