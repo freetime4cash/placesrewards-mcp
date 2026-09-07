@@ -21,7 +21,7 @@ $links=[
 12=>['page'=>"$base/demo/treasure-hunt/analytics",'actual'=>"$base/en-us/partner/loyalty-card-analytics/card/$card"],
 ];
 function getUrl(string $url,bool $follow=true): array{
- $ch=curl_init($url);curl_setopt_array($ch,[CURLOPT_RETURNTRANSFER=>true,CURLOPT_FOLLOWLOCATION=>$follow,CURLOPT_TIMEOUT=>20,CURLOPT_CONNECTTIMEOUT=>8,CURLOPT_USERAGENT=>'PlacesRewards-Link-Audit/3.0',CURLOPT_COOKIEFILE=>'']);$body=(string)curl_exec($ch);$status=(int)curl_getinfo($ch,CURLINFO_RESPONSE_CODE);$effective=(string)curl_getinfo($ch,CURLINFO_EFFECTIVE_URL);$redirect=(string)curl_getinfo($ch,CURLINFO_REDIRECT_URL);$error=(string)curl_error($ch);curl_close($ch);return compact('body','status','effective','redirect','error');
+ $ch=curl_init($url);curl_setopt_array($ch,[CURLOPT_RETURNTRANSFER=>true,CURLOPT_FOLLOWLOCATION=>$follow,CURLOPT_TIMEOUT=>20,CURLOPT_CONNECTTIMEOUT=>8,CURLOPT_USERAGENT=>'PlacesRewards-Link-Audit/3.1',CURLOPT_COOKIEFILE=>'']);$body=(string)curl_exec($ch);$status=(int)curl_getinfo($ch,CURLINFO_RESPONSE_CODE);$effective=(string)curl_getinfo($ch,CURLINFO_EFFECTIVE_URL);$redirect=(string)curl_getinfo($ch,CURLINFO_REDIRECT_URL);$error=(string)curl_error($ch);curl_close($ch);return compact('body','status','effective','redirect','error');
 }
 $index=getUrl("$base/demo/treasure-hunt");$result=['status'=>'running','verified_at'=>gmdate('c'),'index'=>[],'modules'=>[]];$all=$index['status']===200;$indexMissing=[];
 foreach($links as $seq=>$item){if(stripos($index['body'],$item['actual'])===false)$indexMissing[]=$seq;}
@@ -30,7 +30,8 @@ foreach($links as $seq=>$item){
  $page=getUrl($item['page']);$present=stripos($page['body'],$item['actual'])!==false;
  if($seq===9){
    $probe=getUrl($item['actual'],true);
-   $nativeScratch=(bool)preg_match('#/en-us/scratch-cards/[0-9a-f-]{36}$#i,parse_url($probe['effective'],PHP_URL_PATH)??'');
+   $scratchPath=parse_url($probe['effective'],PHP_URL_PATH);
+   $nativeScratch=is_string($scratchPath) && preg_match('#/en-us/scratch-cards/[0-9a-f-]{36}$#i',$scratchPath)===1;
    $valid=$probe['status']===200&&$nativeScratch&&stripos($probe['body'],'scratch')!==false;
  }else{
    $probe=getUrl($item['actual'],false);
@@ -38,6 +39,6 @@ foreach($links as $seq=>$item){
    $valid=in_array($probe['status'],[200,301,302,303,307,308],true);
  }
  $passed=$page['status']===200&&$present&&$valid;
- $result['modules'][]=['sequence'=>$seq,'page'=>$item['page'],'page_status'=>$page['status'],'actual_url'=>$item['actual'],'actual_link_present'=>$present,'actual_status'=>$probe['status'],'actual_effective_url'=>$probe['effective'],'actual_redirect'=>$probe['redirect']?:null,'native_scratch_destination'=>$nativeScratch,'passed'=>$passed];if(!$passed)$all=false;
+ $result['modules'][]=['sequence'=>$seq,'page'=>$item['page'],'page_status'=>$page['status'],'actual_url'=>$item['actual'],'actual_link_present'=>$present,'actual_status'=>$probe['status'],'actual_effective_url'=>$probe['effective'],'actual_redirect'=>$probe['redirect']?:null,'native_scratch_destination'=>$nativeScratch,'curl_error'=>$probe['error']?:null,'passed'=>$passed];if(!$passed)$all=false;
 }
 $result['status']=$all?'passed':'failed';@mkdir(dirname($out),0755,true);file_put_contents($out,json_encode($result,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES),LOCK_EX);echo json_encode(['status'=>$result['status'],'index'=>$result['index'],'modules'=>$result['modules']]),"\n";exit($all?0:1);
