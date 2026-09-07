@@ -76,6 +76,14 @@ try{Artisan::call('config:clear');}catch(Throwable $e){}
 try{Artisan::call('cache:clear');}catch(Throwable $e){}
 try{Artisan::call('optimize:clear');}catch(Throwable $e){}
 
+$runtimeInspection='not_run';
+$runtimeScript=$agentRoot.'/scripts/inspect-treasure-hunt-live-card-runtime.php';
+if(is_file($runtimeScript)){
+    $command=escapeshellarg(PHP_BINARY).' '.escapeshellarg($runtimeScript);
+    passthru($command,$runtimeExit);
+    $runtimeInspection=$runtimeExit===0?'completed':'failed';
+}
+
 $middlewareInspection='not_run';
 $middlewareScript=$agentRoot.'/scripts/inspect-web-middleware.php';
 if(is_file($middlewareScript)){
@@ -105,9 +113,10 @@ $result=[
   'locale_demo_bypass'=>$localeBypassStatus,
   'native_card_content'=>$nativeContentStatus,
   'native_card_visuals'=>$nativeVisualStatus,
+  'runtime_inspection'=>$runtimeInspection,
   'middleware_inspection'=>$middlewareInspection,
   'deployed_at'=>now()->toIso8601String(),
 ];
 @mkdir(dirname($resultPath),0755,true);
 file_put_contents($resultPath,json_encode($result,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES),LOCK_EX);
-echo json_encode(['status'=>'completed','module_count'=>12,'locale_demo_bypass'=>$localeBypassStatus,'native_card_content'=>$nativeContentStatus,'native_card_visuals'=>$nativeVisualStatus,'workflow_url'=>$result['workflow_url']]),"\n";
+echo json_encode(['status'=>'completed','module_count'=>12,'locale_demo_bypass'=>$localeBypassStatus,'native_card_content'=>$nativeContentStatus,'native_card_visuals'=>$nativeVisualStatus,'runtime_inspection'=>$runtimeInspection,'workflow_url'=>$result['workflow_url']]),"\n";
