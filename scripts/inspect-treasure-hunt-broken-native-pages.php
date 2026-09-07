@@ -18,14 +18,14 @@ $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
 function curlProbe(string $url, bool $follow=true): array {
     $ch=curl_init($url);
-    curl_setopt_array($ch,[CURLOPT_RETURNTRANSFER=>true,CURLOPT_FOLLOWLOCATION=>$follow,CURLOPT_TIMEOUT=>20,CURLOPT_CONNECTTIMEOUT=>8,CURLOPT_USERAGENT=>'PlacesRewards-TreasureHunt-RepairAudit/1.0',CURLOPT_COOKIEFILE=>'']);
+    curl_setopt_array($ch,[CURLOPT_RETURNTRANSFER=>true,CURLOPT_FOLLOWLOCATION=>$follow,CURLOPT_TIMEOUT=>20,CURLOPT_CONNECTTIMEOUT=>8,CURLOPT_USERAGENT=>'PlacesRewards-TreasureHunt-RepairAudit/1.1',CURLOPT_COOKIEFILE=>'']);
     $body=(string)curl_exec($ch);
     $status=(int)curl_getinfo($ch,CURLINFO_RESPONSE_CODE);
     $effective=(string)curl_getinfo($ch,CURLINFO_EFFECTIVE_URL);
     $contentType=(string)curl_getinfo($ch,CURLINFO_CONTENT_TYPE);
     $error=(string)curl_error($ch);
     curl_close($ch);
-    return ['status'=>$status,'effective'=>$effective,'content_type'=>$contentType,'bytes'=>strlen($body),'error'=>$error?:null,'body_excerpt'=>substr(preg_replace('/\s+/',' ',$body),0,12000)];
+    return ['status'=>$status,'effective'=>$effective,'content_type'=>$contentType,'bytes'=>strlen($body),'error'=>$error?:null,'body_excerpt'=>substr((string)preg_replace('/\s+/',' ',$body),0,12000)];
 }
 
 function fileExcerpt(string $path, int $limit=30000): ?string {
@@ -47,8 +47,6 @@ function methodSource(string $action): ?array {
 }
 
 $result=['status'=>'running','generated_at'=>now()->toIso8601String()];
-
-// Route/controller inspection.
 $routes=[];
 foreach(app('router')->getRoutes() as $route){
     $uri=$route->uri();
@@ -58,8 +56,6 @@ foreach(app('router')->getRoutes() as $route){
     }
 }
 $result['routes']=$routes;
-
-// Reward/card DB relationships.
 $result['card']=Schema::hasTable('cards') ? DB::table('cards')->where('id',$cardId)->first() : null;
 $result['rewards']=Schema::hasTable('rewards') ? DB::table('rewards')->whereIn('id',$rewardIds)->get()->all() : [];
 $result['relationship_tables']=[];
@@ -82,56 +78,29 @@ foreach($tables as $t){
         if($rows) $result['relationship_tables'][$table]=['columns'=>$cols,'rows'=>$rows];
     }
 }
-
-// Views likely responsible for reward detail and scratch display.
-$viewCandidates=[
-    'resources/views/member/card/index.blade.php',
-    'resources/views/member/card/show.blade.php',
-    'resources/views/member/card/reward.blade.php',
-    'resources/views/member/reward/show.blade.php',
-    'resources/views/member/rewards/show.blade.php',
-    'resources/views/member/scratch-cards/show.blade.php',
-    'resources/views/components/member/premium-card.blade.php',
-];
+$viewCandidates=['resources/views/member/card/index.blade.php','resources/views/member/card/show.blade.php','resources/views/member/card/reward.blade.php','resources/views/member/reward/show.blade.php','resources/views/member/rewards/show.blade.php','resources/views/member/scratch-cards/show.blade.php','resources/views/components/member/premium-card.blade.php'];
 $result['views']=[];
 foreach($viewCandidates as $relative){$full=$appRoot.'/'.$relative;if(is_file($full))$result['views'][$relative]=fileExcerpt($full);}
-
-// Broader file discovery around reward and scratch views.
 $result['view_files']=[];
 $rii=new RecursiveIteratorIterator(new RecursiveDirectoryIterator($appRoot.'/resources/views',FilesystemIterator::SKIP_DOTS));
 foreach($rii as $file){
     if(!$file->isFile() || !str_ends_with($file->getFilename(),'.blade.php')) continue;
-    $rel=str_replace($appRoot.'/','',$file->getPathname());
-    $low=strtolower($rel);
+    $rel=str_replace($appRoot.'/','',$file->getPathname());$low=strtolower($rel);
     if(str_contains($low,'reward') || str_contains($low,'scratch')) $result['view_files'][]=$rel;
 }
-
-// Live probes for the two broken reward pages.
 $base='https://app.placesrewards.com';
 $result['live_pages']=[];
-foreach($rewardIds as $rid){
-    $url="$base/en-us/card/$cardId/$rid";
-    $result['live_pages'][$rid]=curlProbe($url,true);
-}
-
-// Scratch game and assets.
+foreach($rewardIds as $rid){$url="$base/en-us/card/$cardId/$rid";$result['live_pages'][$rid]=curlProbe($url,true);}
 $result['scratch_game']=Schema::hasTable('scratch_games') ? DB::table('scratch_games')->where('id',$scratchGameId)->first() : null;
 $result['scratch_assets']=[];
 foreach(['cover'=>'cover.webp','winner'=>'winner.webp','loser'=>'loser.webp'] as $key=>$file){
-    $path=$appRoot.'/public/files/demo/treasure-hunt/scratch/'.$file;
-    $info=is_file($path)?@getimagesize($path):false;
-    $url="$base/files/demo/treasure-hunt/scratch/$file";
-    $result['scratch_assets'][$key]=[
-        'path'=>$path,'exists'=>is_file($path),'bytes'=>is_file($path)?filesize($path):0,
-        'mime'=>$info['mime']??null,'width'=>$info[0]??null,'height'=>$info[1]??null,
-        'url'=>$url,'probe'=>curlProbe($url,true),
-    ];
+    $path=$appRoot.'/public/files/demo/treasure-hunt/scratch/'.$file;$info=is_file($path)?@getimagesize($path):false;$url="$base/files/demo/treasure-hunt/scratch/$file";
+    $result['scratch_assets'][$key]=['path'=>$path,'exists'=>is_file($path),'bytes'=>is_file($path)?filesize($path):0,'mime'=>$info['mime']??null,'width'=>$info[0]??null,'height'=>$info[1]??null,'url'=>$url,'probe'=>curlProbe($url,true)];
 }
-
-// Probe a real native scratch instance through the bridge so its rendered HTML can be inspected.
 $result['scratch_bridge']=curlProbe("$base/demo/treasure-hunt/scratch/play",true);
-
 $result['status']='completed';
 @mkdir(dirname($out),0755,true);
-file_put_contents($out,json_encode($result,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE),LOCK_EX);
-echo json_encode(['status'=>'completed','routes'=>count($routes),'reward_pages'=>count($result['live_pages'])]),"\n";
+$json=json_encode($result,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_INVALID_UTF8_SUBSTITUTE|JSON_PARTIAL_OUTPUT_ON_ERROR);
+if($json===false){$json=json_encode(['status'=>'failed','json_error'=>json_last_error_msg()]);}
+file_put_contents($out,(string)$json,LOCK_EX);
+echo json_encode(['status'=>'completed','routes'=>count($routes),'reward_pages'=>count($result['live_pages']),'json_error'=>json_last_error_msg()]),"\n";
