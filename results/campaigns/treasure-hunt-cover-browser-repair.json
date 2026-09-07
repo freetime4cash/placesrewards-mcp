@@ -1,0 +1,14 @@
+{
+    "status": "failed",
+    "started_at": "2026-09-07T17:42:10+00:00",
+    "attempts": [
+        {
+            "tool": "convert",
+            "exit": 1,
+            "output": "convert: InsufficientImageDataInFile `/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/cover.webp' @ error/webp.c/ReadWEBPImage/601.\nconvert: NoImagesDefined `/home/placevle/app.placesrewards.com/storage/app/public/treasure-hunt/scratch/cover.webp' @ error/convert.c/ConvertImageCommand/3234."
+        }
+    ],
+    "verified": false,
+    "error": "No available decoder could rebuild the cover WebP",
+    "completed_at": "2026-09-07T17:42:10+00:00"
+}
