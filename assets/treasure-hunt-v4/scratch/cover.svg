@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07162F"/>
+      <stop offset="0.55" stop-color="#123E54"/>
+      <stop offset="1" stop-color="#0F9D67"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0" stop-color="#F6C453" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#F6C453" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#glow)"/>
+  <path d="M115 690 C260 560 360 650 485 525 S760 420 865 505 S1015 450 1090 330" fill="none" stroke="#F6C453" stroke-width="10" stroke-linecap="round" stroke-dasharray="20 22" opacity="0.82"/>
+  <circle cx="114" cy="690" r="24" fill="#F6C453"/>
+  <circle cx="1088" cy="330" r="28" fill="#F6C453"/>
+  <g transform="translate(910 160)">
+    <path d="M75 0C34 0 0 34 0 75c0 57 75 145 75 145s75-88 75-145C150 34 116 0 75 0z" fill="#F6C453"/>
+    <circle cx="75" cy="75" r="33" fill="#07162F"/>
+    <path d="M75 47l9 19 21 3-15 15 4 21-19-10-19 10 4-21-15-15 21-3z" fill="#FFFFFF"/>
+  </g>
+  <g transform="translate(150 130)">
+    <rect x="0" y="0" width="710" height="515" rx="48" fill="#FFFFFF" fill-opacity="0.97"/>
+    <text x="62" y="88" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#0F9D67" letter-spacing="3">NORTHEAST OHIO TREASURE HUNT</text>
+    <text x="62" y="190" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="900" fill="#07162F">MYSTERY BONUS</text>
+    <text x="62" y="275" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="900" fill="#07162F">SCRATCH &amp; WIN</text>
+    <rect x="62" y="322" width="575" height="4" rx="2" fill="#E6EAF0"/>
+    <text x="62" y="382" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="#2E4963">Complete a qualifying merchant visit.</text>
+    <text x="62" y="430" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="#2E4963">Then scratch for a local bonus reward.</text>
+    <rect x="62" y="462" width="330" height="72" rx="36" fill="#0F9D67"/>
+    <text x="227" y="509" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#FFFFFF">SCRATCH TO REVEAL</text>
+  </g>
+  <text x="600" y="835" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" fill="#FFFFFF" opacity="0.92">PLACES REWARDS • LOCAL VISIT BONUS • SEPARATE FROM THE GRAND TREASURE</text>
+</svg>
