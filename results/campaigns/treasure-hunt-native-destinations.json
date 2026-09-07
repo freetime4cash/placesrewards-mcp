@@ -1,0 +1,2807 @@
+{
+    "status": "completed",
+    "generated_at": "2026-09-07T02:27:00+00:00",
+    "ids": {
+        "card": "95cbd0bf-8bbb-436d-b7c6-a2e1e558db25",
+        "explorer_stamp": "a9566430-b6b0-434d-ae3c-f3ba85421c5f",
+        "checkin_stamp": "5738988e-265f-422f-9b41-5828790af3c0",
+        "clue_reward": "29304849-3c10-4a06-8f8f-4bad776b79f9",
+        "prize_reward": "13085fc2-2a5d-43ee-92b5-441bc368c55b",
+        "vip_tier": "8744df20-c34b-484c-9f8f-15140f8fc542",
+        "scratch": "1fefb288-a8cc-46d4-a4a3-04fe56f91329",
+        "voucher": "14788f52-438e-4293-bd6b-c82b8e448983",
+        "retention_campaign": "b1ea6974-d61c-41d4-a1ce-0c0a27ffa5bd",
+        "club": "01a000ce-0595-7254-8141-7411cd036ba4"
+    },
+    "routes": [
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/partner/clubs",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentClubController@index",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:partner",
+                "agent.partner_enabled"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/partner/clubs/{id}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentClubController@show",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:partner",
+                "agent.partner_enabled"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/partner/cards",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentCardController@index",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:partner",
+                "agent.partner_enabled"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/partner/cards/{id}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentCardController@show",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:partner",
+                "agent.partner_enabled"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/partner/rewards",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentRewardController@index",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:partner",
+                "agent.partner_enabled"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/partner/rewards/{id}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentRewardController@show",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:partner",
+                "agent.partner_enabled"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/partner/members",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentMemberController@index",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:partner",
+                "agent.partner_enabled"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/partner/members/{id}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentMemberController@show",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:partner",
+                "agent.partner_enabled"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/partner/members/{id}/balance/{cardId}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentMemberController@balance",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:partner",
+                "agent.partner_enabled"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/partner/stamp-cards",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentStampCardController@index",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:partner",
+                "agent.partner_enabled"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/partner/stamp-cards/{id}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentStampCardController@show",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:partner",
+                "agent.partner_enabled"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/partner/vouchers",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentVoucherController@index",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:partner",
+                "agent.partner_enabled"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/partner/vouchers/{id}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentVoucherController@show",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:partner",
+                "agent.partner_enabled"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/partner/tiers",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentTierController@index",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:partner",
+                "agent.partner_enabled"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/partner/tiers/{id}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Partner\\AgentTierController@show",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:partner",
+                "agent.partner_enabled"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/admin/partners/{partnerId}/clubs",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Admin\\AgentAdminClubController@index",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:admin"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/admin/members",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Admin\\AgentAdminMemberController@index",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:admin"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/admin/members/{id}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Admin\\AgentAdminMemberController@show",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:admin"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/admin/analytics/overview",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Admin\\AgentAnalyticsController@overview",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:admin"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/admin/analytics/partners/{id}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Admin\\AgentAnalyticsController@partnerMetrics",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:admin"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/member/profile",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Member\\AgentProfileController@show",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:member"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/member/balance",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Member\\AgentBalanceController@balance",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:member"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/member/cards",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Member\\AgentBalanceController@cards",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:member"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/member/cards/{id}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Member\\AgentBalanceController@show",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:member"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/member/transactions",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Member\\AgentBalanceController@transactions",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:member"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/member/transactions/{cardId}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Member\\AgentBalanceController@cardTransactions",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:member"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/member/rewards",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Member\\AgentMemberRewardController@index",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:member"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/agent/v1/member/discover",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\Agent\\Member\\AgentDiscoverController@index",
+            "middleware": [
+                "api",
+                "agent.auth",
+                "agent.rate",
+                "agent.locale",
+                "agent.log",
+                "agent.role:member"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/partner/clubs",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\PartnerClubController@getClubs",
+            "middleware": [
+                "api",
+                "auth:partner_api",
+                "partner.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/partner/clubs/{clubId}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\PartnerClubController@getClub",
+            "middleware": [
+                "api",
+                "auth:partner_api",
+                "partner.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/partner/cards",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\PartnerCardController@getCards",
+            "middleware": [
+                "api",
+                "auth:partner_api",
+                "partner.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/partner/cards/{cardId}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\PartnerCardController@getCard",
+            "middleware": [
+                "api",
+                "auth:partner_api",
+                "partner.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/partner/staff/{staffId}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\PartnerStaffController@getStaffMember",
+            "middleware": [
+                "api",
+                "auth:partner_api",
+                "partner.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/partner/members",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\PartnerMemberController@getMembers",
+            "middleware": [
+                "api",
+                "auth:partner_api",
+                "partner.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/partner/members/{memberId}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\PartnerMemberController@getMember",
+            "middleware": [
+                "api",
+                "auth:partner_api",
+                "partner.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/partner/stamp-cards",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\PartnerStampCardController@getStampCards",
+            "middleware": [
+                "api",
+                "auth:partner_api",
+                "partner.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/partner/stamp-cards/{stampCardId}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\PartnerStampCardController@getStampCard",
+            "middleware": [
+                "api",
+                "auth:partner_api",
+                "partner.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/partner/vouchers",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\PartnerVoucherController@getVouchers",
+            "middleware": [
+                "api",
+                "auth:partner_api",
+                "partner.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/partner/vouchers/{voucherId}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\PartnerVoucherController@getVoucher",
+            "middleware": [
+                "api",
+                "auth:partner_api",
+                "partner.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/partner/rewards",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\PartnerRewardController@getRewards",
+            "middleware": [
+                "api",
+                "auth:partner_api",
+                "partner.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/partner/rewards/{rewardId}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\PartnerRewardController@getReward",
+            "middleware": [
+                "api",
+                "auth:partner_api",
+                "partner.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/member/session",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\AnonymousMemberController@session",
+            "middleware": [
+                "api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/member",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\MemberAuthController@getMember",
+            "middleware": [
+                "api",
+                "auth:member_api",
+                "member.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/member/all-cards",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\MemberCardController@getAllCards",
+            "middleware": [
+                "api",
+                "auth:member_api",
+                "member.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/member/followed-cards",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\MemberCardController@getFollowedCards",
+            "middleware": [
+                "api",
+                "auth:member_api",
+                "member.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/member/transacted-cards",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\MemberCardController@getTransactedCards",
+            "middleware": [
+                "api",
+                "auth:member_api",
+                "member.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/member/balance/{cardId}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\MemberCardController@getMemberBalance",
+            "middleware": [
+                "api",
+                "auth:member_api",
+                "member.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/member/stamp-cards",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Member\\StampCardController@apiIndex",
+            "middleware": [
+                "api",
+                "auth:member_api",
+                "member.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/member/stamp-cards/{id}/history",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Member\\StampCardController@apiHistory",
+            "middleware": [
+                "api",
+                "auth:member_api",
+                "member.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/member/my-stamp-cards",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\MemberStampCardController@getMyStampCards",
+            "middleware": [
+                "api",
+                "auth:member_api",
+                "member.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/member/my-vouchers",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\MemberVoucherController@getMyVouchers",
+            "middleware": [
+                "api",
+                "auth:member_api",
+                "member.auth.api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "api/{locale}/v1/staff/member/{identifier}",
+            "name": null,
+            "action": "App\\Http\\Controllers\\Api\\StaffController@findMember",
+            "middleware": [
+                "api",
+                "auth:staff_api"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "r/{code}",
+            "name": "referral.redirect",
+            "action": "App\\Http\\Controllers\\ReferralLandingController@redirect",
+            "middleware": [
+                "web"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "demo/treasure-hunt/stamps",
+            "name": "demo.treasure-hunt.stamps",
+            "action": "App\\Http\\Controllers\\Demo\\TreasureHuntDemoController@stamps",
+            "middleware": [
+                "web"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "demo/treasure-hunt/voucher",
+            "name": "demo.treasure-hunt.voucher",
+            "action": "App\\Http\\Controllers\\Demo\\TreasureHuntDemoController@voucher",
+            "middleware": [
+                "web"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "demo/treasure-hunt/referrals",
+            "name": "demo.treasure-hunt.referrals",
+            "action": "App\\Http\\Controllers\\Demo\\TreasureHuntDemoController@referrals",
+            "middleware": [
+                "web"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "demo/treasure-hunt/scratch",
+            "name": "demo.treasure-hunt.scratch",
+            "action": "App\\Http\\Controllers\\Demo\\TreasureHuntDemoController@scratch",
+            "middleware": [
+                "web"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "demo/treasure-hunt/directory",
+            "name": "demo.treasure-hunt.directory",
+            "action": "App\\Http\\Controllers\\Demo\\TreasureHuntDemoController@directory",
+            "middleware": [
+                "web"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD",
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE",
+                "OPTIONS"
+            ],
+            "uri": "demo/scratch-win",
+            "name": null,
+            "action": "\\Illuminate\\Routing\\RedirectController",
+            "middleware": [
+                "web"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/email/unsubscribe/{member}",
+            "name": "email.unsubscribe",
+            "action": "App\\Http\\Controllers\\EmailUnsubscribeController@unsubscribe",
+            "middleware": [
+                "web",
+                "signed"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/my-cards",
+            "name": "member.cards",
+            "action": "App\\Http\\Controllers\\Member\\PageController@dashboard",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/card/{card_id}/{reward_id}/claim",
+            "name": "member.card.reward.claim",
+            "action": "App\\Http\\Controllers\\Member\\CardController@showClaimReward",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/enter-code",
+            "name": "member.code.enter",
+            "action": "App\\Http\\Controllers\\Member\\CodeController@showRedeemCode",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/referrals",
+            "name": "member.referrals",
+            "action": "App\\Http\\Controllers\\Member\\ReferralController@index",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/request-points/generate/{card_identifier?}",
+            "name": "member.request.points.generate",
+            "action": "App\\Http\\Controllers\\Member\\PointRequestController@showGenerateRequest",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/manage/{name}",
+            "name": "member.data.list",
+            "action": "App\\Http\\Controllers\\Data\\ListController@showList",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/manage/{name}/suggest",
+            "name": "member.data.suggest",
+            "action": "App\\Http\\Controllers\\Data\\ListController@suggest",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/manage/export/{name}",
+            "name": "member.data.export",
+            "action": "App\\Http\\Controllers\\Data\\ExportController@exportList",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/manage/{name}/view/{id}",
+            "name": "member.data.view",
+            "action": "App\\Http\\Controllers\\Data\\ViewController@showViewItem",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/manage/{name}/insert",
+            "name": "member.data.insert",
+            "action": "App\\Http\\Controllers\\Data\\InsertController@showInsertItem",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/manage/{name}/edit/{id}",
+            "name": "member.data.edit",
+            "action": "App\\Http\\Controllers\\Data\\EditController@showEditItem",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/manage/{name}/impersonate/{guard}/{id}",
+            "name": "member.data.impersonate",
+            "action": "App\\Http\\Controllers\\Data\\AuthController@impersonate",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/r/{code}",
+            "name": "referral.landing",
+            "action": "App\\Http\\Controllers\\ReferralLandingController@show",
+            "middleware": [
+                "web",
+                "installed"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}",
+            "name": "member.index",
+            "action": "App\\Http\\Controllers\\Member\\PageController@index",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/card/{card_id}",
+            "name": "member.card",
+            "action": "App\\Http\\Controllers\\Member\\CardController@showCard",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/card/{card_id}/{reward_id}",
+            "name": "member.card.reward",
+            "action": "App\\Http\\Controllers\\Member\\CardController@showReward",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/follow/{card_id}",
+            "name": "member.card.follow",
+            "action": "App\\Http\\Controllers\\Member\\CardController@follow",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/unfollow/{card_id}",
+            "name": "member.card.unfollow",
+            "action": "App\\Http\\Controllers\\Member\\CardController@unfollow",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/stamp-card/{stamp_card_id}",
+            "name": "member.stamp-card",
+            "action": "App\\Http\\Controllers\\Member\\StampCardController@show",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/stamp-card/{stamp_card_id}/enroll",
+            "name": "member.stamp-card.enroll",
+            "action": "App\\Http\\Controllers\\Member\\StampCardController@enroll",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/stamp-card/{stamp_card_id}/unenroll",
+            "name": "member.stamp-card.unenroll",
+            "action": "App\\Http\\Controllers\\Member\\StampCardController@unenroll",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/voucher/{voucher_id}",
+            "name": "member.voucher",
+            "action": "App\\Http\\Controllers\\Member\\VoucherController@show",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/voucher/{voucher_id}/save",
+            "name": "member.voucher.save",
+            "action": "App\\Http\\Controllers\\Member\\VoucherController@save",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/voucher/{voucher_id}/unsave",
+            "name": "member.voucher.unsave",
+            "action": "App\\Http\\Controllers\\Member\\VoucherController@unsave",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/claim-voucher/{batchId}/{token}",
+            "name": "member.vouchers.claim",
+            "action": "App\\Http\\Controllers\\Member\\VoucherClaimController@show",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/request-points/{request_identifier}",
+            "name": "member.request.points.send",
+            "action": "App\\Http\\Controllers\\Member\\PointRequestController@showSendPoints",
+            "middleware": [
+                "web",
+                "installed",
+                "member.auth.auto"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/about",
+            "name": "member.about",
+            "action": "App\\Http\\Controllers\\Member\\PageController@about",
+            "middleware": [
+                "web",
+                "installed"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/contact",
+            "name": "member.contact",
+            "action": "App\\Http\\Controllers\\Member\\PageController@contact",
+            "middleware": [
+                "web",
+                "installed"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/faq",
+            "name": "member.faq",
+            "action": "App\\Http\\Controllers\\Member\\PageController@faq",
+            "middleware": [
+                "web",
+                "installed"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/terms",
+            "name": "member.terms",
+            "action": "App\\Http\\Controllers\\Member\\PageController@terms",
+            "middleware": [
+                "web",
+                "installed"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/privacy",
+            "name": "member.privacy",
+            "action": "App\\Http\\Controllers\\Member\\PageController@privacy",
+            "middleware": [
+                "web",
+                "installed"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/login",
+            "name": "member.login",
+            "action": "App\\Http\\Controllers\\Member\\AuthController@login",
+            "middleware": [
+                "web",
+                "installed",
+                "guest:member"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/login/otp/verify",
+            "name": "member.login.otp.verify",
+            "action": "App\\Http\\Controllers\\Member\\OtpController@showOtpVerify",
+            "middleware": [
+                "web",
+                "installed",
+                "guest:member"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/register",
+            "name": "member.register",
+            "action": "App\\Http\\Controllers\\Member\\AuthController@register",
+            "middleware": [
+                "web",
+                "installed",
+                "guest:member"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/register/verify",
+            "name": "member.register.otp.verify",
+            "action": "App\\Http\\Controllers\\Member\\OtpController@showRegisterVerify",
+            "middleware": [
+                "web",
+                "installed",
+                "guest:member"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/password",
+            "name": "member.forgot_password",
+            "action": "App\\Http\\Controllers\\Member\\AuthController@forgotPassword",
+            "middleware": [
+                "web",
+                "installed",
+                "guest:member"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/reset-password",
+            "name": "member.reset_password",
+            "action": "App\\Http\\Controllers\\Member\\AuthController@resetPassword",
+            "middleware": [
+                "web",
+                "installed",
+                "guest:member",
+                "signed"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/login-link",
+            "name": "member.login.link",
+            "action": "App\\Http\\Controllers\\Member\\AuthController@loginLink",
+            "middleware": [
+                "web",
+                "installed",
+                "guest:member",
+                "signed"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/logout",
+            "name": "member.logout",
+            "action": "App\\Http\\Controllers\\Member\\AuthController@logout",
+            "middleware": [
+                "web",
+                "installed"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/staff/api/search-members",
+            "name": "staff.api.search-members",
+            "action": "App\\Http\\Controllers\\Staff\\PageController@searchMembers",
+            "middleware": [
+                "web",
+                "installed",
+                "staff.auth",
+                "staff.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/staff/stamps/{member_identifier}/{stamp_card_id}",
+            "name": "staff.stamp.transactions",
+            "action": "App\\Http\\Controllers\\Staff\\StampController@showStampTransactions",
+            "middleware": [
+                "web",
+                "installed",
+                "staff.auth",
+                "staff.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/staff/stamps/add/{member_identifier}/{stamp_card_id}",
+            "name": "staff.stamps.add.show",
+            "action": "App\\Http\\Controllers\\Staff\\StampController@showAddStamps",
+            "middleware": [
+                "web",
+                "installed",
+                "staff.auth",
+                "staff.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/staff/stamps/claim/{member_identifier}/{stamp_card_id}",
+            "name": "staff.stamps.claim.show",
+            "action": "App\\Http\\Controllers\\Staff\\StampController@showClaimReward",
+            "middleware": [
+                "web",
+                "installed",
+                "staff.auth",
+                "staff.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/staff/stamps/member/{identifier}",
+            "name": "staff.stamps.member",
+            "action": "App\\Http\\Controllers\\Staff\\StampController@getMemberStatus",
+            "middleware": [
+                "web",
+                "installed",
+                "staff.auth",
+                "staff.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/staff/vouchers/history/{member_identifier}/{voucher_id}",
+            "name": "staff.voucher.transactions",
+            "action": "App\\Http\\Controllers\\Staff\\VoucherController@showMemberTransactions",
+            "middleware": [
+                "web",
+                "installed",
+                "staff.auth",
+                "staff.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/staff/vouchers/redeem/{member_identifier?}",
+            "name": "staff.vouchers.redeem",
+            "action": "App\\Http\\Controllers\\Staff\\VoucherController@showRedeemForm",
+            "middleware": [
+                "web",
+                "installed",
+                "staff.auth",
+                "staff.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/staff/vouchers/redeem/{member_identifier}/{voucher_id}",
+            "name": "staff.vouchers.redeem.show",
+            "action": "App\\Http\\Controllers\\Staff\\VoucherController@showRedeemWithVoucher",
+            "middleware": [
+                "web",
+                "installed",
+                "staff.auth",
+                "staff.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/staff/generate-code/{card_identifier}",
+            "name": "staff.code.generate",
+            "action": "App\\Http\\Controllers\\Staff\\CodeController@showGenerateCode",
+            "middleware": [
+                "web",
+                "installed",
+                "staff.auth",
+                "staff.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/staff/earn/{member_identifier}/{card_identifier}",
+            "name": "staff.earn.points",
+            "action": "App\\Http\\Controllers\\Staff\\EarnController@showEarnPoints",
+            "middleware": [
+                "web",
+                "installed",
+                "staff.auth",
+                "staff.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/staff/claim/{member_identifier}/{card_id}/{reward_id}",
+            "name": "staff.claim.reward",
+            "action": "App\\Http\\Controllers\\Staff\\RewardController@showClaimReward",
+            "middleware": [
+                "web",
+                "installed",
+                "staff.auth",
+                "staff.role:1,2,3",
+                "signed"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/staff/history/{member_identifier?}/{card_identifier?}",
+            "name": "staff.transactions",
+            "action": "App\\Http\\Controllers\\Staff\\TransactionController@showTransactions",
+            "middleware": [
+                "web",
+                "installed",
+                "staff.auth",
+                "staff.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/transactions/{member_identifier?}/{card_identifier?}",
+            "name": "partner.transactions",
+            "action": "App\\Http\\Controllers\\Partner\\TransactionController@showTransactions",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/transactions/delete-last/{member_identifier?}/{card_identifier?}",
+            "name": "partner.delete.last.transaction",
+            "action": "App\\Http\\Controllers\\Partner\\TransactionController@deleteLastTransaction",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/stamp-transactions/{member_identifier}/{stamp_card_id}",
+            "name": "partner.stamp.transactions",
+            "action": "App\\Http\\Controllers\\Partner\\StampController@showStampTransactions",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/delete-last-stamp/{member_identifier}/{stamp_card_id}",
+            "name": "partner.delete.last.stamp",
+            "action": "App\\Http\\Controllers\\Partner\\StampController@deleteLastStamp",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/voucher-transactions/{member_identifier}/{voucher_id}",
+            "name": "partner.voucher.transactions",
+            "action": "App\\Http\\Controllers\\Partner\\VoucherController@showVoucherTransactions",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/delete-last-voucher-redemption/{member_identifier}/{voucher_id}",
+            "name": "partner.delete.last.voucher.redemption",
+            "action": "App\\Http\\Controllers\\Partner\\VoucherController@deleteLastRedemption",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/loyalty-card-analytics",
+            "name": "partner.analytics",
+            "action": "App\\Http\\Controllers\\Partner\\AnalyticsController@showAnalytics",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/loyalty-card-analytics/card/{card_id}",
+            "name": "partner.analytics.card",
+            "action": "App\\Http\\Controllers\\Partner\\AnalyticsController@showCardAnalytics",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/stamp-card-analytics",
+            "name": "partner.stamp-card-analytics",
+            "action": "App\\Http\\Controllers\\Partner\\StampCardAnalyticsController@index",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/stamp-card-analytics/card/{stamp_card_id}",
+            "name": "partner.stamp-card-analytics.card",
+            "action": "App\\Http\\Controllers\\Partner\\StampCardAnalyticsController@show",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/voucher-analytics",
+            "name": "partner.voucher-analytics",
+            "action": "App\\Http\\Controllers\\Partner\\VoucherAnalyticsController@index",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/voucher-analytics/voucher/{voucher_id}",
+            "name": "partner.voucher-analytics.voucher",
+            "action": "App\\Http\\Controllers\\Partner\\VoucherAnalyticsController@show",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/vouchers/batch",
+            "name": "partner.vouchers.batch",
+            "action": "App\\Http\\Controllers\\Partner\\VoucherController@showBatchWizard",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/vouchers/batches",
+            "name": "partner.vouchers.batches",
+            "action": "App\\Http\\Controllers\\Partner\\VoucherController@showBatches",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/vouchers/batch/{batch}/export",
+            "name": "partner.vouchers.batch.export",
+            "action": "App\\Http\\Controllers\\Partner\\VoucherController@exportBatch",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/vouchers/batch/{batch}/analytics",
+            "name": "partner.vouchers.batch.analytics",
+            "action": "App\\Http\\Controllers\\Partner\\VoucherController@showBatchAnalytics",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/vouchers/import",
+            "name": "partner.vouchers.import",
+            "action": "App\\Http\\Controllers\\Partner\\VoucherController@showImport",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/vouchers/batch-old",
+            "name": "partner.vouchers.batch.old",
+            "action": "App\\Http\\Controllers\\Partner\\VoucherController@showBatchForm",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/vouchers/transactions",
+            "name": "partner.vouchers.transactions",
+            "action": "App\\Http\\Controllers\\Partner\\VoucherController@transactions",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/activity-logs/analytics",
+            "name": "partner.activity-logs.analytics",
+            "action": "App\\Http\\Controllers\\Partner\\ActivityLogAnalyticsController@index",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/email-campaigns",
+            "name": "partner.email-campaigns.index",
+            "action": "App\\Http\\Controllers\\Partner\\EmailCampaignController@index",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3",
+                {}
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/email-campaigns/compose",
+            "name": "partner.email-campaigns.compose",
+            "action": "App\\Http\\Controllers\\Partner\\EmailCampaignController@compose",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3",
+                {}
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/email-campaigns/{campaign}",
+            "name": "partner.email-campaigns.show",
+            "action": "App\\Http\\Controllers\\Partner\\EmailCampaignController@show",
+            "middleware": [
+                "web",
+                "installed",
+                "partner.auth",
+                "partner.role:1,2,3",
+                {}
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/transactions/{member_identifier?}/{card_identifier?}",
+            "name": "admin.transactions",
+            "action": "App\\Http\\Controllers\\Admin\\TransactionController@showTransactions",
+            "middleware": [
+                "web",
+                "installed",
+                "admin.auth",
+                "admin.role:1"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/transactions/delete-last/{member_identifier?}/{card_identifier?}",
+            "name": "admin.delete.last.transaction",
+            "action": "App\\Http\\Controllers\\Admin\\TransactionController@deleteLastTransaction",
+            "middleware": [
+                "web",
+                "installed",
+                "admin.auth",
+                "admin.role:1"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/stamp-transactions/{member_identifier}/{stamp_card_id}",
+            "name": "admin.stamp.transactions",
+            "action": "App\\Http\\Controllers\\Admin\\StampController@showStampTransactions",
+            "middleware": [
+                "web",
+                "installed",
+                "admin.auth",
+                "admin.role:1"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/delete-last-stamp/{member_identifier}/{stamp_card_id}",
+            "name": "admin.delete.last.stamp",
+            "action": "App\\Http\\Controllers\\Admin\\StampController@deleteLastStamp",
+            "middleware": [
+                "web",
+                "installed",
+                "admin.auth",
+                "admin.role:1"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/voucher-transactions/{member_identifier}/{voucher_id}",
+            "name": "admin.voucher.transactions",
+            "action": "App\\Http\\Controllers\\Admin\\VoucherController@showVoucherTransactions",
+            "middleware": [
+                "web",
+                "installed",
+                "admin.auth",
+                "admin.role:1"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/delete-last-voucher-redemption/{member_identifier}/{voucher_id}",
+            "name": "admin.delete.last.voucher.redemption",
+            "action": "App\\Http\\Controllers\\Admin\\VoucherController@deleteLastRedemption",
+            "middleware": [
+                "web",
+                "installed",
+                "admin.auth",
+                "admin.role:1"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/activity-logs/analytics",
+            "name": "admin.activity-logs.analytics",
+            "action": "App\\Http\\Controllers\\Admin\\ActivityLogAnalyticsController@index",
+            "middleware": [
+                "web",
+                "installed",
+                "admin.auth",
+                "admin.role:1,2"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/members/purge",
+            "name": "admin.members.purge",
+            "action": "App\\Http\\Controllers\\Admin\\MemberPurgeController@show",
+            "middleware": [
+                "web",
+                "installed",
+                "admin.auth",
+                "admin.role:1,2"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/scratch-cards",
+            "name": "partner.scratch-cards.index",
+            "action": "App\\Http\\Controllers\\Partner\\ScratchCardController@index",
+            "middleware": [
+                "web",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/scratch-cards/create",
+            "name": "partner.scratch-cards.create",
+            "action": "App\\Http\\Controllers\\Partner\\ScratchCardController@create",
+            "middleware": [
+                "web",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/scratch-cards/{scratchGame}/edit",
+            "name": "partner.scratch-cards.edit",
+            "action": "App\\Http\\Controllers\\Partner\\ScratchCardController@edit",
+            "middleware": [
+                "web",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/scratch-cards/{scratchGame}/issue",
+            "name": "partner.scratch-cards.issue",
+            "action": "App\\Http\\Controllers\\Partner\\ScratchCardController@issueForm",
+            "middleware": [
+                "web",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/partner/scratch-cards/{scratchGame}/results",
+            "name": "partner.scratch-cards.results",
+            "action": "App\\Http\\Controllers\\Partner\\ScratchCardController@results",
+            "middleware": [
+                "web",
+                "partner.auth",
+                "partner.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/staff/scratch-cards",
+            "name": "staff.scratch-cards.index",
+            "action": "App\\Http\\Controllers\\Staff\\ScratchCardController@index",
+            "middleware": [
+                "web",
+                "staff.auth",
+                "staff.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/staff/scratch-cards/{scratchGame}/issue",
+            "name": "staff.scratch-cards.issue",
+            "action": "App\\Http\\Controllers\\Staff\\ScratchCardController@issueForm",
+            "middleware": [
+                "web",
+                "staff.auth",
+                "staff.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/scratch-cards",
+            "name": "member.scratch-cards.index",
+            "action": "App\\Http\\Controllers\\Member\\ScratchCardController@index",
+            "middleware": [
+                "web",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/scratch-cards/{scratchCard}",
+            "name": "member.scratch-cards.show",
+            "action": "App\\Http\\Controllers\\Member\\ScratchCardController@show",
+            "middleware": [
+                "web",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/scratch-cards",
+            "name": "admin.scratch-cards.index",
+            "action": "App\\Http\\Controllers\\Admin\\ScratchCardController@index",
+            "middleware": [
+                "web",
+                "admin.auth",
+                "admin.role:1,2"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/scratch-cards/{scratchGame}",
+            "name": "admin.scratch-cards.show",
+            "action": "App\\Http\\Controllers\\Admin\\ScratchCardController@show",
+            "middleware": [
+                "web",
+                "admin.auth",
+                "admin.role:1,2"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/founders",
+            "name": "member.founders.index",
+            "action": "App\\Http\\Controllers\\Member\\FounderController@index",
+            "middleware": [
+                "web",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/treasure-hunt/{campaign}",
+            "name": "member.treasure-hunt.show",
+            "action": "App\\Http\\Controllers\\Member\\TreasureHuntController@show",
+            "middleware": [
+                "web",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/treasure-hunt/{campaign}/leaderboard",
+            "name": "member.treasure-hunt.leaderboard",
+            "action": "App\\Http\\Controllers\\Member\\TreasureHuntController@leaderboard",
+            "middleware": [
+                "web",
+                "member.auth.auto",
+                "member.role:1,2,3"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/treasure-hunt",
+            "name": "admin.treasure-hunt.index",
+            "action": "App\\Http\\Controllers\\Admin\\TreasureHuntController@campaignsIndex",
+            "middleware": [
+                "web",
+                "admin.auth",
+                "admin.role:1,2"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/treasure-hunt/create",
+            "name": "admin.treasure-hunt.create",
+            "action": "App\\Http\\Controllers\\Admin\\TreasureHuntController@campaignsCreate",
+            "middleware": [
+                "web",
+                "admin.auth",
+                "admin.role:1,2"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/treasure-hunt/{campaign}/edit",
+            "name": "admin.treasure-hunt.edit",
+            "action": "App\\Http\\Controllers\\Admin\\TreasureHuntController@campaignsEdit",
+            "middleware": [
+                "web",
+                "admin.auth",
+                "admin.role:1,2"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/treasure-hunt/{campaign}/locations",
+            "name": "admin.treasure-hunt.locations.index",
+            "action": "App\\Http\\Controllers\\Admin\\TreasureHuntController@locationsIndex",
+            "middleware": [
+                "web",
+                "admin.auth",
+                "admin.role:1,2"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/treasure-hunt/{campaign}/locations/create",
+            "name": "admin.treasure-hunt.locations.create",
+            "action": "App\\Http\\Controllers\\Admin\\TreasureHuntController@locationsCreate",
+            "middleware": [
+                "web",
+                "admin.auth",
+                "admin.role:1,2"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/treasure-hunt/{campaign}/locations/{location}/edit",
+            "name": "admin.treasure-hunt.locations.edit",
+            "action": "App\\Http\\Controllers\\Admin\\TreasureHuntController@locationsEdit",
+            "middleware": [
+                "web",
+                "admin.auth",
+                "admin.role:1,2"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "{locale}/admin/treasure-hunt/{campaign}/submissions",
+            "name": "admin.treasure-hunt.submissions.index",
+            "action": "App\\Http\\Controllers\\Admin\\TreasureHuntController@submissionsIndex",
+            "middleware": [
+                "web",
+                "admin.auth",
+                "admin.role:1,2"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "demo/treasure-hunt/reward",
+            "name": "demo.treasure-hunt.reward",
+            "action": "App\\Http\\Controllers\\Demo\\TreasureHuntDemoController@reward",
+            "middleware": [
+                "web"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "demo/treasure-hunt/analytics",
+            "name": "demo.treasure-hunt.analytics",
+            "action": "App\\Http\\Controllers\\Demo\\TreasureHuntDemoController@analytics",
+            "middleware": [
+                "web"
+            ]
+        }
+    ],
+    "records": {
+        "cards": [
+            {
+                "id": "95cbd0bf-8bbb-436d-b7c6-a2e1e558db25",
+                "club_id": "01a000ce-0595-7254-8141-7411cd036ba4",
+                "name": "[TOM DEMO 01] Hunter Passport",
+                "type": "loyalty",
+                "icon": null,
+                "head": "{\"en_US\":\"01 • HUNTER PASSPORT — Join once. Keep earning through the entire Hunt.\",\"en\":\"01 • HUNTER PASSPORT — Join once. Keep earning through the entire Hunt.\"}",
+                "title": "{\"en_US\":\"01 — Northeast Ohio Treasure Hunt Hunter Passport\",\"en\":\"01 — Northeast Ohio Treasure Hunt Hunter Passport\"}",
+                "description": "{\"en_US\":\"WELCOME TO THE HUNT. Activate your Hunter Passport and receive 100 demo welcome points. Use one Passport across participating-business visits, Explorer Trail stamps, local rewards, referrals and comeback offers. The Hunt creates the first visit; this Passport creates the customer relationship that can continue after the treasure is found.\",\"en\":\"WELCOME TO THE HUNT. Activate your Hunter Passport and receive 100 demo welcome points. Use one Passport across participating-business visits, Explorer Trail stamps, local rewards, referrals and comeback offers. The Hunt creates the first visit; this Passport creates the customer relationship that can continue after the treasure is found.\"}",
+                "unique_identifier": "TOM-QZNFRDJ3P7OA",
+                "issue_date": "2026-08-14 11:10:51",
+                "expiration_date": "2030-08-21 19:05:00",
+                "bg_color": "#0F9D67",
+                "bg_color_opacity": 100,
+                "text_color": "#FFFFFF",
+                "text_label_color": null,
+                "qr_color_light": null,
+                "qr_color_dark": null,
+                "currency": "USD",
+                "initial_bonus_points": 100,
+                "points_expiration_months": 24,
+                "currency_unit_amount": 1,
+                "points_per_currency": 1,
+                "point_value": null,
+                "min_points_per_purchase": 0,
+                "max_points_per_purchase": 1000000,
+                "min_points_per_redemption": null,
+                "max_points_per_redemption": null,
+                "custom_rule1": "{\"en_US\":\"START HERE: Activate your Hunter Passport and receive 100 demo welcome points.\",\"en\":\"START HERE: Activate your Hunter Passport and receive 100 demo welcome points.\"}",
+                "custom_rule2": "{\"en_US\":\"NEXT: Visit participating businesses and collect Explorer Trail stamps, points and local rewards.\",\"en\":\"NEXT: Visit participating businesses and collect Explorer Trail stamps, points and local rewards.\"}",
+                "custom_rule3": "{\"en_US\":\"WHY IT MATTERS: One customer identity connects Hunt traffic to referrals, repeat visits and post-Hunt retention.\",\"en\":\"WHY IT MATTERS: One customer identity connects Hunt traffic to referrals, repeat visits and post-Hunt retention.\"}",
+                "is_active": 1,
+                "is_visible_by_default": 1,
+                "is_visible_when_logged_in": 0,
+                "is_undeletable": 0,
+                "is_uneditable": 0,
+                "total_amount_purchased": 0,
+                "number_of_points_issued": 0,
+                "last_points_issued_at": "2026-08-15 03:25:39",
+                "number_of_points_redeemed": 0,
+                "number_of_rewards_redeemed": 0,
+                "last_reward_redeemed_at": null,
+                "views": 63,
+                "last_view": "2026-09-07 02:26:08",
+                "meta": "{\"tom_demo_sequence\":1,\"purpose\":\"Activate Hunter Passport\"}",
+                "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+                "deleted_by": null,
+                "updated_by": null,
+                "deleted_at": null,
+                "created_at": "2026-09-06 23:01:26",
+                "updated_at": "2026-09-07 02:26:59"
+            }
+        ],
+        "stamp_cards": [
+            {
+                "id": "5738988e-265f-422f-9b41-5828790af3c0",
+                "club_id": "01a000ce-0595-7254-8141-7411cd036ba4",
+                "name": "[TOM DEMO 05] Merchant Check-In Verification",
+                "unique_identifier": "TOM-G04RCJ41X0HT",
+                "title": "{\"en_US\":\"05 — Merchant Check-In Verification\",\"en\":\"05 — Merchant Check-In Verification\"}",
+                "description": "{\"en_US\":\"PROVE THE FOOT TRAFFIC. Staff or QR verification confirms the hunter physically reached the participating business. The verified visit can issue the appropriate stamp or points and creates merchant-level campaign attribution so Tom and each business can see what the Hunt actually produced.\",\"en\":\"PROVE THE FOOT TRAFFIC. Staff or QR verification confirms the hunter physically reached the participating business. The verified visit can issue the appropriate stamp or points and creates merchant-level campaign attribution so Tom and each business can see what the Hunt actually produced.\"}",
+                "stamps_required": 1,
+                "stamps_per_purchase": 1,
+                "max_stamps_per_day": 1,
+                "max_stamps_per_transaction": 1,
+                "min_purchase_amount": "0.00",
+                "qualifying_products": null,
+                "reward_title": "{\"en_US\":\"Verified Treasure Hunt Business Visit\",\"en\":\"Verified Treasure Hunt Business Visit\"}",
+                "reward_description": "{\"en_US\":\"Visit confirmed. The hunter earns the configured stamp or points while Places Rewards records attributable foot traffic for this merchant.\",\"en\":\"Visit confirmed. The hunter earns the configured stamp or points while Places Rewards records attributable foot traffic for this merchant.\"}",
+                "reward_value": null,
+                "currency": "USD",
+                "reward_points": 100,
+                "reward_card_id": "01a000d3-701c-728e-b0c6-7d3a5754428c",
+                "requires_physical_claim": 0,
+                "bg_color": "#14B8A6",
+                "bg_color_opacity": 100,
+                "text_color": "#FFFFFF",
+                "stamp_color": "#F8FAFC",
+                "empty_stamp_color": "#94A3B8",
+                "stamp_icon": "☕",
+                "valid_from": "2026-09-01 00:00:00",
+                "valid_until": "2030-12-31 23:59:59",
+                "stamps_expire_days": null,
+                "is_active": 1,
+                "is_visible_by_default": 1,
+                "views": 13,
+                "last_view": "2026-09-07 02:26:06",
+                "is_undeletable": 0,
+                "show_monetary_value": 0,
+                "total_stamps_issued": 0,
+                "total_completions": 0,
+                "total_redemptions": 0,
+                "meta": "{\"tom_demo_sequence\":5,\"purpose\":\"merchant_checkin\"}",
+                "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+                "updated_by": null,
+                "deleted_by": null,
+                "deleted_at": null,
+                "created_at": "2026-09-07 00:11:48",
+                "updated_at": "2026-09-07 02:26:59"
+            },
+            {
+                "id": "a9566430-b6b0-434d-ae3c-f3ba85421c5f",
+                "club_id": "01a000ce-0595-7254-8141-7411cd036ba4",
+                "name": "[TOM DEMO 02] 5-Stop Explorer Trail",
+                "unique_identifier": "TOM-LFJFHUCWGOCU",
+                "title": "{\"en_US\":\"02 — 5-Stop Northeast Ohio Explorer Trail\",\"en\":\"02 — 5-Stop Northeast Ohio Explorer Trail\"}",
+                "description": "{\"en_US\":\"VISIT 5 PARTICIPATING BUSINESSES. Earn one verified stamp at each stop. Complete all five stops to unlock the Explorer Trail reward. This module intentionally circulates Treasure Hunt traffic through the participating merchant network instead of creating only one destination.\",\"en\":\"VISIT 5 PARTICIPATING BUSINESSES. Earn one verified stamp at each stop. Complete all five stops to unlock the Explorer Trail reward. This module intentionally circulates Treasure Hunt traffic through the participating merchant network instead of creating only one destination.\"}",
+                "stamps_required": 5,
+                "stamps_per_purchase": 1,
+                "max_stamps_per_day": 5,
+                "max_stamps_per_transaction": 1,
+                "min_purchase_amount": "0.00",
+                "qualifying_products": null,
+                "reward_title": "{\"en_US\":\"Explorer Trail Completion Reward\",\"en\":\"Explorer Trail Completion Reward\"}",
+                "reward_description": "{\"en_US\":\"Complete all five participating-business stops and unlock a local reward supplied by the campaign or participating merchant.\",\"en\":\"Complete all five participating-business stops and unlock a local reward supplied by the campaign or participating merchant.\"}",
+                "reward_value": null,
+                "currency": "USD",
+                "reward_points": 100,
+                "reward_card_id": "01a000d3-701c-728e-b0c6-7d3a5754428c",
+                "requires_physical_claim": 0,
+                "bg_color": "#059669",
+                "bg_color_opacity": 100,
+                "text_color": "#FFFFFF",
+                "stamp_color": "#F8FAFC",
+                "empty_stamp_color": "#94A3B8",
+                "stamp_icon": "☕",
+                "valid_from": "2026-09-01 00:00:00",
+                "valid_until": "2030-12-31 23:59:59",
+                "stamps_expire_days": null,
+                "is_active": 1,
+                "is_visible_by_default": 1,
+                "views": 13,
+                "last_view": "2026-09-07 02:26:06",
+                "is_undeletable": 0,
+                "show_monetary_value": 0,
+                "total_stamps_issued": 0,
+                "total_completions": 0,
+                "total_redemptions": 0,
+                "meta": "{\"tom_demo_sequence\":2,\"purpose\":\"Start Explorer Trail\"}",
+                "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+                "updated_by": null,
+                "deleted_by": null,
+                "deleted_at": null,
+                "created_at": "2026-09-06 23:01:26",
+                "updated_at": "2026-09-07 02:26:59"
+            }
+        ],
+        "rewards": [
+            {
+                "id": "13085fc2-2a5d-43ee-92b5-441bc368c55b",
+                "name": "[TOM DEMO 06] Local Prize & Giveaway Reward",
+                "unique_identifier": "TOM-N4TB5BKIIUPD",
+                "title": "{\"en_US\":\"06 — Local Business Bonus Prize\",\"en\":\"06 — Local Business Bonus Prize\"}",
+                "description": "{\"en_US\":\"LOCAL BUSINESS BONUS PRIZE. A participating merchant can supply a gift card, product, service or experience and tie eligibility to a verified visit, Explorer Trail milestone or other approved action. This gives every merchant a reason for hunters to engage while remaining completely separate from the grand treasure.\",\"en\":\"LOCAL BUSINESS BONUS PRIZE. A participating merchant can supply a gift card, product, service or experience and tie eligibility to a verified visit, Explorer Trail milestone or other approved action. This gives every merchant a reason for hunters to engage while remaining completely separate from the grand treasure.\"}",
+                "max_number_to_redeem": 0,
+                "points": 0,
+                "active_from": null,
+                "expiration_date": null,
+                "is_active": 1,
+                "is_undeletable": 0,
+                "is_uneditable": 0,
+                "number_of_times_redeemed": 0,
+                "views": 0,
+                "last_view": null,
+                "meta": "{\"tom_demo_sequence\":6,\"purpose\":\"local_prize\"}",
+                "ecommerce_settings": null,
+                "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+                "deleted_by": null,
+                "updated_by": null,
+                "deleted_at": null,
+                "created_at": "2026-09-07 00:11:48",
+                "updated_at": "2026-09-07 02:26:59"
+            },
+            {
+                "id": "29304849-3c10-4a06-8f8f-4bad776b79f9",
+                "name": "[TOM DEMO 04] Clue Completion Reward",
+                "unique_identifier": "TOM-NQGBL9QJBK2G",
+                "title": "{\"en_US\":\"04 — Clue Activity Bonus\",\"en\":\"04 — Clue Activity Bonus\"}",
+                "description": "{\"en_US\":\"CLUE ACTIVITY BONUS: +250 demo points after an approved Hunt activity or verified participating-business visit. This reward never reveals an answer, changes an official clue or affects the odds of finding the treasure. It rewards engagement while preserving the integrity of Tom’s Hunt.\",\"en\":\"CLUE ACTIVITY BONUS: +250 demo points after an approved Hunt activity or verified participating-business visit. This reward never reveals an answer, changes an official clue or affects the odds of finding the treasure. It rewards engagement while preserving the integrity of Tom’s Hunt.\"}",
+                "max_number_to_redeem": 0,
+                "points": 250,
+                "active_from": null,
+                "expiration_date": null,
+                "is_active": 1,
+                "is_undeletable": 0,
+                "is_uneditable": 0,
+                "number_of_times_redeemed": 0,
+                "views": 0,
+                "last_view": null,
+                "meta": "{\"tom_demo_sequence\":4,\"official_clue_separate\":true}",
+                "ecommerce_settings": null,
+                "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+                "deleted_by": null,
+                "updated_by": null,
+                "deleted_at": null,
+                "created_at": "2026-09-07 00:11:48",
+                "updated_at": "2026-09-07 02:26:59"
+            }
+        ],
+        "tiers": [
+            {
+                "id": "8744df20-c34b-484c-9f8f-15140f8fc542",
+                "club_id": "01a000ce-0595-7254-8141-7411cd036ba4",
+                "name": "[TOM DEMO 08] Hunter VIP Progression",
+                "display_name": "{\"en_US\":\"08 — Hunter VIP\",\"en\":\"08 — Hunter VIP\"}",
+                "description": "{\"en_US\":\"HUNTER VIP rewards the people who support participating businesses most. Demo qualification: 2,500 points. Benefits can include early Hunt previews, premium merchant perks, special local experiences and priority invitations for the next Hunt.\",\"en\":\"HUNTER VIP rewards the people who support participating businesses most. Demo qualification: 2,500 points. Benefits can include early Hunt previews, premium merchant perks, special local experiences and priority invitations for the next Hunt.\"}",
+                "icon": "trophy",
+                "color": "#0EA5E9",
+                "level": 3,
+                "points_threshold": 2500,
+                "spend_threshold": null,
+                "transactions_threshold": null,
+                "points_multiplier": "1.25",
+                "redemption_discount": "0.00",
+                "benefits": "[\"Early Hunt previews\",\"Premium participating-business perks\",\"VIP local experiences\",\"Priority invitations for the next Hunt\"]",
+                "is_default": 0,
+                "is_active": 1,
+                "is_undeletable": 0,
+                "meta": "{\"tom_demo_sequence\":8}",
+                "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+                "updated_by": null,
+                "created_at": "2026-09-06 23:06:38",
+                "updated_at": "2026-09-07 02:26:59"
+            }
+        ],
+        "scratch_games": [
+            {
+                "id": "1fefb288-a8cc-46d4-a4a3-04fe56f91329",
+                "partner_id": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+                "name": "09 — Mystery Bonus Scratch & Win",
+                "description": "MYSTERY BONUS: a qualifying participating-business visit can unlock one digital scratch opportunity. The prize pool can contain merchant perks, bonus points or discounts according to the configured win rate and inventory. Scratch rewards are an engagement layer only and never affect the real treasure or official Hunt odds.",
+                "cover_image": "/files/demo/treasure-hunt/scratch/cover.webp",
+                "win_image": "/files/demo/treasure-hunt/scratch/winner.webp",
+                "loss_image": "/files/demo/treasure-hunt/scratch/loser.webp",
+                "win_rate": 25,
+                "is_active": 1,
+                "created_at": "2026-09-07 00:11:48",
+                "updated_at": "2026-09-07 02:26:59",
+                "deleted_at": null
+            }
+        ],
+        "vouchers": [
+            {
+                "id": "14788f52-438e-4293-bd6b-c82b8e448983",
+                "club_id": "01a000ce-0595-7254-8141-7411cd036ba4",
+                "code": "TOMHUNTRETURN10",
+                "name": "[TOM DEMO 10] Hunter Comeback $5 Off $25",
+                "unique_identifier": "TOM-1GUWJMI84RIE",
+                "title": "{\"en_US\":\"10 — Hunter Comeback: $5 Off $25\",\"en\":\"10 — Hunter Comeback: $5 Off $25\"}",
+                "description": "{\"en_US\":\"TURN THE FIRST VISIT INTO THE SECOND. This demo comeback voucher gives a hunter $5 off a $25 return purchase after the initial Treasure Hunt visit. Each participating business can set its own offer and minimum spend, turning event traffic into measurable repeat revenue.\",\"en\":\"TURN THE FIRST VISIT INTO THE SECOND. This demo comeback voucher gives a hunter $5 off a $25 return purchase after the initial Treasure Hunt visit. Each participating business can set its own offer and minimum spend, turning event traffic into measurable repeat revenue.\"}",
+                "type": "fixed_amount",
+                "value": 500,
+                "currency": "USD",
+                "points_value": null,
+                "reward_card_id": null,
+                "batch_id": null,
+                "min_purchase_amount": 2500,
+                "max_discount_amount": null,
+                "free_product_name": "{\"en_US\":null}",
+                "applicable_products": null,
+                "applicable_categories": null,
+                "excluded_products": null,
+                "valid_from": "2026-08-14 00:00:00",
+                "valid_until": "2027-12-31 00:00:00",
+                "max_uses_total": null,
+                "max_uses_per_member": 1,
+                "target_member_id": null,
+                "target_tiers": null,
+                "first_order_only": 0,
+                "new_members_only": 0,
+                "new_members_days": null,
+                "is_active": 1,
+                "is_public": 1,
+                "is_visible_by_default": 1,
+                "is_single_use": 1,
+                "is_auto_apply": 0,
+                "stackable": 0,
+                "source": "api",
+                "source_id": null,
+                "claimed_via": null,
+                "claimed_at": null,
+                "claimed_by_member_id": null,
+                "times_used": 0,
+                "total_discount_given": 0,
+                "unique_members_used": 0,
+                "views": 12,
+                "last_view": "2026-09-07 02:26:07",
+                "bg_color": "#7C185B",
+                "bg_color_opacity": 100,
+                "text_color": "#FFFFFF",
+                "meta": "{\"tom_demo_sequence\":10,\"purpose\":\"return_visit\"}",
+                "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+                "updated_by": null,
+                "deleted_by": null,
+                "deleted_at": null,
+                "created_at": "2026-09-07 00:13:27",
+                "updated_at": "2026-09-07 02:26:59"
+            }
+        ],
+        "email_campaigns": [
+            {
+                "id": "b1ea6974-d61c-41d4-a1ce-0c0a27ffa5bd",
+                "partner_id": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+                "subject": "{\"en_US\":\"11 — Keep your Northeast Ohio Treasure Hunt rewards moving\",\"en\":\"11 — Keep your Northeast Ohio Treasure Hunt rewards moving\"}",
+                "body": "{\"en_US\":\"Thanks for exploring Northeast Ohio. You still have value waiting in Places Rewards: unfinished Explorer Trail progress, participating-business rewards, comeback offers and Hunter VIP progress. This demo campaign shows how different hunters can receive relevant post-Hunt follow-up instead of one generic message. This record remains a draft and is not automatically sent.\",\"en\":\"Thanks for exploring Northeast Ohio. You still have value waiting in Places Rewards: unfinished Explorer Trail progress, participating-business rewards, comeback offers and Hunter VIP progress. This demo campaign shows how different hunters can receive relevant post-Hunt follow-up instead of one generic message. This record remains a draft and is not automatically sent.\"}",
+                "segment_type": "custom",
+                "segment_config": "{\"tom_demo_sequence\":11,\"audience\":\"inactive_or_near_complete_hunters\"}",
+                "status": "draft",
+                "recipient_count": 0,
+                "sent_count": 0,
+                "failed_count": 0,
+                "scheduled_at": null,
+                "started_at": null,
+                "completed_at": null,
+                "created_at": "2026-09-07 00:13:27",
+                "updated_at": "2026-09-07 02:26:59",
+                "deleted_at": null
+            }
+        ],
+        "clubs": [
+            {
+                "id": "01a000ce-0595-7254-8141-7411cd036ba4",
+                "name": "[DEMO] Northeast Ohio Treasure Hunt — Post-Hunt Growth Club",
+                "description": "The original hunt has ended. This live demo shows how Places Rewards keeps the customer relationship producing repeat visits, referrals, loyalty, reactivation and measurable ROI afterward.",
+                "locale": null,
+                "currency": null,
+                "time_zone": null,
+                "is_active": 1,
+                "is_primary": 0,
+                "is_undeletable": 0,
+                "is_uneditable": 0,
+                "meta": null,
+                "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
+                "deleted_by": null,
+                "updated_by": null,
+                "deleted_at": null,
+                "created_at": "2026-08-14 15:04:56",
+                "updated_at": "2026-08-15 03:25:37"
+            }
+        ]
+    }
+}
