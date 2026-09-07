@@ -1,6 +1,6 @@
 {
     "status": "passed",
-    "verified_at": "2026-09-07T13:18:24+00:00",
+    "verified_at": "2026-09-07T13:19:26+00:00",
     "index": {
         "url": "https://app.placesrewards.com/demo/treasure-hunt",
         "http_status": 200,
@@ -17,7 +17,7 @@
             "expected_card_marker": "HUNTER PASSPORT",
             "card_content_present": true,
             "body_length": 6033,
-            "content_hash": "023d6ee65aeaa64621fbf5205c304b92ea8785ae",
+            "content_hash": "dfb9e14ac6c6a373fde74f625b097c581af8272a",
             "error": null
         },
         {
@@ -28,7 +28,7 @@
             "expected_card_marker": "EXPLORER TRAIL",
             "card_content_present": true,
             "body_length": 6148,
-            "content_hash": "b3eabbd092d8f11e09e47e41315a72666608db8a",
+            "content_hash": "d1c2aa6eb432843d32b08fe2038efa3b34e220b4",
             "error": null
         },
         {
@@ -39,7 +39,7 @@
             "expected_card_marker": "FEATURED PARTICIPATING BUSINESS",
             "card_content_present": true,
             "body_length": 5951,
-            "content_hash": "db2393b7cc8d34f91f8a29b3a34d2c8e00987165",
+            "content_hash": "9daf302c03492fb5a7dc14aab2a94a7259704ca9",
             "error": null
         },
         {
@@ -50,7 +50,7 @@
             "expected_card_marker": "CLUE ACTIVITY BONUS",
             "card_content_present": true,
             "body_length": 5880,
-            "content_hash": "4a913ae58423affc1aca251d7278ff3e37245136",
+            "content_hash": "b3243a66310eacaee915347d2e144a58fda4cbb4",
             "error": null
         },
         {
@@ -61,7 +61,7 @@
             "expected_card_marker": "MERCHANT CHECK-IN",
             "card_content_present": true,
             "body_length": 6044,
-            "content_hash": "cbd62446cb6b57745bc08db46aef3b32b8926e60",
+            "content_hash": "0118b503a7531bccaa2a0a9ca8a5a1e1a5cf2d0e",
             "error": null
         },
         {
@@ -72,7 +72,7 @@
             "expected_card_marker": "LOCAL BUSINESS BONUS PRIZE",
             "card_content_present": true,
             "body_length": 5948,
-            "content_hash": "2ba73d10d6604acc156a14e79eb902949cf98740",
+            "content_hash": "f30ac72798e20d36f248b3d7055a26b275fde783",
             "error": null
         },
         {
@@ -83,7 +83,7 @@
             "expected_card_marker": "BRING ANOTHER HUNTER",
             "card_content_present": true,
             "body_length": 5962,
-            "content_hash": "fb08d5c369d74ed28a2c7eb7214e76b68c0ace24",
+            "content_hash": "b9003d49cfbf9d40613e09f05bfa099fb326077a",
             "error": null
         },
         {
@@ -94,7 +94,7 @@
             "expected_card_marker": "HUNTER VIP",
             "card_content_present": true,
             "body_length": 5838,
-            "content_hash": "00e357e0543d45a1c83acaf6e9b1420822908b4d",
+            "content_hash": "e44e967a00fe98c4bc75ea02a1e06ec894dacd05",
             "error": null
         },
         {
@@ -105,7 +105,7 @@
             "expected_card_marker": "MYSTERY BONUS",
             "card_content_present": true,
             "body_length": 6047,
-            "content_hash": "b07fd6cb76303b3c7c6dd418cf197a56ab8bff28",
+            "content_hash": "a0363ce6ff4327cd66ab0896d186518c19f0e203",
             "error": null
         },
         {
@@ -116,7 +116,7 @@
             "expected_card_marker": "HUNTER COMEBACK",
             "card_content_present": true,
             "body_length": 6070,
-            "content_hash": "63dc145f0b35f6d1a202d7404c2e1587a407543c",
+            "content_hash": "e48aca105ff4a57183f6f71ae0f825f0bf3e4965",
             "error": null
         },
         {
@@ -127,7 +127,7 @@
             "expected_card_marker": "POST-HUNT FOLLOW-UP",
             "card_content_present": true,
             "body_length": 5967,
-            "content_hash": "a10b76a785af9d0a6223b10863d293e5a69027e1",
+            "content_hash": "a7ba64ffd1f2233e33beb18269c63929c7fe0d28",
             "error": null
         },
         {
@@ -138,7 +138,7 @@
             "expected_card_marker": "TREASURE HUNT ROI",
             "card_content_present": true,
             "body_length": 6001,
-            "content_hash": "c8d1912378bca6584322ec60b16834867ec72ca8",
+            "content_hash": "a97cd3bcfe6e26050ac8850fe855df19572e928c",
             "error": null
         }
     ],
