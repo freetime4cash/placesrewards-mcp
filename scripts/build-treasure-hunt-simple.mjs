@@ -31,5 +31,6 @@ const html=`<!doctype html>
 <script>function reveal(){if(location.hash==='#business-details'){document.getElementById('business-details').open=true}}addEventListener('hashchange',reveal);document.querySelector('a[href="#business-details"]').addEventListener('click',()=>{document.getElementById('business-details').open=true});reveal();</script></body></html>`;
 if(steps.length!==5||modules.length!==12)throw new Error('Presentation structure invalid');
 mkdirSync(new URL('../assets/treasure-hunt-simple/',import.meta.url),{recursive:true});
-writeFileSync(new URL('../assets/treasure-hunt-simple/index.html',import.meta.url),html);
+const publishedHtml=html.replace(/<a href="(https:[^"]+)"/g,'<a target="_blank" rel="noopener noreferrer" href="$1"').replace(/<a class="action" href="(https:[^"]+)"/g,'<a class="action" target="_blank" rel="noopener noreferrer" href="$1"');
+writeFileSync(new URL('../assets/treasure-hunt-simple/index.html',import.meta.url),publishedHtml);
 console.log('Built separate presentation: 5 cards, 2 bullets and 1 action each, 12 secondary modules.');
