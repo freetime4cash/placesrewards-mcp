@@ -1,6 +1,6 @@
 {
     "status": "completed",
-    "generated_at": "2026-09-07T13:55:08+00:00",
+    "generated_at": "2026-09-07T13:56:34+00:00",
     "ids": {
         "card": "95cbd0bf-8bbb-436d-b7c6-a2e1e558db25",
         "explorer_stamp": "a9566430-b6b0-434d-ae3c-f3ba85421c5f",
@@ -2517,15 +2517,15 @@
                 "number_of_points_redeemed": 0,
                 "number_of_rewards_redeemed": 0,
                 "last_reward_redeemed_at": null,
-                "views": 3866,
-                "last_view": "2026-09-07 13:53:56",
+                "views": 3886,
+                "last_view": "2026-09-07 13:56:13",
                 "meta": "{\"tom_demo_sequence\":1,\"purpose\":\"Activate Hunter Passport\"}",
                 "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
                 "deleted_by": null,
                 "updated_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-06 23:01:26",
-                "updated_at": "2026-09-07 13:55:07"
+                "updated_at": "2026-09-07 13:56:33"
             }
         ],
         "stamp_cards": [
@@ -2560,8 +2560,8 @@
                 "stamps_expire_days": null,
                 "is_active": 1,
                 "is_visible_by_default": 1,
-                "views": 1300,
-                "last_view": "2026-09-07 13:53:55",
+                "views": 1304,
+                "last_view": "2026-09-07 13:56:12",
                 "is_undeletable": 0,
                 "show_monetary_value": 0,
                 "total_stamps_issued": 0,
@@ -2573,7 +2573,7 @@
                 "deleted_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-07 00:11:48",
-                "updated_at": "2026-09-07 13:55:07"
+                "updated_at": "2026-09-07 13:56:33"
             },
             {
                 "id": "a9566430-b6b0-434d-ae3c-f3ba85421c5f",
@@ -2606,8 +2606,8 @@
                 "stamps_expire_days": null,
                 "is_active": 1,
                 "is_visible_by_default": 1,
-                "views": 1300,
-                "last_view": "2026-09-07 13:53:54",
+                "views": 1304,
+                "last_view": "2026-09-07 13:56:11",
                 "is_undeletable": 0,
                 "show_monetary_value": 0,
                 "total_stamps_issued": 0,
@@ -2619,7 +2619,7 @@
                 "deleted_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-06 23:01:26",
-                "updated_at": "2026-09-07 13:55:07"
+                "updated_at": "2026-09-07 13:56:33"
             }
         ],
         "rewards": [
@@ -2629,10 +2629,10 @@
                 "unique_identifier": "TOM-N4TB5BKIIUPD",
                 "title": "{\"en_US\":\"06 — Local Business Bonus Prize\",\"en\":\"06 — Local Business Bonus Prize\"}",
                 "description": "{\"en_US\":\"LOCAL BUSINESS BONUS PRIZE. A participating merchant can supply a gift card, product, service or experience and tie eligibility to a verified visit, Explorer Trail milestone or other approved action. This gives every merchant a reason for hunters to engage while remaining completely separate from the grand treasure.\",\"en\":\"LOCAL BUSINESS BONUS PRIZE. A participating merchant can supply a gift card, product, service or experience and tie eligibility to a verified visit, Explorer Trail milestone or other approved action. This gives every merchant a reason for hunters to engage while remaining completely separate from the grand treasure.\"}",
-                "max_number_to_redeem": 0,
+                "max_number_to_redeem": 100000,
                 "points": 0,
-                "active_from": null,
-                "expiration_date": null,
+                "active_from": "2026-09-01 00:00:00",
+                "expiration_date": "2030-12-31 23:59:59",
                 "is_active": 1,
                 "is_undeletable": 0,
                 "is_uneditable": 0,
@@ -2646,7 +2646,7 @@
                 "updated_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-07 00:11:48",
-                "updated_at": "2026-09-07 13:55:07"
+                "updated_at": "2026-09-07 13:56:33"
             },
             {
                 "id": "29304849-3c10-4a06-8f8f-4bad776b79f9",
@@ -2654,10 +2654,10 @@
                 "unique_identifier": "TOM-NQGBL9QJBK2G",
                 "title": "{\"en_US\":\"04 — Clue Activity Bonus\",\"en\":\"04 — Clue Activity Bonus\"}",
                 "description": "{\"en_US\":\"CLUE ACTIVITY BONUS: +250 demo points after an approved Hunt activity or verified participating-business visit. This reward never reveals an answer, changes an official clue or affects the odds of finding the treasure. It rewards engagement while preserving the integrity of Tom’s Hunt.\",\"en\":\"CLUE ACTIVITY BONUS: +250 demo points after an approved Hunt activity or verified participating-business visit. This reward never reveals an answer, changes an official clue or affects the odds of finding the treasure. It rewards engagement while preserving the integrity of Tom’s Hunt.\"}",
-                "max_number_to_redeem": 0,
+                "max_number_to_redeem": 100000,
                 "points": 250,
-                "active_from": null,
-                "expiration_date": null,
+                "active_from": "2026-09-01 00:00:00",
+                "expiration_date": "2030-12-31 23:59:59",
                 "is_active": 1,
                 "is_undeletable": 0,
                 "is_uneditable": 0,
@@ -2671,7 +2671,7 @@
                 "updated_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-07 00:11:48",
-                "updated_at": "2026-09-07 13:55:07"
+                "updated_at": "2026-09-07 13:56:33"
             }
         ],
         "tiers": [
@@ -2697,7 +2697,7 @@
                 "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
                 "updated_by": null,
                 "created_at": "2026-09-06 23:06:38",
-                "updated_at": "2026-09-07 13:55:07"
+                "updated_at": "2026-09-07 13:56:33"
             }
         ],
         "scratch_games": [
@@ -2712,7 +2712,7 @@
                 "win_rate": 25,
                 "is_active": 1,
                 "created_at": "2026-09-07 00:11:48",
-                "updated_at": "2026-09-07 13:55:07",
+                "updated_at": "2026-09-07 13:56:33",
                 "deleted_at": null
             }
         ],
@@ -2760,8 +2760,8 @@
                 "times_used": 0,
                 "total_discount_given": 0,
                 "unique_members_used": 0,
-                "views": 1299,
-                "last_view": "2026-09-07 13:53:55",
+                "views": 1303,
+                "last_view": "2026-09-07 13:56:12",
                 "bg_color": "#7C185B",
                 "bg_color_opacity": 100,
                 "text_color": "#FFFFFF",
@@ -2771,7 +2771,7 @@
                 "deleted_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-07 00:13:27",
-                "updated_at": "2026-09-07 13:55:07"
+                "updated_at": "2026-09-07 13:56:33"
             }
         ],
         "email_campaigns": [
@@ -2790,7 +2790,7 @@
                 "started_at": null,
                 "completed_at": null,
                 "created_at": "2026-09-07 00:13:27",
-                "updated_at": "2026-09-07 13:55:07",
+                "updated_at": "2026-09-07 13:56:33",
                 "deleted_at": null
             }
         ],
