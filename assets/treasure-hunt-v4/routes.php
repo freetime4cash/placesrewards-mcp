@@ -18,9 +18,10 @@ Route::get('/demo/treasure-hunt/vip', [TreasureHuntDemoController::class, 'vip']
 Route::get('/demo/treasure-hunt/retention', [TreasureHuntDemoController::class, 'retention'])->name('demo.treasure-hunt.retention');
 Route::get('/demo/treasure-hunt/analytics', [TreasureHuntDemoController::class, 'analytics'])->name('demo.treasure-hunt.analytics');
 
-// Bridge into the real member scratch-card module. Existing members keep their own
-// account. Anonymous presentation visitors use an isolated, non-personal demo member.
-Route::get('/demo/scratch-win', function () {
+// Collision-free bridge into the real member scratch-card module.
+// Existing members retain their own account. Anonymous presentation visitors use
+// an isolated non-personal demo member, then land on /en-us/scratch-cards/{id}.
+Route::get('/demo/treasure-hunt/scratch/play', function () {
     $member = auth('member')->user();
 
     if (!$member) {
