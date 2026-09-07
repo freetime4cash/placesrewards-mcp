@@ -14,4 +14,17 @@ $tmp = sys_get_temp_dir().'/placesrewards-tom-v2-fixed.php';
 file_put_contents($tmp, $source, LOCK_EX);
 $command = escapeshellarg(PHP_BINARY).' '.escapeshellarg($tmp);
 passthru($command, $exitCode);
+
+// Only retire the old public Northeast Ohio demo cards after the new 01–12
+// result has completed successfully. The retirement script is reversible: it
+// deactivates/hides legacy demo records and never deletes them.
+if ($exitCode === 0) {
+    $cleanup = __DIR__.'/retire-northeast-ohio-legacy-demo.php';
+    if (is_file($cleanup)) {
+        $cleanupCommand = escapeshellarg(PHP_BINARY).' '.escapeshellarg($cleanup);
+        passthru($cleanupCommand, $cleanupExit);
+        if ($cleanupExit !== 0) $exitCode = $cleanupExit;
+    }
+}
+
 exit($exitCode);
