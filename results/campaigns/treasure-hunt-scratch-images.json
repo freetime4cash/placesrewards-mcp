@@ -1,0 +1,44 @@
+{
+    "status": "completed",
+    "game_id": "1fefb288-a8cc-46d4-a4a3-04fe56f91329",
+    "started_at": "2026-09-07T01:35:26+00:00",
+    "files": {
+        "cover": {
+            "source": "/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/cover.webp",
+            "destination": "/home/placevle/app.placesrewards.com/public/files/demo/treasure-hunt/scratch/cover.webp",
+            "bytes": 9382,
+            "sha1": "9ca11c59498840bd27e443c4f145758bd50fc7ee"
+        },
+        "winner": {
+            "source": "/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/winner.webp",
+            "destination": "/home/placevle/app.placesrewards.com/public/files/demo/treasure-hunt/scratch/winner.webp",
+            "bytes": 14460,
+            "sha1": "1f1e72134139b3ea2bcd55572949037949dd5aff"
+        },
+        "loser": {
+            "source": "/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/loser.webp",
+            "destination": "/home/placevle/app.placesrewards.com/public/files/demo/treasure-hunt/scratch/loser.webp",
+            "bytes": 12942,
+            "sha1": "6ee9006475663032053c5441ccb8974480aa14f2"
+        }
+    },
+    "database": {
+        "before": {
+            "cover_image": "/files/demo/northeast-ohio-tom/generated/09-mystery-bonus.svg",
+            "win_image": null,
+            "loss_image": null
+        },
+        "after": {
+            "cover_image": "/files/demo/treasure-hunt/scratch/cover.webp",
+            "win_image": "/files/demo/treasure-hunt/scratch/winner.webp",
+            "loss_image": "/files/demo/treasure-hunt/scratch/loser.webp"
+        }
+    },
+    "public_urls": {
+        "cover": "https://app.placesrewards.com/files/demo/treasure-hunt/scratch/cover.webp",
+        "winner": "https://app.placesrewards.com/files/demo/treasure-hunt/scratch/winner.webp",
+        "loser": "https://app.placesrewards.com/files/demo/treasure-hunt/scratch/loser.webp"
+    },
+    "verified": true,
+    "completed_at": "2026-09-07T01:35:26+00:00"
+}
