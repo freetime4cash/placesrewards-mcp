@@ -1,6 +1,6 @@
 {
     "status": "passed",
-    "verified_at": "2026-09-07T02:13:12+00:00",
+    "verified_at": "2026-09-07T02:15:00+00:00",
     "index": {
         "url": "https://app.placesrewards.com/demo/treasure-hunt",
         "http_status": 200,
@@ -17,7 +17,7 @@
             "expected_card_marker": "HUNTER PASSPORT",
             "card_content_present": true,
             "body_length": 5130,
-            "content_hash": "018b25120fa8ea4812c1ba317a6dfae4b551f071",
+            "content_hash": "bde9e8561c54ac366d15ab150711d74257e1b361",
             "error": null
         },
         {
@@ -28,7 +28,7 @@
             "expected_card_marker": "EXPLORER TRAIL",
             "card_content_present": true,
             "body_length": 5248,
-            "content_hash": "3c990a9095da49029ba3c7aabe504e31ea446541",
+            "content_hash": "3275ed7d738cd623d12207144b6ffd38447f86cf",
             "error": null
         },
         {
@@ -39,7 +39,7 @@
             "expected_card_marker": "FEATURED PARTICIPATING BUSINESS",
             "card_content_present": true,
             "body_length": 5173,
-            "content_hash": "73fbdfab4a05026de6e6d8db5f37d0e87fa25e0a",
+            "content_hash": "9077bc695cab95f66e5dfac18e6a452bfb068407",
             "error": null
         },
         {
@@ -50,7 +50,7 @@
             "expected_card_marker": "CLUE ACTIVITY BONUS",
             "card_content_present": true,
             "body_length": 5068,
-            "content_hash": "9b527ed943304323ab6377d3528daaceffd7b266",
+            "content_hash": "aba23315ba28818754a671e18cb4de7e3d36f14f",
             "error": null
         },
         {
@@ -61,7 +61,7 @@
             "expected_card_marker": "MERCHANT CHECK-IN",
             "card_content_present": true,
             "body_length": 5141,
-            "content_hash": "551a8990391fdc8129043ea0c7e8b9e507ef5aba",
+            "content_hash": "91d5c9a934daf888e137cb3d7bedc7ddc99510f9",
             "error": null
         },
         {
@@ -72,7 +72,7 @@
             "expected_card_marker": "LOCAL BUSINESS BONUS PRIZE",
             "card_content_present": true,
             "body_length": 5138,
-            "content_hash": "f42ec66247e1b7bc16007c0366a0c9104ef1ccdc",
+            "content_hash": "50dcfcfdb648b17fee6a5a3e68e3e7b63aeea332",
             "error": null
         },
         {
@@ -83,7 +83,7 @@
             "expected_card_marker": "BRING ANOTHER HUNTER",
             "card_content_present": true,
             "body_length": 5158,
-            "content_hash": "9f583a9cc80daa529242c951873ebbee72790be3",
+            "content_hash": "e4ff43d74843857e7f7a65951232e86199056b04",
             "error": null
         },
         {
@@ -94,7 +94,7 @@
             "expected_card_marker": "HUNTER VIP",
             "card_content_present": true,
             "body_length": 5012,
-            "content_hash": "6490aba6a1a046f08a867b5380338679ee1e1edd",
+            "content_hash": "a931508732769b3efd0b2100d96fd8caec9d27bc",
             "error": null
         },
         {
@@ -105,7 +105,7 @@
             "expected_card_marker": "MYSTERY BONUS",
             "card_content_present": true,
             "body_length": 5167,
-            "content_hash": "9bd8caf9946372e63ecb15ed618cea87e070498a",
+            "content_hash": "f2179dc13da2cd2de74389976a0704ebc09e6cbe",
             "error": null
         },
         {
@@ -116,7 +116,7 @@
             "expected_card_marker": "HUNTER COMEBACK",
             "card_content_present": true,
             "body_length": 5164,
-            "content_hash": "9fafd3a3654f4003d3d116d7f2652a04922f6ec4",
+            "content_hash": "a2321d6200a2b6bd75a09901a2b68aa185c36996",
             "error": null
         },
         {
@@ -127,7 +127,7 @@
             "expected_card_marker": "POST-HUNT FOLLOW-UP",
             "card_content_present": true,
             "body_length": 5119,
-            "content_hash": "011b3975a00ad4e7e340cbcf9fe25a7e71f5faeb",
+            "content_hash": "2a1e51fee15e8a0f1edb25ac1ff02f4e1badf5b8",
             "error": null
         },
         {
@@ -138,10 +138,82 @@
             "expected_card_marker": "TREASURE HUNT ROI",
             "card_content_present": true,
             "body_length": 5131,
-            "content_hash": "c0b49abaf4aa06b7195d70483f98f47fe1ebd08f",
+            "content_hash": "a28a163a837edffd966a8122f10e106fd2952fd8",
             "error": null
         }
     ],
+    "native": {
+        "hunter_passport": {
+            "http_status": 200,
+            "model_head": "01 • HUNTER PASSPORT — Join once. Keep earning through the entire Hunt.",
+            "model_title": "01 — Northeast Ohio Treasure Hunt Hunter Passport",
+            "model_description": "WELCOME TO THE HUNT. Activate your Hunter Passport and receive 100 demo welcome points. Use one Passport across participating-business visits, Explorer Trail stamps, local rewards, referrals and comeback offers. The Hunt creates the first visit; this Passport creates the customer relationship that can continue after the treasure is found.",
+            "missing_rendered_markers": [],
+            "passed": true
+        },
+        "explorer": {
+            "http_status": 200,
+            "title": "02 — 5-Stop Northeast Ohio Explorer Trail",
+            "description": "VISIT 5 PARTICIPATING BUSINESSES. Earn one verified stamp at each stop. Complete all five stops to unlock the Explorer Trail reward. This module intentionally circulates Treasure Hunt traffic through the participating merchant network instead of creating only one destination.",
+            "valid_until": "2030-12-31 23:59:59",
+            "is_active": 1,
+            "is_visible_by_default": 1,
+            "passed": true
+        },
+        "merchant_checkin": {
+            "http_status": 200,
+            "title": "05 — Merchant Check-In Verification",
+            "description": "PROVE THE FOOT TRAFFIC. Staff or QR verification confirms the hunter physically reached the participating business. The verified visit can issue the appropriate stamp or points and creates merchant-level campaign attribution so Tom and each business can see what the Hunt actually produced.",
+            "valid_until": "2030-12-31 23:59:59",
+            "is_active": 1,
+            "is_visible_by_default": 1,
+            "passed": true
+        },
+        "comeback_voucher": {
+            "http_status": 200,
+            "title": "10 — Hunter Comeback: $5 Off $25",
+            "value_cents": 500,
+            "min_purchase_cents": 2500,
+            "canonical_passed": true,
+            "obsolete_module_09_retired": true,
+            "passed": true
+        },
+        "scratch": {
+            "name": "09 — Mystery Bonus Scratch & Win",
+            "description": "MYSTERY BONUS: a qualifying participating-business visit can unlock one digital scratch opportunity. The prize pool can contain merchant perks, bonus points or discounts according to the configured win rate and inventory. Scratch rewards are an engagement layer only and never affect the real treasure or official Hunt odds.",
+            "is_active": 1,
+            "images": {
+                "cover_image": {
+                    "db_value": "/files/demo/treasure-hunt/scratch/cover.webp",
+                    "expected": "/files/demo/treasure-hunt/scratch/cover.webp",
+                    "file_exists": true,
+                    "bytes": 9382,
+                    "passed": true
+                },
+                "win_image": {
+                    "db_value": "/files/demo/treasure-hunt/scratch/winner.webp",
+                    "expected": "/files/demo/treasure-hunt/scratch/winner.webp",
+                    "file_exists": true,
+                    "bytes": 14460,
+                    "passed": true
+                },
+                "loss_image": {
+                    "db_value": "/files/demo/treasure-hunt/scratch/loser.webp",
+                    "expected": "/files/demo/treasure-hunt/scratch/loser.webp",
+                    "file_exists": true,
+                    "bytes": 12942,
+                    "passed": true
+                }
+            },
+            "passed": true
+        },
+        "public_home": {
+            "http_status": 200,
+            "missing_markers": [],
+            "obsolete_module_09_visible": false,
+            "passed": true
+        }
+    },
     "distinct_page_content_hashes": 12,
     "all_module_pages_distinct": true
 }
