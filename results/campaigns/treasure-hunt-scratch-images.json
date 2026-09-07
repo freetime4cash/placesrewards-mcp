@@ -1,7 +1,7 @@
 {
     "status": "completed",
     "game_id": "1fefb288-a8cc-46d4-a4a3-04fe56f91329",
-    "started_at": "2026-09-07T01:35:26+00:00",
+    "started_at": "2026-09-07T01:36:53+00:00",
     "files": {
         "cover": {
             "source": "/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/cover.webp",
@@ -24,9 +24,9 @@
     },
     "database": {
         "before": {
-            "cover_image": "/files/demo/northeast-ohio-tom/generated/09-mystery-bonus.svg",
-            "win_image": null,
-            "loss_image": null
+            "cover_image": "/files/demo/treasure-hunt/scratch/cover.webp",
+            "win_image": "/files/demo/treasure-hunt/scratch/winner.webp",
+            "loss_image": "/files/demo/treasure-hunt/scratch/loser.webp"
         },
         "after": {
             "cover_image": "/files/demo/treasure-hunt/scratch/cover.webp",
@@ -40,5 +40,5 @@
         "loser": "https://app.placesrewards.com/files/demo/treasure-hunt/scratch/loser.webp"
     },
     "verified": true,
-    "completed_at": "2026-09-07T01:35:26+00:00"
+    "completed_at": "2026-09-07T01:36:53+00:00"
 }
