@@ -46,29 +46,16 @@ if(!str_contains($web,$marker)){
     file_put_contents($webPath,$web,LOCK_EX);
 }
 
-$localeBypassStatus='not_run';
-$localePatch=$agentRoot.'/scripts/patch-demo-locale-bypass.php';
-if(is_file($localePatch)){
-    $command=escapeshellarg(PHP_BINARY).' '.escapeshellarg($localePatch);
-    passthru($command,$localeExit);
-    $localeBypassStatus=$localeExit===0?'completed':'failed';
-}
+$runScript=static function(string $path): string {
+    if(!is_file($path)) return 'not_run';
+    $command=escapeshellarg(PHP_BINARY).' '.escapeshellarg($path);
+    passthru($command,$exit);
+    return $exit===0?'completed':'failed';
+};
 
-$nativeContentStatus='not_run';
-$contentScript=$agentRoot.'/scripts/apply-treasure-hunt-native-card-content.php';
-if(is_file($contentScript)){
-    $command=escapeshellarg(PHP_BINARY).' '.escapeshellarg($contentScript);
-    passthru($command,$contentExit);
-    $nativeContentStatus=$contentExit===0?'completed':'failed';
-}
-
-$nativeVisualStatus='not_run';
-$visualScript=$agentRoot.'/scripts/patch-treasure-hunt-native-card-visuals.php';
-if(is_file($visualScript)){
-    $command=escapeshellarg(PHP_BINARY).' '.escapeshellarg($visualScript);
-    passthru($command,$visualExit);
-    $nativeVisualStatus=$visualExit===0?'completed':'failed';
-}
+$localeBypassStatus=$runScript($agentRoot.'/scripts/patch-demo-locale-bypass.php');
+$nativeContentStatus=$runScript($agentRoot.'/scripts/apply-treasure-hunt-native-card-content.php');
+$nativeVisualStatus=$runScript($agentRoot.'/scripts/patch-treasure-hunt-native-card-visuals.php');
 
 try{Artisan::call('route:clear');}catch(Throwable $e){}
 try{Artisan::call('view:clear');}catch(Throwable $e){}
@@ -76,29 +63,10 @@ try{Artisan::call('config:clear');}catch(Throwable $e){}
 try{Artisan::call('cache:clear');}catch(Throwable $e){}
 try{Artisan::call('optimize:clear');}catch(Throwable $e){}
 
-$runtimeInspection='not_run';
-$runtimeScript=$agentRoot.'/scripts/inspect-treasure-hunt-live-card-runtime.php';
-if(is_file($runtimeScript)){
-    $command=escapeshellarg(PHP_BINARY).' '.escapeshellarg($runtimeScript);
-    passthru($command,$runtimeExit);
-    $runtimeInspection=$runtimeExit===0?'completed':'failed';
-}
-
-$destinationInspection='not_run';
-$destinationScript=$agentRoot.'/scripts/inspect-treasure-hunt-native-destinations.php';
-if(is_file($destinationScript)){
-    $command=escapeshellarg(PHP_BINARY).' '.escapeshellarg($destinationScript);
-    passthru($command,$destinationExit);
-    $destinationInspection=$destinationExit===0?'completed':'failed';
-}
-
-$middlewareInspection='not_run';
-$middlewareScript=$agentRoot.'/scripts/inspect-web-middleware.php';
-if(is_file($middlewareScript)){
-    $command=escapeshellarg(PHP_BINARY).' '.escapeshellarg($middlewareScript);
-    passthru($command,$middlewareExit);
-    $middlewareInspection=$middlewareExit===0?'completed':'failed';
-}
+$runtimeInspection=$runScript($agentRoot.'/scripts/inspect-treasure-hunt-live-card-runtime.php');
+$destinationInspection=$runScript($agentRoot.'/scripts/inspect-treasure-hunt-native-destinations.php');
+$middlewareInspection=$runScript($agentRoot.'/scripts/inspect-web-middleware.php');
+$actualLinkVerification=$runScript($agentRoot.'/scripts/verify-treasure-hunt-actual-links.php');
 
 $links=[
   1=>'https://app.placesrewards.com/demo/treasure-hunt/loyalty',
@@ -114,8 +82,9 @@ $links=[
   11=>'https://app.placesrewards.com/demo/treasure-hunt/retention',
   12=>'https://app.placesrewards.com/demo/treasure-hunt/analytics',
 ];
+$overall=$actualLinkVerification==='completed'?'completed':'verification_failed';
 $result=[
-  'status'=>'completed',
+  'status'=>$overall,
   'workflow_url'=>'https://app.placesrewards.com/demo/treasure-hunt',
   'links'=>$links,
   'locale_demo_bypass'=>$localeBypassStatus,
@@ -124,8 +93,10 @@ $result=[
   'runtime_inspection'=>$runtimeInspection,
   'destination_inspection'=>$destinationInspection,
   'middleware_inspection'=>$middlewareInspection,
+  'actual_link_verification'=>$actualLinkVerification,
   'deployed_at'=>now()->toIso8601String(),
 ];
 @mkdir(dirname($resultPath),0755,true);
 file_put_contents($resultPath,json_encode($result,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES),LOCK_EX);
-echo json_encode(['status'=>'completed','module_count'=>12,'locale_demo_bypass'=>$localeBypassStatus,'native_card_content'=>$nativeContentStatus,'native_card_visuals'=>$nativeVisualStatus,'runtime_inspection'=>$runtimeInspection,'destination_inspection'=>$destinationInspection,'workflow_url'=>$result['workflow_url']]),"\n";
+echo json_encode(['status'=>$overall,'module_count'=>12,'actual_link_verification'=>$actualLinkVerification,'workflow_url'=>$result['workflow_url']]),"\n";
+exit($overall==='completed'?0:1);
