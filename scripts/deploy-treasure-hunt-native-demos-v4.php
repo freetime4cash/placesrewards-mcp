@@ -54,12 +54,6 @@ if(is_file($localePatch)){
     $localeBypassStatus=$localeExit===0?'completed':'failed';
 }
 
-try{Artisan::call('route:clear');}catch(Throwable $e){}
-try{Artisan::call('view:clear');}catch(Throwable $e){}
-try{Artisan::call('config:clear');}catch(Throwable $e){}
-try{Artisan::call('cache:clear');}catch(Throwable $e){}
-try{Artisan::call('optimize:clear');}catch(Throwable $e){}
-
 $nativeContentStatus='not_run';
 $contentScript=$agentRoot.'/scripts/apply-treasure-hunt-native-card-content.php';
 if(is_file($contentScript)){
@@ -67,6 +61,20 @@ if(is_file($contentScript)){
     passthru($command,$contentExit);
     $nativeContentStatus=$contentExit===0?'completed':'failed';
 }
+
+$nativeVisualStatus='not_run';
+$visualScript=$agentRoot.'/scripts/patch-treasure-hunt-native-card-visuals.php';
+if(is_file($visualScript)){
+    $command=escapeshellarg(PHP_BINARY).' '.escapeshellarg($visualScript);
+    passthru($command,$visualExit);
+    $nativeVisualStatus=$visualExit===0?'completed':'failed';
+}
+
+try{Artisan::call('route:clear');}catch(Throwable $e){}
+try{Artisan::call('view:clear');}catch(Throwable $e){}
+try{Artisan::call('config:clear');}catch(Throwable $e){}
+try{Artisan::call('cache:clear');}catch(Throwable $e){}
+try{Artisan::call('optimize:clear');}catch(Throwable $e){}
 
 $middlewareInspection='not_run';
 $middlewareScript=$agentRoot.'/scripts/inspect-web-middleware.php';
@@ -96,9 +104,10 @@ $result=[
   'links'=>$links,
   'locale_demo_bypass'=>$localeBypassStatus,
   'native_card_content'=>$nativeContentStatus,
+  'native_card_visuals'=>$nativeVisualStatus,
   'middleware_inspection'=>$middlewareInspection,
   'deployed_at'=>now()->toIso8601String(),
 ];
 @mkdir(dirname($resultPath),0755,true);
 file_put_contents($resultPath,json_encode($result,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES),LOCK_EX);
-echo json_encode(['status'=>'completed','module_count'=>12,'locale_demo_bypass'=>$localeBypassStatus,'native_card_content'=>$nativeContentStatus,'workflow_url'=>$result['workflow_url']]),"\n";
+echo json_encode(['status'=>'completed','module_count'=>12,'locale_demo_bypass'=>$localeBypassStatus,'native_card_content'=>$nativeContentStatus,'native_card_visuals'=>$nativeVisualStatus,'workflow_url'=>$result['workflow_url']]),"\n";
