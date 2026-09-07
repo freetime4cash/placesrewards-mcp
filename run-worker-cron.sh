@@ -77,6 +77,9 @@ NODE
     if [ -f "$AGENT/scripts/run-northeast-ohio-tom-v2.php" ]; then
       "$PHPCLI" "$AGENT/scripts/run-northeast-ohio-tom-v2.php" > "$TOM_DEPLOY_LOG" 2>&1 || true
     fi
+    if [ -f "$AGENT/scripts/inspect-treasure-hunt-native-modules.php" ]; then
+      "$PHPCLI" "$AGENT/scripts/inspect-treasure-hunt-native-modules.php" || true
+    fi
     if [ -f "$AGENT/scripts/install-363-foundation-demo-v2.php" ]; then
       "$PHPCLI" "$AGENT/scripts/install-363-foundation-demo-v2.php" || true
     fi
