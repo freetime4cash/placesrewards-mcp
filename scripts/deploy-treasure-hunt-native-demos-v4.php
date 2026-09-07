@@ -46,6 +46,14 @@ if(!str_contains($web,$marker)){
     file_put_contents($webPath,$web,LOCK_EX);
 }
 
+$localeBypassStatus='not_run';
+$localePatch=$agentRoot.'/scripts/patch-demo-locale-bypass.php';
+if(is_file($localePatch)){
+    $command=escapeshellarg(PHP_BINARY).' '.escapeshellarg($localePatch);
+    passthru($command,$localeExit);
+    $localeBypassStatus=$localeExit===0?'completed':'failed';
+}
+
 try{Artisan::call('route:clear');}catch(Throwable $e){}
 try{Artisan::call('view:clear');}catch(Throwable $e){}
 try{Artisan::call('config:clear');}catch(Throwable $e){}
@@ -86,10 +94,11 @@ $result=[
   'status'=>'completed',
   'workflow_url'=>'https://app.placesrewards.com/demo/treasure-hunt',
   'links'=>$links,
+  'locale_demo_bypass'=>$localeBypassStatus,
   'native_card_content'=>$nativeContentStatus,
   'middleware_inspection'=>$middlewareInspection,
   'deployed_at'=>now()->toIso8601String(),
 ];
 @mkdir(dirname($resultPath),0755,true);
 file_put_contents($resultPath,json_encode($result,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES),LOCK_EX);
-echo json_encode(['status'=>'completed','module_count'=>12,'native_card_content'=>$nativeContentStatus,'middleware_inspection'=>$middlewareInspection,'workflow_url'=>$result['workflow_url']]),"\n";
+echo json_encode(['status'=>'completed','module_count'=>12,'locale_demo_bypass'=>$localeBypassStatus,'native_card_content'=>$nativeContentStatus,'workflow_url'=>$result['workflow_url']]),"\n";
