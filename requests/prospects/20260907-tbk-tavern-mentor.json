@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260907-tbk-tavern-mentor",
+  "observedAt": "2026-09-07T12:14:43Z",
+  "business": {
+    "name": "TBK Tavern",
+    "city": "Mentor, OH",
+    "website": "https://tbktavern.com/",
+    "category": "restaurant_and_entertainment_tavern",
+    "publicContact": {
+      "email": "admin09@tbktavern.com",
+      "phone": "+1-440-290-7106",
+      "sourceUrl": "https://tbktavern.com/contact/",
+      "observedAt": "2026-09-07T12:14:43Z"
+    }
+  },
+  "fitScore": 92,
+  "evidence": [
+    {
+      "url": "https://tbktavern.com/",
+      "observedFact": "TBK Tavern's current official site presents the Mentor location as an active east-side tavern with live music, trivia nights, interactive games, food and craft beer, and posts current operating hours.",
+      "observedAt": "2026-09-07T12:14:43Z"
+    },
+    {
+      "url": "https://tbktavern.com/contact/",
+      "observedFact": "The official contact page routes reservations, private events, live-music inquiries, catering questions and general questions through a contact form, email or phone, and states that a team member will get back to the customer.",
+      "observedAt": "2026-09-07T12:14:43Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/MentorOh/comments/1vmoo7d/tbk_tavern_is_just_hot_gfs/",
+      "observedFact": "A recent August 12, 2026 local Reddit discussion contains multiple negative user reports about food quality and consistency after the concept change. These are public user reports and are not independently verified merchant facts.",
+      "observedAt": "2026-09-07T12:14:43Z"
+    },
+    {
+      "url": "https://hoodline.com/2026/07/after-major-makeover-brew-kettle-tavern-roars-back-in-mentor/",
+      "observedFact": "A July 2026 report describes TBK Tavern as a recently remodeled/repositioned Mentor concept experimenting with live music, arcade-centered gatherings, brunch and rotating specials.",
+      "observedAt": "2026-09-07T12:14:43Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "reputation",
+      "confidence": 0.84,
+      "evidenceIndexes": [2, 3],
+      "recommendedFix": "Deploy a reputation-recovery workflow that identifies recent guests, requests structured feedback, routes unhappy guests into service recovery, and asks satisfied guests for public reviews without making unsupported claims about business performance."
+    },
+    {
+      "category": "event_retention",
+      "confidence": 0.91,
+      "evidenceIndexes": [0, 3],
+      "recommendedFix": "Capture live-music, trivia, game-room and brunch visitors into trackable event cohorts, then trigger return-visit rewards and event-specific follow-up offers."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.76,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Add automated inquiry capture and follow-up for private events, catering and reservation-related requests so leads receive an immediate next step while staff retains control of final booking decisions."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.79,
+      "evidenceIndexes": [2, 3],
+      "recommendedFix": "Use the recent relaunch as a defined reactivation segment: invite prior Brew Kettle/TBK visitors back with measurable recovery offers and track return behavior separately from new-customer acquisition."
+    }
+  ],
+  "recommendedEntryOffer": "Reputation Recovery + Event-to-Repeat Revenue Engine",
+  "notes": "Observed facts are separated from hypotheses. The Reddit evidence is treated only as a public reputation signal, not as verified operational truth. No monetary revenue loss is claimed. Near-term fit is high because TBK is a recently repositioned local concept actively programming repeatable events while also facing recent public reputation pressure."
+}
