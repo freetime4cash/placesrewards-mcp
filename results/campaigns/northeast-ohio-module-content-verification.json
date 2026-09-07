@@ -1,0 +1,208 @@
+{
+    "status": "passed",
+    "workflow_version": 4,
+    "module_count": 12,
+    "sequence_01_to_12": true,
+    "all_required_content_fields_present": true,
+    "unique_titles": 12,
+    "unique_descriptions": 12,
+    "unique_example_card_content": 12,
+    "modules": [
+        {
+            "sequence": 1,
+            "module": "loyalty",
+            "title": "Hunter Passport \u2014 Join Once, Keep Earning",
+            "workflow_phase": "CAPTURE",
+            "missing_fields": [],
+            "module_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom/module/01",
+            "native": {
+                "table": "cards",
+                "id": "95cbd0bf-8bbb-436d-b7c6-a2e1e558db25",
+                "found": true,
+                "description_present": true,
+                "description": "{\"en\":\"The Hunter Passport is the entry point for the entire system. A participant joins once, receives a digital Treasure Hunt identity, and carries the same relationship through merchant visits, stamps, points, rewards, referrals and post",
+                "title": "{\"en\":\"Hunter Passport \u2014 Join Once, Keep Earning\"}",
+                "head": "{\"en\":\"Join once. Keep earning across the hunt.\"}",
+                "name": "[TOM DEMO 01] Hunter Passport"
+            }
+        },
+        {
+            "sequence": 2,
+            "module": "stamp_card",
+            "title": "5-Stop Explorer Trail \u2014 Move Traffic Across Town",
+            "workflow_phase": "CIRCULATE",
+            "missing_fields": [],
+            "module_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom/module/02",
+            "native": {
+                "table": "stamp_cards",
+                "id": "a9566430-b6b0-434d-ae3c-f3ba85421c5f",
+                "found": true,
+                "description_present": true,
+                "description": "{\"en\":\"The Explorer Trail turns the Hunt into a cross-business customer journey. Each verified participating-business stop earns a stamp. Completing all five stops unlocks a local reward, encouraging hunters to circulate through the merchan",
+                "title": "{\"en\":\"5-Stop Explorer Trail \u2014 Move Traffic Across Town\"}",
+                "name": "[TOM DEMO 02] 5-Stop Explorer Trail"
+            }
+        },
+        {
+            "sequence": 3,
+            "module": "discovery",
+            "title": "Participating Business Discovery \u2014 Make Every Merchant Visible",
+            "workflow_phase": "DISCOVER",
+            "missing_fields": [],
+            "module_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom/module/03",
+            "native": {
+                "table": "discovery",
+                "id": null,
+                "found": false,
+                "description_present": false,
+                "route_backed_demo": true
+            }
+        },
+        {
+            "sequence": 4,
+            "module": "reward",
+            "title": "Clue Completion Reward \u2014 Reward the Visit, Not the Answer",
+            "workflow_phase": "ENGAGE",
+            "missing_fields": [],
+            "module_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom/module/04",
+            "native": {
+                "table": "rewards",
+                "id": "29304849-3c10-4a06-8f8f-4bad776b79f9",
+                "found": true,
+                "description_present": true,
+                "description": "{\"en\":\"After an approved clue-related action or verified business visit, the hunter can unlock a merchant-funded reward. The module never changes the clue, reveals the answer or affects the odds of finding the treasure; it only rewards the ",
+                "title": "{\"en\":\"Clue Completion Reward \u2014 Reward the Visit, Not the Answer\"}",
+                "name": "[TOM DEMO 04] Clue Completion Reward"
+            }
+        },
+        {
+            "sequence": 5,
+            "module": "checkin",
+            "title": "Merchant Check-In \u2014 Prove the Foot Traffic",
+            "workflow_phase": "VERIFY",
+            "missing_fields": [],
+            "module_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom/module/05",
+            "native": {
+                "table": "stamp_cards",
+                "id": "5738988e-265f-422f-9b41-5828790af3c0",
+                "found": true,
+                "description_present": true,
+                "description": "{\"en\":\"At the business, the hunter is verified through the merchant or staff workflow. The check-in can issue the appropriate stamp or points and records that the Treasure Hunt produced an actual visit at that merchant. Demo card content: M",
+                "title": "{\"en\":\"Merchant Check-In \u2014 Prove the Foot Traffic\"}",
+                "name": "[TOM DEMO 05] Merchant Check-In Verification"
+            }
+        },
+        {
+            "sequence": 6,
+            "module": "prize",
+            "title": "Local Prize & Giveaway \u2014 Give Every Business a Win Moment",
+            "workflow_phase": "REWARD",
+            "missing_fields": [],
+            "module_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom/module/06",
+            "native": {
+                "table": "rewards",
+                "id": "13085fc2-2a5d-43ee-92b5-441bc368c55b",
+                "found": true,
+                "description_present": true,
+                "description": "{\"en\":\"A participating business can contribute a prize, experience, gift card or special reward. Eligibility can be tied to a verified visit, Explorer Trail milestone or another approved campaign action, giving merchants their own promotion",
+                "title": "{\"en\":\"Local Prize & Giveaway \u2014 Give Every Business a Win Moment\"}",
+                "name": "[TOM DEMO 06] Local Prize & Giveaway Reward"
+            }
+        },
+        {
+            "sequence": 7,
+            "module": "referral",
+            "title": "Bring Another Hunter \u2014 Let Participants Grow the Hunt",
+            "workflow_phase": "GROW",
+            "missing_fields": [],
+            "module_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom/module/07",
+            "native": {
+                "table": "referral",
+                "id": null,
+                "found": false,
+                "description_present": false,
+                "route_backed_demo": true
+            }
+        },
+        {
+            "sequence": 8,
+            "module": "tier",
+            "title": "Hunter VIP \u2014 Reward the People Who Support Local Most",
+            "workflow_phase": "DEEPEN",
+            "missing_fields": [],
+            "module_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom/module/08",
+            "native": {
+                "table": "tiers",
+                "id": "8744df20-c34b-484c-9f8f-15140f8fc542",
+                "found": true,
+                "description_present": true,
+                "description": "{\"en\":\"The VIP tier gives the most active participants a visible level to work toward. Qualification can use accumulated points and activity, while benefits can include premium merchant offers, early access, special experiences or next-Hunt",
+                "name": "[TOM DEMO 08] Hunter VIP Progression"
+            }
+        },
+        {
+            "sequence": 9,
+            "module": "scratch",
+            "title": "Mystery Bonus Scratch & Win \u2014 Add Instant Excitement",
+            "workflow_phase": "GAMIFY",
+            "missing_fields": [],
+            "module_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom/module/09",
+            "native": {
+                "table": "scratch_games",
+                "id": "1fefb288-a8cc-46d4-a4a3-04fe56f91329",
+                "found": true,
+                "description_present": true,
+                "description": "A qualifying visit can issue a digital scratch opportunity. The prize pool can contain merchant perks, bonus points, discounts or no-win outcomes according to the configured campaign rules and inventory. Demo card content: MYSTERY BONUS \u2014 S",
+                "name": "[TOM DEMO 09] Mystery Bonus Scratch & Win"
+            }
+        },
+        {
+            "sequence": 10,
+            "module": "voucher",
+            "title": "Hunter Comeback Offer \u2014 Turn the First Visit Into the Second",
+            "workflow_phase": "CONVERT",
+            "missing_fields": [],
+            "module_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom/module/10",
+            "native": {
+                "table": "vouchers",
+                "id": "14788f52-438e-4293-bd6b-c82b8e448983",
+                "found": true,
+                "description_present": true,
+                "description": "{\"en\":\"After the initial campaign visit, the hunter receives a time-bounded merchant offer designed to trigger a second purchase. The demo uses $5 off $25, while each business can configure the value and minimum spend that fits its economic",
+                "title": "{\"en\":\"Hunter Comeback Offer \u2014 Turn the First Visit Into the Second\"}",
+                "name": "[TOM DEMO 10] Hunter Comeback $5 Off $25"
+            }
+        },
+        {
+            "sequence": 11,
+            "module": "automation",
+            "title": "Post-Hunt Retention \u2014 Keep the Customer Relationship Alive",
+            "workflow_phase": "RETAIN",
+            "missing_fields": [],
+            "module_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom/module/11",
+            "native": {
+                "table": "email_campaigns",
+                "id": "b1ea6974-d61c-41d4-a1ce-0c0a27ffa5bd",
+                "found": true,
+                "description_present": true,
+                "body": "{\"en\":\"Thanks for exploring Northeast Ohio. Your rewards, unfinished trail progress and participating-business offers can keep the relationship going after the hunt. This is a draft demonstration and is not sent automatically.\"}"
+            }
+        },
+        {
+            "sequence": 12,
+            "module": "analytics",
+            "title": "Organizer & Merchant ROI \u2014 Prove What the Hunt Produced",
+            "workflow_phase": "PROVE",
+            "missing_fields": [],
+            "module_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom/module/12",
+            "native": {
+                "table": "analytics",
+                "id": null,
+                "found": false,
+                "description_present": false,
+                "route_backed_demo": true
+            }
+        }
+    ],
+    "verified_at": "2026-09-07T00:32:56+00:00"
+}
