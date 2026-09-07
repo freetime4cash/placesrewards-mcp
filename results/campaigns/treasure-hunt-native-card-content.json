@@ -1,6 +1,6 @@
 {
     "status": "completed",
-    "updated_at": "2026-09-07T01:06:34+00:00",
+    "updated_at": "2026-09-07T01:34:30+00:00",
     "records": [
         {
             "table": "cards",
@@ -10,6 +10,11 @@
                 "head",
                 "title",
                 "description",
+                "custom_rule1",
+                "custom_rule2",
+                "custom_rule3",
+                "is_active",
+                "is_visible_by_default",
                 "updated_at"
             ]
         },
@@ -22,6 +27,7 @@
                 "description",
                 "reward_title",
                 "reward_description",
+                "is_active",
                 "updated_at"
             ]
         },
@@ -44,6 +50,7 @@
                 "description",
                 "reward_title",
                 "reward_description",
+                "is_active",
                 "updated_at"
             ]
         },
@@ -99,5 +106,5 @@
             ]
         }
     ],
-    "completed_at": "2026-09-07T01:06:34+00:00"
+    "completed_at": "2026-09-07T01:34:30+00:00"
 }
