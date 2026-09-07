@@ -49,6 +49,8 @@ if(!str_contains($web,$marker)){
 try{Artisan::call('route:clear');}catch(Throwable $e){}
 try{Artisan::call('view:clear');}catch(Throwable $e){}
 try{Artisan::call('config:clear');}catch(Throwable $e){}
+try{Artisan::call('cache:clear');}catch(Throwable $e){}
+try{Artisan::call('optimize:clear');}catch(Throwable $e){}
 
 $nativeContentStatus='not_run';
 $contentScript=$agentRoot.'/scripts/apply-treasure-hunt-native-card-content.php';
@@ -56,6 +58,14 @@ if(is_file($contentScript)){
     $command=escapeshellarg(PHP_BINARY).' '.escapeshellarg($contentScript);
     passthru($command,$contentExit);
     $nativeContentStatus=$contentExit===0?'completed':'failed';
+}
+
+$middlewareInspection='not_run';
+$middlewareScript=$agentRoot.'/scripts/inspect-web-middleware.php';
+if(is_file($middlewareScript)){
+    $command=escapeshellarg(PHP_BINARY).' '.escapeshellarg($middlewareScript);
+    passthru($command,$middlewareExit);
+    $middlewareInspection=$middlewareExit===0?'completed':'failed';
 }
 
 $links=[
@@ -77,8 +87,9 @@ $result=[
   'workflow_url'=>'https://app.placesrewards.com/demo/treasure-hunt',
   'links'=>$links,
   'native_card_content'=>$nativeContentStatus,
+  'middleware_inspection'=>$middlewareInspection,
   'deployed_at'=>now()->toIso8601String(),
 ];
 @mkdir(dirname($resultPath),0755,true);
 file_put_contents($resultPath,json_encode($result,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES),LOCK_EX);
-echo json_encode(['status'=>'completed','module_count'=>12,'native_card_content'=>$nativeContentStatus,'workflow_url'=>$result['workflow_url']]),"\n";
+echo json_encode(['status'=>'completed','module_count'=>12,'native_card_content'=>$nativeContentStatus,'middleware_inspection'=>$middlewareInspection,'workflow_url'=>$result['workflow_url']]),"\n";
