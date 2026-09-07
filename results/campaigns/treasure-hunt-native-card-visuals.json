@@ -1,24 +1,21 @@
 {
     "status": "completed",
-    "started_at": "2026-09-07T01:44:39+00:00",
+    "started_at": "2026-09-07T01:45:22+00:00",
     "action": "rollback_unsafe_shared_component_patch",
     "files": {
         "loyalty": {
-            "status": "restored",
-            "path": "/home/placevle/app.placesrewards.com/resources/views/components/member/card.blade.php",
-            "backup": "/home/placevle/placesrewards-agent-server/data/backups/treasure-hunt-native-visuals-20260907-014239/card.blade.php"
+            "status": "clean",
+            "path": "/home/placevle/app.placesrewards.com/resources/views/components/member/card.blade.php"
         },
         "stamp": {
-            "status": "restored",
-            "path": "/home/placevle/app.placesrewards.com/resources/views/components/member/stamp-card.blade.php",
-            "backup": "/home/placevle/placesrewards-agent-server/data/backups/treasure-hunt-native-visuals-20260907-014239/stamp-card.blade.php"
+            "status": "clean",
+            "path": "/home/placevle/app.placesrewards.com/resources/views/components/member/stamp-card.blade.php"
         },
         "voucher": {
-            "status": "restored",
-            "path": "/home/placevle/app.placesrewards.com/resources/views/components/member/voucher-card.blade.php",
-            "backup": "/home/placevle/placesrewards-agent-server/data/backups/treasure-hunt-native-visuals-20260907-014239/voucher-card.blade.php"
+            "status": "clean",
+            "path": "/home/placevle/app.placesrewards.com/resources/views/components/member/voucher-card.blade.php"
         }
     },
     "verified_clean": true,
-    "completed_at": "2026-09-07T01:44:39+00:00"
+    "completed_at": "2026-09-07T01:45:22+00:00"
 }
