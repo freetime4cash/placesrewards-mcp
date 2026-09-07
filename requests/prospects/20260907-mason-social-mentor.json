@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260907-mason-social-mentor",
+  "observedAt": "2026-09-07T12:14:43Z",
+  "business": {
+    "name": "Mason Social",
+    "city": "Mentor, OH",
+    "website": "https://www.masonsocialmentor.com/",
+    "category": "neighborhood_tavern",
+    "publicContact": {
+      "phone": "+1-440-368-9828",
+      "sourceUrl": "https://www.masonsocialmentor.com/contact",
+      "observedAt": "2026-09-07T12:14:43Z"
+    }
+  },
+  "fitScore": 87,
+  "evidence": [
+    {
+      "url": "https://www.masonsocialmentor.com/",
+      "observedFact": "Mason Social's current official website shows active Mentor operating hours, online ordering, a reservation form requesting customer contact details, date, guest count and notes, and a call to follow the business for neighborhood events.",
+      "observedAt": "2026-09-07T12:14:43Z"
+    },
+    {
+      "url": "https://www.masonsocialmentor.com/contact",
+      "observedFact": "The official contact page accepts general, catering and large-party/event inquiries through a form and states that the business will get back to the customer; it also publishes the business phone number and current hours.",
+      "observedAt": "2026-09-07T12:14:43Z"
+    },
+    {
+      "url": "https://clevelandmagazine.com/articles/cleveland-restaurant-group-to-open-mason-social-in-former-mentor-melt-space/",
+      "observedFact": "Cleveland Magazine reported Mason Social as a new Mentor concept from Cleveland Restaurant Management Group, designed as a sports-bar/honky-tonk venue with approximately 115 indoor seats plus patio capacity.",
+      "observedAt": "2026-09-07T12:14:43Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.81,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Layer an immediate reservation-request acknowledgement and tracked next-step workflow around the existing form so prospective diners and groups receive a measurable response path rather than relying only on manual follow-up."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.8,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Automate follow-up for catering, event and large-party inquiries while keeping staff approval in the loop, with reminder and recovery sequences for unanswered or unconverted inquiries."
+    },
+    {
+      "category": "event_retention",
+      "confidence": 0.78,
+      "evidenceIndexes": [0, 1, 2],
+      "recommendedFix": "Capture event, sports-night and large-party visitors into tagged cohorts and trigger return-visit offers, referral prompts and post-event follow-up rather than treating each visit as a one-off transaction."
+    }
+  ],
+  "recommendedEntryOffer": "Reservation Follow-Up + Event Retention Engine",
+  "notes": "The public site confirms an active operating business and request-based reservation/event workflows. The hypothesis is not that reservations are failing, but that Places Rewards can add immediate acknowledgement, attribution and follow-up around an otherwise manual response path. No monetary loss is claimed."
+}
