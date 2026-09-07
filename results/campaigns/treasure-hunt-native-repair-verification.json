@@ -1,6 +1,6 @@
 {
-    "status": "failed",
-    "verified_at": "2026-09-07T14:04:28+00:00",
+    "status": "passed",
+    "verified_at": "2026-09-07T14:08:23+00:00",
     "checks": {
         "reward_29304849-3c10-4a06-8f8f-4bad776b79f9": {
             "passed": true,
@@ -87,31 +87,31 @@
             }
         },
         "scratch_native_renderer": {
-            "passed": false,
+            "passed": true,
             "checks": {
-                "cover_config": false,
-                "cover_state": false,
-                "cover_renderer": false,
-                "cover_storage_helper": false,
+                "cover_config": true,
+                "cover_state": true,
+                "cover_renderer": true,
+                "cover_storage_helper": true,
                 "winner_storage_helper": true,
                 "loser_storage_helper": true
             },
             "view": "/home/placevle/app.placesrewards.com/resources/views/member/scratch-cards/show.blade.php"
         },
         "scratch_native_page": {
-            "passed": false,
+            "passed": true,
             "bridge": "https://app.placesrewards.com/demo/treasure-hunt/scratch/play",
             "probe": {
                 "status": 200,
                 "effective": "https://app.placesrewards.com/en-us/scratch-cards/448e9d04-30a5-4621-97d2-bf9f11604ed9",
                 "content_type": "text/html; charset=utf-8",
-                "bytes": 37497,
+                "bytes": 39025,
                 "error": null
             },
             "native_destination": true,
-            "rendered_storage_urls": false,
+            "rendered_storage_urls": true,
             "no_old_storage_files_paths": true
         }
     },
-    "completed_at": "2026-09-07T14:04:31+00:00"
+    "completed_at": "2026-09-07T14:08:25+00:00"
 }

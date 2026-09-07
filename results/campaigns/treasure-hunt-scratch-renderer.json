@@ -1,0 +1,19 @@
+{
+    "status": "completed",
+    "view": "/home/placevle/app.placesrewards.com/resources/views/member/scratch-cards/show.blade.php",
+    "changes": [
+        "blade_cover_url",
+        "alpine_cover_state",
+        "canvas_cover_renderer"
+    ],
+    "backup": "/home/placevle/placesrewards-agent-server/data/backups/treasure-hunt-scratch-renderer/show.blade.20260907-140806.php",
+    "checks": {
+        "cover_config": true,
+        "cover_state": true,
+        "cover_renderer": true,
+        "cover_storage_helper": true,
+        "scratch_events_preserved": true
+    },
+    "verified": true,
+    "completed_at": "2026-09-07T14:08:06+00:00"
+}
