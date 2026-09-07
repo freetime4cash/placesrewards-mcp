@@ -1,18 +1,27 @@
 {
     "status": "completed",
     "game_id": "1fefb288-a8cc-46d4-a4a3-04fe56f91329",
-    "started_at": "2026-09-07T17:28:00+00:00",
+    "started_at": "2026-09-07T17:52:19+00:00",
     "files": {
         "cover": {
-            "source": "/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/cover.webp",
+            "source": "/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/cover.svg",
             "storage": "/home/placevle/app.placesrewards.com/storage/app/public/treasure-hunt/scratch/cover.webp",
             "public_mirror": "/home/placevle/app.placesrewards.com/public/files/demo/treasure-hunt/scratch/cover.webp",
-            "bytes": 9382,
-            "sha1": "9ca11c59498840bd27e443c4f145758bd50fc7ee",
-            "width": 300,
-            "height": 225,
+            "bytes": 70368,
+            "sha1": "da850808b05cd02b6e6cb5e4a313b3f565836d3e",
+            "width": 1200,
+            "height": 900,
             "mime": "image/webp",
-            "reencoded": false
+            "generated_from_svg": true,
+            "decoder": {
+                "ok": true,
+                "basic": true,
+                "width": 1200,
+                "height": 900,
+                "mime": "image/webp",
+                "decoder_exit": 0,
+                "decoder_output": "WEBP 1200 900"
+            }
         },
         "winner": {
             "source": "/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/winner.webp",
@@ -23,7 +32,16 @@
             "width": 300,
             "height": 225,
             "mime": "image/webp",
-            "reencoded": true
+            "reencoded": true,
+            "decoder": {
+                "ok": true,
+                "basic": true,
+                "width": 300,
+                "height": 225,
+                "mime": "image/webp",
+                "decoder_exit": 0,
+                "decoder_output": "WEBP 300 225"
+            }
         },
         "loser": {
             "source": "/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/loser.webp",
@@ -34,7 +52,16 @@
             "width": 300,
             "height": 225,
             "mime": "image/webp",
-            "reencoded": true
+            "reencoded": true,
+            "decoder": {
+                "ok": true,
+                "basic": true,
+                "width": 300,
+                "height": 225,
+                "mime": "image/webp",
+                "decoder_exit": 0,
+                "decoder_output": "WEBP 300 225"
+            }
         }
     },
     "database": {
@@ -64,7 +91,10 @@
             "cover": {
                 "status": 200,
                 "content_type": "image/webp",
-                "bytes": 9382,
+                "bytes": 70368,
+                "riff_webp": true,
+                "decoder_exit": 0,
+                "decoder_output": "WEBP 1200 900",
                 "error": null,
                 "valid_webp": true
             },
@@ -72,6 +102,9 @@
                 "status": 200,
                 "content_type": "image/webp",
                 "bytes": 23084,
+                "riff_webp": true,
+                "decoder_exit": 0,
+                "decoder_output": "WEBP 300 225",
                 "error": null,
                 "valid_webp": true
             },
@@ -79,6 +112,9 @@
                 "status": 200,
                 "content_type": "image/webp",
                 "bytes": 21068,
+                "riff_webp": true,
+                "decoder_exit": 0,
+                "decoder_output": "WEBP 300 225",
                 "error": null,
                 "valid_webp": true
             }
@@ -87,7 +123,10 @@
             "cover": {
                 "status": 200,
                 "content_type": "image/webp",
-                "bytes": 9382,
+                "bytes": 70368,
+                "riff_webp": true,
+                "decoder_exit": 0,
+                "decoder_output": "WEBP 1200 900",
                 "error": null,
                 "valid_webp": true
             },
@@ -95,6 +134,9 @@
                 "status": 200,
                 "content_type": "image/webp",
                 "bytes": 23084,
+                "riff_webp": true,
+                "decoder_exit": 0,
+                "decoder_output": "WEBP 300 225",
                 "error": null,
                 "valid_webp": true
             },
@@ -102,6 +144,9 @@
                 "status": 200,
                 "content_type": "image/webp",
                 "bytes": 21068,
+                "riff_webp": true,
+                "decoder_exit": 0,
+                "decoder_output": "WEBP 300 225",
                 "error": null,
                 "valid_webp": true
             }
@@ -113,5 +158,5 @@
         "is_dir": true
     },
     "verified": true,
-    "completed_at": "2026-09-07T17:28:02+00:00"
+    "completed_at": "2026-09-07T17:52:23+00:00"
 }

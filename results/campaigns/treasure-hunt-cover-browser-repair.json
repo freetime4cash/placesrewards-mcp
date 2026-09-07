@@ -1,14 +1,64 @@
 {
-    "status": "failed",
-    "started_at": "2026-09-07T17:42:10+00:00",
+    "status": "completed",
+    "started_at": "2026-09-07T17:52:25+00:00",
     "attempts": [
         {
-            "tool": "convert",
+            "tool": "decode-existing-cover",
             "exit": 1,
-            "output": "convert: InsufficientImageDataInFile `/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/cover.webp' @ error/webp.c/ReadWEBPImage/601.\nconvert: NoImagesDefined `/home/placevle/app.placesrewards.com/storage/app/public/treasure-hunt/scratch/cover.webp' @ error/convert.c/ConvertImageCommand/3234."
+            "output": "convert: InsufficientImageDataInFile `/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/cover.webp' @ error/webp.c/ReadWEBPImage/601.\nconvert: NoImagesDefined `info:' @ error/convert.c/ConvertImageCommand/3234.",
+            "decodable": false
+        },
+        {
+            "tool": "render-clean-cover",
+            "exit": 0,
+            "output": "convert: UnableToOpenConfigureFile `delegates.xml' @ warning/configure.c/GetConfigureOptions/685."
+        },
+        {
+            "tool": "decode-new-cover",
+            "exit": 0,
+            "output": "WEBP 1200 900"
         }
     ],
-    "verified": false,
-    "error": "No available decoder could rebuild the cover WebP",
-    "completed_at": "2026-09-07T17:42:10+00:00"
+    "old_source_decodable": false,
+    "file": {
+        "path": "/home/placevle/app.placesrewards.com/storage/app/public/treasure-hunt/scratch/cover.webp",
+        "bytes": 70402,
+        "sha1": "c93448627a01f53ab40bf20539faac56fccc2f36",
+        "width": 1200,
+        "height": 900,
+        "mime": "image/webp"
+    },
+    "http": {
+        "url": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp?v=1788803547",
+        "status": 200,
+        "content_type": "image/webp",
+        "bytes": 70402,
+        "riff_webp": true,
+        "decoder_exit": 0,
+        "decoder_output": "WEBP 1200 900",
+        "headers": [
+            "HTTP/2 200",
+            "date: Mon, 07 Sep 2026 17:52:27 GMT",
+            "content-type: image/webp",
+            "content-length: 70402",
+            "cache-control: no-store, no-cache, must-revalidate, max-age=0",
+            "expires: 0",
+            "last-modified: Mon, 07 Sep 2026 17:52:26 GMT",
+            "accept-ranges: bytes",
+            "server: cloudflare",
+            "pragma: no-cache",
+            "x-turbo-charged-by: LiteSpeed",
+            "cf-cache-status: BYPASS",
+            "strict-transport-security: max-age=15552000; includeSubDomains; preload",
+            "x-content-type-options: nosniff",
+            "report-to: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=enHbh4XamuVDYXELvXsYdPKiOqh3Xs5tCSt4bZjHUG9oI1M%2BpyQEWqRZ9n7WRB1RoTRwdxoZCLZ2m7ItHV6biQyyQeDSOqL9iFyZX63DowVBpz3mIFDsBybs3IyO6SXiq%2BhTblUrX28%3D\"}]}",
+            "nel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+            "cf-ray: a377913d0e1809f1-LAS",
+            "alt-svc: h3=\":443\"; ma=86400",
+            ""
+        ],
+        "error": null
+    },
+    "verified": true,
+    "completed_at": "2026-09-07T17:52:28+00:00"
 }
