@@ -1,25 +1,25 @@
 {
     "status": "completed",
-    "started_at": "2026-09-07T01:42:39+00:00",
+    "started_at": "2026-09-07T01:43:31+00:00",
     "files": {
         "loyalty": {
-            "status": "patched",
+            "status": "outer_div_not_found",
             "path": "/home/placevle/app.placesrewards.com/resources/views/components/member/card.blade.php",
-            "changed": true,
+            "changed": false,
             "marker_present": true
         },
         "stamp": {
-            "status": "patched",
+            "status": "outer_div_not_found",
             "path": "/home/placevle/app.placesrewards.com/resources/views/components/member/stamp-card.blade.php",
-            "changed": true,
+            "changed": false,
             "marker_present": true
         },
         "voucher": {
-            "status": "patched",
+            "status": "outer_div_not_found",
             "path": "/home/placevle/app.placesrewards.com/resources/views/components/member/voucher-card.blade.php",
-            "changed": true,
+            "changed": false,
             "marker_present": true
         }
     },
-    "completed_at": "2026-09-07T01:42:39+00:00"
+    "completed_at": "2026-09-07T01:43:31+00:00"
 }
