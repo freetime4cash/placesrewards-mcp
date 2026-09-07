@@ -45,6 +45,19 @@ Route::get('/demo/northeast-ohio-treasure-hunt/tom', function () {
     return view('demo.northeast-ohio-tom', ['demo' => placesRewardsLoadTomDemo()]);
 })->name('demo.northeast-ohio-tom');
 
+Route::get('/demo/northeast-ohio-treasure-hunt/tom/module/{sequence}', function (int $sequence) {
+    abort_if($sequence < 1 || $sequence > 12, 404);
+    $demo = placesRewardsLoadTomDemo();
+    $module = null;
+    $next = null;
+    foreach (($demo['modules'] ?? []) as $candidate) {
+        if ((int) ($candidate['sequence'] ?? 0) === $sequence) $module = $candidate;
+        if ((int) ($candidate['sequence'] ?? 0) === $sequence + 1) $next = $candidate;
+    }
+    abort_if(!$module, 404);
+    return view('demo.northeast-ohio-tom-module', compact('demo','module','next'));
+})->whereNumber('sequence')->name('demo.northeast-ohio-tom.module');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/partner/demo/northeast-ohio-treasure-hunt/tom', function () {
         placesRewardsAuthorizeTomDemoEditor();
