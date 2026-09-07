@@ -83,6 +83,9 @@ NODE
     if [ -f "$AGENT/scripts/install-treasure-hunt-scratch-images.php" ]; then
       "$PHPCLI" "$AGENT/scripts/install-treasure-hunt-scratch-images.php" || true
     fi
+    if [ -f "$AGENT/scripts/repair-treasure-hunt-cover-browser.php" ]; then
+      "$PHPCLI" "$AGENT/scripts/repair-treasure-hunt-cover-browser.php" || true
+    fi
     if [ -f "$AGENT/scripts/verify-treasure-hunt-card-content.php" ]; then
       "$PHPCLI" "$AGENT/scripts/verify-treasure-hunt-card-content.php" || true
     fi
