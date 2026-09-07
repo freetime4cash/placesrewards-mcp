@@ -32,6 +32,7 @@ if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT
   echo "===== $(date -Iseconds) ====="
   git fetch origin server-runtime
   git reset --hard origin/server-runtime
+  if [ -n "$PHPCLI" ]; then "$PHPCLI" "$AGENT/scripts/install-treasure-hunt-simple.php" || true; fi
   mkdir -p "$AGENT/bin" "$AGENT/results/revenue" "$AGENT/results/control"
   if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT/bin:$PATH"; fi
 
@@ -64,7 +65,6 @@ await fs.writeFile(out, JSON.stringify(result,null,2),'utf8');
 NODE
 
   if [ -n "$PHPCLI" ]; then
-    "$PHPCLI" "$AGENT/scripts/install-treasure-hunt-simple.php" || true
     (cd "$APP" && "$PHPCLI" artisan agent:export-tools) > "$SCHEMA_OUT" 2>&1 || true
     [ -s "$APP/storage/api-docs/agent-tools-generic.json" ] && cp -f "$APP/storage/api-docs/agent-tools-generic.json" "$SCHEMA_JSON"
     (cd "$APP" && "$PHPCLI" artisan route:list --path=api/agent/v1 --json) > "$ROUTES_JSON" 2>&1 || true
