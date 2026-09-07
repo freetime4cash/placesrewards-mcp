@@ -15,13 +15,13 @@ $links=[
 6=>['page'=>"$base/demo/treasure-hunt/prize",'actual'=>"$base/en-us/card/$card/13085fc2-2a5d-43ee-92b5-441bc368c55b"],
 7=>['page'=>"$base/demo/treasure-hunt/referrals",'actual'=>"$base/r/65CRHW"],
 8=>['page'=>"$base/demo/treasure-hunt/vip",'actual'=>"$base/en-us/card/$card"],
-9=>['page'=>"$base/demo/treasure-hunt/scratch",'actual'=>"$base/demo/scratch-win"],
+9=>['page'=>"$base/demo/treasure-hunt/scratch",'actual'=>"$base/demo/treasure-hunt/scratch/play"],
 10=>['page'=>"$base/demo/treasure-hunt/voucher",'actual'=>"$base/en-us/voucher/14788f52-438e-4293-bd6b-c82b8e448983"],
 11=>['page'=>"$base/demo/treasure-hunt/retention",'actual'=>"$base/en-us/partner/email-campaigns/b1ea6974-d61c-41d4-a1ce-0c0a27ffa5bd"],
 12=>['page'=>"$base/demo/treasure-hunt/analytics",'actual'=>"$base/en-us/partner/loyalty-card-analytics/card/$card"],
 ];
 function getUrl(string $url,bool $follow=true): array{
- $ch=curl_init($url);curl_setopt_array($ch,[CURLOPT_RETURNTRANSFER=>true,CURLOPT_FOLLOWLOCATION=>$follow,CURLOPT_TIMEOUT=>20,CURLOPT_CONNECTTIMEOUT=>8,CURLOPT_USERAGENT=>'PlacesRewards-Link-Audit/2.0',CURLOPT_COOKIEFILE=>'']);$body=(string)curl_exec($ch);$status=(int)curl_getinfo($ch,CURLINFO_RESPONSE_CODE);$effective=(string)curl_getinfo($ch,CURLINFO_EFFECTIVE_URL);$redirect=(string)curl_getinfo($ch,CURLINFO_REDIRECT_URL);$error=(string)curl_error($ch);curl_close($ch);return compact('body','status','effective','redirect','error');
+ $ch=curl_init($url);curl_setopt_array($ch,[CURLOPT_RETURNTRANSFER=>true,CURLOPT_FOLLOWLOCATION=>$follow,CURLOPT_TIMEOUT=>20,CURLOPT_CONNECTTIMEOUT=>8,CURLOPT_USERAGENT=>'PlacesRewards-Link-Audit/3.0',CURLOPT_COOKIEFILE=>'']);$body=(string)curl_exec($ch);$status=(int)curl_getinfo($ch,CURLINFO_RESPONSE_CODE);$effective=(string)curl_getinfo($ch,CURLINFO_EFFECTIVE_URL);$redirect=(string)curl_getinfo($ch,CURLINFO_REDIRECT_URL);$error=(string)curl_error($ch);curl_close($ch);return compact('body','status','effective','redirect','error');
 }
 $index=getUrl("$base/demo/treasure-hunt");$result=['status'=>'running','verified_at'=>gmdate('c'),'index'=>[],'modules'=>[]];$all=$index['status']===200;$indexMissing=[];
 foreach($links as $seq=>$item){if(stripos($index['body'],$item['actual'])===false)$indexMissing[]=$seq;}
