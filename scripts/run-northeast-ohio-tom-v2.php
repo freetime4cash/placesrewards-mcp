@@ -15,6 +15,17 @@ file_put_contents($tmp, $source, LOCK_EX);
 $command = escapeshellarg(PHP_BINARY).' '.escapeshellarg($tmp);
 passthru($command, $exitCode);
 
+if ($exitCode === 0) {
+    $agentRoot = '/home/placevle/placesrewards-agent-server';
+    $appRoot = '/home/placevle/app.placesrewards.com';
+    $moduleViewSource = $agentRoot.'/assets/northeast-ohio-tom/module.blade.php';
+    $moduleViewTarget = $appRoot.'/resources/views/demo/northeast-ohio-tom-module.blade.php';
+    if (is_file($moduleViewSource)) {
+        @mkdir(dirname($moduleViewTarget), 0755, true);
+        copy($moduleViewSource, $moduleViewTarget);
+    }
+}
+
 // Only retire the old public Northeast Ohio demo cards after the new 01–12
 // result has completed successfully. The retirement script is reversible: it
 // deactivates/hides legacy demo records and never deletes them.
