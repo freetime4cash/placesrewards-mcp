@@ -24,13 +24,26 @@
         {
             "status": "updated",
             "table": "rewards",
-            "id": "eb9b42d3-252a-44c0-9faa-87d27ac50e13",
-            "name": "[TOM DEMO 04] Clue Completion Bonus"
+            "id": "29304849-3c10-4a06-8f8f-4bad776b79f9",
+            "name": "[TOM DEMO 04] Clue Completion Reward"
         },
         {
-            "status": "skipped",
-            "table": "referral_programs",
-            "reason": "table_missing"
+            "status": "updated",
+            "table": "stamp_cards",
+            "id": "5738988e-265f-422f-9b41-5828790af3c0",
+            "name": "[TOM DEMO 05] Merchant Check-In Verification"
+        },
+        {
+            "status": "updated",
+            "table": "rewards",
+            "id": "13085fc2-2a5d-43ee-92b5-441bc368c55b",
+            "name": "[TOM DEMO 06] Local Prize & Giveaway Reward"
+        },
+        {
+            "status": "virtual_live_module",
+            "table": "referral",
+            "id": null,
+            "name": "Bring Another Hunter \u2014 Let Participants Grow the Hunt"
         },
         {
             "status": "updated",
@@ -41,20 +54,20 @@
         {
             "status": "updated",
             "table": "scratch_games",
-            "id": "42167286-20ea-4c55-8793-8a9789ea4a1c",
-            "name": "[TOM DEMO 05] Mystery Bonus Scratch & Win"
+            "id": "1fefb288-a8cc-46d4-a4a3-04fe56f91329",
+            "name": "[TOM DEMO 09] Mystery Bonus Scratch & Win"
         },
         {
             "status": "updated",
             "table": "vouchers",
-            "id": "358b51e6-189c-4b17-95b2-eb2794d5b763",
-            "name": "[TOM DEMO 09] Hunter Comeback $5 Off $25"
+            "id": "14788f52-438e-4293-bd6b-c82b8e448983",
+            "name": "[TOM DEMO 10] Hunter Comeback $5 Off $25"
         },
         {
             "status": "updated",
             "table": "email_campaigns",
-            "id": "96f8bf84-e62e-4ae9-a012-7b8565bc923f",
-            "name": "{\"en\":\"[TOM DEMO 11] Your Hunt rewards and trail progress are still waiting\"}"
+            "id": "b1ea6974-d61c-41d4-a1ce-0c0a27ffa5bd",
+            "name": "{\"en\":\"[TOM DEMO 11] Keep the Treasure Hunt relationship alive\"}"
         },
         {
             "status": "virtual_live_module",
@@ -65,11 +78,6 @@
     ],
     "files": [
         {
-            "asset": "images.tar.gz",
-            "status": "extract_failed",
-            "detail": "\ngzip: stdin: not in gzip format\ntar: Child returned status 1\ntar: Error is not recoverable: exiting now"
-        },
-        {
             "asset": "views_and_routes",
             "status": "copied"
         },
@@ -78,7 +86,15 @@
             "status": "include_existing"
         }
     ],
-    "started_at": "2026-09-07T00:06:54+00:00",
+    "started_at": "2026-09-07T00:14:56+00:00",
+    "stale_demo_records_deactivated": {
+        "cards": 0,
+        "stamp_cards": 0,
+        "rewards": 0,
+        "scratch_games": 0,
+        "tiers": 0,
+        "vouchers": 0
+    },
     "presentation_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom",
     "image_manager_url": "https://app.placesrewards.com/partner/demo/northeast-ohio-treasure-hunt/tom",
     "modules": [
@@ -115,7 +131,7 @@
             "module": "reward",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-04",
             "live_url": null,
-            "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/04-clue-completion-reward.svg",
+            "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/04-clue-reward.svg",
             "merchant_image_upload": "https://app.placesrewards.com/partner/demo/northeast-ohio-treasure-hunt/tom"
         },
         {
@@ -123,8 +139,8 @@
             "title": "Merchant Check-In \u2014 Prove the Foot Traffic",
             "module": "checkin",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-05",
-            "live_url": null,
-            "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/05-mystery-bonus.svg",
+            "live_url": "https://app.placesrewards.com/en-us/stamp-card/5738988e-265f-422f-9b41-5828790af3c0",
+            "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/05-merchant-checkin.svg",
             "merchant_image_upload": "https://app.placesrewards.com/partner/demo/northeast-ohio-treasure-hunt/tom"
         },
         {
@@ -133,7 +149,7 @@
             "module": "prize",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-06",
             "live_url": null,
-            "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/06-treasure-milestone.svg",
+            "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/06-local-prize.svg",
             "merchant_image_upload": "https://app.placesrewards.com/partner/demo/northeast-ohio-treasure-hunt/tom"
         },
         {
@@ -141,7 +157,7 @@
             "title": "Bring Another Hunter \u2014 Let Participants Grow the Hunt",
             "module": "referral",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-07",
-            "live_url": null,
+            "live_url": "https://app.placesrewards.com/r/65CRHW",
             "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/07-bring-another-hunter.svg",
             "merchant_image_upload": "https://app.placesrewards.com/partner/demo/northeast-ohio-treasure-hunt/tom"
         },
@@ -159,8 +175,8 @@
             "title": "Mystery Bonus Scratch & Win \u2014 Add Instant Excitement",
             "module": "scratch",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-09",
-            "live_url": null,
-            "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/09-comeback-voucher.svg",
+            "live_url": "https://app.placesrewards.com/demo/scratch-win",
+            "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/09-mystery-bonus.svg",
             "merchant_image_upload": "https://app.placesrewards.com/partner/demo/northeast-ohio-treasure-hunt/tom"
         },
         {
@@ -168,8 +184,8 @@
             "title": "Hunter Comeback Offer \u2014 Turn the First Visit Into the Second",
             "module": "voucher",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-10",
-            "live_url": "https://app.placesrewards.com/en-us/voucher/358b51e6-189c-4b17-95b2-eb2794d5b763",
-            "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/10-community-voice.svg",
+            "live_url": "https://app.placesrewards.com/en-us/voucher/14788f52-438e-4293-bd6b-c82b8e448983",
+            "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/10-comeback-offer.svg",
             "merchant_image_upload": "https://app.placesrewards.com/partner/demo/northeast-ohio-treasure-hunt/tom"
         },
         {
@@ -178,7 +194,7 @@
             "module": "automation",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-11",
             "live_url": null,
-            "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/11-post-hunt-winback.svg",
+            "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/11-post-hunt-retention.svg",
             "merchant_image_upload": "https://app.placesrewards.com/partner/demo/northeast-ohio-treasure-hunt/tom"
         },
         {
@@ -187,9 +203,9 @@
             "module": "analytics",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-12",
             "live_url": null,
-            "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/12-organizer-roi.svg",
+            "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/12-analytics-roi.svg",
             "merchant_image_upload": "https://app.placesrewards.com/partner/demo/northeast-ohio-treasure-hunt/tom"
         }
     ],
-    "completed_at": "2026-09-07T00:06:54+00:00"
+    "completed_at": "2026-09-07T00:14:56+00:00"
 }
