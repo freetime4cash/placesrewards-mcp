@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-09-06T20:25:51+00:00",
+    "generated_at": "2026-09-07T01:01:34+00:00",
     "base_url": "https://app.placesrewards.com",
     "routes": [
         {
@@ -947,6 +947,18 @@
                 "web",
                 "admin.auth",
                 "admin.role:1,2"
+            ]
+        },
+        {
+            "methods": [
+                "GET",
+                "HEAD"
+            ],
+            "uri": "demo/treasure-hunt/reward",
+            "name": "demo.treasure-hunt.reward",
+            "action": "App\\Http\\Controllers\\Demo\\TreasureHuntDemoController@reward",
+            "middleware": [
+                "web"
             ]
         }
     ]
