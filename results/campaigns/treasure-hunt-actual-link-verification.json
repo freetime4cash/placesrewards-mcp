@@ -1,0 +1,131 @@
+{
+    "status": "passed",
+    "verified_at": "2026-09-07T02:35:10+00:00",
+    "index": {
+        "http_status": 200,
+        "missing_actual_links": [],
+        "passed": true
+    },
+    "modules": [
+        {
+            "sequence": 1,
+            "page": "https://app.placesrewards.com/demo/treasure-hunt/loyalty",
+            "page_status": 200,
+            "actual_url": "https://app.placesrewards.com/en-us/card/95cbd0bf-8bbb-436d-b7c6-a2e1e558db25",
+            "actual_link_present": true,
+            "actual_status": 200,
+            "actual_redirect": null,
+            "passed": true
+        },
+        {
+            "sequence": 2,
+            "page": "https://app.placesrewards.com/demo/treasure-hunt/stamps",
+            "page_status": 200,
+            "actual_url": "https://app.placesrewards.com/en-us/stamp-card/a9566430-b6b0-434d-ae3c-f3ba85421c5f",
+            "actual_link_present": true,
+            "actual_status": 200,
+            "actual_redirect": null,
+            "passed": true
+        },
+        {
+            "sequence": 3,
+            "page": "https://app.placesrewards.com/demo/treasure-hunt/directory",
+            "page_status": 200,
+            "actual_url": "https://app.placesrewards.com/en-us",
+            "actual_link_present": true,
+            "actual_status": 200,
+            "actual_redirect": null,
+            "passed": true
+        },
+        {
+            "sequence": 4,
+            "page": "https://app.placesrewards.com/demo/treasure-hunt/reward",
+            "page_status": 200,
+            "actual_url": "https://app.placesrewards.com/en-us/card/95cbd0bf-8bbb-436d-b7c6-a2e1e558db25/29304849-3c10-4a06-8f8f-4bad776b79f9",
+            "actual_link_present": true,
+            "actual_status": 200,
+            "actual_redirect": null,
+            "passed": true
+        },
+        {
+            "sequence": 5,
+            "page": "https://app.placesrewards.com/demo/treasure-hunt/check-in",
+            "page_status": 200,
+            "actual_url": "https://app.placesrewards.com/en-us/stamp-card/5738988e-265f-422f-9b41-5828790af3c0",
+            "actual_link_present": true,
+            "actual_status": 200,
+            "actual_redirect": null,
+            "passed": true
+        },
+        {
+            "sequence": 6,
+            "page": "https://app.placesrewards.com/demo/treasure-hunt/prize",
+            "page_status": 200,
+            "actual_url": "https://app.placesrewards.com/en-us/card/95cbd0bf-8bbb-436d-b7c6-a2e1e558db25/13085fc2-2a5d-43ee-92b5-441bc368c55b",
+            "actual_link_present": true,
+            "actual_status": 200,
+            "actual_redirect": null,
+            "passed": true
+        },
+        {
+            "sequence": 7,
+            "page": "https://app.placesrewards.com/demo/treasure-hunt/referrals",
+            "page_status": 200,
+            "actual_url": "https://app.placesrewards.com/r/65CRHW",
+            "actual_link_present": true,
+            "actual_status": 302,
+            "actual_redirect": "https://app.placesrewards.com/en-us/r/65CRHW",
+            "passed": true
+        },
+        {
+            "sequence": 8,
+            "page": "https://app.placesrewards.com/demo/treasure-hunt/vip",
+            "page_status": 200,
+            "actual_url": "https://app.placesrewards.com/en-us/card/95cbd0bf-8bbb-436d-b7c6-a2e1e558db25",
+            "actual_link_present": true,
+            "actual_status": 200,
+            "actual_redirect": null,
+            "passed": true
+        },
+        {
+            "sequence": 9,
+            "page": "https://app.placesrewards.com/demo/treasure-hunt/scratch",
+            "page_status": 200,
+            "actual_url": "https://app.placesrewards.com/demo/scratch-win",
+            "actual_link_present": true,
+            "actual_status": 302,
+            "actual_redirect": "https://app.placesrewards.com/demo/treasure-hunt/scratch",
+            "passed": true
+        },
+        {
+            "sequence": 10,
+            "page": "https://app.placesrewards.com/demo/treasure-hunt/voucher",
+            "page_status": 200,
+            "actual_url": "https://app.placesrewards.com/en-us/voucher/14788f52-438e-4293-bd6b-c82b8e448983",
+            "actual_link_present": true,
+            "actual_status": 200,
+            "actual_redirect": null,
+            "passed": true
+        },
+        {
+            "sequence": 11,
+            "page": "https://app.placesrewards.com/demo/treasure-hunt/retention",
+            "page_status": 200,
+            "actual_url": "https://app.placesrewards.com/en-us/partner/email-campaigns/b1ea6974-d61c-41d4-a1ce-0c0a27ffa5bd",
+            "actual_link_present": true,
+            "actual_status": 302,
+            "actual_redirect": "https://app.placesrewards.com/en-us/partner/login",
+            "passed": true
+        },
+        {
+            "sequence": 12,
+            "page": "https://app.placesrewards.com/demo/treasure-hunt/analytics",
+            "page_status": 200,
+            "actual_url": "https://app.placesrewards.com/en-us/partner/loyalty-card-analytics/card/95cbd0bf-8bbb-436d-b7c6-a2e1e558db25",
+            "actual_link_present": true,
+            "actual_status": 302,
+            "actual_redirect": "https://app.placesrewards.com/en-us/partner/login",
+            "passed": true
+        }
+    ]
+}
