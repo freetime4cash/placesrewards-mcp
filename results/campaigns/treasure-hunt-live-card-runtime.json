@@ -1,20 +1,20 @@
 {
     "status": "completed",
-    "generated_at": "2026-09-07T02:11:43+00:00",
+    "generated_at": "2026-09-07T02:13:12+00:00",
     "card": {
         "id": "95cbd0bf-8bbb-436d-b7c6-a2e1e558db25",
         "name": "[TOM DEMO 01] Hunter Passport",
-        "head": "",
-        "title": "",
-        "description": "",
+        "head": "01 • HUNTER PASSPORT — Join once. Keep earning through the entire Hunt.",
+        "title": "01 — Northeast Ohio Treasure Hunt Hunter Passport",
+        "description": "WELCOME TO THE HUNT. Activate your Hunter Passport and receive 100 demo welcome points. Use one Passport across participating-business visits, Explorer Trail stamps, local rewards, referrals and comeback offers. The Hunt creates the first visit; this Passport creates the customer relationship that can continue after the treasure is found.",
         "logo": null,
         "background": null
     },
     "component": {
         "class": "App\\View\\Components\\Member\\Card",
-        "contentHead": "",
-        "contentTitle": "",
-        "contentDescription": "",
+        "contentHead": "01 • HUNTER PASSPORT — Join once. Keep earning through the entire Hunt.",
+        "contentTitle": "01 — Northeast Ohio Treasure Hunt Hunter Passport",
+        "contentDescription": "WELCOME TO THE HUNT. Activate your Hunter Passport and receive 100 demo welcome points. Use one Passport across participating-business visits, Explorer Trail stamps, local rewards, referrals and comeback offers. The Hunt creates the first visit; this Passport creates the customer relationship that can continue after the treasure is found.",
         "logo": null,
         "bgImage": null
     },
@@ -312,7 +312,7 @@
             "deleted_by": null,
             "deleted_at": null,
             "created_at": "2026-08-14 15:43:29",
-            "updated_at": "2026-09-07 02:11:42"
+            "updated_at": "2026-09-07 02:13:11"
         },
         {
             "id": "358b51e6-189c-4b17-95b2-eb2794d5b763",
@@ -343,9 +343,9 @@
             "first_order_only": 0,
             "new_members_only": 0,
             "new_members_days": null,
-            "is_active": 1,
-            "is_public": 1,
-            "is_visible_by_default": 1,
+            "is_active": 0,
+            "is_public": 0,
+            "is_visible_by_default": 0,
             "is_single_use": 1,
             "is_auto_apply": 0,
             "stackable": 0,
@@ -368,7 +368,7 @@
             "deleted_by": null,
             "deleted_at": null,
             "created_at": "2026-09-06 23:06:38",
-            "updated_at": "2026-09-07 00:10:40"
+            "updated_at": "2026-09-07 02:13:11"
         },
         {
             "id": "14788f52-438e-4293-bd6b-c82b8e448983",
@@ -376,15 +376,15 @@
             "code": "TOMHUNTRETURN10",
             "name": "[TOM DEMO 10] Hunter Comeback $5 Off $25",
             "unique_identifier": "TOM-1GUWJMI84RIE",
-            "title": "{\"en\":\"10 — Hunter Comeback: $5 Off $25\"}",
-            "description": "{\"en\":\"TURN THE FIRST VISIT INTO THE SECOND. This demo comeback voucher gives a hunter $5 off a $25 return purchase after the initial Treasure Hunt visit. Each participating business can set its own offer and minimum spend, turning event traffic into measurable repeat revenue.\"}",
+            "title": "{\"en_US\":\"10 — Hunter Comeback: $5 Off $25\",\"en\":\"10 — Hunter Comeback: $5 Off $25\"}",
+            "description": "{\"en_US\":\"TURN THE FIRST VISIT INTO THE SECOND. This demo comeback voucher gives a hunter $5 off a $25 return purchase after the initial Treasure Hunt visit. Each participating business can set its own offer and minimum spend, turning event traffic into measurable repeat revenue.\",\"en\":\"TURN THE FIRST VISIT INTO THE SECOND. This demo comeback voucher gives a hunter $5 off a $25 return purchase after the initial Treasure Hunt visit. Each participating business can set its own offer and minimum spend, turning event traffic into measurable repeat revenue.\"}",
             "type": "fixed_amount",
-            "value": 5,
+            "value": 500,
             "currency": "USD",
             "points_value": null,
             "reward_card_id": null,
             "batch_id": null,
-            "min_purchase_amount": 25,
+            "min_purchase_amount": 2500,
             "max_discount_amount": null,
             "free_product_name": "{\"en_US\":null}",
             "applicable_products": null,
@@ -424,7 +424,7 @@
             "deleted_by": null,
             "deleted_at": null,
             "created_at": "2026-09-07 00:13:27",
-            "updated_at": "2026-09-07 02:11:43"
+            "updated_at": "2026-09-07 02:13:11"
         }
     ],
     "canonical": {
@@ -435,9 +435,9 @@
                 "name": "[TOM DEMO 01] Hunter Passport",
                 "type": "loyalty",
                 "icon": null,
-                "head": "{\"en\":\"01 • HUNTER PASSPORT — Join once. Keep earning through the entire Hunt.\"}",
-                "title": "{\"en\":\"01 — Northeast Ohio Treasure Hunt Hunter Passport\"}",
-                "description": "{\"en\":\"WELCOME TO THE HUNT. Activate your Hunter Passport and receive 100 demo welcome points. Use one Passport across participating-business visits, Explorer Trail stamps, local rewards, referrals and comeback offers. The Hunt creates the first visit; this Passport creates the customer relationship that can continue after the treasure is found.\"}",
+                "head": "{\"en_US\":\"01 • HUNTER PASSPORT — Join once. Keep earning through the entire Hunt.\",\"en\":\"01 • HUNTER PASSPORT — Join once. Keep earning through the entire Hunt.\"}",
+                "title": "{\"en_US\":\"01 — Northeast Ohio Treasure Hunt Hunter Passport\",\"en\":\"01 — Northeast Ohio Treasure Hunt Hunter Passport\"}",
+                "description": "{\"en_US\":\"WELCOME TO THE HUNT. Activate your Hunter Passport and receive 100 demo welcome points. Use one Passport across participating-business visits, Explorer Trail stamps, local rewards, referrals and comeback offers. The Hunt creates the first visit; this Passport creates the customer relationship that can continue after the treasure is found.\",\"en\":\"WELCOME TO THE HUNT. Activate your Hunter Passport and receive 100 demo welcome points. Use one Passport across participating-business visits, Explorer Trail stamps, local rewards, referrals and comeback offers. The Hunt creates the first visit; this Passport creates the customer relationship that can continue after the treasure is found.\"}",
                 "unique_identifier": "TOM-QZNFRDJ3P7OA",
                 "issue_date": "2026-08-14 11:10:51",
                 "expiration_date": "2030-08-21 19:05:00",
@@ -457,9 +457,9 @@
                 "max_points_per_purchase": 1000000,
                 "min_points_per_redemption": null,
                 "max_points_per_redemption": null,
-                "custom_rule1": "{\"en\":\"START HERE: Activate your Hunter Passport and receive 100 demo welcome points.\"}",
-                "custom_rule2": "{\"en\":\"NEXT: Visit participating businesses and collect Explorer Trail stamps, points and local rewards.\"}",
-                "custom_rule3": "{\"en\":\"WHY IT MATTERS: One customer identity connects Hunt traffic to referrals, repeat visits and post-Hunt retention.\"}",
+                "custom_rule1": "{\"en_US\":\"START HERE: Activate your Hunter Passport and receive 100 demo welcome points.\",\"en\":\"START HERE: Activate your Hunter Passport and receive 100 demo welcome points.\"}",
+                "custom_rule2": "{\"en_US\":\"NEXT: Visit participating businesses and collect Explorer Trail stamps, points and local rewards.\",\"en\":\"NEXT: Visit participating businesses and collect Explorer Trail stamps, points and local rewards.\"}",
+                "custom_rule3": "{\"en_US\":\"WHY IT MATTERS: One customer identity connects Hunt traffic to referrals, repeat visits and post-Hunt retention.\",\"en\":\"WHY IT MATTERS: One customer identity connects Hunt traffic to referrals, repeat visits and post-Hunt retention.\"}",
                 "is_active": 1,
                 "is_visible_by_default": 1,
                 "is_visible_when_logged_in": 0,
@@ -471,15 +471,15 @@
                 "number_of_points_redeemed": 0,
                 "number_of_rewards_redeemed": 0,
                 "last_reward_redeemed_at": null,
-                "views": 36,
-                "last_view": "2026-09-07 02:10:32",
+                "views": 38,
+                "last_view": "2026-09-07 02:13:02",
                 "meta": "{\"tom_demo_sequence\":1,\"purpose\":\"Activate Hunter Passport\"}",
                 "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
                 "deleted_by": null,
                 "updated_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-06 23:01:26",
-                "updated_at": "2026-09-07 02:11:43"
+                "updated_at": "2026-09-07 02:13:11"
             }
         ],
         "stamp_cards": [
@@ -488,16 +488,16 @@
                 "club_id": "01a000ce-0595-7254-8141-7411cd036ba4",
                 "name": "[TOM DEMO 05] Merchant Check-In Verification",
                 "unique_identifier": "TOM-G04RCJ41X0HT",
-                "title": "{\"en\":\"05 — Merchant Check-In Verification\"}",
-                "description": "{\"en\":\"PROVE THE FOOT TRAFFIC. Staff or QR verification confirms the hunter physically reached the participating business. The verified visit can issue the appropriate stamp or points and creates merchant-level campaign attribution so Tom and each business can see what the Hunt actually produced.\"}",
+                "title": "{\"en_US\":\"05 — Merchant Check-In Verification\",\"en\":\"05 — Merchant Check-In Verification\"}",
+                "description": "{\"en_US\":\"PROVE THE FOOT TRAFFIC. Staff or QR verification confirms the hunter physically reached the participating business. The verified visit can issue the appropriate stamp or points and creates merchant-level campaign attribution so Tom and each business can see what the Hunt actually produced.\",\"en\":\"PROVE THE FOOT TRAFFIC. Staff or QR verification confirms the hunter physically reached the participating business. The verified visit can issue the appropriate stamp or points and creates merchant-level campaign attribution so Tom and each business can see what the Hunt actually produced.\"}",
                 "stamps_required": 1,
                 "stamps_per_purchase": 1,
                 "max_stamps_per_day": 1,
                 "max_stamps_per_transaction": 1,
                 "min_purchase_amount": "0.00",
                 "qualifying_products": null,
-                "reward_title": "{\"en\":\"Verified Treasure Hunt Business Visit\"}",
-                "reward_description": "{\"en\":\"Visit confirmed. The hunter earns the configured stamp or points while Places Rewards records attributable foot traffic for this merchant.\"}",
+                "reward_title": "{\"en_US\":\"Verified Treasure Hunt Business Visit\",\"en\":\"Verified Treasure Hunt Business Visit\"}",
+                "reward_description": "{\"en_US\":\"Visit confirmed. The hunter earns the configured stamp or points while Places Rewards records attributable foot traffic for this merchant.\",\"en\":\"Visit confirmed. The hunter earns the configured stamp or points while Places Rewards records attributable foot traffic for this merchant.\"}",
                 "reward_value": null,
                 "currency": "USD",
                 "reward_points": 100,
@@ -509,11 +509,11 @@
                 "stamp_color": "#F8FAFC",
                 "empty_stamp_color": "#94A3B8",
                 "stamp_icon": "☕",
-                "valid_from": "2026-08-23 10:23:00",
-                "valid_until": "2026-08-23 14:23:17",
+                "valid_from": "2026-09-01 00:00:00",
+                "valid_until": "2030-12-31 23:59:59",
                 "stamps_expire_days": null,
                 "is_active": 1,
-                "is_visible_by_default": 0,
+                "is_visible_by_default": 1,
                 "views": 1,
                 "last_view": "2026-09-07 01:39:36",
                 "is_undeletable": 0,
@@ -527,23 +527,23 @@
                 "deleted_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-07 00:11:48",
-                "updated_at": "2026-09-07 02:11:43"
+                "updated_at": "2026-09-07 02:13:11"
             },
             {
                 "id": "a9566430-b6b0-434d-ae3c-f3ba85421c5f",
                 "club_id": "01a000ce-0595-7254-8141-7411cd036ba4",
                 "name": "[TOM DEMO 02] 5-Stop Explorer Trail",
                 "unique_identifier": "TOM-LFJFHUCWGOCU",
-                "title": "{\"en\":\"02 — 5-Stop Northeast Ohio Explorer Trail\"}",
-                "description": "{\"en\":\"VISIT 5 PARTICIPATING BUSINESSES. Earn one verified stamp at each stop. Complete all five stops to unlock the Explorer Trail reward. This module intentionally circulates Treasure Hunt traffic through the participating merchant network instead of creating only one destination.\"}",
+                "title": "{\"en_US\":\"02 — 5-Stop Northeast Ohio Explorer Trail\",\"en\":\"02 — 5-Stop Northeast Ohio Explorer Trail\"}",
+                "description": "{\"en_US\":\"VISIT 5 PARTICIPATING BUSINESSES. Earn one verified stamp at each stop. Complete all five stops to unlock the Explorer Trail reward. This module intentionally circulates Treasure Hunt traffic through the participating merchant network instead of creating only one destination.\",\"en\":\"VISIT 5 PARTICIPATING BUSINESSES. Earn one verified stamp at each stop. Complete all five stops to unlock the Explorer Trail reward. This module intentionally circulates Treasure Hunt traffic through the participating merchant network instead of creating only one destination.\"}",
                 "stamps_required": 5,
                 "stamps_per_purchase": 1,
                 "max_stamps_per_day": 5,
                 "max_stamps_per_transaction": 1,
                 "min_purchase_amount": "0.00",
                 "qualifying_products": null,
-                "reward_title": "{\"en\":\"Explorer Trail Completion Reward\"}",
-                "reward_description": "{\"en\":\"Complete all five participating-business stops and unlock a local reward supplied by the campaign or participating merchant.\"}",
+                "reward_title": "{\"en_US\":\"Explorer Trail Completion Reward\",\"en\":\"Explorer Trail Completion Reward\"}",
+                "reward_description": "{\"en_US\":\"Complete all five participating-business stops and unlock a local reward supplied by the campaign or participating merchant.\",\"en\":\"Complete all five participating-business stops and unlock a local reward supplied by the campaign or participating merchant.\"}",
                 "reward_value": null,
                 "currency": "USD",
                 "reward_points": 100,
@@ -555,8 +555,8 @@
                 "stamp_color": "#F8FAFC",
                 "empty_stamp_color": "#94A3B8",
                 "stamp_icon": "☕",
-                "valid_from": "2026-08-23 10:23:00",
-                "valid_until": "2026-08-23 14:23:17",
+                "valid_from": "2026-09-01 00:00:00",
+                "valid_until": "2030-12-31 23:59:59",
                 "stamps_expire_days": null,
                 "is_active": 1,
                 "is_visible_by_default": 1,
@@ -573,7 +573,7 @@
                 "deleted_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-06 23:01:26",
-                "updated_at": "2026-09-07 02:11:43"
+                "updated_at": "2026-09-07 02:13:11"
             }
         ],
         "scratch_games": [
@@ -588,7 +588,7 @@
                 "win_rate": 25,
                 "is_active": 1,
                 "created_at": "2026-09-07 00:11:48",
-                "updated_at": "2026-09-07 02:11:43",
+                "updated_at": "2026-09-07 02:13:11",
                 "deleted_at": null
             }
         ],
@@ -599,15 +599,15 @@
                 "code": "TOMHUNTRETURN10",
                 "name": "[TOM DEMO 10] Hunter Comeback $5 Off $25",
                 "unique_identifier": "TOM-1GUWJMI84RIE",
-                "title": "{\"en\":\"10 — Hunter Comeback: $5 Off $25\"}",
-                "description": "{\"en\":\"TURN THE FIRST VISIT INTO THE SECOND. This demo comeback voucher gives a hunter $5 off a $25 return purchase after the initial Treasure Hunt visit. Each participating business can set its own offer and minimum spend, turning event traffic into measurable repeat revenue.\"}",
+                "title": "{\"en_US\":\"10 — Hunter Comeback: $5 Off $25\",\"en\":\"10 — Hunter Comeback: $5 Off $25\"}",
+                "description": "{\"en_US\":\"TURN THE FIRST VISIT INTO THE SECOND. This demo comeback voucher gives a hunter $5 off a $25 return purchase after the initial Treasure Hunt visit. Each participating business can set its own offer and minimum spend, turning event traffic into measurable repeat revenue.\",\"en\":\"TURN THE FIRST VISIT INTO THE SECOND. This demo comeback voucher gives a hunter $5 off a $25 return purchase after the initial Treasure Hunt visit. Each participating business can set its own offer and minimum spend, turning event traffic into measurable repeat revenue.\"}",
                 "type": "fixed_amount",
-                "value": 5,
+                "value": 500,
                 "currency": "USD",
                 "points_value": null,
                 "reward_card_id": null,
                 "batch_id": null,
-                "min_purchase_amount": 25,
+                "min_purchase_amount": 2500,
                 "max_discount_amount": null,
                 "free_product_name": "{\"en_US\":null}",
                 "applicable_products": null,
@@ -647,7 +647,7 @@
                 "deleted_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-07 00:13:27",
-                "updated_at": "2026-09-07 02:11:43"
+                "updated_at": "2026-09-07 02:13:11"
             }
         ],
         "rewards": [
@@ -655,8 +655,8 @@
                 "id": "13085fc2-2a5d-43ee-92b5-441bc368c55b",
                 "name": "[TOM DEMO 06] Local Prize & Giveaway Reward",
                 "unique_identifier": "TOM-N4TB5BKIIUPD",
-                "title": "{\"en\":\"06 — Local Business Bonus Prize\"}",
-                "description": "{\"en\":\"LOCAL BUSINESS BONUS PRIZE. A participating merchant can supply a gift card, product, service or experience and tie eligibility to a verified visit, Explorer Trail milestone or other approved action. This gives every merchant a reason for hunters to engage while remaining completely separate from the grand treasure.\"}",
+                "title": "{\"en_US\":\"06 — Local Business Bonus Prize\",\"en\":\"06 — Local Business Bonus Prize\"}",
+                "description": "{\"en_US\":\"LOCAL BUSINESS BONUS PRIZE. A participating merchant can supply a gift card, product, service or experience and tie eligibility to a verified visit, Explorer Trail milestone or other approved action. This gives every merchant a reason for hunters to engage while remaining completely separate from the grand treasure.\",\"en\":\"LOCAL BUSINESS BONUS PRIZE. A participating merchant can supply a gift card, product, service or experience and tie eligibility to a verified visit, Explorer Trail milestone or other approved action. This gives every merchant a reason for hunters to engage while remaining completely separate from the grand treasure.\"}",
                 "max_number_to_redeem": 0,
                 "points": 0,
                 "active_from": null,
@@ -674,14 +674,14 @@
                 "updated_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-07 00:11:48",
-                "updated_at": "2026-09-07 02:11:43"
+                "updated_at": "2026-09-07 02:13:11"
             },
             {
                 "id": "29304849-3c10-4a06-8f8f-4bad776b79f9",
                 "name": "[TOM DEMO 04] Clue Completion Reward",
                 "unique_identifier": "TOM-NQGBL9QJBK2G",
-                "title": "{\"en\":\"04 — Clue Activity Bonus\"}",
-                "description": "{\"en\":\"CLUE ACTIVITY BONUS: +250 demo points after an approved Hunt activity or verified participating-business visit. This reward never reveals an answer, changes an official clue or affects the odds of finding the treasure. It rewards engagement while preserving the integrity of Tom’s Hunt.\"}",
+                "title": "{\"en_US\":\"04 — Clue Activity Bonus\",\"en\":\"04 — Clue Activity Bonus\"}",
+                "description": "{\"en_US\":\"CLUE ACTIVITY BONUS: +250 demo points after an approved Hunt activity or verified participating-business visit. This reward never reveals an answer, changes an official clue or affects the odds of finding the treasure. It rewards engagement while preserving the integrity of Tom’s Hunt.\",\"en\":\"CLUE ACTIVITY BONUS: +250 demo points after an approved Hunt activity or verified participating-business visit. This reward never reveals an answer, changes an official clue or affects the odds of finding the treasure. It rewards engagement while preserving the integrity of Tom’s Hunt.\"}",
                 "max_number_to_redeem": 0,
                 "points": 250,
                 "active_from": null,
@@ -699,7 +699,7 @@
                 "updated_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-07 00:11:48",
-                "updated_at": "2026-09-07 02:11:43"
+                "updated_at": "2026-09-07 02:13:11"
             }
         ],
         "tiers": [
@@ -707,8 +707,8 @@
                 "id": "8744df20-c34b-484c-9f8f-15140f8fc542",
                 "club_id": "01a000ce-0595-7254-8141-7411cd036ba4",
                 "name": "[TOM DEMO 08] Hunter VIP Progression",
-                "display_name": "{\"en\":\"08 — Hunter VIP\"}",
-                "description": "{\"en\":\"HUNTER VIP rewards the people who support participating businesses most. Demo qualification: 2,500 points. Benefits can include early Hunt previews, premium merchant perks, special local experiences and priority invitations for the next Hunt.\"}",
+                "display_name": "{\"en_US\":\"08 — Hunter VIP\",\"en\":\"08 — Hunter VIP\"}",
+                "description": "{\"en_US\":\"HUNTER VIP rewards the people who support participating businesses most. Demo qualification: 2,500 points. Benefits can include early Hunt previews, premium merchant perks, special local experiences and priority invitations for the next Hunt.\",\"en\":\"HUNTER VIP rewards the people who support participating businesses most. Demo qualification: 2,500 points. Benefits can include early Hunt previews, premium merchant perks, special local experiences and priority invitations for the next Hunt.\"}",
                 "icon": "trophy",
                 "color": "#0EA5E9",
                 "level": 3,
@@ -725,15 +725,15 @@
                 "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
                 "updated_by": null,
                 "created_at": "2026-09-06 23:06:38",
-                "updated_at": "2026-09-07 02:11:43"
+                "updated_at": "2026-09-07 02:13:11"
             }
         ],
         "email_campaigns": [
             {
                 "id": "b1ea6974-d61c-41d4-a1ce-0c0a27ffa5bd",
                 "partner_id": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
-                "subject": "{\"en\":\"11 — Keep your Northeast Ohio Treasure Hunt rewards moving\"}",
-                "body": "{\"en\":\"Thanks for exploring Northeast Ohio. You still have value waiting in Places Rewards: unfinished Explorer Trail progress, participating-business rewards, comeback offers and Hunter VIP progress. This demo campaign shows how different hunters can receive relevant post-Hunt follow-up instead of one generic message. This record remains a draft and is not automatically sent.\"}",
+                "subject": "{\"en_US\":\"11 — Keep your Northeast Ohio Treasure Hunt rewards moving\",\"en\":\"11 — Keep your Northeast Ohio Treasure Hunt rewards moving\"}",
+                "body": "{\"en_US\":\"Thanks for exploring Northeast Ohio. You still have value waiting in Places Rewards: unfinished Explorer Trail progress, participating-business rewards, comeback offers and Hunter VIP progress. This demo campaign shows how different hunters can receive relevant post-Hunt follow-up instead of one generic message. This record remains a draft and is not automatically sent.\",\"en\":\"Thanks for exploring Northeast Ohio. You still have value waiting in Places Rewards: unfinished Explorer Trail progress, participating-business rewards, comeback offers and Hunter VIP progress. This demo campaign shows how different hunters can receive relevant post-Hunt follow-up instead of one generic message. This record remains a draft and is not automatically sent.\"}",
                 "segment_type": "custom",
                 "segment_config": "{\"tom_demo_sequence\":11,\"audience\":\"inactive_or_near_complete_hunters\"}",
                 "status": "draft",
@@ -744,10 +744,10 @@
                 "started_at": null,
                 "completed_at": null,
                 "created_at": "2026-09-07 00:13:27",
-                "updated_at": "2026-09-07 02:11:43",
+                "updated_at": "2026-09-07 02:13:11",
                 "deleted_at": null
             }
         ]
     },
-    "completed_at": "2026-09-07T02:11:43+00:00"
+    "completed_at": "2026-09-07T02:13:12+00:00"
 }
