@@ -21,7 +21,6 @@ try {
     @copy($view,$backup);
     $result['backup']=$backup;
 
-    // Pass the configured cover image to the Alpine scratch-card component.
     if(!str_contains($content,'coverImage:')){
         $needle="            csrfToken: '{{ csrf_token() }}',\n";
         $insert=$needle."            coverImage: '{{ \$scratchCard->scratchGame->cover_image ? asset('storage/' . \$scratchCard->scratchGame->cover_image) : '' }}',\n";
@@ -38,12 +37,14 @@ try {
         $result['changes'][]='added_cover_image_to_alpine_state';
     }
 
-    // Replace the generic-only silver scratch surface with the configured Treasure Hunt cover.
-    // Keep the old silver/text treatment as a fallback if the cover cannot load.
     if(!str_contains($content,'TREASURE_HUNT_COVER_RENDERER')){
-        $pattern='/\s*\/\/ Draw scratch surface\s*\n\s*ctx\.fillStyle = \'#C0C0C0\';\s*\n\s*ctx\.fillRect\(0, 0, canvas\.width, canvas\.height\);\s*\n\s*\/\/ Add texture text\s*\n\s*ctx\.fillStyle = \'#A0A0A0\';\s*\n\s*ctx\.font = \'bold 16px sans-serif\';\s*\n\s*ctx\.textAlign = \'center\';\s*\n\s*for \(let y = 30; y < canvas\.height; y \+= 40\) \{\s*\n\s*for \(let x = 60; x < canvas\.width; x \+= 120\) \{\s*\n\s*ctx\.fillText\(\'SCRATCH\', x, y\);\s*\n\s*\}\s*\n\s*\}/m';
-        $replacement=<<<'JS'
+        $startMarker='            // Draw scratch surface';
+        $endMarker='            let isScratching = false;';
+        $start=strpos($content,$startMarker);
+        $end=$start===false?false:strpos($content,$endMarker,$start);
+        if($start===false || $end===false || $end<=$start) throw new RuntimeException('Could not locate native scratch surface boundaries');
 
+        $replacement=<<<'JS'
             // TREASURE_HUNT_COVER_RENDERER
             const drawFallbackSurface = () => {
                 ctx.globalCompositeOperation = 'source-over';
@@ -65,7 +66,6 @@ try {
                 const cover = new Image();
                 cover.crossOrigin = 'anonymous';
                 cover.onload = () => {
-                    // Do not repaint after the visitor has started scratching.
                     if (this.scratchProgress > 0 || this.isPlayed) return;
                     ctx.globalCompositeOperation = 'source-over';
                     ctx.globalAlpha = 1;
@@ -85,10 +85,9 @@ try {
                 cover.onerror = drawFallbackSurface;
                 cover.src = this.coverImage;
             }
+
 JS;
-        $new=preg_replace($pattern,$replacement,$content,1,$count);
-        if($new===null || $count!==1) throw new RuntimeException('Could not locate generic scratch surface block for replacement');
-        $content=$new;
+        $content=substr($content,0,$start).$replacement.substr($content,$end);
         $result['changes'][]='render_cover_image_on_scratch_canvas';
     }
 
@@ -105,6 +104,7 @@ JS;
         'cover_state'=>str_contains($after,'coverImage: config.coverImage'),
         'cover_renderer'=>str_contains($after,'TREASURE_HUNT_COVER_RENDERER'),
         'native_storage_helper'=>str_contains($after,"asset('storage/' . \$scratchCard->scratchGame->cover_image)"),
+        'scratch_events_preserved'=>str_contains($after,'let isScratching = false;'),
     ];
     $result['verified']=!in_array(false,$result['checks'],true);
     $result['status']=$result['verified']?'completed':'failed';
@@ -112,4 +112,4 @@ JS;
     $result['status']='failed';$result['verified']=false;$result['error']=$e->getMessage();
 }
 $result['completed_at']=now()->toIso8601String();
-@mkdir(dirname($out),0755,true);file_put_contents($out,json_encode($result,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES),LOCK_EX);echo json_encode(['status'=>$result['status'],'verified'=>$result['verified']??false,'changes'=>$result['changes']]),"\n";exit($result['status']==='completed'?0:1);
+@mkdir(dirname($out),0755,true);file_put_contents($out,json_encode($result,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES),LOCK_EX);echo json_encode(['status'=>$result['status'],'verified'=>$result['verified']??false,'changes'=>$result['changes'],'error'=>$result['error']??null]),"\n";exit($result['status']==='completed'?0:1);
