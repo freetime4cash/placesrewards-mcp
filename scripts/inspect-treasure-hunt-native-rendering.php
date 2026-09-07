@@ -63,6 +63,20 @@ try {
     $result['candidate_views']=$matches;
     $result['named_native_views']=$named;
 
+    $componentClasses=[];
+    $componentRoot=$appRoot.'/app/View/Components';
+    if(is_dir($componentRoot)){
+        $it=new RecursiveIteratorIterator(new RecursiveDirectoryIterator($componentRoot,FilesystemIterator::SKIP_DOTS));
+        foreach($it as $file){
+            if(!$file->isFile() || strtolower($file->getExtension())!=='php') continue;
+            $base=strtolower($file->getBasename('.php'));
+            if(!in_array($base,['card','premiumcard','loyaltycard','stampcard','vouchercard','rewardcard'],true)) continue;
+            $path=$file->getPathname();
+            $componentClasses[str_replace($appRoot.'/','',$path)]=$clip((string)file_get_contents($path),12000);
+        }
+    }
+    $result['component_classes']=$componentClasses;
+
     $result['expected_markers']=[
       'hunter_passport'=>'Northeast Ohio Treasure Hunt Hunter Passport',
       'welcome'=>'100 demo welcome points',
