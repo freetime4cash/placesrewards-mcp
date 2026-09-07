@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260907-hook-and-hoof-willoughby",
+  "observedAt": "2026-09-07T12:14:43Z",
+  "business": {
+    "name": "Hook & Hoof New American Kitchen & Cocktail",
+    "city": "Willoughby, OH",
+    "website": "https://hookandhoofdtw.com/",
+    "category": "restaurant_and_cocktail_bar",
+    "publicContact": {
+      "email": "cbloomhcms@hotmail.com",
+      "phone": "+1-440-571-5312",
+      "sourceUrl": "https://hookandhoofdtw.com/contact/",
+      "observedAt": "2026-09-07T12:14:43Z"
+    }
+  },
+  "fitScore": 84,
+  "evidence": [
+    {
+      "url": "https://hookandhoofdtw.com/",
+      "observedFact": "Hook & Hoof's current official site shows an active Downtown Willoughby restaurant, posts current kitchen hours, emphasizes customer experience, and sends standard table reservations to Resy.",
+      "observedAt": "2026-09-07T12:14:43Z"
+    },
+    {
+      "url": "https://hookandhoofdtw.com/contact/",
+      "observedFact": "The official contact page publishes current hours and says events/private parties are available on Sunday, Monday and Tuesday, with business contact handled by phone and a published email address.",
+      "observedAt": "2026-09-07T12:14:43Z"
+    },
+    {
+      "url": "https://resy.com/cities/willoughby-oh/venues/hook-and-hoof-new-american-kitchen-and-cocktail",
+      "observedFact": "Hook & Hoof's Resy listing describes the restaurant as reservation-based and showed no same-day online availability for the captured date, with the next availability shown for the following day.",
+      "observedAt": "2026-09-07T12:14:43Z"
+    },
+    {
+      "url": "https://hookandhoofdtw.com/buy-gift-card/",
+      "observedFact": "The official website offers gift cards, showing an existing mechanism for driving future visits beyond the initial meal.",
+      "observedAt": "2026-09-07T12:14:43Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.88,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Turn private-party and event guests into permissioned, tagged customer cohorts and trigger post-event return offers, referral prompts and measurable repeat-visit rewards."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.74,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Add structured event-inquiry capture and automated acknowledgement/follow-up around the existing phone/email private-party process while preserving staff control over final event booking."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.72,
+      "evidenceIndexes": [3],
+      "recommendedFix": "Connect gift-card purchasers and redeemers to permissioned comeback sequences so gift-card activity can lead into measurable repeat visits instead of ending at redemption."
+    }
+  ],
+  "recommendedEntryOffer": "Private-Event Retention + Comeback Engine",
+  "notes": "The business is active and has both reservation and private-event demand surfaces. Same-day Resy unavailability is treated only as a booking-demand signal, not proof of lost bookings. The sales hypothesis is that event guests and gift-card customers can be retained and reactivated more systematically. No monetary loss is claimed."
+}
