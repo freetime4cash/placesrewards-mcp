@@ -51,6 +51,13 @@ if ($exitCode === 0) {
         }
         file_put_contents($path, json_encode($payload, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES), LOCK_EX);
     }
+
+    $verify = __DIR__.'/verify-northeast-ohio-module-content.php';
+    if (is_file($verify)) {
+        $verifyCommand = escapeshellarg(PHP_BINARY).' '.escapeshellarg($verify);
+        passthru($verifyCommand, $verifyExit);
+        if ($verifyExit !== 0) $exitCode = $verifyExit;
+    }
 }
 
 // Only retire the old public Northeast Ohio demo cards after the new 01–12
