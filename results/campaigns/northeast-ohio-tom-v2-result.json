@@ -19,25 +19,13 @@
             "status": "virtual_live_module",
             "table": "discovery",
             "id": null,
-            "name": "Participating Business Discovery"
+            "name": "Participating Business Discovery \u2014 Make Every Merchant Visible"
         },
         {
             "status": "updated",
             "table": "rewards",
             "id": "eb9b42d3-252a-44c0-9faa-87d27ac50e13",
             "name": "[TOM DEMO 04] Clue Completion Bonus"
-        },
-        {
-            "status": "updated",
-            "table": "scratch_games",
-            "id": "42167286-20ea-4c55-8793-8a9789ea4a1c",
-            "name": "[TOM DEMO 05] Mystery Bonus Scratch & Win"
-        },
-        {
-            "status": "updated",
-            "table": "rewards",
-            "id": "da95ca7b-4104-4149-ac4d-d3345f1e0567",
-            "name": "[TOM DEMO 06] Community Explorer Milestone"
         },
         {
             "status": "skipped",
@@ -52,14 +40,15 @@
         },
         {
             "status": "updated",
+            "table": "scratch_games",
+            "id": "42167286-20ea-4c55-8793-8a9789ea4a1c",
+            "name": "[TOM DEMO 05] Mystery Bonus Scratch & Win"
+        },
+        {
+            "status": "updated",
             "table": "vouchers",
             "id": "358b51e6-189c-4b17-95b2-eb2794d5b763",
             "name": "[TOM DEMO 09] Hunter Comeback $5 Off $25"
-        },
-        {
-            "status": "skipped",
-            "table": "review_campaigns",
-            "reason": "table_missing"
         },
         {
             "status": "updated",
@@ -71,7 +60,7 @@
             "status": "virtual_live_module",
             "table": "analytics",
             "id": null,
-            "name": "Organizer ROI & Next-Hunt Dashboard"
+            "name": "Organizer & Merchant ROI \u2014 Prove What the Hunt Produced"
         }
     ],
     "files": [
@@ -89,13 +78,13 @@
             "status": "include_existing"
         }
     ],
-    "started_at": "2026-09-06T23:08:53+00:00",
+    "started_at": "2026-09-07T00:06:54+00:00",
     "presentation_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom",
     "image_manager_url": "https://app.placesrewards.com/partner/demo/northeast-ohio-treasure-hunt/tom",
     "modules": [
         {
             "sequence": 1,
-            "title": "Hunter Passport",
+            "title": "Hunter Passport \u2014 Join Once, Keep Earning",
             "module": "loyalty",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-01",
             "live_url": "https://app.placesrewards.com/en-us/card/95cbd0bf-8bbb-436d-b7c6-a2e1e558db25",
@@ -104,7 +93,7 @@
         },
         {
             "sequence": 2,
-            "title": "5-Stop Explorer Trail",
+            "title": "5-Stop Explorer Trail \u2014 Move Traffic Across Town",
             "module": "stamp_card",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-02",
             "live_url": "https://app.placesrewards.com/en-us/stamp-card/a9566430-b6b0-434d-ae3c-f3ba85421c5f",
@@ -113,7 +102,7 @@
         },
         {
             "sequence": 3,
-            "title": "Participating Business Discovery",
+            "title": "Participating Business Discovery \u2014 Make Every Merchant Visible",
             "module": "discovery",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-03",
             "live_url": null,
@@ -122,7 +111,7 @@
         },
         {
             "sequence": 4,
-            "title": "Clue Completion Bonus",
+            "title": "Clue Completion Reward \u2014 Reward the Visit, Not the Answer",
             "module": "reward",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-04",
             "live_url": null,
@@ -131,8 +120,8 @@
         },
         {
             "sequence": 5,
-            "title": "Mystery Bonus Scratch & Win",
-            "module": "scratch",
+            "title": "Merchant Check-In \u2014 Prove the Foot Traffic",
+            "module": "checkin",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-05",
             "live_url": null,
             "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/05-mystery-bonus.svg",
@@ -140,8 +129,8 @@
         },
         {
             "sequence": 6,
-            "title": "Community Explorer Milestone",
-            "module": "milestone_reward",
+            "title": "Local Prize & Giveaway \u2014 Give Every Business a Win Moment",
+            "module": "prize",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-06",
             "live_url": null,
             "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/06-treasure-milestone.svg",
@@ -149,7 +138,7 @@
         },
         {
             "sequence": 7,
-            "title": "Bring Another Hunter",
+            "title": "Bring Another Hunter \u2014 Let Participants Grow the Hunt",
             "module": "referral",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-07",
             "live_url": null,
@@ -158,7 +147,7 @@
         },
         {
             "sequence": 8,
-            "title": "Hunter VIP Progression",
+            "title": "Hunter VIP \u2014 Reward the People Who Support Local Most",
             "module": "tier",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-08",
             "live_url": null,
@@ -167,25 +156,25 @@
         },
         {
             "sequence": 9,
-            "title": "Hunter Comeback \u2014 $5 Off $25",
-            "module": "voucher",
+            "title": "Mystery Bonus Scratch & Win \u2014 Add Instant Excitement",
+            "module": "scratch",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-09",
-            "live_url": "https://app.placesrewards.com/en-us/voucher/358b51e6-189c-4b17-95b2-eb2794d5b763",
+            "live_url": null,
             "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/09-comeback-voucher.svg",
             "merchant_image_upload": "https://app.placesrewards.com/partner/demo/northeast-ohio-treasure-hunt/tom"
         },
         {
             "sequence": 10,
-            "title": "Community Voice & Social Proof",
-            "module": "review",
+            "title": "Hunter Comeback Offer \u2014 Turn the First Visit Into the Second",
+            "module": "voucher",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-10",
-            "live_url": null,
+            "live_url": "https://app.placesrewards.com/en-us/voucher/358b51e6-189c-4b17-95b2-eb2794d5b763",
             "default_image": "https://app.placesrewards.com/files/demo/northeast-ohio-tom/generated/10-community-voice.svg",
             "merchant_image_upload": "https://app.placesrewards.com/partner/demo/northeast-ohio-treasure-hunt/tom"
         },
         {
             "sequence": 11,
-            "title": "Post-Hunt Win-Back Automation",
+            "title": "Post-Hunt Retention \u2014 Keep the Customer Relationship Alive",
             "module": "automation",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-11",
             "live_url": null,
@@ -194,7 +183,7 @@
         },
         {
             "sequence": 12,
-            "title": "Organizer ROI & Next-Hunt Dashboard",
+            "title": "Organizer & Merchant ROI \u2014 Prove What the Hunt Produced",
             "module": "analytics",
             "demo_url": "https://app.placesrewards.com/demo/northeast-ohio-treasure-hunt/tom#module-12",
             "live_url": null,
@@ -202,5 +191,5 @@
             "merchant_image_upload": "https://app.placesrewards.com/partner/demo/northeast-ohio-treasure-hunt/tom"
         }
     ],
-    "completed_at": "2026-09-06T23:08:53+00:00"
+    "completed_at": "2026-09-07T00:06:54+00:00"
 }
