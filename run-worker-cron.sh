@@ -80,8 +80,14 @@ NODE
     if [ -f "$AGENT/scripts/deploy-treasure-hunt-native-demos-v4.php" ]; then
       "$PHPCLI" "$AGENT/scripts/deploy-treasure-hunt-native-demos-v4.php" || true
     fi
+    if [ -f "$AGENT/scripts/install-treasure-hunt-scratch-images.php" ]; then
+      "$PHPCLI" "$AGENT/scripts/install-treasure-hunt-scratch-images.php" || true
+    fi
     if [ -f "$AGENT/scripts/verify-treasure-hunt-card-content.php" ]; then
       "$PHPCLI" "$AGENT/scripts/verify-treasure-hunt-card-content.php" || true
+    fi
+    if [ -f "$AGENT/scripts/inspect-treasure-hunt-native-rendering.php" ]; then
+      "$PHPCLI" "$AGENT/scripts/inspect-treasure-hunt-native-rendering.php" || true
     fi
     if [ -f "$AGENT/scripts/inspect-treasure-hunt-native-modules.php" ]; then
       "$PHPCLI" "$AGENT/scripts/inspect-treasure-hunt-native-modules.php" || true
