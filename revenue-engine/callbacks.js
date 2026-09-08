@@ -9,6 +9,29 @@ const digest = value => createHash('sha256').update(JSON.stringify(value)).diges
 const actionHash = task => digest([task.id, task.tenantId, task.opportunityId, task.call.callId, task.call.phone, task.dueAt]);
 export class CallbackService {
   constructor(app, bindings = []) { this.app = app; this.bindings = vapiBindings(bindings); }
+  async create(actor, body, key) {
+    fields(body, ['opportunityId','phone','name','summary','dueAt'], ['opportunityId','phone','summary','dueAt']);
+    string(body.opportunityId, 'opportunityId', 160); string(body.phone, 'phone', 20);
+    ensure(/^\+[1-9]\d{7,14}$/.test(body.phone), 'VALIDATION', 'Use an international phone number beginning with +');
+    string(body.summary, 'summary', 2000);
+    if (body.name !== undefined) string(body.name, 'name', 200);
+    const dueAt = timestamp(body.dueAt, 'dueAt');
+    return this.app.command(actor, 'callback:manual', body, key, ['operator','admin'], state => {
+      const opportunity = this.app.get(state, actor, body.opportunityId);
+      ensure(!state.callbackSuppressions?.[suppressionKey(actor.tenantId, body.phone)], 'CALLBACK_SUPPRESSED', 'Caller requested no further callbacks', 409);
+      state.callbacks ||= {};
+      ensure(Object.keys(state.callbacks).length < 10000, 'CAPACITY', 'Callback queue capacity reached', 409);
+      const id = randomUUID();
+      const task = {id, tenantId: actor.tenantId, opportunityId: opportunity.id, version: 1, source: 'manual',
+        call: {callId: id, phone: body.phone, name: body.name || null, summary: body.summary, callbackRequested: true},
+        status: 'pending_approval', dueAt, createdAt: now(), updatedAt: now(), approval: null,
+        approvalHistory: [], attempts: [], history: [{event:'manually_created', at:now(), actorId:actor.actorId}],
+        contactMode:'manual', verifiedRecoveredRevenue:null};
+      state.callbacks[id] = task;
+      this.app.audit(state, actor, 'callback:manual', opportunity.id, {callbackId:id});
+      return task;
+    });
+  }
   task(state, actor, id) {
     const value = state.callbacks?.[id];
     ensure(value && value.tenantId === actor.tenantId, 'NOT_FOUND', 'Callback not found', 404); return value;

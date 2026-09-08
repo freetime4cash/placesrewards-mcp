@@ -6,6 +6,12 @@ Implemented: durable opportunities, ranked prospect queue, tenant-scoped HTTP AP
 
 ## Run
 
+**Windows dashboard:** double-click [Open Revenue Engine.cmd](Open%20Revenue%20Engine.cmd) in File Explorer. It starts the isolated service and opens an authenticated browser tab. Keep the launcher window open; press Ctrl+C there to stop safely. Node.js 20+ must be installed. No Vapi, Make, paid account or package installation is needed.
+
+From the repository, the equivalent command is `npm run open:revenue`. See [DASHBOARD.md](DASHBOARD.md) for everyday use, access, restart and troubleshooting.
+
+The dashboard includes overview, searchable/paged prospects, evidence entry/import, lifecycle controls, outreach drafts, exact-action approval review, simulated execution/reconciliation, manual callback entry/review/outcomes, printable reports/JSON download, activity log, and setup help. Its launch profile is a single local owner with administrator permissions; approvals remain explicit and separate from execution.
+
 Node.js 20 or newer. No third-party packages or installation step required.
 
 ```sh

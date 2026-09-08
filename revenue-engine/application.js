@@ -92,14 +92,15 @@ export class RevenueApplication {
   }
   async list(actor, query = {}) {
     this.authorize(actor, ['viewer','operator','approver','admin']);
-    fields(query, ['stage','offset','limit','queue']);
+    fields(query, ['stage','offset','limit','queue','search']);
+    if (query.search !== undefined) string(query.search, 'search', 200);
     const offset = query.offset === undefined ? 0 : Number(query.offset);
     const limit = query.limit === undefined ? 50 : Number(query.limit);
     ensure(Number.isSafeInteger(offset) && offset >= 0 && Number.isSafeInteger(limit) && limit >= 1 && limit <= 100, 'VALIDATION', 'Invalid pagination');
     if (query.stage) choice(query.stage, ['discovered','diagnosed','quantified','prescribed','demonstrated','closed','recovering','measured'], 'stage');
     if (query.queue) choice(query.queue, ['ready','claimed','snoozed','done'], 'queue');
     const state = await this.store.read();
-    const items = Object.values(state.opportunities).filter(o => o.tenantId === actor.tenantId && (!query.stage || o.stage === query.stage) && (!query.queue || o.queue.status === query.queue)).sort((a, b) => b.score - a.score || a.id.localeCompare(b.id));
+    const items = Object.values(state.opportunities).filter(o => o.tenantId === actor.tenantId && (!query.stage || o.stage === query.stage) && (!query.queue || o.queue.status === query.queue) && (!query.search || (o.business.name + ' ' + o.business.id).toLowerCase().includes(query.search.toLowerCase()))).sort((a, b) => b.score - a.score || a.id.localeCompare(b.id));
     return { items: this.present(actor, items.slice(offset, offset + limit)), total: items.length, offset, limit, nextOffset: offset + limit < items.length ? offset + limit : null };
   }
   async read(actor, id, view = 'opportunity') {

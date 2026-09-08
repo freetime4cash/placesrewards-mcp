@@ -12,6 +12,7 @@
     "test:app": "node scripts/test-app.js",
     "test:revenue": "node revenue-engine/check.js",
     "start:revenue": "node revenue-engine/server.js",
+    "open:revenue": "node revenue-engine/launch.js",
     "demo:revenue": "node revenue-engine/demo.js",
     "demo:callbacks": "node revenue-engine/callback-demo.js",
     "sync:vapi": "node revenue-engine/vapi-import.js",

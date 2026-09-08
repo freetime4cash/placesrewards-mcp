@@ -3,6 +3,7 @@ import { randomUUID } from 'node:crypto';
 import { authenticate } from './config.js';
 import { RevenueError, ensure } from './errors.js';
 import { fields } from './validation.js';
+import { serveDashboard } from './dashboard.js';
 
 async function readJson(req, maxBytes) {
   ensure((req.headers['content-type'] || '').split(';')[0].trim() === 'application/json', 'CONTENT_TYPE', 'Use application/json', 415);
@@ -39,6 +40,10 @@ export function createRevenueHttpServer({ app, principals, logger = entry => con
       ensure(active <= maxConcurrent, 'BUSY', 'Too many concurrent requests', 429);
       ensure((req.url || '').length < 4096, 'URI_TOO_LONG', 'Request URL too long', 414);
       const url = new URL(req.url, 'http://localhost');
+      const allowedHosts = ['127.0.0.1', 'localhost', '[::1]'].map(host => host + ':' + req.socket.localPort);
+      ensure(allowedHosts.includes(req.headers.host), 'HOST', 'Use the local Revenue Engine address', 403);
+      ensure(!req.headers.origin || req.headers.origin === 'http://' + req.headers.host, 'ORIGIN', 'Cross-origin requests are not supported', 403);
+      if (serveDashboard(req, res, url.pathname)) { status = 200; code = 'OK'; return; }
       if (req.method === 'GET' && url.pathname === '/health') {
         await app.store.read(); status = 200; code = 'OK'; send({ ok: true, service: 'revenue-engine', mode: 'sandbox', externalMutation: false }); return;
       }
@@ -53,7 +58,8 @@ export function createRevenueHttpServer({ app, principals, logger = entry => con
       ensure([...url.searchParams.keys()].length === Object.keys(query).length, 'VALIDATION', 'Duplicate query parameter');
       let data;
       if (req.method === 'GET') {
-        if (parts.length === 2 && ['opportunities','prospects'].includes(parts[1])) data = await app.list(actor, query);
+        if (parts.length === 2 && parts[1] === 'session') { fields(query, []); data = actor; }
+        else if (parts.length === 2 && ['opportunities','prospects'].includes(parts[1])) data = await app.list(actor, query);
         else if (parts[1] === 'callbacks' && parts.length === 2) data = await app.callbacks.list(actor, query);
         else if (parts[1] === 'callbacks' && parts.length === 3) { fields(query, []); data = parts[2] === 'summary' ? await app.callbacks.summary(actor) : await app.callbacks.read(actor, parts[2]); }
         else if (parts.length === 2 && parts[1] === 'dashboard') { fields(query, []); data = await app.dashboard(actor); }
@@ -71,6 +77,7 @@ export function createRevenueHttpServer({ app, principals, logger = entry => con
         const body = await readJson(req, maxBodyBytes);
         const key = req.headers['idempotency-key'];
         if (parts.length === 2 && parts[1] === 'opportunities') data = await app.create(actor, body, key);
+        else if (parts.length === 2 && parts[1] === 'callbacks') data = await app.callbacks.create(actor, body, key);
         else if (parts.length === 4 && parts[1] === 'integrations' && parts[2] === 'vapi' && parts[3] === 'events') data = await app.callbacks.ingest(actor, body);
         else if (parts.length === 4 && parts[1] === 'callbacks') data = await app.callbacks.change(actor, parts[2], parts[3], body, key);
         else if (parts.length === 2 && parts[1] === 'discover') data = await app.create(actor, body, key, { discover: true });

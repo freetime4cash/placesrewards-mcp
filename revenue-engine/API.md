@@ -2,6 +2,12 @@
 
 Base URL: `http://127.0.0.1:4311/v1`. Except health, all routes require `Authorization: Bearer <token>`. Responses use `Cache-Control: no-store` and `X-Request-Id`. There is no CORS grant or cookie authentication.
 
+The public GET routes `/`, `/dashboard.css`, and `/dashboard-client.js` serve only static dashboard assets, with CSP and anti-framing headers. No data or credentials are embedded. Every request validates a loopback Host and, when present, same-origin Origin. GET `/v1/session` returns the authenticated actor's tenant, ID, role and tier (never token/hash); intake credentials cannot use it.
+
+GET opportunity/prospect lists additionally accept optional `search` (1–200 characters), a case-insensitive substring of business name/ID, applied before paging and within the authenticated tenant.
+
+POST `/v1/callbacks` creates a manual task with `{opportunityId,phone,name?,summary,dueAt}`, requires an operator/admin and an Idempotency-Key, and returns a pending-approval callback. Phone must be international E.164; summary ≤2,000 and name ≤200 characters. It enforces tenant ownership and do-not-call suppression. No provider is needed. Existing callback approve/defer/cancel/outcome routes apply unchanged.
+
 Success: `{contractVersion:"1.0",requestId,ok:true,data}`. Error: `{contractVersion:"1.0",requestId,ok:false,error:{code,message}}`. Success returns HTTP 200, including create and simulated execution. `GET /health` is outside `/v1` and returns readiness, `service`, `mode` and `externalMutation` directly in the envelope.
 
 ## Request rules
