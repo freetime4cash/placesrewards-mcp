@@ -1,9 +1,9 @@
 {
-    "status": "failed",
-    "verified_at": "2026-09-08T04:03:58+00:00",
+    "status": "passed",
+    "verified_at": "2026-09-08T04:13:21+00:00",
     "checks": {
         "reward_29304849-3c10-4a06-8f8f-4bad776b79f9": {
-            "passed": false,
+            "passed": true,
             "pivot_attached": true,
             "active": true,
             "future_expiration": true,
@@ -14,7 +14,7 @@
                 "status": 200,
                 "effective": "https://app.placesrewards.com/en-us/card/95cbd0bf-8bbb-436d-b7c6-a2e1e558db25/29304849-3c10-4a06-8f8f-4bad776b79f9",
                 "content_type": "text/html; charset=utf-8",
-                "bytes": 43642,
+                "bytes": 45775,
                 "error": null
             },
             "expected_marker": "04 \u2014 Clue Activity Bonus",
@@ -22,7 +22,7 @@
             "has_page_not_found": false
         },
         "reward_13085fc2-2a5d-43ee-92b5-441bc368c55b": {
-            "passed": false,
+            "passed": true,
             "pivot_attached": true,
             "active": true,
             "future_expiration": true,
@@ -33,7 +33,7 @@
                 "status": 200,
                 "effective": "https://app.placesrewards.com/en-us/card/95cbd0bf-8bbb-436d-b7c6-a2e1e558db25/13085fc2-2a5d-43ee-92b5-441bc368c55b",
                 "content_type": "text/html; charset=utf-8",
-                "bytes": 43640,
+                "bytes": 45878,
                 "error": null
             },
             "expected_marker": "06 \u2014 Local Business Bonus Prize",
@@ -113,5 +113,5 @@
             "no_old_storage_files_paths": true
         }
     },
-    "completed_at": "2026-09-08T04:04:04+00:00"
+    "completed_at": "2026-09-08T04:13:26+00:00"
 }
