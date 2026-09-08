@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Revenue Engine</title><link rel="stylesheet" href="/dashboard.css"><script src="/dashboard-client.js" defer></script></head>
+<body>
+<aside><a class="brand" href="/">RE<span>↗</span><strong>Revenue Engine</strong></a><p class="eyebrow">YOUR WORKSPACE</p><nav aria-label="Main navigation">
+<button data-view="overview">Overview</button><button data-view="prospects">Prospects</button><button data-view="approvals">Approvals</button><button data-view="callbacks">Callbacks</button><button data-view="reports">Reports</button><button data-view="activity">Activity</button><button data-view="settings">Setup & help</button></nav><div class="aside-foot"><span class="dot"></span> Local sandbox<p>Your data stays on this computer.</p></div></aside>
+<main><header><div><p class="eyebrow">REVENUE OPERATIONS</p><h1 id="title">Overview</h1></div><div class="header-actions"><span id="identity"></span><button id="refresh">Refresh</button><button id="logout">Lock</button></div></header>
+<div class="notice">Sandbox workspace · Recovery is simulated. Revenue estimates are not verified cash. Vapi and Make setup is deferred.</div>
+<p id="message" role="status" aria-live="polite"></p>
+<section id="login" class="panel"><h2>Open your workspace</h2><p>Run Open Revenue Engine.cmd again to reopen and sign in automatically. It reconnects to an existing service. Administrators may also enter an access key below.</p><form id="login-form"><label>Access key<input id="token" type="password" required autocomplete="off"></label><button class="primary">Open workspace</button></form><p>Sign-in survives refresh in this tab. Lock clears its saved access.</p></section>
+<div id="content" hidden></div>
+</main>
+<dialog id="dialog"><form id="editor"><div class="dialog-heading"><h2 id="dialog-title"></h2><button type="button" id="dismiss" aria-label="Close dialog">✕</button></div><p id="dialog-note"></p><div id="editor-fields"></div><p id="form-error" role="alert"></p><div class="dialog-actions"><button type="button" id="cancel">Cancel</button><button id="save" class="primary">Save</button></div></form></dialog>
+</body></html>

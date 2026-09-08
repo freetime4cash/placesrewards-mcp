@@ -1,0 +1,45 @@
+name: Revenue Engine CI
+
+on:
+  pull_request:
+    paths:
+      - 'revenue-engine/**'
+      - 'package.json'
+      - '.github/workflows/revenue-engine.yml'
+  push:
+    branches:
+      - revenue-engine-runtime
+    paths:
+      - 'revenue-engine/**'
+      - 'package.json'
+      - '.github/workflows/revenue-engine.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test-revenue-engine:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: ['20', '22', '24']
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Run isolated Revenue Engine tests
+        run: npm run test:revenue
+
+      - name: Run synthetic lifecycle smoke test
+        run: npm run demo:revenue
+
+      - name: Run no-SMS callback smoke test
+        run: npm run demo:callbacks
