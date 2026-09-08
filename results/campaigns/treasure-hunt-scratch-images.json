@@ -1,7 +1,7 @@
 {
-    "status": "completed",
+    "status": "failed",
     "game_id": "1fefb288-a8cc-46d4-a4a3-04fe56f91329",
-    "started_at": "2026-09-08T14:45:04+00:00",
+    "started_at": "2026-09-08T15:36:48+00:00",
     "files": {
         "cover": {
             "source": "/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/cover.svg",
@@ -89,14 +89,14 @@
     "http_probes": {
         "storage": {
             "cover": {
-                "status": 200,
-                "content_type": "image/webp",
-                "bytes": 70368,
-                "riff_webp": true,
-                "decoder_exit": 0,
-                "decoder_output": "WEBP 1200 900",
-                "error": null,
-                "valid_webp": true
+                "status": 0,
+                "content_type": "",
+                "bytes": 0,
+                "riff_webp": false,
+                "decoder_exit": null,
+                "decoder_output": "",
+                "error": "Connection timed out after 8002 milliseconds",
+                "valid_webp": false
             },
             "winner": {
                 "status": 200,
@@ -157,6 +157,6 @@
         "is_link": true,
         "is_dir": true
     },
-    "verified": true,
-    "completed_at": "2026-09-08T14:45:09+00:00"
+    "verified": false,
+    "completed_at": "2026-09-08T15:37:00+00:00"
 }
