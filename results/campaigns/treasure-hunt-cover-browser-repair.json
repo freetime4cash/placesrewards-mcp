@@ -1,6 +1,6 @@
 {
     "status": "completed",
-    "started_at": "2026-09-08T02:21:50+00:00",
+    "started_at": "2026-09-08T02:24:44+00:00",
     "attempts": [
         {
             "tool": "decode-existing-cover",
@@ -29,7 +29,7 @@
         "mime": "image/webp"
     },
     "http": {
-        "url": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp?v=1788834113",
+        "url": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp?v=1788834287",
         "status": 200,
         "content_type": "image/webp",
         "bytes": 70402,
@@ -38,12 +38,12 @@
         "decoder_output": "WEBP 1200 900",
         "headers": [
             "HTTP/2 200",
-            "date: Tue, 08 Sep 2026 02:21:53 GMT",
+            "date: Tue, 08 Sep 2026 02:24:47 GMT",
             "content-type: image/webp",
             "content-length: 70402",
             "cache-control: no-store, no-cache, must-revalidate, max-age=0",
             "expires: 0",
-            "last-modified: Tue, 08 Sep 2026 02:21:52 GMT",
+            "last-modified: Tue, 08 Sep 2026 02:24:46 GMT",
             "accept-ranges: bytes",
             "server: cloudflare",
             "pragma: no-cache",
@@ -51,14 +51,14 @@
             "cf-cache-status: BYPASS",
             "strict-transport-security: max-age=15552000; includeSubDomains; preload",
             "x-content-type-options: nosniff",
-            "report-to: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=WqDoyIcxffkJvTMCGMAhqqHoYJUIQLdxWHl2J7%2FMaiqzllr8MM2yjRvBLakg4PBQVFvYzl8yOgaFnvKbDo0vMoAj%2Ff%2F0mryOPpu1ly4npWpK7MxiKREJkW0Ge2qoQ41zXLQqxd92Few%3D\"}]}",
+            "report-to: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Bc9yRHLgG1sG%2Bl3mHSNVPPvpfWykp%2BLCPh4ONgXT%2Bva%2FaxjXxIP3of0or4jOAbUJxmOw3jeooA1%2F7CjEFnA0uBIiqDryF%2BMqP1B9HvJKJgq15jrcm48km5sTgIbyoVnC6UGZMvJgBXo%3D\"}]}",
             "nel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
-            "cf-ray: a37a7b777f9a5f11-PHX",
+            "cf-ray: a37a7fb78c95b829-PHX",
             "alt-svc: h3=\":443\"; ma=86400",
             ""
         ],
         "error": null
     },
     "verified": true,
-    "completed_at": "2026-09-08T02:21:53+00:00"
+    "completed_at": "2026-09-08T02:24:47+00:00"
 }
