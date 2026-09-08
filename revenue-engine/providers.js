@@ -18,10 +18,10 @@ export class PublicProfileAdapter extends RevenueEvidenceAdapter {
     };
     push('review_rating', p.reviewRating, p.reviewUrl);
     push('review_count', p.reviewCount, p.reviewUrl);
-    push('website_has_booking', Boolean(p.websiteHasBooking), p.websiteUrl);
-    push('website_has_contact_form', Boolean(p.websiteHasContactForm), p.websiteUrl);
-    push('website_has_loyalty', Boolean(p.websiteHasLoyalty), p.websiteUrl);
-    push('website_has_referral', Boolean(p.websiteHasReferral), p.websiteUrl);
+    push('website_has_booking', p.websiteHasBooking, p.websiteUrl);
+    push('website_has_contact_form', p.websiteHasContactForm, p.websiteUrl);
+    push('website_has_loyalty', p.websiteHasLoyalty, p.websiteUrl);
+    push('website_has_referral', p.websiteHasReferral, p.websiteUrl);
     push('response_time_hours', p.responseTimeHours, p.responseEvidence);
     push('social_inactivity_days', p.socialInactivityDays, p.socialUrl);
     return signals;
@@ -73,10 +73,10 @@ export class WebsiteConversionAdapter extends RevenueEvidenceAdapter {
     const source = w.source || this.name;
     const out = [];
     const push = (key,value,evidence=w.url) => { if (value !== undefined) out.push({source,key,value,observedAt,evidence}); };
-    push('website_has_booking', Boolean(w.hasBooking));
-    push('website_has_contact_form', Boolean(w.hasContactForm));
-    push('website_has_loyalty', Boolean(w.hasLoyalty));
-    push('website_has_referral', Boolean(w.hasReferral));
+    push('website_has_booking', w.hasBooking);
+    push('website_has_contact_form', w.hasContactForm);
+    push('website_has_loyalty', w.hasLoyalty);
+    push('website_has_referral', w.hasReferral);
     push('website_load_seconds', w.loadSeconds);
     push('website_mobile_score', w.mobileScore);
     return out;
@@ -98,7 +98,7 @@ export class RevenueSignalAggregator {
     for (const signal of [...metricSignals,...providerSignals]) {
       const k = `${signal.key}`;
       const prior = latest.get(k);
-      if (!prior || signal.observedAt >= prior.observedAt) latest.set(k, signal);
+      if (!prior || Date.parse(signal.observedAt) >= Date.parse(prior.observedAt)) latest.set(k, signal);
     }
     return {...record, signals:[...latest.values()]};
   }

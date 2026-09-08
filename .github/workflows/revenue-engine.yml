@@ -19,7 +19,12 @@ permissions:
 
 jobs:
   test-revenue-engine:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: ['20', '22', '24']
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 5
     steps:
       - name: Checkout
@@ -28,7 +33,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: ${{ matrix.node }}
 
       - name: Run isolated Revenue Engine tests
         run: npm run test:revenue
+
+      - name: Run synthetic lifecycle smoke test
+        run: npm run demo:revenue

@@ -2,7 +2,9 @@ export function evidenceQuality(signals=[]) {
   if (!signals.length) return { score:0, freshness:0, coverage:0, traceability:0 };
   const now = Date.now();
   const freshness = signals.reduce((sum,s)=>{
-    const ageDays = Math.max(0,(now-Date.parse(s.observedAt || 0))/86400000);
+    const observed = Date.parse(s.observedAt);
+    if (!Number.isFinite(observed) || observed > now + 60000) return sum;
+    const ageDays = Math.max(0,(now-observed)/86400000);
     return sum + Math.max(0,1-Math.min(ageDays,90)/90);
   },0)/signals.length;
   const coverage = Math.min(1,new Set(signals.map(s=>s.key)).size/8);

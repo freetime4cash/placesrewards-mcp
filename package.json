@@ -10,7 +10,9 @@
     "approve": "node approve.js",
     "inspect:app": "node scripts/inspect-app.js",
     "test:app": "node scripts/test-app.js",
-    "test:revenue": "node --test revenue-engine/test.js revenue-engine/pipeline.test.js revenue-engine/workflow.test.js"
+    "test:revenue": "node revenue-engine/check.js",
+    "start:revenue": "node revenue-engine/server.js",
+    "demo:revenue": "node revenue-engine/demo.js"
   },
   "engines": { "node": ">=20" }
 }
