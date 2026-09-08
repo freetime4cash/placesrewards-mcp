@@ -1,7 +1,7 @@
 {
     "status": "completed",
     "game_id": "1fefb288-a8cc-46d4-a4a3-04fe56f91329",
-    "started_at": "2026-09-08T17:59:09+00:00",
+    "started_at": "2026-09-08T19:12:09+00:00",
     "files": {
         "cover": {
             "source": "/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/cover.svg",
@@ -32,7 +32,7 @@
             "width": 300,
             "height": 225,
             "mime": "image/webp",
-            "reencoded": true,
+            "reencoded": false,
             "decoder": {
                 "ok": true,
                 "basic": true,
@@ -52,7 +52,7 @@
             "width": 300,
             "height": 225,
             "mime": "image/webp",
-            "reencoded": true,
+            "reencoded": false,
             "decoder": {
                 "ok": true,
                 "basic": true,
@@ -158,5 +158,5 @@
         "is_dir": true
     },
     "verified": true,
-    "completed_at": "2026-09-08T17:59:15+00:00"
+    "completed_at": "2026-09-08T19:12:14+00:00"
 }
