@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260908-skye-bar-mentor",
+  "observedAt": "2026-09-08T12:45:59Z",
+  "business": {
+    "name": "Skye Bar",
+    "city": "Mentor, OH",
+    "website": "https://skyebarmentor.com/",
+    "category": "restaurant_bar_private_events",
+    "publicContact": {
+      "email": "info@skyebarmentor.com",
+      "phone": "440-974-3572",
+      "sourceUrl": "https://skyebarmentor.com/events",
+      "observedAt": "2026-09-08T12:45:59Z"
+    }
+  },
+  "fitScore": 89,
+  "evidence": [
+    {
+      "url": "https://skyebarmentor.com/events",
+      "observedFact": "Skye Bar publicly markets private events spanning intimate dinners, celebrations, corporate gatherings, and full buyouts, with spaces for up to 30, 50, and 60 guests.",
+      "observedAt": "2026-09-08T12:45:59Z"
+    },
+    {
+      "url": "https://skyebarmentor.com/events",
+      "observedFact": "The private-events page directs prospects to plan an event through an inquiry flow or by calling 440-974-3572 and publishes info@skyebarmentor.com.",
+      "observedAt": "2026-09-08T12:45:59Z"
+    },
+    {
+      "url": "https://skyebarmentor.com/",
+      "observedFact": "The active website lists current operating hours Monday through Saturday, a reserve-a-table call to action, and the Mentor address at 8434 Mentor Ave.",
+      "observedAt": "2026-09-08T12:45:59Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.92,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Demonstrate an event-to-repeat-visit workflow that captures attendees or organizers with consent, issues a post-event comeback reward, and attributes subsequent visits."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.7,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Demonstrate automated acknowledgement and structured follow-up for private-event inquiries so phone and web leads enter one measurable follow-up path."
+    }
+  ],
+  "recommendedEntryOffer": "Private Event Retention + Follow-Up Revenue Engine",
+  "notes": "Observed facts show an active Mentor restaurant with multiple private-event formats and public inquiry/contact channels. The retention and follow-up gaps are sales hypotheses based on those public workflows; no monetary loss is claimed."
+}
