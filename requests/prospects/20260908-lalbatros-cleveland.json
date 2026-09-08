@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260908-lalbatros-cleveland",
+  "observedAt": "2026-09-08T12:45:59Z",
+  "business": {
+    "name": "L'Albatros Brasserie and Bar",
+    "city": "Cleveland, OH",
+    "website": "https://www.albatrosbrasserie.com/",
+    "category": "restaurant_private_events",
+    "publicContact": {
+      "phone": "216-791-7880",
+      "sourceUrl": "https://www.albatrosbrasserie.com/contact",
+      "observedAt": "2026-09-08T12:45:59Z"
+    }
+  },
+  "fitScore": 91,
+  "evidence": [
+    {
+      "url": "https://www.albatrosbrasserie.com/contact",
+      "observedFact": "L'Albatros asks private-event inquiries to include event date, time, guest count, privacy requirements, and dinner type, and states that its events team will respond within 72 hours.",
+      "observedAt": "2026-09-08T12:45:59Z"
+    },
+    {
+      "url": "https://www.albatrosbrasserie.com/contact",
+      "observedFact": "The active contact page publishes current restaurant hours, the Cleveland address, phone number 216-791-7880, and a Resy reservation path.",
+      "observedAt": "2026-09-08T12:45:59Z"
+    },
+    {
+      "url": "https://www.albatrosbrasserie.com/",
+      "observedFact": "The restaurant publicly offers gift cards in addition to reservations and dining service.",
+      "observedAt": "2026-09-08T12:45:59Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "followup_friction",
+      "confidence": 0.97,
+      "evidenceIndexes": [0],
+      "recommendedFix": "Demonstrate immediate acknowledgement, qualification, and reminder automation for private-event inquiries while preserving staff-led sales follow-up."
+    },
+    {
+      "category": "booking_friction",
+      "confidence": 0.86,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Create a structured private-event intake and nurture workflow that captures required details once and keeps the prospect moving toward a confirmed event."
+    },
+    {
+      "category": "event_retention",
+      "confidence": 0.8,
+      "evidenceIndexes": [0, 2],
+      "recommendedFix": "Add a post-event retention layer that turns event organizers and consenting guests into measurable return visits and gift-card or comeback-reward opportunities."
+    }
+  ],
+  "recommendedEntryOffer": "Private Event Follow-Up + Retention Revenue Engine",
+  "notes": "The strongest public signal is the restaurant's own statement that private-event inquiries may receive a response within 72 hours. That is concrete follow-up latency, not a claim of lost revenue. No email address was included because the public page exposes only an 'Email Us' action rather than a verifiable address in the retrieved source."
+}
