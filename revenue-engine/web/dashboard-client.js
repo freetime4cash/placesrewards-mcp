@@ -1,4 +1,4 @@
-/* No external dependencies, HTML injection, persistent credentials, or automatic writes. */
+/* Credentials survive refresh in tab-scoped sessionStorage, never localStorage. */
 const $ = id => document.getElementById(id);
 let token = '', actor, view = 'overview', selected, offset = 0, stage = '', search = '', busy = false, generation = 0;
 let pendingCommand = null;
@@ -11,7 +11,7 @@ function button(text,fn,cls){const b=el('button',text,cls);b.type='button';b.onc
 function notice(text,error=false){$('message').textContent=text;$('message').className=error?'error':'';}
 async function run(fn){try{await fn();}catch(e){notice(e.message,true);}}
 async function api(path,body,key){
- const response=await fetch('/v1'+path,{method:body===undefined?'GET':'POST',headers:{Authorization:'Bearer '+token,...(body===undefined?{}:{'Content-Type':'application/json','Idempotency-Key':key})},...(body===undefined?{}:{body:JSON.stringify(body)}),redirect:'error',cache:'no-store'});
+ const response=await fetch('/v1'+path,{method:body===undefined?'GET':'POST',headers:{Authorization:'Bearer '+token,...(body===undefined?{}:{'Content-Type':'application/json','Idempotency-Key':key})},...(body===undefined?{}:{body:JSON.stringify(body)}),redirect:'error',cache:'no-store',signal:AbortSignal.timeout(20000)});
  const result=await response.json();
  if(!response.ok||!result.ok){const error=new Error((result.error?.message||'Request failed')+' ['+(result.error?.code||response.status)+']');error.definitive=response.status<500;throw error;}
  return result.data;
@@ -54,8 +54,9 @@ function callbackExpiry(dueAt){const d=new Date(Math.max(Date.now()+86400000,Dat
 const write=()=>['admin','operator'].includes(actor.role);
 const approve=()=>['admin','approver'].includes(actor.role);
 function metric(label,value,caption){const c=el('div',undefined,'card');c.append(el('p',label,'muted'),el('div',value,'metric'),el('small',caption));return c;}
-async function connect(value){token=value;try{actor=await api('/session');}catch(e){token='';throw e;}$('login').hidden=true;$('content').hidden=false;$('identity').textContent=human(actor.role)+' · '+actor.tenantId;await render();}
-function lock(){generation++;token='';actor=null;selected=null;pendingCommand=null;$('content').replaceChildren();$('content').hidden=true;$('login').hidden=false;$('identity').textContent='';$('dialog').close();notice('Workspace locked.');}
+function savedKey(value){try{if(value===undefined)return sessionStorage.getItem('revenue-access');if(value)sessionStorage.setItem('revenue-access',value);else sessionStorage.removeItem('revenue-access');}catch{/* Memory-only access remains usable when storage is disabled. */}return null;}
+async function connect(value){token=value;try{actor=await api('/session');}catch(e){token='';savedKey(null);throw e;}savedKey(value);$('login').hidden=true;$('content').hidden=false;$('identity').textContent=human(actor.role)+' · '+actor.tenantId;await render();}
+function lock(){generation++;token='';savedKey(null);actor=null;selected=null;pendingCommand=null;$('content').replaceChildren();$('content').hidden=true;$('login').hidden=false;$('identity').textContent='';$('dialog').close();notice('Workspace locked. Run the launcher to reopen, or enter your access key.');}
 async function navigate(next){view=next;selected=null;offset=0;search='';await render();}
 async function render(){
  if(!token)return;
@@ -173,7 +174,7 @@ async function activity(host){
 function settings(host){
  const p=panel('Ready for local work');p.append(el('p','Use the Open Revenue Engine launcher to start the service and open this dashboard. Keep its window open while working; press Ctrl+C there to stop safely.'));
  p.append(el('h3','A simple workflow'),el('p','1. Add a prospect or import authorized evidence. 2. Open it and progress through diagnosis, quantification, planning and demonstration. 3. Record the deal decision. 4. Prepare and separately approve recovery actions. 5. Run simulations and measure updated evidence.'));
- p.append(el('h3','Your data and access'),el('p','Records persist in the dedicated revenue-engine-data folder. Access keys stay in browser memory. The local launcher creates a fresh administrator key each run. For separate operator and reviewer accounts, use the environment-based server setup documented in the repository.'));
+ p.append(el('h3','Your data and access'),el('p','Records persist in the dedicated revenue-engine-data folder. Sign-in survives refresh in this tab; Lock clears it. Run the launcher again to reconnect automatically. A private local launcher-session file enables reopening; protect your data folder and do not share its credentials. For separate operator and reviewer accounts, use the environment-based server setup documented in the repository.'));
  p.append(el('h3','Backup and restore'),el('p','Stop the service before copying the entire revenue-engine-data folder to a private backup location. To restore, stop the service and replace that folder with a known-good copy. Never copy it into Places Rewards production.'));
  p.append(el('h3','Deferred connections'),el('p','Vapi and Make are not connected. Outreach and recovery transports are simulated. No email, SMS, call, billing action or production change is performed.'));
  p.append(el('h3','Reports'),el('p','Open a business to download its complete report as JSON or print its current view to PDF. Revenue values remain modeled estimates; no actual recovered cash is claimed.'));
@@ -184,7 +185,7 @@ $('refresh').onclick=()=>run(render);$('logout').onclick=lock;$('dismiss').oncli
 $('dialog').addEventListener('cancel',e=>{e.preventDefault();dismiss();});
 document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>run(()=>navigate(b.dataset.view)));
 document.querySelector('.brand').onclick=e=>{e.preventDefault();run(()=>navigate('overview'));};
-let initial=new URLSearchParams(location.hash.slice(1)).get('key');
+let initial=new URLSearchParams(location.hash.slice(1)).get('key')||savedKey();
 history.replaceState(null,'',location.pathname);
 if(initial)run(()=>connect(initial));
 initial=null;

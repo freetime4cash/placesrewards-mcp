@@ -10,7 +10,7 @@ export async function startRevenueServer(env = process.env) {
   try {
     const app = new RevenueApplication({ store, vapiBindings: config.vapiBindings });
     await app.recoverInterruptedExecutions();
-    const server = createRevenueHttpServer({ app, principals: config.principals });
+    const server = createRevenueHttpServer({ app, principals: config.principals, launcherKey: env.REVENUE_LAUNCHER_KEY });
     await new Promise((resolve, reject) => {
       server.once('error', reject);
       server.listen(config.port, config.host, () => { server.off('error', reject); resolve(); });

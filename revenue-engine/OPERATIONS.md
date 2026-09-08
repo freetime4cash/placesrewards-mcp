@@ -6,13 +6,13 @@ Run this service in its own process with Revenue Engine-only credentials and a d
 
 The optional `sync:vapi` command is a separate read-only bridge. It contacts Vapi only when explicitly run without `--file`, then posts minimized call events to the local service. It never starts outbound calls. Callback records and do-not-call suppressions are retained with the same transactional snapshot; include them in backups. `demo:callbacks` makes no network calls and requires no accounts.
 
-The HTTP listener is loopback-only. Do not expose it through a public reverse proxy without a separately reviewed deployment architecture. Current authentication is static server configuration; there is no user management/billing integration. Dashboard/report endpoints supply data contracts, not a browser UI.
+The HTTP listener is loopback-only. Do not expose it through a public reverse proxy without a separately reviewed deployment architecture. Current authentication is static server configuration; there is no hosted user-management/billing integration. The browser dashboard and its launcher are documented in DASHBOARD.md.
 
 ## Persistent store
 
 `state.json` has service marker `revenue-engine-sandbox`, schema version 1, revision, opportunities, idempotent command responses, and audit history. Changes run serially on a clone and publish only after atomic temporary-file write, file fsync and rename. POSIX also syncs the containing directory; Windows Node cannot fsync directories. Local filesystems only; network filesystem atomicity is not supported.
 
-`writer.lock` is created exclusively and held for the process lifetime. A second writer fails startup. The lock records process ID/start time. There is no automatic stale-lock stealing. Graceful shutdown drains requests/receipts before closing storage and removing the lock. A crash leaves the lock for operator inspection.
+`writer.lock` is created exclusively and held for the process lifetime. A second API writer fails startup. The lock records process ID/start time. Graceful shutdown drains requests/receipts before closing storage and removing the lock. The desktop launcher reconnects to a proven existing service, or serializes recovery of a crashed writer only when its PID is confirmed absent. A live, inaccessible or ambiguous PID is never stolen. A leftover recovery guard requires operator inspection.
 
 The store caps serialized state at 32 MiB and 10,000 opportunities (whichever is reached first). Commands retain response snapshots, so the byte limit may arrive well before the opportunity limit. Reaching capacity fails writes without partial commits. There is no online archive, automatic eviction or retention pruning. Never delete idempotency history from an active store; that could change retry behavior. For larger deployments, implement a reviewed database store with transactional commands and execution intents before increasing throughput.
 
@@ -47,4 +47,4 @@ Structured request logs allowlist request ID, event, duration, status, error cod
 
 Run `npm run test:revenue` and `npm run demo:revenue`. Tests cover the full HTTP lifecycle; restart persistence; atomicity; tenant, role and tier boundaries; duplicate requests; concurrent claims/execution; expired/revoked/changed approvals; provider timeout and invalid receipts; reconciliation; storage corruption/capacity/failure; evidence validation; outreach; redacted logging; and isolated imports. CI runs Node 20/22/24 on Linux/Windows without production secrets or external API calls.
 
-Real provider adapters, production deployment, billing, verified-cash reconciliation, online retention, distributed storage and a browser dashboard are separate integrations. The current service supplies the operational workflow and dashboard/report data contracts for a safe sandbox release.
+Real provider adapters, online deployment/user management, billing, verified-cash reconciliation, online retention and distributed storage remain separate integrations. The operational workflow and browser dashboard support a local sandbox release. See LIVE-READINESS.md for the distinction between local operation and an online customer launch.

@@ -4,6 +4,8 @@ Base URL: `http://127.0.0.1:4311/v1`. Except health, all routes require `Authori
 
 The public GET routes `/`, `/dashboard.css`, and `/dashboard-client.js` serve only static dashboard assets, with CSP and anti-framing headers. No data or credentials are embedded. Every request validates a loopback Host and, when present, same-origin Origin. GET `/v1/session` returns the authenticated actor's tenant, ID, role and tier (never token/hash); intake credentials cannot use it.
 
+Launcher-created servers also expose GET `/launcher-proof?challenge=<64 lowercase hex characters>`, returning an HMAC-SHA256 proof for local instance verification. It returns no credentials or business data and grants no API access. The launcher checks that proof before reopening the saved credential. Direct API servers omit this route unless explicitly configured with a launcher key.
+
 GET opportunity/prospect lists additionally accept optional `search` (1–200 characters), a case-insensitive substring of business name/ID, applied before paging and within the authenticated tenant.
 
 POST `/v1/callbacks` creates a manual task with `{opportunityId,phone,name?,summary,dueAt}`, requires an operator/admin and an Idempotency-Key, and returns a pending-approval callback. Phone must be international E.164; summary ≤2,000 and name ≤200 characters. It enforces tenant ownership and do-not-call suppression. No provider is needed. Existing callback approve/defer/cancel/outcome routes apply unchanged.

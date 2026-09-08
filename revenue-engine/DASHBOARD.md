@@ -6,7 +6,11 @@ On Windows, open the repository's `revenue-engine` folder in File Explorer and d
 
 Alternatively run `npm run open:revenue` from the repository. Node.js 20 or newer is required; no installation of third-party packages is needed.
 
-The default address is http://127.0.0.1:4311/. This is a local application, accessible on this computer only. The launcher signs its browser tab in with a fresh random key. The page removes the key fragment immediately and retains it only in memory. Reloading, locking, or closing the tab clears access. Restart the launcher to open a fresh authenticated tab. Do not share the launch URL before its fragment disappears.
+The default address is http://127.0.0.1:4311/. This is a local application, accessible on this computer only. The launcher signs its browser tab in automatically. Running it again reconnects to the same service instead of starting a second writer. Page refresh preserves sign-in in tab-scoped sessionStorage; Lock clears it. Run the launcher again to reopen after locking. The key fragment is removed immediately; do not share the launch URL before it disappears.
+
+A private `launcher-session.json` in the data directory lets the launcher reopen the running instance. It contains a local access credential: protect it using your OS account permissions, never commit/share it, and exclude it from exported business data. Before reusing the credential, the launcher verifies a random cryptographic challenge against the listener; the credential is not sent to an unproven service. Restart rotates the key.
+
+If a crashed process left `writer.lock`, the launcher removes that lock only when the OS confirms that its recorded PID no longer exists. It serializes recovery, preserves saved state, and never removes a live writer's lock. Ambiguous ownership or malformed metadata fails closed with an explanation.
 
 The launcher always uses the `local-workspace` tenant and `local-owner` administrator, independently of custom API credentials. It never adopts a production identity. For separate operators/reviewers or existing API tenants, configure `start:revenue` using README and enter the appropriate key on the dashboard's sign-in screen. An administrator can approve and operate, but approval never happens automatically.
 
@@ -37,9 +41,9 @@ If a save loses its response, leave its form open and retry without changing it.
 
 ## Troubleshooting
 
-- **Port already in use / store locked:** stop the existing Revenue Engine service before starting another. Do not delete a lock while its process is running.
+- **Reopening:** double-click the launcher again; it reconnects automatically. An older pre-fix server needs one restart before this works. A different program occupying the port still needs separate attention.
 - **Browser did not open:** check that a desktop browser is available and restart the launcher. An environment-configured server also accepts your manually entered access key.
-- **Authentication required after reload:** expected; credentials are never stored in browser storage. Restart the launcher or enter your configured key.
+- **Authentication required:** run the launcher again. Normal refresh stays signed in; Lock and server restart invalidate previous access. Browser privacy settings that disable sessionStorage fall back to memory-only access.
 - **No opportunities:** the workspace starts empty; demos and browser checks do not populate your working data.
 - **Feature access error:** viewers cannot edit; operators cannot approve; Growth cannot access portfolio/executive reports; Enterprise is required for recovery simulation.
 

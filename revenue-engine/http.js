@@ -1,5 +1,5 @@
 import http from 'node:http';
-import { randomUUID } from 'node:crypto';
+import { randomUUID, createHmac } from 'node:crypto';
 import { authenticate } from './config.js';
 import { RevenueError, ensure } from './errors.js';
 import { fields } from './validation.js';
@@ -21,7 +21,7 @@ async function readJson(req, maxBytes) {
 }
 
 /** Injected logger receives only these allowlisted fields, never tokens, bodies, or provider errors. */
-export function createRevenueHttpServer({ app, principals, logger = entry => console.log(JSON.stringify(entry)), maxBodyBytes = 256 * 1024, maxConcurrent = 32 }) {
+export function createRevenueHttpServer({ app, principals, launcherKey, logger = entry => console.log(JSON.stringify(entry)), maxBodyBytes = 256 * 1024, maxConcurrent = 32 }) {
   let active = 0;
   const pending = new Set();
   const server = http.createServer({ maxHeaderSize: 16 * 1024, requestTimeout: 15000, headersTimeout: 10000, keepAliveTimeout: 5000 }, async (req, res) => {
@@ -44,6 +44,12 @@ export function createRevenueHttpServer({ app, principals, logger = entry => con
       ensure(allowedHosts.includes(req.headers.host), 'HOST', 'Use the local Revenue Engine address', 403);
       ensure(!req.headers.origin || req.headers.origin === 'http://' + req.headers.host, 'ORIGIN', 'Cross-origin requests are not supported', 403);
       if (serveDashboard(req, res, url.pathname)) { status = 200; code = 'OK'; return; }
+      if (launcherKey && req.method === 'GET' && url.pathname === '/launcher-proof') {
+        const challenge = url.searchParams.get('challenge');
+        ensure(/^[a-f0-9]{64}$/.test(challenge || ''), 'VALIDATION', 'Invalid launcher challenge');
+        await app.store.read(); status = 200; code = 'OK';
+        send({ok:true, proof:createHmac('sha256',launcherKey).update(challenge).digest('hex')}); return;
+      }
       if (req.method === 'GET' && url.pathname === '/health') {
         await app.store.read(); status = 200; code = 'OK'; send({ ok: true, service: 'revenue-engine', mode: 'sandbox', externalMutation: false }); return;
       }
