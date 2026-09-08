@@ -1,6 +1,6 @@
 {
     "status": "completed",
-    "generated_at": "2026-09-08T03:34:29+00:00",
+    "generated_at": "2026-09-08T03:34:49+00:00",
     "ids": {
         "card": "95cbd0bf-8bbb-436d-b7c6-a2e1e558db25",
         "explorer_stamp": "a9566430-b6b0-434d-ae3c-f3ba85421c5f",
@@ -2517,15 +2517,15 @@
                 "number_of_points_redeemed": 0,
                 "number_of_rewards_redeemed": 0,
                 "last_reward_redeemed_at": null,
-                "views": 13479,
-                "last_view": "2026-09-08 03:34:13",
+                "views": 13484,
+                "last_view": "2026-09-08 03:34:48",
                 "meta": "{\"tom_demo_sequence\":1,\"purpose\":\"Activate Hunter Passport\"}",
                 "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
                 "deleted_by": null,
                 "updated_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-06 23:01:26",
-                "updated_at": "2026-09-08 03:34:28"
+                "updated_at": "2026-09-08 03:34:48"
             }
         ],
         "stamp_cards": [
@@ -2560,8 +2560,8 @@
                 "stamps_expire_days": null,
                 "is_active": 1,
                 "is_visible_by_default": 1,
-                "views": 2869,
-                "last_view": "2026-09-08 03:34:14",
+                "views": 2870,
+                "last_view": "2026-09-08 03:34:41",
                 "is_undeletable": 0,
                 "show_monetary_value": 0,
                 "total_stamps_issued": 0,
@@ -2573,7 +2573,7 @@
                 "deleted_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-07 00:11:48",
-                "updated_at": "2026-09-08 03:34:29"
+                "updated_at": "2026-09-08 03:34:41"
             },
             {
                 "id": "a9566430-b6b0-434d-ae3c-f3ba85421c5f",
@@ -2606,8 +2606,8 @@
                 "stamps_expire_days": null,
                 "is_active": 1,
                 "is_visible_by_default": 1,
-                "views": 2869,
-                "last_view": "2026-09-08 03:34:13",
+                "views": 2870,
+                "last_view": "2026-09-08 03:34:40",
                 "is_undeletable": 0,
                 "show_monetary_value": 0,
                 "total_stamps_issued": 0,
@@ -2619,7 +2619,7 @@
                 "deleted_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-06 23:01:26",
-                "updated_at": "2026-09-08 03:34:29"
+                "updated_at": "2026-09-08 03:34:40"
             }
         ],
         "rewards": [
@@ -2637,8 +2637,8 @@
                 "is_undeletable": 0,
                 "is_uneditable": 0,
                 "number_of_times_redeemed": 0,
-                "views": 3258,
-                "last_view": "2026-09-08 03:33:59",
+                "views": 3259,
+                "last_view": "2026-09-08 03:34:42",
                 "meta": "{\"tom_demo_sequence\":6,\"purpose\":\"local_prize\"}",
                 "ecommerce_settings": null,
                 "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
@@ -2646,7 +2646,7 @@
                 "updated_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-07 00:11:48",
-                "updated_at": "2026-09-08 03:34:29"
+                "updated_at": "2026-09-08 03:34:42"
             },
             {
                 "id": "29304849-3c10-4a06-8f8f-4bad776b79f9",
@@ -2662,8 +2662,8 @@
                 "is_undeletable": 0,
                 "is_uneditable": 0,
                 "number_of_times_redeemed": 0,
-                "views": 3257,
-                "last_view": "2026-09-08 03:33:57",
+                "views": 3259,
+                "last_view": "2026-09-08 03:34:48",
                 "meta": "{\"tom_demo_sequence\":4,\"official_clue_separate\":true}",
                 "ecommerce_settings": null,
                 "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
@@ -2671,7 +2671,7 @@
                 "updated_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-07 00:11:48",
-                "updated_at": "2026-09-08 03:34:29"
+                "updated_at": "2026-09-08 03:34:48"
             }
         ],
         "tiers": [
@@ -2712,7 +2712,7 @@
                 "win_rate": 25,
                 "is_active": 1,
                 "created_at": "2026-09-07 00:11:48",
-                "updated_at": "2026-09-08 03:34:29",
+                "updated_at": "2026-09-08 03:34:41",
                 "deleted_at": null
             }
         ],
@@ -2723,15 +2723,15 @@
                 "code": "TOMHUNTRETURN10",
                 "name": "[TOM DEMO 10] Hunter Comeback $5 Off $25",
                 "unique_identifier": "TOM-1GUWJMI84RIE",
-                "title": "{\"en\":\"Hunter Comeback Offer — Turn the First Visit Into the Second\"}",
-                "description": "{\"en\":\"After the initial campaign visit, the hunter receives a time-bounded merchant offer designed to trigger a second purchase. The demo uses $5 off $25, while each business can configure the value and minimum spend that fits its economics. Demo card content: HUNTER COMEBACK — $5 OFF $25. Thank you for exploring with us. Return within 14 days and use this one-time offer on your next qualifying purchase.\"}",
+                "title": "{\"en_US\":\"10 — Hunter Comeback: $5 Off $25\",\"en\":\"10 — Hunter Comeback: $5 Off $25\"}",
+                "description": "{\"en_US\":\"TURN THE FIRST VISIT INTO THE SECOND. This demo comeback voucher gives a hunter $5 off a $25 return purchase after the initial Treasure Hunt visit. Each participating business can set its own offer and minimum spend, turning event traffic into measurable repeat revenue.\",\"en\":\"TURN THE FIRST VISIT INTO THE SECOND. This demo comeback voucher gives a hunter $5 off a $25 return purchase after the initial Treasure Hunt visit. Each participating business can set its own offer and minimum spend, turning event traffic into measurable repeat revenue.\"}",
                 "type": "fixed_amount",
-                "value": 5,
+                "value": 500,
                 "currency": "USD",
                 "points_value": null,
                 "reward_card_id": null,
                 "batch_id": null,
-                "min_purchase_amount": 25,
+                "min_purchase_amount": 2500,
                 "max_discount_amount": null,
                 "free_product_name": "{\"en_US\":null}",
                 "applicable_products": null,
@@ -2760,8 +2760,8 @@
                 "times_used": 0,
                 "total_discount_given": 0,
                 "unique_members_used": 0,
-                "views": 2867,
-                "last_view": "2026-09-08 03:34:15",
+                "views": 2868,
+                "last_view": "2026-09-08 03:34:42",
                 "bg_color": "#7C185B",
                 "bg_color_opacity": 100,
                 "text_color": "#FFFFFF",
@@ -2771,7 +2771,7 @@
                 "deleted_by": null,
                 "deleted_at": null,
                 "created_at": "2026-09-07 00:13:27",
-                "updated_at": "2026-09-08 03:34:15"
+                "updated_at": "2026-09-08 03:34:42"
             }
         ],
         "email_campaigns": [
@@ -2790,7 +2790,7 @@
                 "started_at": null,
                 "completed_at": null,
                 "created_at": "2026-09-07 00:13:27",
-                "updated_at": "2026-09-08 03:34:06",
+                "updated_at": "2026-09-08 03:34:29",
                 "deleted_at": null
             }
         ],
