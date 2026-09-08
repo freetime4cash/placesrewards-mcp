@@ -1,6 +1,6 @@
 {
     "status": "failed",
-    "verified_at": "2026-09-08T12:35:03+00:00",
+    "verified_at": "2026-09-08T12:40:24+00:00",
     "index": {
         "url": "https://app.placesrewards.com/demo/treasure-hunt",
         "http_status": 200,
@@ -17,7 +17,7 @@
             "expected_card_marker": "HUNTER PASSPORT",
             "card_content_present": true,
             "body_length": 6033,
-            "content_hash": "458fe5c3c8c41172003801c5ab06c0dbe54f94f3",
+            "content_hash": "53a4a5f6fbfd6e8eedbdc816b93ca87eea357d8e",
             "error": null
         },
         {
@@ -28,7 +28,7 @@
             "expected_card_marker": "EXPLORER TRAIL",
             "card_content_present": true,
             "body_length": 6148,
-            "content_hash": "e6a99cfd8bd762f414f7420bb837cfb407c0067f",
+            "content_hash": "5f60aa763f8cdd0d676c936321e2e8d7164983c1",
             "error": null
         },
         {
@@ -39,7 +39,7 @@
             "expected_card_marker": "FEATURED PARTICIPATING BUSINESS",
             "card_content_present": true,
             "body_length": 5951,
-            "content_hash": "98d9809663cc233b5b01cf5ced2502460f745ce0",
+            "content_hash": "9add83ce1f5d9cd24dbce890c9c6b09de064f401",
             "error": null
         },
         {
@@ -50,7 +50,7 @@
             "expected_card_marker": "CLUE ACTIVITY BONUS",
             "card_content_present": true,
             "body_length": 5880,
-            "content_hash": "dd231f459a56534ffad1df2b0426b8359e90894a",
+            "content_hash": "a6b2144b5825eabb1500b01c85e91c5bfd3c1ab2",
             "error": null
         },
         {
@@ -61,7 +61,7 @@
             "expected_card_marker": "MERCHANT CHECK-IN",
             "card_content_present": true,
             "body_length": 6044,
-            "content_hash": "ca29d022b2b1a69651f001854d40d61e89962ee6",
+            "content_hash": "b57127ad19e770554d1de2f47df8cb6eb7c550b6",
             "error": null
         },
         {
@@ -72,7 +72,7 @@
             "expected_card_marker": "LOCAL BUSINESS BONUS PRIZE",
             "card_content_present": true,
             "body_length": 5948,
-            "content_hash": "07dfe7b557621dab614871f50548dbe5f5925235",
+            "content_hash": "eaab926bcace79a175fbde3bee8f4869c412cad7",
             "error": null
         },
         {
@@ -83,7 +83,7 @@
             "expected_card_marker": "BRING ANOTHER HUNTER",
             "card_content_present": true,
             "body_length": 5962,
-            "content_hash": "c85266236a07ab08ec3e43eb18d08df9050f5d6c",
+            "content_hash": "c44f6ca4f643d181be03e32e30d9022dd1202c01",
             "error": null
         },
         {
@@ -94,7 +94,7 @@
             "expected_card_marker": "HUNTER VIP",
             "card_content_present": true,
             "body_length": 5838,
-            "content_hash": "93c0123b5051a37e27dc8433d20ca86d30d4f583",
+            "content_hash": "1a009b2e4180e9bc92006f1612d7620340888a83",
             "error": null
         },
         {
@@ -105,7 +105,7 @@
             "expected_card_marker": "MYSTERY BONUS",
             "card_content_present": true,
             "body_length": 6047,
-            "content_hash": "9339feb51aea4b3272234b4ed77dc0dd550e60af",
+            "content_hash": "a1351ddd84e90ff7ba42c144eb1c755e76cc9f5f",
             "error": null
         },
         {
@@ -116,7 +116,7 @@
             "expected_card_marker": "HUNTER COMEBACK",
             "card_content_present": true,
             "body_length": 6070,
-            "content_hash": "118dc67f16973fe5cc6ea89a9a68e8dd778797ac",
+            "content_hash": "8b4db03815749c67e2379e7eaef1399199e15e0a",
             "error": null
         },
         {
@@ -127,7 +127,7 @@
             "expected_card_marker": "POST-HUNT FOLLOW-UP",
             "card_content_present": true,
             "body_length": 5967,
-            "content_hash": "c73b739759a935938b79bf1ff606754f4395f471",
+            "content_hash": "4441157e90101c61290a345f0fb2701ff221fdaa",
             "error": null
         },
         {
@@ -138,7 +138,7 @@
             "expected_card_marker": "TREASURE HUNT ROI",
             "card_content_present": true,
             "body_length": 6001,
-            "content_hash": "683bf939a43f67ecba865448622c4f686b72cbbf",
+            "content_hash": "2263dd0e197a665e5be038a182776047203b2378",
             "error": null
         }
     ],
@@ -209,12 +209,9 @@
         },
         "public_home": {
             "http_status": 200,
-            "missing_markers": [
-                "Northeast Ohio Treasure Hunt Hunter Passport",
-                "5-Stop Northeast Ohio Explorer Trail"
-            ],
+            "missing_markers": [],
             "obsolete_module_09_visible": false,
-            "passed": false
+            "passed": true
         }
     },
     "distinct_page_content_hashes": 12,
