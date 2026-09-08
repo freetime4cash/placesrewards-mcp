@@ -1,10 +1,12 @@
 {
-    "status": "passed",
-    "verified_at": "2026-09-08T11:00:33+00:00",
+    "status": "failed",
+    "verified_at": "2026-09-08T11:08:10+00:00",
     "index": {
         "http_status": 200,
-        "missing_actual_links": [],
-        "passed": true
+        "missing_actual_links": [
+            9
+        ],
+        "passed": false
     },
     "modules": [
         {
