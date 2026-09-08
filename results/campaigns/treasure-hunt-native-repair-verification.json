@@ -1,6 +1,6 @@
 {
     "status": "passed",
-    "verified_at": "2026-09-08T23:27:24+00:00",
+    "verified_at": "2026-09-08T23:39:51+00:00",
     "checks": {
         "reward_29304849-3c10-4a06-8f8f-4bad776b79f9": {
             "passed": true,
@@ -71,7 +71,7 @@
                 "status": 200,
                 "effective": "https://app.placesrewards.com/storage/treasure-hunt/scratch/winner.webp",
                 "content_type": "image/webp",
-                "bytes": 23084,
+                "bytes": 14460,
                 "error": null
             }
         },
@@ -82,7 +82,7 @@
                 "status": 200,
                 "effective": "https://app.placesrewards.com/storage/treasure-hunt/scratch/loser.webp",
                 "content_type": "image/webp",
-                "bytes": 21068,
+                "bytes": 12942,
                 "error": null
             }
         },
@@ -113,5 +113,5 @@
             "no_old_storage_files_paths": true
         }
     },
-    "completed_at": "2026-09-08T23:27:30+00:00"
+    "completed_at": "2026-09-08T23:39:55+00:00"
 }
