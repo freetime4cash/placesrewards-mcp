@@ -43,7 +43,8 @@ export function createRevenueHttpServer({ app, principals, logger = entry => con
         await app.store.read(); status = 200; code = 'OK'; send({ ok: true, service: 'revenue-engine', mode: 'sandbox', externalMutation: false }); return;
       }
       actor = authenticate(req.headers.authorization, principals);
-      app.authorize(actor, ['viewer','operator','approver','admin']);
+      app.authorize(actor, ['viewer','operator','approver','admin','intake']);
+      if (actor.role === 'intake') ensure(req.method === 'POST' && url.pathname === '/v1/integrations/vapi/events', 'FORBIDDEN', 'Intake credential only accepts call events', 403);
       let parts;
       try { parts = url.pathname.split('/').filter(Boolean).map(decodeURIComponent); }
       catch { throw new RevenueError('INVALID_URL', 'Invalid URL encoding'); }
@@ -53,6 +54,8 @@ export function createRevenueHttpServer({ app, principals, logger = entry => con
       let data;
       if (req.method === 'GET') {
         if (parts.length === 2 && ['opportunities','prospects'].includes(parts[1])) data = await app.list(actor, query);
+        else if (parts[1] === 'callbacks' && parts.length === 2) data = await app.callbacks.list(actor, query);
+        else if (parts[1] === 'callbacks' && parts.length === 3) { fields(query, []); data = parts[2] === 'summary' ? await app.callbacks.summary(actor) : await app.callbacks.read(actor, parts[2]); }
         else if (parts.length === 2 && parts[1] === 'dashboard') { fields(query, []); data = await app.dashboard(actor); }
         else if (parts.length === 2 && parts[1] === 'providers') { fields(query, []); data = app.connectors.describe(); }
         else if (parts.length === 2 && parts[1] === 'audit') {
@@ -68,6 +71,8 @@ export function createRevenueHttpServer({ app, principals, logger = entry => con
         const body = await readJson(req, maxBodyBytes);
         const key = req.headers['idempotency-key'];
         if (parts.length === 2 && parts[1] === 'opportunities') data = await app.create(actor, body, key);
+        else if (parts.length === 4 && parts[1] === 'integrations' && parts[2] === 'vapi' && parts[3] === 'events') data = await app.callbacks.ingest(actor, body);
+        else if (parts.length === 4 && parts[1] === 'callbacks') data = await app.callbacks.change(actor, parts[2], parts[3], body, key);
         else if (parts.length === 2 && parts[1] === 'discover') data = await app.create(actor, body, key, { discover: true });
         else if (parts.length === 4 && parts[1] === 'providers' && parts[3] === 'import') data = await app.create(actor, body, key, { discover: true, provider: parts[2] });
         else if (parts[1] === 'opportunities' && parts.length === 4) {

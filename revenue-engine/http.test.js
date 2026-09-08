@@ -10,6 +10,7 @@ const credentials = [
   { token: 'a'.repeat(40), tenantId: 'tenant-a', actorId: 'approver', role: 'approver', tier: 'enterprise' },
   { token: 'v'.repeat(40), tenantId: 'tenant-a', actorId: 'viewer', role: 'viewer', tier: 'enterprise' },
   { token: 'b'.repeat(40), tenantId: 'tenant-b', actorId: 'other', role: 'operator', tier: 'enterprise' },
+  { token: 'i'.repeat(40), tenantId: 'tenant-a', actorId: 'vapi-intake', role: 'intake', tier: 'growth' },
 ];
 export const configEnv = { REVENUE_ENABLED: 'true', REVENUE_ENV: 'test', REVENUE_AUTH: JSON.stringify(credentials) };
 async function httpFixture(t, options = {}) {
@@ -128,4 +129,26 @@ test('HTTP missed-call draft, approval, simulation and reply route form a comple
   const summary = (await request('/v1/dashboard')).body.data.missedCalls;
   assert.equal(summary.booked, 1); assert.equal(summary.simulated, 1);
   assert.equal(summary.pendingApproval, 0);
+});
+
+test('authenticated Vapi intake is narrowly scoped and manual callbacks work over HTTP', async t => {
+  const { request, app } = await httpFixture(t);
+  const [o] = (await request('/v1/opportunities', { records: [{ id: 'vapi-business', name: 'Vapi Test' }] })).body.data;
+  app.callbacks.bindings = [{ tenantId: 'tenant-a', opportunityId: o.id, assistantId: 'assistant-a', phoneNumberId: 'number-a' }];
+  const event = { message: { type: 'end-of-call-report', call: { id: 'inbound-1', type: 'inboundPhoneCall', assistantId: 'assistant-a', phoneNumberId: 'number-a', endedAt: new Date(Date.now() - 1000).toISOString(), customer: { number: '+12025550123' } } } };
+  const options = { token: credentials[4].token, headers: { 'Idempotency-Key': '' } };
+  const captured = await request('/v1/integrations/vapi/events', event, options);
+  assert.equal(captured.status, 200); const id = captured.body.data.callbackId;
+  assert.equal((await request('/v1/integrations/vapi/events', event, options)).body.data.duplicate, true);
+  assert.equal((await request('/v1/callbacks', undefined, options)).status, 403);
+  assert.equal((await request('/v1/opportunities', { records: [baseline] }, options)).status, 403);
+  const invalid = structuredClone(event); invalid.message.call.assistantId = 'unbound';
+  assert.equal((await request('/v1/integrations/vapi/events', invalid, options)).status, 403);
+  let task = (await request(`/v1/callbacks/${id}`)).body.data;
+  task = (await request(`/v1/callbacks/${id}/approve`, { version: task.version, reason: 'Manual callback reviewed', expiresAt: new Date(Date.now() + 60000).toISOString() }, { token: credentials[1].token })).body.data;
+  const recorded = await request(`/v1/callbacks/${id}/outcome`, { version: task.version, outcome: 'booked', notes: 'Manually reported test booking' });
+  assert.equal(recorded.status, 200); assert.equal(recorded.body.data.status, 'completed');
+  const summary = (await request('/v1/callbacks/summary')).body.data;
+  assert.equal(summary.reportedBookings, 1); assert.equal(summary.verifiedRecoveredRevenue, null);
+  assert.equal((await request('/v1/callbacks')).body.data.total, 1);
 });

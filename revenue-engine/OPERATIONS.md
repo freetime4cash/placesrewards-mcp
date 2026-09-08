@@ -4,6 +4,8 @@
 
 Run this service in its own process with Revenue Engine-only credentials and a dedicated local directory. It never imports `lib/`, production server/worker code, Laravel tools, billing or campaign execution. `npm start` still starts the original Places Rewards service. No production deployment or merge is required for sandbox integration. The import-graph test guards this boundary.
 
+The optional `sync:vapi` command is a separate read-only bridge. It contacts Vapi only when explicitly run without `--file`, then posts minimized call events to the local service. It never starts outbound calls. Callback records and do-not-call suppressions are retained with the same transactional snapshot; include them in backups. `demo:callbacks` makes no network calls and requires no accounts.
+
 The HTTP listener is loopback-only. Do not expose it through a public reverse proxy without a separately reviewed deployment architecture. Current authentication is static server configuration; there is no user management/billing integration. Dashboard/report endpoints supply data contracts, not a browser UI.
 
 ## Persistent store

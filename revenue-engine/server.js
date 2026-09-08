@@ -8,7 +8,7 @@ export async function startRevenueServer(env = process.env) {
   const config = loadConfig(env);
   const store = await new FileOpportunityStore(config.directory).open();
   try {
-    const app = new RevenueApplication({ store });
+    const app = new RevenueApplication({ store, vapiBindings: config.vapiBindings });
     await app.recoverInterruptedExecutions();
     const server = createRevenueHttpServer({ app, principals: config.principals });
     await new Promise((resolve, reject) => {

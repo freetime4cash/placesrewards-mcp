@@ -7,6 +7,7 @@ import { ensure } from './errors.js';
 import { businessRecord, choice, fields, identifier, number, string, timestamp } from './validation.js';
 import { dashboard, opportunityReport } from './reporting.js';
 import { followUp, requireFollowUpEligible, missedCallPayload, suppressionKey } from './missed-calls.js';
+import { CallbackService } from './callbacks.js';
 
 function canonical(value) {
   if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`;
@@ -22,9 +23,10 @@ const payloadFor = (action, kind) => kind === 'recovery'
 const actionId = action => action.id || action.leakId;
 
 export class RevenueApplication {
-  constructor({ store, connectors = new ConnectorRegistry(), executionTimeoutMs = 5000 }) {
+  constructor({ store, connectors = new ConnectorRegistry(), executionTimeoutMs = 5000, vapiBindings = [] }) {
     this.store = store; this.connectors = connectors; this.executionTimeoutMs = executionTimeoutMs;
     this.analysis = new RevenueDiscoveryPipeline({ tier: 'pro' });
+    this.callbacks = new CallbackService(this, vapiBindings);
   }
   authorize(actor, roles, capability = 'diagnostics', opportunity) {
     ensure(actor && typeof actor === 'object', 'UNAUTHORIZED', 'Authentication required', 401);

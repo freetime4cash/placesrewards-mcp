@@ -8,6 +8,11 @@ const plain = value => value !== null && typeof value === 'object' && !Array.isA
 function validate(state) {
   ensure(state?.schemaVersion === 1 && state.service === 'revenue-engine-sandbox' && Number.isSafeInteger(state.revision) && state.revision >= 0 && plain(state.opportunities) && plain(state.commands) && Array.isArray(state.audit), 'STORE_CORRUPT', 'Invalid or unsupported Revenue Engine store', 503);
   if (state.smsSuppressions !== undefined) ensure(plain(state.smsSuppressions) && Object.values(state.smsSuppressions).every(item => typeof item?.tenantId === 'string' && typeof item.eventId === 'string'), 'STORE_CORRUPT', 'Invalid SMS suppression state', 503);
+  if (state.callbackSuppressions !== undefined) ensure(plain(state.callbackSuppressions) && Object.values(state.callbackSuppressions).every(item => typeof item?.tenantId === 'string' && typeof item.callbackId === 'string'), 'STORE_CORRUPT', 'Invalid callback suppressions', 503);
+  if (state.callbacks !== undefined) {
+    ensure(plain(state.callbacks), 'STORE_CORRUPT', 'Invalid callback queue', 503);
+    for (const [id, task] of Object.entries(state.callbacks)) ensure(task?.id === id && typeof task.tenantId === 'string' && state.opportunities[task.opportunityId]?.tenantId === task.tenantId && Number.isSafeInteger(task.version) && task.version > 0 && ['pending_approval','approved','completed','cancelled'].includes(task.status) && plain(task.call) && Array.isArray(task.attempts) && Array.isArray(task.history) && Array.isArray(task.approvalHistory), 'STORE_CORRUPT', 'Invalid callback record', 503);
+  }
   for (const [id, value] of Object.entries(state.opportunities)) {
     ensure(value?.id === id && typeof value.tenantId === 'string' && Number.isSafeInteger(value.version) && value.version > 0 && Array.isArray(value.history) && value.business?.id && ['discovered','diagnosed','quantified','prescribed','demonstrated','closed','recovering','measured'].includes(value.stage), 'STORE_CORRUPT', 'Invalid opportunity in store', 503);
     ensure(['growth','pro','enterprise'].includes(value.tier) && Array.isArray(value.business.signals) && Array.isArray(value.outreach) && plain(value.queue) && ['ready','claimed','snoozed','done'].includes(value.queue.status) && Number.isFinite(value.score), 'STORE_CORRUPT', 'Invalid opportunity data', 503);

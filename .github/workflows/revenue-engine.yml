@@ -40,3 +40,6 @@ jobs:
 
       - name: Run synthetic lifecycle smoke test
         run: npm run demo:revenue
+
+      - name: Run no-SMS callback smoke test
+        run: npm run demo:callbacks

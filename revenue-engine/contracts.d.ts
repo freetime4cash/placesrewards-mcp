@@ -57,3 +57,21 @@ export type Response<T> = { contractVersion: '1.0'; requestId: string; ok: true;
 export interface VersionCommand { version: number }
 export type ApprovalCommand = VersionCommand & ({ decision: 'approve'; reason: string; expiresAt: string } | { decision: 'revoke'; reason: string });
 export interface ReconcileCommand extends VersionCommand { outcome: 'not_executed' | 'simulated'; evidence: string }
+export interface CallbackCall {
+  callId: string; assistantId: string; phoneNumberId: string; endedAt: string;
+  phone: string | null; name: string | null; summary: string; endedReason: string; callbackRequested: boolean; evidence: string;
+}
+export interface ManualCallback {
+  id: string; tenantId: string; opportunityId: string; version: number; source: 'vapi'; call: CallbackCall;
+  status: 'pending_approval' | 'approved' | 'completed' | 'cancelled'; dueAt: string; createdAt: string; updatedAt: string;
+  approval: { id: string; actorId: string; at: string; expiresAt: string; reason: string; payloadHash: string } | null;
+  approvalHistory: Array<NonNullable<ManualCallback['approval']>>;
+  attempts: Array<{ outcome: 'reached' | 'booked' | 'no_answer' | 'do_not_call'; notes: string; actorId: string; at: string; approvalId: string; reportedByHuman: true }>;
+  history: Array<{ event: string; at: string; actorId: string; reason?: string }>;
+  contactMode: 'manual'; verifiedRecoveredRevenue: null;
+}
+export interface CallbackSummary {
+  total: number; pendingApproval: number; approved: number; completed: number; cancelled: number; needsNumber: number;
+  due: number; reportedBookings: number; verifiedRecoveredRevenue: null; contactMode: 'manual';
+}
+export interface VapiBinding { tenantId: string; opportunityId: string; assistantId: string; phoneNumberId: string }

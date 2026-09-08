@@ -18,6 +18,9 @@ test('configuration fails closed for disabled, production, remote binding and un
   const entries = JSON.parse(env.REVENUE_AUTH);
   assert.throws(() => loadConfig({ ...env, REVENUE_AUTH: JSON.stringify([...entries, ...entries]) }));
   assert.throws(() => new ConnectorRegistry({ execution: { mode: 'production', execute() {} } }), { code: 'UNSAFE_CONNECTOR' });
+  assert.throws(() => loadConfig({ ...env, REVENUE_VAPI_BINDINGS: '{' }), { code: 'CONFIG' });
+  const binding = { tenantId: 't', opportunityId: 'o', assistantId: 'a', phoneNumberId: 'p' };
+  assert.throws(() => loadConfig({ ...env, REVENUE_VAPI_BINDINGS: JSON.stringify([binding, binding]) }), { code: 'CONFIG' });
 });
 
 test('record validation rejects malformed or unbounded inputs, evidence timestamps and unknown fields', () => {

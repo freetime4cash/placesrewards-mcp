@@ -47,6 +47,7 @@ Generate each token with `node -e "console.log(require('node:crypto').randomByte
 | operator | Import/create, lifecycle, queue, outreach drafts/outcomes, execute approved actions |
 | approver | Reads, audit, approve/revoke, reconcile uncertain executions |
 | admin | Both operator and approver permissions |
+| intake | Only authenticated Vapi call-event intake; no contact reads, approvals or execution |
 
 Separate operator/reviewer identities are recommended; admin intentionally supports both. Request bodies cannot assign tenant, role or tier. Opportunity tiers are fixed at creation. The application checks current caller capability and the opportunity's capability for operations that require it.
 
@@ -78,5 +79,7 @@ Every write requires an `Idempotency-Key`; opportunity changes also require a cu
 See [API.md](API.md) for routes, [contracts.d.ts](contracts.d.ts) for consumer types, and [OPERATIONS.md](OPERATIONS.md) for persistence, backup and recovery.
 
 See [MISSED-CALLS.md](MISSED-CALLS.md) for the per-call SMS follow-up workflow, exact-message approvals, scheduling, replies and durable opt-out suppression. Its included delivery transport is simulated.
+
+For the lower-cost path with existing Vapi/Make accounts, see [VAPI-MAKE.md](VAPI-MAKE.md). It includes authenticated Vapi intake, a local read-only importer, a manual callback queue and operator CLI. Try `npm run demo:callbacks` with no account setup. Real account connection requires locally supplied credentials; no paid service is provisioned.
 
 Existing `index.js`, `pipeline.js`, `providers.js` and `workflow.js` remain diagnostic/planning libraries. Use `application.js` and the HTTP API for durable operations and approval enforcement. The TypeScript prototype in `src/revenue-engine` is not the operational entrypoint.

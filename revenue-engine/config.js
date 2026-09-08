@@ -2,8 +2,9 @@ import path from 'node:path';
 import { createHash, timingSafeEqual } from 'node:crypto';
 import { ensure } from './errors.js';
 import { fields, identifier, choice, string } from './validation.js';
+import { vapiBindings } from './vapi.js';
 
-export const ROLES = ['viewer', 'operator', 'approver', 'admin'];
+export const ROLES = ['viewer', 'operator', 'approver', 'admin', 'intake'];
 export function loadConfig(env = process.env) {
   ensure(env.REVENUE_ENABLED === 'true', 'CONFIG', 'Set REVENUE_ENABLED=true to start the isolated service', 503);
   ensure(['sandbox', 'test'].includes(env.REVENUE_ENV) && env.NODE_ENV !== 'production', 'CONFIG', 'Revenue Engine supports sandbox/test only', 503);
@@ -28,7 +29,9 @@ export function loadConfig(env = process.env) {
     tokenHashes.add(digest.toString('hex'));
     return { digest, tenantId: entry.tenantId, actorId: entry.actorId, role: entry.role, tier: entry.tier };
   });
-  return { directory, host, port, principals, environment: env.REVENUE_ENV };
+  let bindings;
+  try { bindings = JSON.parse(env.REVENUE_VAPI_BINDINGS || '[]'); } catch { ensure(false, 'CONFIG', 'Invalid REVENUE_VAPI_BINDINGS JSON', 503); }
+  return { directory, host, port, principals, environment: env.REVENUE_ENV, vapiBindings: vapiBindings(bindings) };
 }
 
 export function authenticate(header, principals) {

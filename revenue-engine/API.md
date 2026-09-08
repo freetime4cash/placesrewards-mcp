@@ -8,6 +8,8 @@ Success: `{contractVersion:"1.0",requestId,ok:true,data}`. Error: `{contractVers
 
 POST requires `Content-Type: application/json`, no compression, and `Idempotency-Key` (1–160 characters, alphanumeric first, then alphanumeric or `_.:@-`). Bodies are capped at 256 KiB; unknown fields are rejected. Header/body timeouts are 10/15 seconds. At most 32 handlers run concurrently; provider timeout is five seconds.
 
+The Vapi intake exception is `POST /v1/integrations/vapi/events`: provider envelopes can contain additional fields, but only selected callback data is retained. Tenant + call ID replaces the request key for source deduplication. See [VAPI-MAKE.md](VAPI-MAKE.md) for authenticated intake, bindings, callback routes, the local CLI, and the optional Make setup.
+
 Keys are scoped to tenant + actor and retained. A key reused for a different route/body returns 409. Successful command replay returns the original snapshot; GET the opportunity for its latest version. Execution replay returns current state and never dispatches twice. On response loss, retry the exact request with the same key. Failed pre-commit commands are not recorded.
 
 Every opportunity mutation requires a positive integer `version` from GET. Stale versions return 409 without changes. Execution increments twice (intent and receipt). Use the opportunity UUID in paths, not business ID; URL-encode action IDs.
