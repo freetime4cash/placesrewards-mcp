@@ -1,5 +1,5 @@
 {
-    "status": "verification_failed",
+    "status": "completed",
     "workflow_url": "https://app.placesrewards.com/demo/treasure-hunt",
     "links": {
         "1": "https://app.placesrewards.com/demo/treasure-hunt/loyalty",
@@ -19,7 +19,7 @@
     "native_card_content": "completed",
     "native_card_visuals": "completed",
     "scratch_images": "completed",
-    "cover_browser_repair": "failed",
+    "cover_browser_repair": "completed",
     "scratch_renderer": "completed",
     "referrals_patch": "completed",
     "runtime_inspection": "completed",
@@ -34,5 +34,5 @@
     "actual_link_verification": "completed",
     "native_repair_verification": "completed",
     "referrals_cover_verification": "completed",
-    "deployed_at": "2026-09-08T23:56:22+00:00"
+    "deployed_at": "2026-09-08T23:57:45+00:00"
 }
