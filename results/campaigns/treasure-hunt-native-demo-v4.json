@@ -1,5 +1,5 @@
 {
-    "status": "completed",
+    "status": "verification_failed",
     "workflow_url": "https://app.placesrewards.com/demo/treasure-hunt",
     "links": {
         "1": "https://app.placesrewards.com/demo/treasure-hunt/loyalty",
@@ -32,7 +32,7 @@
     "referrals_inspection": "completed",
     "middleware_inspection": "completed",
     "actual_link_verification": "completed",
-    "native_repair_verification": "completed",
+    "native_repair_verification": "failed",
     "referrals_cover_verification": "completed",
-    "deployed_at": "2026-09-08T13:39:49+00:00"
+    "deployed_at": "2026-09-08T13:41:08+00:00"
 }
