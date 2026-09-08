@@ -1,6 +1,6 @@
 {
     "status": "passed",
-    "verified_at": "2026-09-08T09:26:40+00:00",
+    "verified_at": "2026-09-08T09:33:47+00:00",
     "checks": {
         "reward_29304849-3c10-4a06-8f8f-4bad776b79f9": {
             "passed": true,
@@ -14,7 +14,7 @@
                 "status": 200,
                 "effective": "https://app.placesrewards.com/en-us/card/95cbd0bf-8bbb-436d-b7c6-a2e1e558db25/29304849-3c10-4a06-8f8f-4bad776b79f9",
                 "content_type": "text/html; charset=utf-8",
-                "bytes": 45742,
+                "bytes": 45775,
                 "error": null
             },
             "expected_marker": "04 \u2014 Clue Activity Bonus",
@@ -113,5 +113,5 @@
             "no_old_storage_files_paths": true
         }
     },
-    "completed_at": "2026-09-08T09:26:45+00:00"
+    "completed_at": "2026-09-08T09:33:52+00:00"
 }
