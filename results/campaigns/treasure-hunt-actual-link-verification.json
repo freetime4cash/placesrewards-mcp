@@ -1,12 +1,10 @@
 {
-    "status": "failed",
-    "verified_at": "2026-09-08T15:42:27+00:00",
+    "status": "passed",
+    "verified_at": "2026-09-08T15:48:45+00:00",
     "index": {
         "http_status": 200,
-        "missing_actual_links": [
-            9
-        ],
-        "passed": false
+        "missing_actual_links": [],
+        "passed": true
     },
     "modules": [
         {
@@ -118,13 +116,13 @@
             "page": "https://app.placesrewards.com/demo/treasure-hunt/scratch",
             "page_status": 200,
             "actual_url": "https://app.placesrewards.com/demo/treasure-hunt/scratch/play",
-            "actual_link_present": false,
+            "actual_link_present": true,
             "actual_status": 200,
             "actual_effective_url": "https://app.placesrewards.com/en-us/scratch-cards/448e9d04-30a5-4621-97d2-bf9f11604ed9",
             "actual_redirect": null,
             "native_scratch_destination": true,
             "curl_error": null,
-            "passed": false
+            "passed": true
         },
         {
             "sequence": 10,
