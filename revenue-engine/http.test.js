@@ -109,3 +109,23 @@ test('HTTP import, prospect queue and outreach endpoints persist their workflow'
   assert.equal(outcome.body.data.queue.status, 'snoozed');
   assert.ok((await request('/v1/audit', undefined, { token: credentials[1].token })).body.data.total > 0);
 });
+
+test('HTTP missed-call draft, approval, simulation and reply route form a complete flow', async t => {
+  const { request } = await httpFixture(t);
+  let [o] = (await request('/v1/opportunities', { records: [baseline] })).body.data;
+  for (const step of ['diagnose','quantify','prescribe','demo','close','recover']) o = (await request(`/v1/opportunities/${o.id}/${step}`, { version: o.version, ...(step === 'close' ? { status: 'won' } : {}) })).body.data;
+  const call = await request(`/v1/opportunities/${o.id}/missed-calls`, { version: o.version,
+    event: { id: 'http-call-1', caller: '+12025550123', businessNumber: '+12025550124', occurredAt: new Date(Date.now() - 60000).toISOString(), evidence: 'sandbox:call-1' },
+    smsPermission: { allowed: true, evidence: 'sandbox:permission' } });
+  assert.equal(call.status, 200); o = call.body.data;
+  const target = o.recovery.actions.at(-1).leakId;
+  const route = `/v1/opportunities/${o.id}/recovery/${encodeURIComponent(target)}`;
+  o = (await request(route + '/approval', { version: o.version, decision: 'approve', reason: 'Reviewed missed call SMS', expiresAt: new Date(Date.now() + 60000).toISOString() }, { token: credentials[1].token })).body.data;
+  o = (await request(route + '/execute', { version: o.version })).body.data;
+  assert.equal(o.recovery.actions.at(-1).status, 'simulated');
+  const reply = await request(`/v1/opportunities/${o.id}/missed-calls/${encodeURIComponent(target)}/response`, { version: o.version, eventId: 'http-reply-1', text: 'Booked a time', outcome: 'booked' });
+  assert.equal(reply.status, 200);
+  const summary = (await request('/v1/dashboard')).body.data.missedCalls;
+  assert.equal(summary.booked, 1); assert.equal(summary.simulated, 1);
+  assert.equal(summary.pendingApproval, 0);
+});

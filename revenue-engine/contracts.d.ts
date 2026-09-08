@@ -16,7 +16,13 @@ export interface Execution { id: string; at: string; actorId: string; approvalId
 export interface ApprovalEvent { decision: 'approve' | 'revoke'; actorId: string; at: string; reason: string; approval: Approval | null }
 export interface ReconciledExecution extends Execution { reconciledBy: string; reconciledAt: string; outcome: 'not_executed' | 'simulated'; evidence: string }
 export interface GatedAction { status: ActionStatus; approved?: boolean; approval?: Approval | null; approvalHistory?: ApprovalEvent[]; execution?: Execution; executions?: ReconciledExecution[] }
-export interface RecoveryAction extends PlanAction, GatedAction {}
+export interface MissedCall {
+  eventId: string; caller: string; businessNumber: string; occurredAt: string; evidence: string;
+  smsPermission: { allowed: true; evidence: string }; sendAfter: string; expiresAt: string; bookingUrl: string | null; message: string;
+  disposition: 'pending' | 'replied' | 'callback_requested' | 'booked' | 'opted_out';
+  responses: Array<{ eventId: string; text: string; outcome: 'replied' | 'callback_requested' | 'booked' | 'opted_out'; at: string; actorId: string; mode: 'sandbox' }>;
+}
+export interface RecoveryAction extends PlanAction, GatedAction { missedCall?: MissedCall; createdAt?: string; createdBy?: string }
 export interface Outreach extends GatedAction { id: string; channel: 'email'; recipient: string; subject: string; body: string; approvalRequired: true; createdBy: string; createdAt: string; outcomes?: Array<{ outcome: 'replied' | 'meeting_booked' | 'declined' | 'no_response'; notes: string; followUpAt: string | null; actorId: string; at: string; mode: 'sandbox' }> }
 export interface ExecutiveReport { business: Pick<Business, 'id' | 'name' | 'industry'>; headline: string; summary: { monthlyOpportunity: number; annualOpportunity: number; leakCount: number; score: number }; findings: Array<{ title: string; evidence: string[]; confidence: number; monthlyLoss: number; annualLoss: number; recommendedFix: string }>; generatedAt: string; disclaimer: string }
 export interface Demonstration { headline: string; executiveReport: ExecutiveReport | null; proofPoints: Array<{ category: string; evidence: string[]; confidence: number; monthlyLoss: number; recommendedFix: string }>; disclaimer: string }
@@ -43,6 +49,7 @@ export interface Dashboard {
   contractVersion: '1.0'; currency: 'USD'; total: number; stages: Record<Stage, number>; closeOutcomes: Record<'won' | 'lost' | 'deferred', number>;
   modeledMonthlyOpportunity: number; confidenceWeightedMonthlyOpportunity: number; modeledMonthlyImprovement: number;
   verifiedRecoveredRevenue: null; pendingApproval: number; uncertainExecutions: number; executionMode: 'sandbox'; disclaimer: string;
+  missedCalls: { total: number; pendingApproval: number; scheduled: number; expired: number; simulated: number; replied: number; callbackRequested: number; booked: number; optedOut: number; uncertain: number };
 }
 export interface Page<T> { items: T[]; total: number; offset: number; limit: number; nextOffset: number | null }
 export interface AuditEvent { id: string; at: string; tenantId: string; actorId: string; operation: string; opportunityId: string; version?: number; provider?: string; executionId?: string }

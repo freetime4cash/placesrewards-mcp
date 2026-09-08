@@ -7,6 +7,7 @@ const empty = () => ({ schemaVersion: 1, service: 'revenue-engine-sandbox', revi
 const plain = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 function validate(state) {
   ensure(state?.schemaVersion === 1 && state.service === 'revenue-engine-sandbox' && Number.isSafeInteger(state.revision) && state.revision >= 0 && plain(state.opportunities) && plain(state.commands) && Array.isArray(state.audit), 'STORE_CORRUPT', 'Invalid or unsupported Revenue Engine store', 503);
+  if (state.smsSuppressions !== undefined) ensure(plain(state.smsSuppressions) && Object.values(state.smsSuppressions).every(item => typeof item?.tenantId === 'string' && typeof item.eventId === 'string'), 'STORE_CORRUPT', 'Invalid SMS suppression state', 503);
   for (const [id, value] of Object.entries(state.opportunities)) {
     ensure(value?.id === id && typeof value.tenantId === 'string' && Number.isSafeInteger(value.version) && value.version > 0 && Array.isArray(value.history) && value.business?.id && ['discovered','diagnosed','quantified','prescribed','demonstrated','closed','recovering','measured'].includes(value.stage), 'STORE_CORRUPT', 'Invalid opportunity in store', 503);
     ensure(['growth','pro','enterprise'].includes(value.tier) && Array.isArray(value.business.signals) && Array.isArray(value.outreach) && plain(value.queue) && ['ready','claimed','snoozed','done'].includes(value.queue.status) && Number.isFinite(value.score), 'STORE_CORRUPT', 'Invalid opportunity data', 503);

@@ -77,4 +77,6 @@ Every write requires an `Idempotency-Key`; opportunity changes also require a cu
 
 See [API.md](API.md) for routes, [contracts.d.ts](contracts.d.ts) for consumer types, and [OPERATIONS.md](OPERATIONS.md) for persistence, backup and recovery.
 
+See [MISSED-CALLS.md](MISSED-CALLS.md) for the per-call SMS follow-up workflow, exact-message approvals, scheduling, replies and durable opt-out suppression. Its included delivery transport is simulated.
+
 Existing `index.js`, `pipeline.js`, `providers.js` and `workflow.js` remain diagnostic/planning libraries. Use `application.js` and the HTTP API for durable operations and approval enforcement. The TypeScript prototype in `src/revenue-engine` is not the operational entrypoint.

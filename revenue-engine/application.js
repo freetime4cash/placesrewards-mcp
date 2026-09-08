@@ -6,6 +6,7 @@ import { ConnectorRegistry } from './connectors.js';
 import { ensure } from './errors.js';
 import { businessRecord, choice, fields, identifier, number, string, timestamp } from './validation.js';
 import { dashboard, opportunityReport } from './reporting.js';
+import { followUp, requireFollowUpEligible, missedCallPayload, suppressionKey } from './missed-calls.js';
 
 function canonical(value) {
   if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`;
@@ -16,7 +17,7 @@ const hash = value => createHash('sha256').update(canonical(value)).digest('hex'
 const iso = () => new Date().toISOString();
 const actionsFor = (o, kind) => kind === 'recovery' ? o.recovery?.actions || [] : o.outreach;
 const payloadFor = (action, kind) => kind === 'recovery'
-  ? { leakId: action.leakId, category: action.category, route: action.route, action: action.action }
+  ? { leakId: action.leakId, category: action.category, route: action.route, action: action.action, ...(action.missedCall ? { missedCall: missedCallPayload(action.missedCall) } : {}) }
   : { channel: action.channel, recipient: action.recipient, subject: action.subject, body: action.body };
 const actionId = action => action.id || action.leakId;
 
@@ -128,7 +129,7 @@ export class RevenueApplication {
       ensure(o.version === body.version, 'VERSION_CONFLICT', 'Reload the opportunity and use its current version', 409);
       // Stored entitlements are not an authority; rebuild from the server-assigned tier.
       o.entitlement = entitlementFor(o.tier);
-      o = change(o);
+      o = change(o, state);
       o.version++; o.updatedAt = iso();
       state.opportunities[id] = serializeOpportunity(o);
       this.audit(state, actor, operation, id, { version: o.version });
@@ -215,12 +216,13 @@ export class RevenueApplication {
     choice(kind, ['recovery','outreach'], 'action kind');
     fields(body, ['version','decision','expiresAt','reason'], ['version','decision','reason']);
     choice(body.decision, ['approve','revoke'], 'decision'); string(body.reason, 'reason', 1000);
-    return this.mutate(actor, id, `${kind}:${target}:${body.decision}`, body, key, ['approver','admin'], o => {
+    return this.mutate(actor, id, `${kind}:${target}:${body.decision}`, body, key, ['approver','admin'], (o, state) => {
       if (kind === 'recovery') this.stage(o, ['recovering']);
       const action = actionsFor(o, kind).find(item => actionId(item) === target);
       ensure(action, 'NOT_FOUND', 'Action not found', 404);
       ensure(!['executing','uncertain','simulated'].includes(action.status), 'EXECUTION_CONFLICT', 'Action is already executing, unresolved, or completed', 409);
       if (body.decision === 'approve') {
+        requireFollowUpEligible(action, state, actor.tenantId);
         const expiresAt = timestamp(body.expiresAt, 'expiresAt');
         ensure(Date.parse(expiresAt) > Date.now() && Date.parse(expiresAt) <= Date.now() + 7 * 86400000, 'VALIDATION', 'Approval must expire within seven days');
         action.approval = { id: randomUUID(), actorId: actor.actorId, at: iso(), expiresAt, reason: body.reason, payloadHash: hash(payloadFor(action, kind)), connectorId: this.connectors.execution.id, mode: 'sandbox' };
@@ -237,11 +239,12 @@ export class RevenueApplication {
     choice(kind, ['recovery','outreach'], 'action kind'); fields(body, ['version'], ['version']);
     let dispatch = false;
     // Write the execution intent BEFORE invoking the adapter. Replayed requests never invoke it again.
-    const reserved = await this.mutate(actor, id, `${kind}:${target}:execute`, body, key, ['operator','admin'], o => {
+    const reserved = await this.mutate(actor, id, `${kind}:${target}:execute`, body, key, ['operator','admin'], (o, state) => {
       if (kind === 'recovery') this.stage(o, ['recovering']);
       ensure(!['lost','deferred'].includes(o.close?.status), 'STAGE_CONFLICT', 'Cannot execute for this close outcome', 409);
       const action = actionsFor(o, kind).find(item => actionId(item) === target);
       ensure(action, 'NOT_FOUND', 'Action not found', 404);
+      requireFollowUpEligible(action, state, actor.tenantId, { dispatch: true });
       ensure(action.status === 'approved' && action.approved && action.approval, 'APPROVAL_REQUIRED', 'Explicit action approval required', 409);
       const approval = action.approval;
       ensure(Date.parse(approval.expiresAt) > Date.now() && approval.payloadHash === hash(payloadFor(action, kind)) && approval.connectorId === this.connectors.execution.id && approval.mode === 'sandbox', 'APPROVAL_INVALID', 'Approval expired or no longer matches the action', 409);
@@ -303,6 +306,57 @@ export class RevenueApplication {
       ensure(action.status === 'simulated', 'STAGE_CONFLICT', 'Record sandbox outcomes only after simulated execution', 409);
       action.outcomes = [...(action.outcomes || []), { outcome: body.outcome, notes: body.notes, followUpAt, actorId: actor.actorId, at: iso(), mode: 'sandbox' }];
       if (followUpAt && o.queue.status !== 'done') o.queue = { status: 'snoozed', followUpAt, owner: null, leaseUntil: null };
+      return o;
+    });
+  }
+  async missedCall(actor, id, body, key) {
+    fields(body, ['version','event','smsPermission','bookingUrl','sendAfter'], ['version','event','smsPermission']);
+    return this.mutate(actor, id, 'missed-call:draft', body, key, ['operator','admin'], (o, state) => {
+      this.stage(o, ['recovering']);
+      const call = followUp(body, o.business);
+      ensure(!state.smsSuppressions?.[suppressionKey(actor.tenantId, call.caller)], 'SMS_SUPPRESSED', 'Caller is opted out for this tenant', 409);
+      ensure(!Object.values(state.opportunities).some(item => item.tenantId === actor.tenantId && item.recovery?.actions.some(a => a.missedCall?.eventId === call.eventId)), 'DUPLICATE_CALL', 'Missed call already has a follow-up', 409);
+      ensure(o.recovery.actions.length < 200, 'CAPACITY', 'Recovery action limit reached', 409);
+      const template = o.recoveryPlan.find(a => a.category === 'missed_call');
+      ensure(template, 'NO_MISSED_CALL_PLAN', 'Opportunity needs a missed-call diagnosis and recovery plan', 409);
+      o.recovery.actions.push({ ...template, leakId: `call:${randomUUID()}`, priority: o.recovery.actions.length + 1,
+        action: 'Follow up on one missed call by SMS', estimatedMonthlyRecovery: 0, route: 'communications:sms',
+        approved: false, status: 'pending_approval', missedCall: call, createdAt: iso(), createdBy: actor.actorId });
+      return o;
+    }, 'recoveryAutomation');
+  }
+  async missedCallResponse(actor, id, target, body, key) {
+    fields(body, ['version','eventId','text','outcome'], ['version','eventId','text','outcome']);
+    identifier(body.eventId, 'response event id'); string(body.text, 'response text', 2000);
+    choice(body.outcome, ['replied','callback_requested','booked','opted_out'], 'response outcome');
+    return this.mutate(actor, id, `missed-call:${target}:response`, body, key, ['operator','admin'], (o, state) => {
+      const action = o.recovery?.actions.find(a => a.leakId === target && a.missedCall);
+      ensure(action, 'NOT_FOUND', 'Missed-call follow-up not found', 404);
+      const call = action.missedCall;
+      ensure(!call.responses.some(event => event.eventId === body.eventId), 'DUPLICATE_RESPONSE', 'Response already recorded', 409);
+      const optedOut = body.outcome === 'opted_out' || /^(stop|stopall|unsubscribe|cancel|end|quit)$/i.test(body.text.trim());
+      call.responses.push({ eventId: body.eventId, text: body.text, outcome: optedOut ? 'opted_out' : body.outcome, at: iso(), actorId: actor.actorId, mode: 'sandbox' });
+      if (call.disposition !== 'opted_out') call.disposition = optedOut ? 'opted_out' : body.outcome;
+      if (optedOut) {
+        state.smsSuppressions ||= {};
+        state.smsSuppressions[suppressionKey(actor.tenantId, call.caller)] = { tenantId: actor.tenantId, at: iso(), eventId: body.eventId };
+      }
+      // Stop all still-pending follow-ups to this caller in this tenant, including other opportunities.
+      for (const item of Object.values(state.opportunities)) if (item.tenantId === actor.tenantId) {
+        let changed = false;
+        for (const pending of item.recovery?.actions || []) if (pending.missedCall?.caller === call.caller && (optedOut || item.id === id)) {
+          if (optedOut) pending.missedCall.disposition = 'opted_out';
+          else if (pending.missedCall.disposition === 'pending') pending.missedCall.disposition = body.outcome;
+          if (!['executing','uncertain','simulated'].includes(pending.status)) {
+            pending.approved = false; pending.approval = null; pending.status = 'pending_approval';
+          }
+          changed = true;
+        }
+        if (changed) {
+          item.recovery.approvedActionCount = item.recovery.actions.filter(a => a.approved).length;
+          if (item.id !== id) { item.version++; item.updatedAt = iso(); this.audit(state, actor, 'missed-call:suppressed', item.id, { version: item.version }); }
+        }
+      }
       return o;
     });
   }

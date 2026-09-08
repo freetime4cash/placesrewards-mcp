@@ -73,8 +73,11 @@ export function createRevenueHttpServer({ app, principals, logger = entry => con
         else if (parts[1] === 'opportunities' && parts.length === 4) {
           if (parts[3] === 'queue') data = await app.queue(actor, parts[2], body, key);
           else if (parts[3] === 'outreach') data = await app.draftOutreach(actor, parts[2], body, key);
+          else if (parts[3] === 'missed-calls') data = await app.missedCall(actor, parts[2], body, key);
           else if (['diagnose','quantify','prescribe','demo','close','reopen','recover','measure'].includes(parts[3])) data = await app.advance(actor, parts[2], parts[3], body, key);
           else throw new RevenueError('NOT_FOUND', 'Endpoint not found', 404);
+        } else if (parts[1] === 'opportunities' && parts.length === 6 && parts[3] === 'missed-calls' && parts[5] === 'response') {
+          data = await app.missedCallResponse(actor, parts[2], parts[4], body, key);
         } else if (parts[1] === 'opportunities' && parts.length === 6 && ['recovery','outreach'].includes(parts[3])) {
           const args = [actor, parts[2], parts[3], parts[4], body, key];
           if (parts[5] === 'approval') data = await app.approval(...args);
