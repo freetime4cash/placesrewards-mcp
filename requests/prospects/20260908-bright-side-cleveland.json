@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260908-bright-side-cleveland",
+  "observedAt": "2026-09-08T12:45:59Z",
+  "business": {
+    "name": "Bright Side",
+    "city": "Cleveland, OH",
+    "website": "https://www.brightsidecle.com/",
+    "category": "restaurant_bar_events",
+    "publicContact": {
+      "email": "events@brightsidecle.com",
+      "phone": "216-249-6171",
+      "sourceUrl": "https://www.brightsidecle.com/events",
+      "observedAt": "2026-09-08T12:45:59Z"
+    }
+  },
+  "fitScore": 87,
+  "evidence": [
+    {
+      "url": "https://www.brightsidecle.com/events",
+      "observedFact": "Bright Side publicly markets multiple event spaces, including rooms for small dinners, private parties, company gatherings, and a 250+ capacity lounge, and directs prospects to an event inquiry flow.",
+      "observedAt": "2026-09-08T12:45:59Z"
+    },
+    {
+      "url": "https://www.brightsidecle.com/events",
+      "observedFact": "The events page publishes an Events Hotline staffed 10am-6pm Tuesday-Saturday at 216-249-6171 and the events@brightsidecle.com address.",
+      "observedAt": "2026-09-08T12:45:59Z"
+    },
+    {
+      "url": "https://www.brightsidecle.com/opentable",
+      "observedFact": "Bright Side offers daily reservations and directs parties of 10 or more to contact the events team by phone or email.",
+      "observedAt": "2026-09-08T12:45:59Z"
+    },
+    {
+      "url": "https://www.brightsidecle.com/signup",
+      "observedFact": "Bright Side operates an email signup that promises occasional updates about upcoming offerings.",
+      "observedAt": "2026-09-08T12:45:59Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.94,
+      "evidenceIndexes": [0, 2],
+      "recommendedFix": "Demonstrate an event-attendee retention workflow that converts private-party and large-group traffic into consented repeat-visit audiences with measurable comeback offers."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.78,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Unify event inquiry, phone, and email follow-up into a trackable sequence with immediate acknowledgement, reminders, and post-event follow-up."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.68,
+      "evidenceIndexes": [3],
+      "recommendedFix": "Extend the existing email audience with segmented comeback rewards tied to visits, event attendance, and inactivity windows."
+    }
+  ],
+  "recommendedEntryOffer": "Event-to-Repeat Visit Revenue Engine",
+  "notes": "Observed facts show an active Cleveland restaurant/bar with multiple event spaces, large-group reservation routing, and an existing email audience. The proposed gaps are hypotheses about how Places Rewards could add attribution and retention automation; no monetary loss is claimed."
+}
