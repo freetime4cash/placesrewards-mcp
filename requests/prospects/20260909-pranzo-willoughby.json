@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260909-pranzo-willoughby",
+  "observedAt": "2026-09-09T12:29:09Z",
+  "business": {
+    "name": "Pranzo",
+    "city": "Willoughby, OH",
+    "website": "https://www.pranzowilloughby.com/",
+    "category": "restaurant",
+    "publicContact": {
+      "email": "Pranzodtw@gmail.com",
+      "phone": "440-946-7827",
+      "sourceUrl": "https://www.pranzowilloughby.com/private-dining",
+      "observedAt": "2026-09-09T12:29:09Z"
+    }
+  },
+  "fitScore": 92,
+  "evidence": [
+    {
+      "url": "https://www.pranzowilloughby.com/private-dining",
+      "observedFact": "Pranzo publicly offers two private-dining spaces with stated capacities of 20 guests in The Lounge and 50 guests in the Concrete Room.",
+      "observedAt": "2026-09-09T12:29:09Z"
+    },
+    {
+      "url": "https://www.pranzowilloughby.com/private-dining",
+      "observedFact": "Pranzo states that a completed agreement with required fields and credit-card information is needed to confirm an event, that space is not held until the agreement is received, and that a $200 deposit is processed to secure the date.",
+      "observedAt": "2026-09-09T12:29:09Z"
+    },
+    {
+      "url": "https://www.pranzowilloughby.com/private-dining",
+      "observedFact": "Pranzo states that menu selections are required at least two weeks before a private event and recommends wine pre-selection at least two weeks in advance to guarantee sufficient product.",
+      "observedAt": "2026-09-09T12:29:09Z"
+    },
+    {
+      "url": "https://www.pranzowilloughby.com/",
+      "observedFact": "Pranzo's active website promotes reservations, catering, private dining, and a mobile wood-fired pizza service for events, and lists current operating hours in Downtown Willoughby.",
+      "observedAt": "2026-09-09T12:29:09Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.94,
+      "evidenceIndexes": [0, 3],
+      "recommendedFix": "Demonstrate an event-to-repeat-visit workflow that captures consenting event guests, issues trackable comeback rewards, and measures post-event return activity."
+    },
+    {
+      "category": "booking_friction",
+      "confidence": 0.88,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Demonstrate a lightweight private-event lead workflow that automates acknowledgement, reminders, required-information collection, and post-booking follow-up without replacing Pranzo's existing agreement or deposit policies."
+    }
+  ],
+  "recommendedEntryOffer": "Private Dining Follow-Up + Guest Retention Revenue Engine",
+  "notes": "Observed facts are limited to Pranzo's public website. The gap classifications are sales hypotheses based on the documented event workflow and event volume opportunity; they do not establish lost revenue or prove that Pranzo lacks internal follow-up systems."
+}
