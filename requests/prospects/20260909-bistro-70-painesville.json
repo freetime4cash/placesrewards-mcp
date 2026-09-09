@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260909-bistro-70-painesville",
+  "observedAt": "2026-09-09T12:29:09Z",
+  "business": {
+    "name": "Bistro 70",
+    "city": "Painesville, OH",
+    "website": "https://bistro70.com/",
+    "category": "restaurant",
+    "publicContact": {
+      "phone": "440-352-7070",
+      "sourceUrl": "https://bistro70.com/",
+      "observedAt": "2026-09-09T12:29:09Z"
+    }
+  },
+  "fitScore": 89,
+  "evidence": [
+    {
+      "url": "https://bistro70.com/",
+      "observedFact": "Bistro 70 states on its public website that it is reservation only.",
+      "observedAt": "2026-09-09T12:29:09Z"
+    },
+    {
+      "url": "https://bistro70.com/",
+      "observedFact": "For parties of 10 or more, Bistro 70 requires a credit-card deposit and states that a $25 per-person charge applies when the arriving party is smaller than the reserved number.",
+      "observedAt": "2026-09-09T12:29:09Z"
+    },
+    {
+      "url": "https://bistro70.com/",
+      "observedFact": "The active website promotes upcoming events and gift cards and lists its Painesville location and business phone number.",
+      "observedAt": "2026-09-09T12:29:09Z"
+    },
+    {
+      "url": "https://bistro70.com/menu-2/",
+      "observedFact": "Bistro 70 publishes current Tuesday-through-Saturday operating hours for its Painesville location.",
+      "observedAt": "2026-09-09T12:29:09Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.96,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Demonstrate reservation reminders, confirmation messaging, and pre-visit engagement designed to reduce avoidable reservation friction while preserving Bistro 70's deposit and party-size policies."
+    },
+    {
+      "category": "event_retention",
+      "confidence": 0.78,
+      "evidenceIndexes": [2],
+      "recommendedFix": "Demonstrate a trackable event and gift-card follow-up workflow that encourages participating guests to return after the initial visit."
+    }
+  ],
+  "recommendedEntryOffer": "Reservation Conversion + Comeback Revenue Engine",
+  "notes": "The reservation and deposit policies are directly observed public facts. The proposed friction and retention opportunities are sales hypotheses only; no claim is made that the policies cause cancellations, lost customers, or monetary loss."
+}
