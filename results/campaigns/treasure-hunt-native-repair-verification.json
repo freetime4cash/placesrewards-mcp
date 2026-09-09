@@ -1,6 +1,6 @@
 {
-    "status": "passed",
-    "verified_at": "2026-09-09T21:04:54+00:00",
+    "status": "failed",
+    "verified_at": "2026-09-09T21:19:35+00:00",
     "checks": {
         "reward_29304849-3c10-4a06-8f8f-4bad776b79f9": {
             "passed": true,
@@ -22,7 +22,7 @@
             "has_page_not_found": false
         },
         "reward_13085fc2-2a5d-43ee-92b5-441bc368c55b": {
-            "passed": true,
+            "passed": false,
             "pivot_attached": true,
             "active": true,
             "future_expiration": true,
@@ -33,7 +33,7 @@
                 "status": 200,
                 "effective": "https://app.placesrewards.com/en-us/card/95cbd0bf-8bbb-436d-b7c6-a2e1e558db25/13085fc2-2a5d-43ee-92b5-441bc368c55b",
                 "content_type": "text/html; charset=utf-8",
-                "bytes": 45878,
+                "bytes": 43640,
                 "error": null
             },
             "expected_marker": "06 \u2014 Local Business Bonus Prize",
@@ -65,13 +65,13 @@
             }
         },
         "scratch_asset_winner": {
-            "passed": true,
+            "passed": false,
             "url": "https://app.placesrewards.com/storage/treasure-hunt/scratch/winner.webp",
             "probe": {
-                "status": 200,
+                "status": 522,
                 "effective": "https://app.placesrewards.com/storage/treasure-hunt/scratch/winner.webp",
-                "content_type": "image/webp",
-                "bytes": 23084,
+                "content_type": "",
+                "bytes": 0,
                 "error": null
             }
         },
@@ -99,19 +99,19 @@
             "view": "/home/placevle/app.placesrewards.com/resources/views/member/scratch-cards/show.blade.php"
         },
         "scratch_native_page": {
-            "passed": true,
+            "passed": false,
             "bridge": "https://app.placesrewards.com/demo/treasure-hunt/scratch/play",
             "probe": {
-                "status": 200,
-                "effective": "https://app.placesrewards.com/en-us/scratch-cards/448e9d04-30a5-4621-97d2-bf9f11604ed9",
-                "content_type": "text/html; charset=utf-8",
-                "bytes": 39025,
-                "error": null
+                "status": 0,
+                "effective": "https://app.placesrewards.com/demo/treasure-hunt/scratch/play",
+                "content_type": "",
+                "bytes": 0,
+                "error": "Connection timed out after 8000 milliseconds"
             },
-            "native_destination": true,
-            "rendered_storage_urls": true,
+            "native_destination": false,
+            "rendered_storage_urls": false,
             "no_old_storage_files_paths": true
         }
     },
-    "completed_at": "2026-09-09T21:04:59+00:00"
+    "completed_at": "2026-09-09T21:20:06+00:00"
 }

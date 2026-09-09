@@ -1,6 +1,6 @@
 {
-    "status": "passed",
-    "verified_at": "2026-09-09T21:04:29+00:00",
+    "status": "failed",
+    "verified_at": "2026-09-09T21:19:05+00:00",
     "index": {
         "http_status": 200,
         "missing_actual_links": [],
@@ -36,15 +36,15 @@
         {
             "sequence": 3,
             "page": "https://app.placesrewards.com/demo/treasure-hunt/directory",
-            "page_status": 200,
+            "page_status": 0,
             "actual_url": "https://app.placesrewards.com/en-us",
-            "actual_link_present": true,
+            "actual_link_present": false,
             "actual_status": 200,
             "actual_effective_url": "https://app.placesrewards.com/en-us",
             "actual_redirect": null,
             "native_scratch_destination": null,
             "curl_error": null,
-            "passed": true
+            "passed": false
         },
         {
             "sequence": 4,
@@ -88,28 +88,28 @@
         {
             "sequence": 7,
             "page": "https://app.placesrewards.com/demo/treasure-hunt/referrals",
-            "page_status": 200,
+            "page_status": 0,
             "actual_url": "https://app.placesrewards.com/r/65CRHW",
-            "actual_link_present": true,
+            "actual_link_present": false,
             "actual_status": 302,
             "actual_effective_url": "https://app.placesrewards.com/r/65CRHW",
             "actual_redirect": "https://app.placesrewards.com/en-us/r/65CRHW",
             "native_scratch_destination": null,
             "curl_error": null,
-            "passed": true
+            "passed": false
         },
         {
             "sequence": 8,
             "page": "https://app.placesrewards.com/demo/treasure-hunt/vip",
-            "page_status": 200,
+            "page_status": 0,
             "actual_url": "https://app.placesrewards.com/en-us/card/95cbd0bf-8bbb-436d-b7c6-a2e1e558db25",
-            "actual_link_present": true,
+            "actual_link_present": false,
             "actual_status": 200,
             "actual_effective_url": "https://app.placesrewards.com/en-us/card/95cbd0bf-8bbb-436d-b7c6-a2e1e558db25",
             "actual_redirect": null,
             "native_scratch_destination": null,
             "curl_error": null,
-            "passed": true
+            "passed": false
         },
         {
             "sequence": 9,
