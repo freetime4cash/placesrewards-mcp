@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260909-kearneys-public-house-mentor",
+  "observedAt": "2026-09-09T12:29:09Z",
+  "business": {
+    "name": "Kearney's Public House",
+    "city": "Mentor, OH",
+    "website": "https://www.kearneyspub.com/",
+    "category": "restaurant/pub",
+    "publicContact": {
+      "email": "Kearneys@kearneyspub.com",
+      "phone": "440-290-0335",
+      "sourceUrl": "https://www.kearneyspub.com/",
+      "observedAt": "2026-09-09T12:29:09Z"
+    }
+  },
+  "fitScore": 91,
+  "evidence": [
+    {
+      "url": "https://www.kearneyspub.com/",
+      "observedFact": "Kearney's Public House actively markets private events for birthdays, corporate gatherings, and special occasions and says the venue offers customizable food and drink options.",
+      "observedAt": "2026-09-09T12:29:09Z"
+    },
+    {
+      "url": "https://www.kearneyspub.com/private-events",
+      "observedFact": "Its public private-event inquiry form requires contact information plus event type, start date and time, number of hours, party size, and additional comments before submission.",
+      "observedAt": "2026-09-09T12:29:09Z"
+    },
+    {
+      "url": "https://www.kearneyspub.com/",
+      "observedFact": "Kearney's promotes live entertainment, seasonal celebrations, themed pub nights, and community gatherings as recurring reasons for customers to visit.",
+      "observedAt": "2026-09-09T12:29:09Z"
+    },
+    {
+      "url": "https://www.kearneyspub.com/",
+      "observedFact": "The active business website lists daily operating hours, a Mentor address, business phone and email, and digital gift cards.",
+      "observedAt": "2026-09-09T12:29:09Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.93,
+      "evidenceIndexes": [0, 2],
+      "recommendedFix": "Demonstrate an event and live-music retention workflow that captures consenting attendees, issues trackable return offers, and creates repeat-visit segments after each gathering."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.80,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Demonstrate automated acknowledgement, reminder, and follow-up around submitted private-event inquiries while preserving the restaurant's existing inquiry process."
+    }
+  ],
+  "recommendedEntryOffer": "Event-to-Repeat Visit Revenue Engine",
+  "notes": "The public site confirms an active private-event and recurring-events business model. The gap classifications are hypotheses about where Places Rewards could improve measurable follow-up and repeat visits; they do not prove Kearney's lacks internal CRM or follow-up processes and do not imply a monetary loss."
+}
