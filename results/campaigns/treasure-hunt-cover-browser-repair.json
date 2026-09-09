@@ -1,6 +1,6 @@
 {
-    "status": "completed",
-    "started_at": "2026-09-09T03:08:11+00:00",
+    "status": "failed",
+    "started_at": "2026-09-09T04:01:00+00:00",
     "attempts": [
         {
             "tool": "decode-existing-cover",
@@ -29,21 +29,21 @@
         "mime": "image/webp"
     },
     "http": {
-        "url": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp?v=1788923292",
+        "url": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp?v=1788926461",
         "status": 200,
         "content_type": "image/webp",
         "bytes": 70402,
         "riff_webp": true,
-        "decoder_exit": 0,
-        "decoder_output": "WEBP 1200 900",
+        "decoder_exit": 1,
+        "decoder_output": "convert: UnableToOpenBlob `/home/placevle/app.placesrewards.com/storage/app/public/treasure-hunt/scratch/cover-http-probe.webp': No such file or directory @ error/blob.c/OpenBlob/3042.\nconvert: NoImagesDefined `info:' @ error/convert.c/ConvertImageCommand/3234.",
         "headers": [
             "HTTP/2 200",
-            "date: Wed, 09 Sep 2026 03:08:13 GMT",
+            "date: Wed, 09 Sep 2026 04:01:01 GMT",
             "content-type: image/webp",
             "content-length: 70402",
             "cache-control: no-store, no-cache, must-revalidate, max-age=0",
             "expires: 0",
-            "last-modified: Wed, 09 Sep 2026 03:08:12 GMT",
+            "last-modified: Wed, 09 Sep 2026 04:01:01 GMT",
             "accept-ranges: bytes",
             "server: cloudflare",
             "pragma: no-cache",
@@ -51,14 +51,14 @@
             "cf-cache-status: BYPASS",
             "strict-transport-security: max-age=15552000; includeSubDomains; preload",
             "x-content-type-options: nosniff",
-            "report-to: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=1zzzZ3iYtU1e2HnNHlafTnu4aMKMuXKt8WiWYxEcxNwCHdPvCvCuc%2Bt9IX8Z5qiU5dGifuINMCvUCqbe6X%2BBDY1Y9xhWBoSThm4nAsen5RKoz93EAfSrP8aUg9TQdcxHj47ziCZoWms%3D\"}]}",
+            "report-to: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Gj8mqXPHtSdqcXEFZvhI0MAq922%2BMdMaURPumAhptbNiQHNOKuA88iWvp1y2t0uPb%2Fel%2ByXuWNk%2Fc%2BoqBvOkRO0yDe80R%2Bx9ub1NoXxiaIgOuZouRqjPuw0DqRPrxJB1KHtIA9plO8Q%3D\"}]}",
             "nel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
-            "cf-ray: a382fcb5ad9ece80-PHX",
+            "cf-ray: a3834a0f590c1937-PHX",
             "alt-svc: h3=\":443\"; ma=86400",
             ""
         ],
         "error": null
     },
-    "verified": true,
-    "completed_at": "2026-09-09T03:08:13+00:00"
+    "verified": false,
+    "completed_at": "2026-09-09T04:01:01+00:00"
 }
