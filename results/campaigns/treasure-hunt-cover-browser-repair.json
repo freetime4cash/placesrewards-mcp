@@ -1,6 +1,6 @@
 {
-    "status": "completed",
-    "started_at": "2026-09-09T21:03:57+00:00",
+    "status": "failed",
+    "started_at": "2026-09-09T21:09:54+00:00",
     "attempts": [
         {
             "tool": "decode-existing-cover",
@@ -12,53 +12,9 @@
             "tool": "render-clean-cover",
             "exit": 0,
             "output": "convert: UnableToOpenConfigureFile `delegates.xml' @ warning/configure.c/GetConfigureOptions/685."
-        },
-        {
-            "tool": "decode-new-cover",
-            "exit": 0,
-            "output": "WEBP 1200 900"
         }
     ],
-    "old_source_decodable": false,
-    "file": {
-        "path": "/home/placevle/app.placesrewards.com/storage/app/public/treasure-hunt/scratch/cover.webp",
-        "bytes": 70402,
-        "sha1": "c93448627a01f53ab40bf20539faac56fccc2f36",
-        "width": 1200,
-        "height": 900,
-        "mime": "image/webp"
-    },
-    "http": {
-        "url": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp?v=1788987839",
-        "status": 200,
-        "content_type": "image/webp",
-        "bytes": 70402,
-        "riff_webp": true,
-        "decoder_exit": 0,
-        "decoder_output": "WEBP 1200 900",
-        "headers": [
-            "HTTP/2 200",
-            "date: Wed, 09 Sep 2026 21:03:59 GMT",
-            "content-type: image/webp",
-            "content-length: 70402",
-            "cache-control: no-store, no-cache, must-revalidate, max-age=0",
-            "expires: 0",
-            "last-modified: Wed, 09 Sep 2026 21:03:58 GMT",
-            "accept-ranges: bytes",
-            "server: cloudflare",
-            "pragma: no-cache",
-            "x-turbo-charged-by: LiteSpeed",
-            "cf-cache-status: BYPASS",
-            "strict-transport-security: max-age=15552000; includeSubDomains; preload",
-            "x-content-type-options: nosniff",
-            "report-to: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=puKdvmzm%2BJ94rRBeVkXWKhiy83QOxEIFbuP5sN7cYVkPp4kHbFWsvQxYnKpFUwGlnwq0ZF%2FEdzX14Uv1ai25TwYFYkWnXpvdmVq%2B8I93ayaYG760liF5ObjE2Y81%2FzcDX%2FkPwAc5Kzs%3D\"}]}",
-            "nel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
-            "cf-ray: a389248d0d6d267c-PHX",
-            "alt-svc: h3=\":443\"; ma=86400",
-            ""
-        ],
-        "error": null
-    },
-    "verified": true,
-    "completed_at": "2026-09-09T21:03:59+00:00"
+    "verified": false,
+    "error": "Could not render clean Treasure Hunt cover WebP",
+    "completed_at": "2026-09-09T21:09:55+00:00"
 }
