@@ -1,6 +1,6 @@
 {
     "status": "failed",
-    "verified_at": "2026-09-10T04:38:55+00:00",
+    "verified_at": "2026-09-10T04:42:31+00:00",
     "index": {
         "http_status": 500,
         "missing_actual_links": [
@@ -65,7 +65,7 @@
             "page_status": 500,
             "actual_url": "https://app.placesrewards.com/en-us/card/95cbd0bf-8bbb-436d-b7c6-a2e1e558db25/29304849-3c10-4a06-8f8f-4bad776b79f9",
             "actual_link_present": false,
-            "actual_status": 500,
+            "actual_status": 200,
             "actual_effective_url": "https://app.placesrewards.com/en-us/card/95cbd0bf-8bbb-436d-b7c6-a2e1e558db25/29304849-3c10-4a06-8f8f-4bad776b79f9",
             "actual_redirect": null,
             "native_scratch_destination": null,
@@ -140,9 +140,9 @@
         {
             "sequence": 10,
             "page": "https://app.placesrewards.com/demo/treasure-hunt/voucher",
-            "page_status": 500,
+            "page_status": 200,
             "actual_url": "https://app.placesrewards.com/en-us/voucher/14788f52-438e-4293-bd6b-c82b8e448983",
-            "actual_link_present": false,
+            "actual_link_present": true,
             "actual_status": 500,
             "actual_effective_url": "https://app.placesrewards.com/en-us/voucher/14788f52-438e-4293-bd6b-c82b8e448983",
             "actual_redirect": null,
