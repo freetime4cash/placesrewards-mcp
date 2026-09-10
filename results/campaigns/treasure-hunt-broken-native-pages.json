@@ -1,6 +1,6 @@
 {
     "status": "completed",
-    "generated_at": "2026-09-10T04:34:35+00:00",
+    "generated_at": "2026-09-10T04:38:51+00:00",
     "routes": [
         {
             "uri": "{locale}/scratch-cards/{scratchCard}",
@@ -84,15 +84,15 @@
         "number_of_points_redeemed": 0,
         "number_of_rewards_redeemed": 0,
         "last_reward_redeemed_at": null,
-        "views": 35020,
-        "last_view": "2026-09-10 04:34:19",
+        "views": 35062,
+        "last_view": "2026-09-10 04:38:12",
         "meta": "{\"tom_demo_sequence\":1,\"purpose\":\"Activate Hunter Passport\"}",
         "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
         "deleted_by": null,
         "updated_by": null,
         "deleted_at": null,
         "created_at": "2026-09-06 23:01:26",
-        "updated_at": "2026-09-10 04:34:23"
+        "updated_at": "2026-09-10 04:38:44"
     },
     "rewards": [
         {
@@ -109,8 +109,8 @@
             "is_undeletable": 0,
             "is_uneditable": 0,
             "number_of_times_redeemed": 0,
-            "views": 10631,
-            "last_view": "2026-09-10 04:34:18",
+            "views": 10643,
+            "last_view": "2026-09-10 04:38:00",
             "meta": "{\"tom_demo_sequence\":6,\"purpose\":\"local_prize\"}",
             "ecommerce_settings": null,
             "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
@@ -118,7 +118,7 @@
             "updated_by": null,
             "deleted_at": null,
             "created_at": "2026-09-07 00:11:48",
-            "updated_at": "2026-09-10 04:34:23"
+            "updated_at": "2026-09-10 04:38:44"
         },
         {
             "id": "29304849-3c10-4a06-8f8f-4bad776b79f9",
@@ -134,8 +134,8 @@
             "is_undeletable": 0,
             "is_uneditable": 0,
             "number_of_times_redeemed": 0,
-            "views": 10635,
-            "last_view": "2026-09-10 04:34:15",
+            "views": 10647,
+            "last_view": "2026-09-10 04:37:58",
             "meta": "{\"tom_demo_sequence\":4,\"official_clue_separate\":true}",
             "ecommerce_settings": null,
             "created_by": "019dbfc9-ddf9-7136-951a-124574cf7b3e",
@@ -143,7 +143,7 @@
             "updated_by": null,
             "deleted_at": null,
             "created_at": "2026-09-07 00:11:48",
-            "updated_at": "2026-09-10 04:34:23"
+            "updated_at": "2026-09-10 04:38:44"
         }
     ],
     "relationship_tables": {
@@ -1081,13 +1081,13 @@
                     "card_id": "95cbd0bf-8bbb-436d-b7c6-a2e1e558db25",
                     "reward_id": "13085fc2-2a5d-43ee-92b5-441bc368c55b",
                     "created_at": "2026-09-07 13:56:33",
-                    "updated_at": "2026-09-10 04:34:23"
+                    "updated_at": "2026-09-10 04:38:44"
                 },
                 {
                     "card_id": "95cbd0bf-8bbb-436d-b7c6-a2e1e558db25",
                     "reward_id": "29304849-3c10-4a06-8f8f-4bad776b79f9",
                     "created_at": "2026-09-07 13:56:33",
-                    "updated_at": "2026-09-10 04:34:23"
+                    "updated_at": "2026-09-10 04:38:44"
                 }
             ]
         }
@@ -1124,7 +1124,7 @@
             "content_type": "text/html; charset=utf-8",
             "bytes": 1955,
             "error": null,
-            "body_excerpt": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <meta name=\"robots\" content=\"noindex,nofollow,noarchive\" /> <title>An Error Occurred: Internal Server Error</title> <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>❌</text></svg>\" /> <style>body { background-color: #fff; color: #222; font: 16px/1.5 -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif; margin: 0; } .container { margin: 30px; max-width: 600px; } h1 { color: #dc3545; font-size: 24px; } h2 { font-size: 18px; }</style> </head> <body> <div class=\"container\"> <h1>Oops! An Error Occurred</h1> <h2>The server returned a \"500 Internal Server Error\".</h2> <p> Something is broken. Please let us know what you were doing when this error occurred. We will fix it as soon as possible. Sorry for any inconvenience caused. </p> </div> <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a38bb8998ed86e16',t:'MTc4OTAxNDg3NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body> </html>"
+            "body_excerpt": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <meta name=\"robots\" content=\"noindex,nofollow,noarchive\" /> <title>An Error Occurred: Internal Server Error</title> <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>❌</text></svg>\" /> <style>body { background-color: #fff; color: #222; font: 16px/1.5 -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif; margin: 0; } .container { margin: 30px; max-width: 600px; } h1 { color: #dc3545; font-size: 24px; } h2 { font-size: 18px; }</style> </head> <body> <div class=\"container\"> <h1>Oops! An Error Occurred</h1> <h2>The server returned a \"500 Internal Server Error\".</h2> <p> Something is broken. Please let us know what you were doing when this error occurred. We will fix it as soon as possible. Sorry for any inconvenience caused. </p> </div> <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a38bbeda38b82f27',t:'MTc4OTAxNTEzMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body> </html>"
         },
         "13085fc2-2a5d-43ee-92b5-441bc368c55b": {
             "status": 500,
@@ -1132,7 +1132,7 @@
             "content_type": "text/html; charset=utf-8",
             "bytes": 1955,
             "error": null,
-            "body_excerpt": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <meta name=\"robots\" content=\"noindex,nofollow,noarchive\" /> <title>An Error Occurred: Internal Server Error</title> <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>❌</text></svg>\" /> <style>body { background-color: #fff; color: #222; font: 16px/1.5 -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif; margin: 0; } .container { margin: 30px; max-width: 600px; } h1 { color: #dc3545; font-size: 24px; } h2 { font-size: 18px; }</style> </head> <body> <div class=\"container\"> <h1>Oops! An Error Occurred</h1> <h2>The server returned a \"500 Internal Server Error\".</h2> <p> Something is broken. Please let us know what you were doing when this error occurred. We will fix it as soon as possible. Sorry for any inconvenience caused. </p> </div> <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a38bb89e8a95b66b',t:'MTc4OTAxNDg3NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body> </html>"
+            "body_excerpt": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <meta name=\"robots\" content=\"noindex,nofollow,noarchive\" /> <title>An Error Occurred: Internal Server Error</title> <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>❌</text></svg>\" /> <style>body { background-color: #fff; color: #222; font: 16px/1.5 -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif; margin: 0; } .container { margin: 30px; max-width: 600px; } h1 { color: #dc3545; font-size: 24px; } h2 { font-size: 18px; }</style> </head> <body> <div class=\"container\"> <h1>Oops! An Error Occurred</h1> <h2>The server returned a \"500 Internal Server Error\".</h2> <p> Something is broken. Please let us know what you were doing when this error occurred. We will fix it as soon as possible. Sorry for any inconvenience caused. </p> </div> <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a38bbedcaa42e1fa',t:'MTc4OTAxNTEzMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body> </html>"
         }
     },
     "scratch_game": {
@@ -1146,7 +1146,7 @@
         "win_rate": 25,
         "is_active": 1,
         "created_at": "2026-09-07 00:11:48",
-        "updated_at": "2026-09-10 04:34:32",
+        "updated_at": "2026-09-10 04:38:46",
         "deleted_at": null
     },
     "scratch_assets": {
@@ -1208,6 +1208,6 @@
         "content_type": "text/html; charset=utf-8",
         "bytes": 1955,
         "error": null,
-        "body_excerpt": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <meta name=\"robots\" content=\"noindex,nofollow,noarchive\" /> <title>An Error Occurred: Internal Server Error</title> <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>❌</text></svg>\" /> <style>body { background-color: #fff; color: #222; font: 16px/1.5 -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif; margin: 0; } .container { margin: 30px; max-width: 600px; } h1 { color: #dc3545; font-size: 24px; } h2 { font-size: 18px; }</style> </head> <body> <div class=\"container\"> <h1>Oops! An Error Occurred</h1> <h2>The server returned a \"500 Internal Server Error\".</h2> <p> Something is broken. Please let us know what you were doing when this error occurred. We will fix it as soon as possible. Sorry for any inconvenience caused. </p> </div> <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a38bb8a44b70598b',t:'MTc4OTAxNDg3Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body> </html>"
+        "body_excerpt": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <meta name=\"robots\" content=\"noindex,nofollow,noarchive\" /> <title>An Error Occurred: Internal Server Error</title> <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>❌</text></svg>\" /> <style>body { background-color: #fff; color: #222; font: 16px/1.5 -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif; margin: 0; } .container { margin: 30px; max-width: 600px; } h1 { color: #dc3545; font-size: 24px; } h2 { font-size: 18px; }</style> </head> <body> <div class=\"container\"> <h1>Oops! An Error Occurred</h1> <h2>The server returned a \"500 Internal Server Error\".</h2> <p> Something is broken. Please let us know what you were doing when this error occurred. We will fix it as soon as possible. Sorry for any inconvenience caused. </p> </div> <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a38bbee01b148713',t:'MTc4OTAxNTEzMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body> </html>"
     }
 }
