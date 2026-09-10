@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260910-dinos-wickliffe",
+  "observedAt": "2026-09-10T12:42:31Z",
+  "business": {
+    "name": "Dino's Restaurant & Bar / Dino's Catering",
+    "city": "Wickliffe, OH",
+    "website": "https://dinosrestaurants.com/",
+    "category": "restaurant_catering",
+    "publicContact": {
+      "email": "info@dinoscatering.com",
+      "phone": "(440) 944-4664",
+      "sourceUrl": "https://dinoscatering.com/",
+      "observedAt": "2026-09-10T12:42:31Z"
+    }
+  },
+  "fitScore": 89,
+  "evidence": [
+    {
+      "url": "https://dinoscatering.com/",
+      "observedFact": "Dino's actively markets weddings, rehearsal dinners, bridal showers, corporate events, sports banquets and carryout catering for groups of 25 or more, with public phone and email contact for inquiries.",
+      "observedAt": "2026-09-10T12:42:31Z"
+    },
+    {
+      "url": "https://www.dinosatpineridge.com/contact-us/",
+      "observedFact": "The Wickliffe Pine Ridge event operation asks prospects to call or submit a contact form and states that someone from the team will get back to them soon.",
+      "observedAt": "2026-09-10T12:42:31Z"
+    },
+    {
+      "url": "https://dinosrestaurants.com/",
+      "observedFact": "Dino's Restaurant & Bar lists current operating hours seven days a week at 1200 E. 305th St. in Wickliffe and promotes catering and banquet halls.",
+      "observedAt": "2026-09-10T12:42:31Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.95,
+      "evidenceIndexes": [0, 2],
+      "recommendedFix": "Demonstrate event-attendee capture, post-event offers and referral workflows that can convert banquet and catering guests into repeat restaurant and catering customers."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.81,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Demonstrate automated inquiry acknowledgement and follow-up tracking for event and catering leads."
+    }
+  ],
+  "recommendedEntryOffer": "Event & Catering Retention Revenue Engine",
+  "notes": "Observed facts establish active event/catering volume channels and a manual call/form inquiry path. Improved follow-up and retention are hypotheses, not claims of lost revenue."
+}
