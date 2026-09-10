@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260910-happy-moose-mentor",
+  "observedAt": "2026-09-10T12:42:31Z",
+  "business": {
+    "name": "Happy Moose Bar & Grill",
+    "city": "Mentor, OH",
+    "website": "https://www.happymoosebarandgrill.com/",
+    "category": "restaurant",
+    "publicContact": {
+      "phone": "(440) 953-9464",
+      "sourceUrl": "https://www.happymoosebarandgrill.com/parties-events",
+      "observedAt": "2026-09-10T12:42:31Z"
+    }
+  },
+  "fitScore": 90,
+  "evidence": [
+    {
+      "url": "https://www.happymoosebarandgrill.com/parties-events",
+      "observedFact": "The business actively offers parties of all sizes and asks prospects to call or submit a form, after which the business says it will be in touch shortly.",
+      "observedAt": "2026-09-10T12:42:31Z"
+    },
+    {
+      "url": "https://www.happymoosebarandgrill.com/",
+      "observedFact": "The Mentor location is active seven days a week and publicly promotes parties, events, gift cards and carryout.",
+      "observedAt": "2026-09-10T12:42:31Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.93,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Demonstrate a post-event guest capture and repeat-visit workflow that turns party attendees into measurable return customers."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.82,
+      "evidenceIndexes": [0],
+      "recommendedFix": "Demonstrate immediate inquiry acknowledgement, structured follow-up and status tracking for party leads."
+    }
+  ],
+  "recommendedEntryOffer": "Party-to-Repeat Visit Revenue Engine",
+  "notes": "Observed facts show an active event business and a call/form follow-up process. The opportunity to improve follow-up and event retention is a sales hypothesis; no monetary loss is claimed."
+}
