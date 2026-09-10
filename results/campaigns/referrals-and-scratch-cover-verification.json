@@ -1,6 +1,6 @@
 {
     "status": "passed",
-    "verified_at": "2026-09-10T02:12:34+00:00",
+    "verified_at": "2026-09-10T02:18:38+00:00",
     "checks": {
         "referrals_page": {
             "passed": true,
@@ -18,7 +18,7 @@
             "passed": true,
             "url": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp",
             "status": 200,
-            "effective": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp?v=1789006354",
+            "effective": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp?v=1789006718",
             "content_type": "image/webp",
             "bytes": 70402,
             "error": null
@@ -27,11 +27,11 @@
             "passed": true,
             "url": "https://app.placesrewards.com/files/demo/treasure-hunt/scratch/cover.webp",
             "status": 200,
-            "effective": "https://app.placesrewards.com/files/demo/treasure-hunt/scratch/cover.webp?v=1789006355",
+            "effective": "https://app.placesrewards.com/files/demo/treasure-hunt/scratch/cover.webp?v=1789006719",
             "content_type": "image/webp",
             "bytes": 70402,
             "error": null
         }
     },
-    "completed_at": "2026-09-10T02:12:35+00:00"
+    "completed_at": "2026-09-10T02:18:39+00:00"
 }
