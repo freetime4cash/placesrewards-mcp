@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260910-michael-stefan-salon-willoughby",
+  "observedAt": "2026-09-10T12:42:31Z",
+  "business": {
+    "name": "Michael Stefan Salon",
+    "city": "Willoughby, OH",
+    "website": "https://www.michaelstefansalon.com/",
+    "category": "hair_salon",
+    "publicContact": {
+      "phone": "(440) 946-6644",
+      "sourceUrl": "https://www.michaelstefansalon.com/",
+      "observedAt": "2026-09-10T12:42:31Z"
+    }
+  },
+  "fitScore": 86,
+  "evidence": [
+    {
+      "url": "https://www.michaelstefansalon.com/",
+      "observedFact": "The salon is active in Downtown Willoughby, publishes current hours and a booking path, and states that appointments cancelled or rescheduled with less than 24 hours notice are subject to a fee.",
+      "observedAt": "2026-09-10T12:42:31Z"
+    },
+    {
+      "url": "https://www.michaelstefansalon.com/portofolio/color/",
+      "observedFact": "The salon says first-time color clients are recommended to have a consultation before the appointment to determine desired color and pricing, and reiterates a 24-hour cancellation notice requirement.",
+      "observedAt": "2026-09-10T12:42:31Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.94,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Demonstrate booking reminders, confirmation workflows and consultation follow-up designed to reduce avoidable appointment friction and preserve repeat visits."
+    }
+  ],
+  "recommendedEntryOffer": "Booking Protection + Repeat-Visit Revenue Engine",
+  "notes": "The cancellation policy and pre-appointment consultation step are observed facts. The potential benefit of automated reminders and retention workflows is a sales hypothesis; no revenue-loss amount is asserted."
+}
