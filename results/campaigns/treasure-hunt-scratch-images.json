@@ -1,7 +1,7 @@
 {
-    "status": "completed",
+    "status": "failed",
     "game_id": "1fefb288-a8cc-46d4-a4a3-04fe56f91329",
-    "started_at": "2026-09-10T00:23:51+00:00",
+    "started_at": "2026-09-10T01:50:43+00:00",
     "files": {
         "cover": {
             "source": "/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/cover.svg",
@@ -27,12 +27,12 @@
             "source": "/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/winner.webp",
             "storage": "/home/placevle/app.placesrewards.com/storage/app/public/treasure-hunt/scratch/winner.webp",
             "public_mirror": "/home/placevle/app.placesrewards.com/public/files/demo/treasure-hunt/scratch/winner.webp",
-            "bytes": 23084,
-            "sha1": "e309d89646a40386ef4d3b09e7c1a8a0e01a37c6",
+            "bytes": 14460,
+            "sha1": "1f1e72134139b3ea2bcd55572949037949dd5aff",
             "width": 300,
             "height": 225,
             "mime": "image/webp",
-            "reencoded": true,
+            "reencoded": false,
             "decoder": {
                 "ok": true,
                 "basic": true,
@@ -47,12 +47,12 @@
             "source": "/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/loser.webp",
             "storage": "/home/placevle/app.placesrewards.com/storage/app/public/treasure-hunt/scratch/loser.webp",
             "public_mirror": "/home/placevle/app.placesrewards.com/public/files/demo/treasure-hunt/scratch/loser.webp",
-            "bytes": 21068,
-            "sha1": "3704bf155ae61ce718bb5e2876dc3be904efc1a6",
+            "bytes": 12942,
+            "sha1": "6ee9006475663032053c5441ccb8974480aa14f2",
             "width": 300,
             "height": 225,
             "mime": "image/webp",
-            "reencoded": true,
+            "reencoded": false,
             "decoder": {
                 "ok": true,
                 "basic": true,
@@ -64,99 +64,7 @@
             }
         }
     },
-    "database": {
-        "before": {
-            "cover_image": "treasure-hunt/scratch/cover.webp",
-            "win_image": "treasure-hunt/scratch/winner.webp",
-            "loss_image": "treasure-hunt/scratch/loser.webp"
-        },
-        "after": {
-            "cover_image": "treasure-hunt/scratch/cover.webp",
-            "win_image": "treasure-hunt/scratch/winner.webp",
-            "loss_image": "treasure-hunt/scratch/loser.webp"
-        }
-    },
-    "public_urls": {
-        "cover": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp",
-        "winner": "https://app.placesrewards.com/storage/treasure-hunt/scratch/winner.webp",
-        "loser": "https://app.placesrewards.com/storage/treasure-hunt/scratch/loser.webp"
-    },
-    "fallback_urls": {
-        "cover": "https://app.placesrewards.com/files/demo/treasure-hunt/scratch/cover.webp",
-        "winner": "https://app.placesrewards.com/files/demo/treasure-hunt/scratch/winner.webp",
-        "loser": "https://app.placesrewards.com/files/demo/treasure-hunt/scratch/loser.webp"
-    },
-    "http_probes": {
-        "storage": {
-            "cover": {
-                "status": 200,
-                "content_type": "image/webp",
-                "bytes": 70368,
-                "riff_webp": true,
-                "decoder_exit": 0,
-                "decoder_output": "WEBP 1200 900",
-                "error": null,
-                "valid_webp": true
-            },
-            "winner": {
-                "status": 200,
-                "content_type": "image/webp",
-                "bytes": 23084,
-                "riff_webp": true,
-                "decoder_exit": 0,
-                "decoder_output": "WEBP 300 225",
-                "error": null,
-                "valid_webp": true
-            },
-            "loser": {
-                "status": 200,
-                "content_type": "image/webp",
-                "bytes": 21068,
-                "riff_webp": true,
-                "decoder_exit": 0,
-                "decoder_output": "WEBP 300 225",
-                "error": null,
-                "valid_webp": true
-            }
-        },
-        "public_mirror": {
-            "cover": {
-                "status": 200,
-                "content_type": "image/webp",
-                "bytes": 70368,
-                "riff_webp": true,
-                "decoder_exit": 0,
-                "decoder_output": "WEBP 1200 900",
-                "error": null,
-                "valid_webp": true
-            },
-            "winner": {
-                "status": 200,
-                "content_type": "image/webp",
-                "bytes": 23084,
-                "riff_webp": true,
-                "decoder_exit": 0,
-                "decoder_output": "WEBP 300 225",
-                "error": null,
-                "valid_webp": true
-            },
-            "loser": {
-                "status": 200,
-                "content_type": "image/webp",
-                "bytes": 21068,
-                "riff_webp": true,
-                "decoder_exit": 0,
-                "decoder_output": "WEBP 300 225",
-                "error": null,
-                "valid_webp": true
-            }
-        }
-    },
-    "storage_link": {
-        "path": "/home/placevle/app.placesrewards.com/public/storage",
-        "is_link": true,
-        "is_dir": true
-    },
-    "verified": true,
-    "completed_at": "2026-09-10T00:23:55+00:00"
+    "verified": false,
+    "error": "tempnam(): file created in the system's temporary directory",
+    "completed_at": "2026-09-10T01:50:44+00:00"
 }
