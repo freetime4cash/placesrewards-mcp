@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260911-go-bare-spa-willoughby",
+  "observedAt": "2026-09-11T12:23:38Z",
+  "business": {
+    "name": "Go Bare Spa & Skin Clinic",
+    "city": "Willoughby, OH",
+    "website": "https://www.gobarespa.com/",
+    "category": "spa_skin_clinic",
+    "publicContact": {
+      "email": "Info@GoBareSpa.com",
+      "phone": "+1-440-665-9904",
+      "sourceUrl": "https://www.gobarespa.com/about",
+      "observedAt": "2026-09-11T12:23:38Z"
+    }
+  },
+  "fitScore": 91,
+  "evidence": [
+    {
+      "url": "https://www.gobarespa.com/about",
+      "observedFact": "The business operates by appointment only, requires a valid credit card on file or pre-payment to schedule, may request 50% up front as a booking fee, and states that late cancellation, rescheduling, sickness, lateness or no-show within 48 hours may trigger a booking fee.",
+      "observedAt": "2026-09-11T12:23:38Z"
+    },
+    {
+      "url": "https://www.vagaro.com/gobareskinclinic",
+      "observedFact": "The public booking profile states that customers using prepaid services or gift cards should call or text directly to schedule; online bookings may require a non-refundable 50% booking retainer, and cancellations or no-shows within 48 hours can be charged up to 100% of the booked service.",
+      "observedAt": "2026-09-11T12:23:38Z"
+    },
+    {
+      "url": "https://www.gobarespa.com/about",
+      "observedFact": "The business publishes extended hours for groups or events, indicating that group/event bookings are an active part of the service model.",
+      "observedAt": "2026-09-11T12:23:38Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.98,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Demonstrate automated confirmation, reminder, reschedule recovery and prepaid/gift-card follow-up flows around appointment bookings."
+    },
+    {
+      "category": "event_retention",
+      "confidence": 0.78,
+      "evidenceIndexes": [2],
+      "recommendedFix": "Capture group attendees into a permission-based return-visit reward sequence after events or group services."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.84,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Use prepaid-service and gift-card reminders as a reactivation path for customers who have value on file but have not yet scheduled."
+    }
+  ],
+  "recommendedEntryOffer": "Appointment Recovery + Prepaid Reactivation Revenue Engine",
+  "notes": "Observed facts show strict booking rules, prepaid/gift-card scheduling friction and group/event activity. Hypothesis: automated reminders and reactivation can improve booking completion and repeat usage. No monetary loss is claimed from public evidence."
+}
