@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260911-himalayan-cave-mentor",
+  "observedAt": "2026-09-11T12:23:38Z",
+  "business": {
+    "name": "The Himalayan Cave",
+    "city": "Mentor, OH",
+    "website": "https://www.thehimalayancave.com/",
+    "category": "wellness_spa",
+    "publicContact": {
+      "phone": "+1-440-290-0999",
+      "sourceUrl": "https://www.thehimalayancave.com/mentor-salt-cave",
+      "observedAt": "2026-09-11T12:23:38Z"
+    }
+  },
+  "fitScore": 89,
+  "evidence": [
+    {
+      "url": "https://www.thehimalayancave.com/",
+      "observedFact": "The active business offers online appointment booking, e-gift cards and multiple repeatable wellness services including salt cave, salt booths, infrared sauna, aqua massage and float pods.",
+      "observedAt": "2026-09-11T12:23:38Z"
+    },
+    {
+      "url": "https://www.thehimalayancave.com/cancellation-policy",
+      "observedFact": "The business charges 50% for cancellations within 24 hours and 100% for no-show/no-call appointments; prepaid credits are placed on the customer's account rather than refunded.",
+      "observedAt": "2026-09-11T12:23:38Z"
+    },
+    {
+      "url": "https://www.thehimalayancave.com/pricing",
+      "observedFact": "The business states that service packages expire one year from the date of purchase.",
+      "observedAt": "2026-09-11T12:23:38Z"
+    },
+    {
+      "url": "https://thehimalayancave.squarespace.com/",
+      "observedFact": "The business's current site publishes a September 2026 vacation closure notice and an October 1 reopening date, providing current evidence that the business remains active.",
+      "observedAt": "2026-09-11T12:23:38Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.93,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Demonstrate automated confirmations, reminders and reschedule recovery designed to protect appointment revenue without changing the merchant's cancellation policy."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.92,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Use permission-based reminders for customers with prepaid credits or packages approaching expiration to encourage timely return visits."
+    },
+    {
+      "category": "loyalty_gap",
+      "confidence": 0.72,
+      "evidenceIndexes": [0, 2],
+      "recommendedFix": "Demonstrate a repeat-visit rewards layer across eligible wellness services and package usage, positioned as an enhancement rather than proof of an existing deficiency."
+    }
+  ],
+  "recommendedEntryOffer": "Package Reactivation + Repeat-Visit Revenue Engine",
+  "notes": "Observed facts show repeatable services, prepaid/package balances, expiration windows and strict cancellation rules. Hypothesis: Places Rewards can improve package utilization and timely return visits through reminders and rewards. The loyalty_gap classification is a sales hypothesis derived from repeat-service structure and should not be interpreted as proof that the business lacks an internal loyalty process. No monetary loss is claimed from public evidence."
+}
