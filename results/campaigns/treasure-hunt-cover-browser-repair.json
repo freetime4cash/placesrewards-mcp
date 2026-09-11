@@ -1,6 +1,6 @@
 {
-    "status": "completed",
-    "started_at": "2026-09-11T23:48:20+00:00",
+    "status": "failed",
+    "started_at": "2026-09-11T23:52:44+00:00",
     "attempts": [
         {
             "tool": "decode-existing-cover",
@@ -22,28 +22,28 @@
     "old_source_decodable": false,
     "file": {
         "path": "/home/placevle/app.placesrewards.com/storage/app/public/treasure-hunt/scratch/cover.webp",
-        "bytes": 70402,
-        "sha1": "c93448627a01f53ab40bf20539faac56fccc2f36",
+        "bytes": 0,
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
         "width": 1200,
         "height": 900,
         "mime": "image/webp"
     },
     "http": {
-        "url": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp?v=1789170501",
+        "url": "https://app.placesrewards.com/storage/treasure-hunt/scratch/cover.webp?v=1789170767",
         "status": 200,
         "content_type": "image/webp",
-        "bytes": 70402,
-        "riff_webp": true,
-        "decoder_exit": 0,
-        "decoder_output": "WEBP 1200 900",
+        "bytes": 0,
+        "riff_webp": false,
+        "decoder_exit": 1,
+        "decoder_output": "convert: InsufficientImageDataInFile `/home/placevle/app.placesrewards.com/storage/app/public/treasure-hunt/scratch/cover-http-probe.webp' @ error/webp.c/ReadWEBPImage/587.\nconvert: NoImagesDefined `info:' @ error/convert.c/ConvertImageCommand/3234.",
         "headers": [
             "HTTP/2 200",
-            "date: Fri, 11 Sep 2026 23:48:22 GMT",
+            "date: Fri, 11 Sep 2026 23:52:47 GMT",
             "content-type: image/webp",
-            "content-length: 70402",
+            "content-length: 0",
             "cache-control: no-store, no-cache, must-revalidate, max-age=0",
             "expires: 0",
-            "last-modified: Fri, 11 Sep 2026 23:48:21 GMT",
+            "last-modified: Fri, 11 Sep 2026 23:52:47 GMT",
             "accept-ranges: bytes",
             "server: cloudflare",
             "pragma: no-cache",
@@ -51,14 +51,14 @@
             "cf-cache-status: BYPASS",
             "strict-transport-security: max-age=15552000; includeSubDomains; preload",
             "x-content-type-options: nosniff",
-            "report-to: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=IwH%2Fkq%2BPO7ZFR11qPFExqpzeaYdc3G7n0sRisz3P3dteZpTsoe7XOVI4wO%2F04pc7J32sP%2Fe%2BTCEEPaIN7cDlbJal%2F6%2Budc1s14ZCdyp8izRVYhlUvcnPhxppnnHm4x3paV%2B58ilQba8%3D\"}]}",
+            "report-to: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=XRTWLXP41H%2FKn%2BR6yq6iuqREP%2BKK%2BsgYkZd%2BWZNsm6QjgxydQXxLHe7EVyqZfHljkR0J5PlmfOzhc%2F0SAtfjY%2B3dj9yQdYjPaEDpM%2BSHA6ai5sjNtUiwya3eaWdQPnDmkxqkuyZruu4%3D\"}]}",
             "nel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
-            "cf-ray: a39a90161f350696-PHX",
+            "cf-ray: a39a96921fdc9869-PHX",
             "alt-svc: h3=\":443\"; ma=86400",
             ""
         ],
         "error": null
     },
-    "verified": true,
-    "completed_at": "2026-09-11T23:48:22+00:00"
+    "verified": false,
+    "completed_at": "2026-09-11T23:52:47+00:00"
 }
