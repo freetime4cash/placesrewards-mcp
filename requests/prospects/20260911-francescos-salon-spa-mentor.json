@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260911-francescos-salon-spa-mentor",
+  "observedAt": "2026-09-11T12:23:38Z",
+  "business": {
+    "name": "Francesco's Salon & Spa",
+    "city": "Mentor, OH",
+    "website": "https://francescossalonspa.com/",
+    "category": "salon_spa",
+    "publicContact": {
+      "phone": "+1-440-951-4800",
+      "sourceUrl": "https://francescossalonspa.com/contact/",
+      "observedAt": "2026-09-11T12:23:38Z"
+    }
+  },
+  "fitScore": 93,
+  "evidence": [
+    {
+      "url": "https://francescossalonspa.com/appointments/",
+      "observedFact": "The business requires parties or groups of three or more to reserve two weeks in advance, requests a 50% deposit plus a credit-card hold, and states that group cancellations must be rescheduled to avoid losing the deposit.",
+      "observedAt": "2026-09-11T12:23:38Z"
+    },
+    {
+      "url": "https://francescossalonspa.com/spa/spa-parties/",
+      "observedFact": "The business actively sells spa parties for birthdays, bachelor/bachelorette parties, anniversaries, bridal parties, office parties, employee incentives and other group occasions for 3 to 15 guests.",
+      "observedAt": "2026-09-11T12:23:38Z"
+    },
+    {
+      "url": "https://francescossalonspa.com/contact/",
+      "observedFact": "The business says appointment and inquiry emails are checked only once or twice daily and directs customers to call for a quick response on availability.",
+      "observedAt": "2026-09-11T12:23:38Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.96,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Demonstrate a group-event capture workflow that enrolls spa-party guests into measurable post-event rewards and return-visit sequences."
+    },
+    {
+      "category": "booking_friction",
+      "confidence": 0.94,
+      "evidenceIndexes": [0],
+      "recommendedFix": "Add automated pre-visit reminders, confirmation nudges and reschedule recovery around high-value group reservations."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.9,
+      "evidenceIndexes": [2],
+      "recommendedFix": "Demonstrate immediate automated acknowledgement and follow-up for appointment and availability inquiries while preserving phone-based booking."
+    }
+  ],
+  "recommendedEntryOffer": "Spa Party Retention + Booking Recovery Revenue Engine",
+  "notes": "Observed facts show group-event volume opportunities and explicit booking/follow-up constraints. Hypothesis: Places Rewards can help convert event guests into trackable repeat visitors and reduce leakage around inquiry follow-up. No monetary loss is claimed from public evidence."
+}
