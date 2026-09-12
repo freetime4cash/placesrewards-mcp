@@ -20,9 +20,9 @@
                 "id": "95cbd0bf-8bbb-436d-b7c6-a2e1e558db25",
                 "found": true,
                 "description_present": true,
-                "description": "{\"en\":\"The Hunter Passport is the entry point for the entire system. A participant joins once, receives a digital Treasure Hunt identity, and carries the same relationship through merchant visits, stamps, points, rewards, referrals and post",
-                "title": "{\"en\":\"Hunter Passport \u2014 Join Once, Keep Earning\"}",
-                "head": "{\"en\":\"Join once. Keep earning across the hunt.\"}",
+                "description": "{\"en_US\":\"WELCOME TO THE HUNT. Activate your Hunter Passport and receive 100 demo welcome points. Use one Passport across participating-business visits, Explorer Trail stamps, local rewards, referrals and comeback offers. The Hunt creates t",
+                "title": "{\"en_US\":\"01 \u2014 Northeast Ohio Treasure Hunt Hunter Passport\",\"en\":\"01 \u2014 Northeast Ohio Treasure Hunt Hunter Passport\"}",
+                "head": "{\"en_US\":\"01 \u2022 HUNTER PASSPORT \u2014 Join once. Keep earning through the entire Hunt.\",\"en\":\"01 \u2022 HUNTER PASSPORT \u2014 Join once. Keep earning through the entire Hunt.\"}",
                 "name": "[TOM DEMO 01] Hunter Passport"
             }
         },
@@ -38,8 +38,8 @@
                 "id": "a9566430-b6b0-434d-ae3c-f3ba85421c5f",
                 "found": true,
                 "description_present": true,
-                "description": "{\"en\":\"The Explorer Trail turns the Hunt into a cross-business customer journey. Each verified participating-business stop earns a stamp. Completing all five stops unlocks a local reward, encouraging hunters to circulate through the merchan",
-                "title": "{\"en\":\"5-Stop Explorer Trail \u2014 Move Traffic Across Town\"}",
+                "description": "{\"en_US\":\"VISIT 5 PARTICIPATING BUSINESSES. Earn one verified stamp at each stop. Complete all five stops to unlock the Explorer Trail reward. This module intentionally circulates Treasure Hunt traffic through the participating merchant net",
+                "title": "{\"en_US\":\"02 \u2014 5-Stop Northeast Ohio Explorer Trail\",\"en\":\"02 \u2014 5-Stop Northeast Ohio Explorer Trail\"}",
                 "name": "[TOM DEMO 02] 5-Stop Explorer Trail"
             }
         },
@@ -70,8 +70,8 @@
                 "id": "29304849-3c10-4a06-8f8f-4bad776b79f9",
                 "found": true,
                 "description_present": true,
-                "description": "{\"en\":\"After an approved clue-related action or verified business visit, the hunter can unlock a merchant-funded reward. The module never changes the clue, reveals the answer or affects the odds of finding the treasure; it only rewards the ",
-                "title": "{\"en\":\"Clue Completion Reward \u2014 Reward the Visit, Not the Answer\"}",
+                "description": "{\"en_US\":\"CLUE ACTIVITY BONUS: +250 demo points after an approved Hunt activity or verified participating-business visit. This reward never reveals an answer, changes an official clue or affects the odds of finding the treasure. It rewards ",
+                "title": "{\"en_US\":\"04 \u2014 Clue Activity Bonus\",\"en\":\"04 \u2014 Clue Activity Bonus\"}",
                 "name": "[TOM DEMO 04] Clue Completion Reward"
             }
         },
@@ -87,8 +87,8 @@
                 "id": "5738988e-265f-422f-9b41-5828790af3c0",
                 "found": true,
                 "description_present": true,
-                "description": "{\"en\":\"At the business, the hunter is verified through the merchant or staff workflow. The check-in can issue the appropriate stamp or points and records that the Treasure Hunt produced an actual visit at that merchant. Demo card content: M",
-                "title": "{\"en\":\"Merchant Check-In \u2014 Prove the Foot Traffic\"}",
+                "description": "{\"en_US\":\"PROVE THE FOOT TRAFFIC. Staff or QR verification confirms the hunter physically reached the participating business. The verified visit can issue the appropriate stamp or points and creates merchant-level campaign attribution so To",
+                "title": "{\"en_US\":\"05 \u2014 Merchant Check-In Verification\",\"en\":\"05 \u2014 Merchant Check-In Verification\"}",
                 "name": "[TOM DEMO 05] Merchant Check-In Verification"
             }
         },
@@ -104,8 +104,8 @@
                 "id": "13085fc2-2a5d-43ee-92b5-441bc368c55b",
                 "found": true,
                 "description_present": true,
-                "description": "{\"en\":\"A participating business can contribute a prize, experience, gift card or special reward. Eligibility can be tied to a verified visit, Explorer Trail milestone or another approved campaign action, giving merchants their own promotion",
-                "title": "{\"en\":\"Local Prize & Giveaway \u2014 Give Every Business a Win Moment\"}",
+                "description": "{\"en_US\":\"LOCAL BUSINESS BONUS PRIZE. A participating merchant can supply a gift card, product, service or experience and tie eligibility to a verified visit, Explorer Trail milestone or other approved action. This gives every merchant a re",
+                "title": "{\"en_US\":\"06 \u2014 Local Business Bonus Prize\",\"en\":\"06 \u2014 Local Business Bonus Prize\"}",
                 "name": "[TOM DEMO 06] Local Prize & Giveaway Reward"
             }
         },
@@ -136,7 +136,7 @@
                 "id": "8744df20-c34b-484c-9f8f-15140f8fc542",
                 "found": true,
                 "description_present": true,
-                "description": "{\"en\":\"The VIP tier gives the most active participants a visible level to work toward. Qualification can use accumulated points and activity, while benefits can include premium merchant offers, early access, special experiences or next-Hunt",
+                "description": "{\"en_US\":\"HUNTER VIP rewards the people who support participating businesses most. Demo qualification: 2,500 points. Benefits can include early Hunt previews, premium merchant perks, special local experiences and priority invitations for th",
                 "name": "[TOM DEMO 08] Hunter VIP Progression"
             }
         },
@@ -168,8 +168,8 @@
                 "id": "14788f52-438e-4293-bd6b-c82b8e448983",
                 "found": true,
                 "description_present": true,
-                "description": "{\"en\":\"After the initial campaign visit, the hunter receives a time-bounded merchant offer designed to trigger a second purchase. The demo uses $5 off $25, while each business can configure the value and minimum spend that fits its economic",
-                "title": "{\"en\":\"Hunter Comeback Offer \u2014 Turn the First Visit Into the Second\"}",
+                "description": "{\"en_US\":\"TURN THE FIRST VISIT INTO THE SECOND. This demo comeback voucher gives a hunter $5 off a $25 return purchase after the initial Treasure Hunt visit. Each participating business can set its own offer and minimum spend, turning event",
+                "title": "{\"en_US\":\"10 \u2014 Hunter Comeback: $5 Off $25\",\"en\":\"10 \u2014 Hunter Comeback: $5 Off $25\"}",
                 "name": "[TOM DEMO 10] Hunter Comeback $5 Off $25"
             }
         },
@@ -204,5 +204,5 @@
             }
         }
     ],
-    "verified_at": "2026-09-12T00:08:05+00:00"
+    "verified_at": "2026-09-12T00:13:25+00:00"
 }
