@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260912-elizabeth-smrdel-massage-willoughby",
+  "observedAt": "2026-09-12T12:28:59Z",
+  "business": {
+    "name": "Elizabeth Smrdel Massage",
+    "city": "Willoughby, OH",
+    "website": "https://www.elizabethsmrdelmassage.com/",
+    "category": "massage therapy",
+    "publicContact": {
+      "email": "info@elizabethsmrdelmassage.com",
+      "phone": "440-637-4513",
+      "sourceUrl": "https://www.elizabethsmrdelmassage.com/contact-me",
+      "observedAt": "2026-09-12T12:28:59Z"
+    }
+  },
+  "fitScore": 87,
+  "evidence": [
+    {
+      "url": "https://www.elizabethsmrdelmassage.com/contact-me",
+      "observedFact": "The business requires 24 hours notice for cancellation or rescheduling; clients who give less notice are responsible for the full appointment amount.",
+      "observedAt": "2026-09-12T12:28:59Z"
+    },
+    {
+      "url": "https://www.elizabethsmrdelmassage.com/contact-me",
+      "observedFact": "Online booking is available for the Willoughby location, while Beachwood availability requires direct contact.",
+      "observedAt": "2026-09-12T12:28:59Z"
+    },
+    {
+      "url": "https://www.elizabethsmrdelmassage.com/",
+      "observedFact": "The business states it moved to its Downtown Willoughby location and publicly promotes current booking from that location.",
+      "observedAt": "2026-09-12T12:28:59Z"
+    },
+    {
+      "url": "https://www.elizabethsmrdelmassage.com/classes",
+      "observedFact": "The practice offers repeatable therapeutic services including 60- and 90-minute massage sessions and post-operative recovery sessions, with some prospective post-op clients requiring a phone or Zoom consultation.",
+      "observedAt": "2026-09-12T12:28:59Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.94,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Demonstrate confirmations, reminders and rescheduling recovery designed to protect appointment utilization while preserving the existing cancellation policy."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.78,
+      "evidenceIndexes": [1, 3],
+      "recommendedFix": "Automate permission-based follow-up for direct-contact availability requests and consultation-dependent services so qualified prospects receive timely next-step prompts."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.82,
+      "evidenceIndexes": [3],
+      "recommendedFix": "Use service-appropriate comeback reminders for clients receiving repeatable therapeutic and recovery services, without making medical outcome claims."
+    }
+  ],
+  "recommendedEntryOffer": "Appointment Recovery + Repeat-Visit Revenue Engine",
+  "notes": "Observed facts show a strict late-cancellation policy, mixed online/direct-contact booking paths and recurring therapeutic services. The commercial hypothesis is that automated reminders, follow-up and repeat-visit workflows can improve customer continuity. No monetary loss or medical benefit is claimed."
+}
