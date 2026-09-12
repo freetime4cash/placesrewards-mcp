@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260912-bella-donna-salon-spa-painesville",
+  "observedAt": "2026-09-12T12:28:59Z",
+  "business": {
+    "name": "Bella Donna Salon & Spa",
+    "city": "Painesville, OH",
+    "website": "https://www.belladonnasalonandspa.com/",
+    "category": "salon and spa",
+    "publicContact": {
+      "phone": "440-352-2480",
+      "sourceUrl": "https://www.belladonnasalonandspa.com/contact-us/",
+      "observedAt": "2026-09-12T12:28:59Z"
+    }
+  },
+  "fitScore": 91,
+  "evidence": [
+    {
+      "url": "https://www.belladonnasalonandspa.com/spa/",
+      "observedFact": "Bella Donna requires a credit card on file when scheduling multiple appointments, charges 50% for appointments not canceled with 24 hours notice, and charges 100% for no-call/no-show appointments.",
+      "observedAt": "2026-09-12T12:28:59Z"
+    },
+    {
+      "url": "https://www.belladonnasalonandspa.com/",
+      "observedFact": "Bella Donna actively offers online appointment booking, gift certificates and a new-client offer of $20 off a first service over $50.",
+      "observedAt": "2026-09-12T12:28:59Z"
+    },
+    {
+      "url": "https://www.belladonnasalonandspa.com/gift-certificates/",
+      "observedFact": "Bella Donna sells multiple spa packages plus general gift cards that can be used for services and that expire two years after purchase.",
+      "observedAt": "2026-09-12T12:28:59Z"
+    },
+    {
+      "url": "https://www.belladonnasalonandspa.com/contact-us/",
+      "observedFact": "Bella Donna publishes current operating hours, online booking and a public business phone number at its Painesville location.",
+      "observedAt": "2026-09-12T12:28:59Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.96,
+      "evidenceIndexes": [0],
+      "recommendedFix": "Demonstrate appointment reminders, confirmation nudges and recovery workflows designed to reduce late cancellations and no-shows without changing the salon's booking policy."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.88,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Create permission-based comeback campaigns for first-time clients, gift-card recipients and package purchasers who have not returned within an appropriate service interval."
+    },
+    {
+      "category": "loyalty_gap",
+      "confidence": 0.73,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Test a measurable repeat-visit rewards layer that complements existing gift cards and first-visit promotions; absence of a visible loyalty program is treated only as a sales hypothesis."
+    }
+  ],
+  "recommendedEntryOffer": "Booking Recovery + Client Reactivation Revenue Engine",
+  "notes": "Observed facts show appointment-loss controls, gift-card/package sales and a first-visit acquisition offer. The hypothesis is that Places Rewards can add automated repeat-visit and reactivation workflows around those existing systems. No monetary loss is claimed, and lack of a visible loyalty program is not treated as proof of lost revenue."
+}
