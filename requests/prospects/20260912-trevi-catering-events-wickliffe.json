@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260912-trevi-catering-events-wickliffe",
+  "observedAt": "2026-09-12T12:28:59Z",
+  "business": {
+    "name": "Trevi Catering & Events",
+    "city": "Wickliffe, OH",
+    "website": "https://www.trevicateringohio.com/",
+    "category": "catering and events",
+    "publicContact": {
+      "email": "sales@trevicateringohio.com",
+      "phone": "440-253-3005",
+      "sourceUrl": "https://www.trevicateringohio.com/contact",
+      "observedAt": "2026-09-12T12:28:59Z"
+    }
+  },
+  "fitScore": 94,
+  "evidence": [
+    {
+      "url": "https://www.trevicateringohio.com/trevi-events",
+      "observedFact": "Trevi publicly promotes a recurring calendar of special events including comedy, murder mystery dinners, cooking classes, Easter Bunny brunch and holiday parties, and it invites visitors to join its mailing list.",
+      "observedAt": "2026-09-12T12:28:59Z"
+    },
+    {
+      "url": "https://www.trevicateringohio.com/",
+      "observedFact": "Trevi actively serves weddings, corporate events, banquets and private parties and says it works with clients through event planning and coordination.",
+      "observedAt": "2026-09-12T12:28:59Z"
+    },
+    {
+      "url": "https://www.trevicateringohio.com/contact",
+      "observedFact": "Trevi's public contact workflow invites prospects to submit a contact form or book a consultation to begin planning an event.",
+      "observedAt": "2026-09-12T12:28:59Z"
+    },
+    {
+      "url": "https://www.trevicateringohio.com/murdermystery",
+      "observedFact": "Trevi actively sells ticketed public experiences such as its Murder Mystery Dinner and states tickets are limited and expected to sell out.",
+      "observedAt": "2026-09-12T12:28:59Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.97,
+      "evidenceIndexes": [0, 1, 3],
+      "recommendedFix": "Demonstrate an event-to-repeat-visit workflow that captures attendees, rewards return visits, cross-promotes future Trevi events and measures repeat engagement."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.82,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Demonstrate automated acknowledgement, follow-up sequencing and re-engagement for consultation and event-planning inquiries."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.84,
+      "evidenceIndexes": [0, 3],
+      "recommendedFix": "Use prior event attendees and mailing-list subscribers for permission-based invitations to future ticketed events and seasonal offers."
+    }
+  ],
+  "recommendedEntryOffer": "Event-to-Repeat Revenue Engine",
+  "notes": "Observed facts show a recurring event calendar, ticketed experiences, catering/private-event demand and a consultation/contact workflow. The commercial hypothesis is that Places Rewards can help Trevi convert event attendance and inquiries into measurable repeat visits and future-event participation. No monetary loss is claimed."
+}
