@@ -1,14 +1,14 @@
 {
-    "status": "failed",
+    "status": "completed",
     "game_id": "1fefb288-a8cc-46d4-a4a3-04fe56f91329",
-    "started_at": "2026-09-12T00:41:55+00:00",
+    "started_at": "2026-09-12T00:44:34+00:00",
     "files": {
         "cover": {
             "source": "/home/placevle/placesrewards-agent-server/assets/treasure-hunt-v4/scratch/cover.svg",
             "storage": "/home/placevle/app.placesrewards.com/storage/app/public/treasure-hunt/scratch/cover.webp",
             "public_mirror": "/home/placevle/app.placesrewards.com/public/files/demo/treasure-hunt/scratch/cover.webp",
-            "bytes": 70368,
-            "sha1": "da850808b05cd02b6e6cb5e4a313b3f565836d3e",
+            "bytes": 70402,
+            "sha1": "c93448627a01f53ab40bf20539faac56fccc2f36",
             "width": 1200,
             "height": 900,
             "mime": "image/webp",
@@ -91,12 +91,12 @@
             "cover": {
                 "status": 200,
                 "content_type": "image/webp",
-                "bytes": 0,
-                "riff_webp": false,
-                "decoder_exit": null,
-                "decoder_output": "",
+                "bytes": 70402,
+                "riff_webp": true,
+                "decoder_exit": 0,
+                "decoder_output": "WEBP 1200 900",
                 "error": null,
-                "valid_webp": false
+                "valid_webp": true
             },
             "winner": {
                 "status": 200,
@@ -157,6 +157,6 @@
         "is_link": true,
         "is_dir": true
     },
-    "verified": false,
-    "completed_at": "2026-09-12T00:41:59+00:00"
+    "verified": true,
+    "completed_at": "2026-09-12T00:44:39+00:00"
 }
