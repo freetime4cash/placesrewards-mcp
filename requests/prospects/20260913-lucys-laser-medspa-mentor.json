@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260913-lucys-laser-medspa-mentor",
+  "observedAt": "2026-09-13T12:47:58Z",
+  "business": {
+    "name": "Lucy's Laser & MedSpa",
+    "city": "Mentor, OH",
+    "website": "https://www.lucyslasermedspa.com/",
+    "category": "medical spa",
+    "publicContact": {
+      "email": "lucy@llmspa.com",
+      "phone": "440-600-1032",
+      "sourceUrl": "https://www.lucyslasermedspa.com/contact",
+      "observedAt": "2026-09-13T12:47:58Z"
+    }
+  },
+  "fitScore": 93,
+  "evidence": [
+    {
+      "url": "https://www.lucyslasermedspa.com/",
+      "observedFact": "The business website is active, lists its Mentor location, and presents active Book Now calls to action across current treatment offerings.",
+      "observedAt": "2026-09-13T12:47:58Z"
+    },
+    {
+      "url": "https://www.lucyslasermedspa.com/bbl-forever-young",
+      "observedFact": "For BBL Forever Young appointments, the business states that a $200 deposit is required when scheduling and is forfeited for late cancellation with less than 48 hours notice or a no-show.",
+      "observedAt": "2026-09-13T12:47:58Z"
+    },
+    {
+      "url": "https://www.lucyslasermedspa.com/moxi-treatment",
+      "observedFact": "The business sells multi-treatment MOXI packages and states a recommended cadence of three consecutive monthly treatments followed by annual maintenance; the page also states a $200 scheduling deposit is forfeited for late cancellation or no-show.",
+      "observedAt": "2026-09-13T12:47:58Z"
+    },
+    {
+      "url": "https://www.lucyslasermedspa.com/contact",
+      "observedFact": "The business publishes phone 440-600-1032 and general business email lucy@llmspa.com for its Mentor location.",
+      "observedAt": "2026-09-13T12:47:58Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.97,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Demonstrate non-clinical appointment reminder, confirmation, cancellation-risk, waitlist/backfill, and return-booking workflows that complement the existing deposit policy."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.93,
+      "evidenceIndexes": [2],
+      "recommendedFix": "Demonstrate consent-based reminders and reactivation journeys around published multi-session treatment cadence and maintenance intervals, without making clinical outcome claims."
+    }
+  ],
+  "recommendedEntryOffer": "Appointment Recovery + Treatment Reactivation Revenue Engine",
+  "notes": "Observed facts come from the business's current public website. Hypothesis: appointment-protection automation and consent-based maintenance/reactivation messaging could improve administrative follow-through for repeatable services. The recommended offer is limited to marketing, booking, and retention workflow support and makes no medical or clinical claims. No monetary loss is claimed."
+}
