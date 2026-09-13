@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260913-jenniffer-and-co-mentor",
+  "observedAt": "2026-09-13T12:47:58Z",
+  "business": {
+    "name": "Jenniffer & Co",
+    "city": "Mentor, OH",
+    "website": "https://jenniffer-and-co.com/",
+    "category": "salon and spa",
+    "publicContact": {
+      "phone": "440-266-4247",
+      "sourceUrl": "https://jenniffer-and-co.com/contact/",
+      "observedAt": "2026-09-13T12:47:58Z"
+    }
+  },
+  "fitScore": 95,
+  "evidence": [
+    {
+      "url": "https://jenniffer-and-co.com/contact/",
+      "observedFact": "The business lists an active Mentor location at 9420 Mentor Ave with current operating hours, a booking link, a contact form, phone 440-266-4247, and a link to its cancellation policy.",
+      "observedAt": "2026-09-13T12:47:58Z"
+    },
+    {
+      "url": "https://jenniffer-and-co.com/privacy-policy/",
+      "observedFact": "The business states that cancellations or reschedules made less than 24 hours in advance are subject to a $25 fee per service and that no-shows may be charged the full scheduled-service price, including any non-refundable deposit.",
+      "observedAt": "2026-09-13T12:47:58Z"
+    },
+    {
+      "url": "https://www.bbb.org/us/oh/mentor/profile/beauty-salon/jenniffer-co-0312-16000705/complaints",
+      "observedFact": "BBB publicly reports three complaints in the last three years and one complaint closed in the last 12 months for Jenniffer & Co. The complaint page includes disputes involving cancellation/deposit handling; the underlying customer allegations and business responses are conflicting claims, not treated here as independently verified facts.",
+      "observedAt": "2026-09-13T12:47:58Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.97,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Demonstrate automated appointment reminders, cancellation-risk follow-up, waitlist/backfill workflows, and post-visit return triggers without changing the salon's published cancellation policy."
+    },
+    {
+      "category": "reputation",
+      "confidence": 0.86,
+      "evidenceIndexes": [2],
+      "recommendedFix": "Demonstrate a review-recovery workflow that captures dissatisfaction privately, routes service-recovery follow-up, and requests public reviews from satisfied clients after completed visits."
+    }
+  ],
+  "recommendedEntryOffer": "Booking Recovery + Reputation Protection Revenue Engine",
+  "notes": "Observed facts are limited to the business's published booking/cancellation information and the existence/status of public BBB complaints. Customer allegations in BBB complaint text are not assumed true. Hypothesis: reducing preventable appointment friction and adding structured service-recovery/review follow-up could improve retention and protect reputation. No monetary loss is claimed."
+}
