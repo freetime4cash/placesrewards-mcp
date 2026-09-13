@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260913-the-everly-mentor",
+  "observedAt": "2026-09-13T12:47:58Z",
+  "business": {
+    "name": "The Everly",
+    "city": "Mentor, OH",
+    "website": "https://www.eventsattheeverly.com/",
+    "category": "event venue",
+    "publicContact": {
+      "email": "info@eventsattheeverly.com",
+      "phone": "440-290-8048",
+      "sourceUrl": "https://www.eventsattheeverly.com/contact",
+      "observedAt": "2026-09-13T12:47:58Z"
+    }
+  },
+  "fitScore": 89,
+  "evidence": [
+    {
+      "url": "https://www.eventsattheeverly.com/",
+      "observedFact": "The venue's active website markets weddings and other celebrations, states that there is always something to celebrate, and uses a Book Now call to action for new event inquiries.",
+      "observedAt": "2026-09-13T12:47:58Z"
+    },
+    {
+      "url": "https://business.mentorchamber.org/list/member/the-everly-5030",
+      "observedFact": "The Mentor Area Chamber of Commerce lists The Everly as an active Mentor party center for corporate events, weddings, and life celebrations at 8200 Norton Parkway.",
+      "observedAt": "2026-09-13T12:47:58Z"
+    },
+    {
+      "url": "https://www.eventsattheeverly.com/about-us",
+      "observedFact": "The venue states that relationship-building, personalization, hospitality, and helping each customer create a unique event are core operating values.",
+      "observedAt": "2026-09-13T12:47:58Z"
+    },
+    {
+      "url": "https://www.eventsattheeverly.com/contact",
+      "observedFact": "The business publishes general contact email info@eventsattheeverly.com and phone 440-290-8048 for the Mentor venue.",
+      "observedAt": "2026-09-13T12:47:58Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.9,
+      "evidenceIndexes": [0, 1, 2],
+      "recommendedFix": "Demonstrate an event-to-relationship workflow that captures opt-in guests, issues post-event rewards or partner offers, and creates measurable reasons for attendees and hosts to re-engage after the original event."
+    },
+    {
+      "category": "referral_gap",
+      "confidence": 0.74,
+      "evidenceIndexes": [0, 2],
+      "recommendedFix": "Demonstrate a trackable host-and-guest referral workflow that turns successful events into attributable introductions for future celebrations and corporate bookings."
+    }
+  ],
+  "recommendedEntryOffer": "Event-to-Relationship + Referral Revenue Engine",
+  "notes": "Observed facts establish an active relationship-oriented event venue serving weddings, corporate events, and life celebrations. Hypothesis: because each event brings a fresh host and guest audience, a consent-based post-event rewards/referral layer could extend the relationship beyond the event and create attributable future introductions. No claim is made that The Everly currently lacks follow-up or loses revenue, and no monetary loss is claimed."
+}
