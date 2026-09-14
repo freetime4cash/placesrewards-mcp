@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260914-tryst-salon-spa-mentor",
+  "observedAt": "2026-09-14T12:27:51Z",
+  "business": {
+    "name": "Tryst Salon and Spa",
+    "city": "Mentor, OH",
+    "website": "https://trystsalonandspa.com/",
+    "category": "salon_and_spa",
+    "publicContact": {
+      "phone": "+1-440-974-4001",
+      "sourceUrl": "https://trystsalonandspa.com/",
+      "observedAt": "2026-09-14T12:27:51Z"
+    }
+  },
+  "fitScore": 94,
+  "evidence": [
+    {
+      "url": "https://trystsalonandspa.com/",
+      "observedFact": "The active business website lists current operating hours, a Mentor address, appointment scheduling, and a published cancellation-policy section.",
+      "observedAt": "2026-09-14T12:27:51Z"
+    },
+    {
+      "url": "https://trystsalonandspa.com/news",
+      "observedFact": "The salon states that last-minute cancellations and no-shows can leave appointment time unfilled and says repeat no-shows or cancellations inside 24 hours are charged 50% of the missed appointment cost at the next visit.",
+      "observedAt": "2026-09-14T12:27:51Z"
+    },
+    {
+      "url": "https://trystsalonandspa.com/about-us",
+      "observedFact": "The salon describes itself as an independent Mentor business founded in 2012 and explicitly says its customer strategy is to attract customers and keep customers with exceptional service.",
+      "observedAt": "2026-09-14T12:27:51Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.98,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Demonstrate automated confirmation, reminder, waitlist-fill, and missed-appointment recovery workflows tied to appointment status."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.86,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Demonstrate a respectful win-back workflow for lapsed clients and customers affected by cancellation/no-show events."
+    }
+  ],
+  "recommendedEntryOffer": "Booking Recovery + Client Reactivation Revenue Engine",
+  "notes": "Observed fact: the salon publicly documents last-minute cancellation/no-show friction and an explicit customer-retention objective. Hypothesis: Places Rewards could improve recovery and reactivation; no monetary loss is asserted beyond the salon's own general statement that unfilled missed appointments hurt staff financially."
+}
