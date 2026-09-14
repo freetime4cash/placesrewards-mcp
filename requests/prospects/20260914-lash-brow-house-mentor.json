@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260914-lash-brow-house-mentor",
+  "observedAt": "2026-09-14T12:27:51Z",
+  "business": {
+    "name": "Lash & Brow House",
+    "city": "Mentor, OH",
+    "website": "https://www.stylesbycrystal.com/book-now",
+    "category": "beauty_salon",
+    "publicContact": {
+      "phone": "+1-440-313-1586",
+      "sourceUrl": "https://www.stylesbycrystal.com/book-now",
+      "observedAt": "2026-09-14T12:27:51Z"
+    }
+  },
+  "fitScore": 90,
+  "evidence": [
+    {
+      "url": "https://www.vagaro.com/lashnbrowhouse",
+      "observedFact": "The active salon listing states that cancellations or reschedules within 24 hours require payment of 50% of booked services and that excessive lateness can force rescheduling with a full-service cancellation fee.",
+      "observedAt": "2026-09-14T12:27:51Z"
+    },
+    {
+      "url": "https://www.vagaro.com/lashnbrowhouse",
+      "observedFact": "The salon instructs clients to call or text to cancel because it does not always see email or Instagram/Facebook messages, creating a concrete multi-channel follow-up friction signal.",
+      "observedAt": "2026-09-14T12:27:51Z"
+    },
+    {
+      "url": "https://www.stylesbycrystal.com/book-now",
+      "observedFact": "The business-owned booking page lists the Mentor location and phone number and offers current booking for lash, brow and related beauty services.",
+      "observedAt": "2026-09-14T12:27:51Z"
+    },
+    {
+      "url": "https://cityofmentor.com/small-business-spotlight-mentor-welcomes-lash-brow-house/",
+      "observedFact": "The City of Mentor reports that the business was founded in 2014, expanded its service menu as its team grew, and operates from 7341 Center Street in Mentor.",
+      "observedAt": "2026-09-14T12:27:51Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.96,
+      "evidenceIndexes": [0, 2],
+      "recommendedFix": "Demonstrate automated appointment confirmations, cancellation recovery, and rebooking workflows around high-value recurring beauty services."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.95,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Demonstrate a single tracked follow-up workflow that captures booking and cancellation intent across web, text, and social inquiry channels."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.8,
+      "evidenceIndexes": [0, 3],
+      "recommendedFix": "Demonstrate win-back reminders for overdue recurring-service clients and clients whose appointments were cancelled or rescheduled."
+    }
+  ],
+  "recommendedEntryOffer": "Booking Recovery + Follow-Up Revenue Engine",
+  "notes": "Observed fact: the salon publicly documents cancellation/reschedule penalties and explicitly says some digital message channels may not be seen. Hypothesis: centralized follow-up and reactivation automation could reduce missed opportunities. No monetary loss is estimated."
+}
