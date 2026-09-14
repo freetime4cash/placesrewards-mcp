@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260914-luminous-glow-by-kaylee-mentor",
+  "observedAt": "2026-09-14T12:27:51Z",
+  "business": {
+    "name": "Luminous Glow by Kaylee",
+    "city": "Mentor, OH",
+    "website": "https://luminousglowbykaylee.glossgenius.com/",
+    "category": "esthetician_and_spa_services",
+    "publicContact": {
+      "phone": "+1-440-231-7415",
+      "sourceUrl": "https://luminousglowbykaylee.glossgenius.com/about",
+      "observedAt": "2026-09-14T12:27:51Z"
+    }
+  },
+  "fitScore": 91,
+  "evidence": [
+    {
+      "url": "https://luminousglowbykaylee.glossgenius.com/about",
+      "observedFact": "The active booking page lists current Mentor hours and states that forgotten or cancelled appointments prevent the business from filling appointment time and prevent waiting-list clients from receiving requested services.",
+      "observedAt": "2026-09-14T12:27:51Z"
+    },
+    {
+      "url": "https://luminousglowbykaylee.glossgenius.com/about",
+      "observedFact": "The business says appointments may be booked months in advance, sends confirmations and reminders, and charges a 50% fee for same-day cancellations or no-shows before a client can book again.",
+      "observedAt": "2026-09-14T12:27:51Z"
+    },
+    {
+      "url": "https://luminousglowbykaylee.glossgenius.com/services",
+      "observedFact": "The current service menu includes repeatable waxing, facial, massage, spray-tan and add-on services, and some new-client services require deposits.",
+      "observedAt": "2026-09-14T12:27:51Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.99,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Demonstrate a cancellation-recovery and waitlist-fill workflow that converts released appointment slots into rebooked visits."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.88,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Demonstrate automated rebooking and service-cycle reminders for clients who miss, cancel, or become overdue for repeatable services."
+    }
+  ],
+  "recommendedEntryOffer": "Cancellation Recovery + Waitlist Reactivation Revenue Engine",
+  "notes": "Observed fact: the business explicitly describes forgotten appointments, waiting-list displacement, same-day/no-show fees, long booking lead times, and repeatable services. Hypothesis: an automated recovery and reactivation layer could improve utilization and repeat visits. No monetary loss is estimated."
+}
