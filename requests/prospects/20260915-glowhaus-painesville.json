@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260915-glowhaus-painesville",
+  "observedAt": "2026-09-15T12:03:44Z",
+  "business": {
+    "name": "GlowHaus",
+    "city": "Painesville, OH",
+    "website": "https://glowhausohio.glossgenius.com/",
+    "category": "esthetician and skin care"
+  },
+  "fitScore": 91,
+  "evidence": [
+    {
+      "url": "https://glowhausohio.glossgenius.com/about",
+      "observedFact": "The active booking profile publishes current Painesville hours and requires a card on file; cancellations or reschedules inside 48 hours are charged 50%, no-shows are charged 100%, and unpaid declined-card invoices must be resolved before another appointment can be booked.",
+      "observedAt": "2026-09-15T12:03:44Z"
+    },
+    {
+      "url": "https://glowhausohio.glossgenius.com/",
+      "observedFact": "The business currently offers online booking for multiple facial services, including a dedicated New Client Facial + Consultation, confirming an active appointment-driven acquisition flow.",
+      "observedAt": "2026-09-15T12:03:44Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.99,
+      "evidenceIndexes": [0],
+      "recommendedFix": "Demonstrate cancellation recovery, rebooking reminders and permissioned waitlist/backfill workflows around appointment inventory."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.87,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Create a permissioned new-client-to-repeat-client journey with timely rebooking and comeback rewards after completed or disrupted appointments."
+    }
+  ],
+  "recommendedEntryOffer": "Cancellation Recovery + Client Reactivation Revenue Engine",
+  "notes": "The published cancellation rules are observed facts. The proposed reactivation workflow is a sales hypothesis and does not imply that GlowHaus lacks existing retention processes or has a quantified revenue loss. No publicContact is included because a general business email or phone was not verified from a business-published source during this observation."
+}
