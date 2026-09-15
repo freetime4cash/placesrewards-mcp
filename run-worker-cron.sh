@@ -71,6 +71,15 @@ if ! curl -fsSL --max-time 25 -o /dev/null "$APP_URL"; then
   exit 69
 fi
 
+# Validation mode performs no queue, repair, campaign, or production writes.
+if [ "${1:-}" = "--check" ]; then
+  "$NODE" --check worker.js
+  "$NODE" --check scripts/github-repair-worker.mjs
+  "$NODE" --check scripts/github-campaign-worker.mjs
+  printf '%s OK worker validation passed\n' "$(date -Iseconds)"
+  exit 0
+fi
+
 run_step() {
   local name="$1"
   shift
