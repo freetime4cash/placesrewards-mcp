@@ -3,20 +3,32 @@ import { promisify } from "node:util";
 import { createRuntime, summarizeJobs } from "./lib/runtime.js";
 
 const execFileAsync = promisify(execFile);
+const MAX_JOBS_PER_RUN = Math.max(
+  1,
+  Math.min(20, Number(process.env.PLACESREWARDS_AGENT_MAX_JOBS_PER_RUN ?? 10) || 10)
+);
+const CHILD_TIMEOUT_MS = Math.max(
+  10_000,
+  Math.min(180_000, Number(process.env.PLACESREWARDS_CHILD_TIMEOUT_MS ?? 90_000) || 90_000)
+);
 
 async function runChild(script) {
   try {
     const { stdout, stderr } = await execFileAsync(process.execPath, [script], {
       cwd: process.cwd(),
       env: process.env,
-      maxBuffer: 1024 * 1024
+      maxBuffer: 1024 * 1024,
+      timeout: CHILD_TIMEOUT_MS,
+      killSignal: "SIGTERM"
     });
     try { return JSON.parse(stdout); }
-    catch { return { ok: true, stdout: stdout.trim(), stderr: stderr.trim() || null }; }
+    catch { return { ok: true, stdout: stdout.trim().slice(-20_000), stderr: stderr.trim().slice(-20_000) || null }; }
   } catch (error) {
     return {
       ok: false,
       error: error instanceof Error ? error.message : String(error),
+      killed: Boolean(error?.killed),
+      signal: error?.signal ?? null,
       stdout: typeof error?.stdout === "string" ? error.stdout.slice(-5000) : null,
       stderr: typeof error?.stderr === "string" ? error.stderr.slice(-5000) : null
     };
@@ -24,15 +36,12 @@ async function runChild(script) {
 }
 
 const { orchestrator } = createRuntime();
-const processed = await orchestrator.runUntilIdle();
+const processed = await orchestrator.runUntilIdle(MAX_JOBS_PER_RUN);
 const jobs = await orchestrator.listJobs();
 
-// Revenue intelligence first inspects the live analytics schema without
-// recording merchant values, then runs the read-only internal scan. Public
-// evidence-backed prospect requests are separately validated into private
-// opportunity state. Both sources feed the same commercial routing, queue and
-// unsent-draft pipeline. Only aggregate privacy-safe status is exported.
-// No merchant contact or production campaign write is performed by this worker.
+// Revenue intelligence remains read-only here. Production campaign writes stay
+// behind the dedicated campaign worker's explicit approved-request validation,
+// and protected code repairs stay behind the hash-bound approval gate.
 const revenueContract = await runChild("scripts/revenue-analytics-contract.mjs");
 const revenueScan = await runChild("scripts/revenue-live-scan.mjs");
 const publicProspectIntake = await runChild("scripts/public-prospect-intake.mjs");
@@ -43,6 +52,8 @@ const commercialStatus = await runChild("scripts/commercial-status-export.mjs");
 
 console.log(JSON.stringify({
   processed: processed.length,
+  maxJobsPerRun: MAX_JOBS_PER_RUN,
+  childTimeoutMs: CHILD_TIMEOUT_MS,
   status: summarizeJobs(jobs),
   revenueContract,
   revenueScan,
