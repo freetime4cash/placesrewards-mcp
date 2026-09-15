@@ -87,10 +87,11 @@ run_step() {
   if timeout --signal=TERM --kill-after=15s "${STEP_TIMEOUT}s" "$@"; then
     printf '%s DONE %s\n' "$(date -Iseconds)" "$name"
     return 0
+  else
+    local code=$?
+    printf '%s ERROR %s exit=%s\n' "$(date -Iseconds)" "$name" "$code"
+    return "$code"
   fi
-  local code=$?
-  printf '%s ERROR %s exit=%s\n' "$(date -Iseconds)" "$name" "$code"
-  return "$code"
 }
 
 FAILED=0
