@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260915-sacred-hour-lakewood",
+  "observedAt": "2026-09-15T12:03:44Z",
+  "business": {
+    "name": "Sacred Hour Wellness Spa",
+    "city": "Lakewood, OH",
+    "website": "https://sacredhour.com",
+    "category": "spa and wellness",
+    "publicContact": {
+      "email": "info@sacredhour.com",
+      "phone": "216-228-9750",
+      "sourceUrl": "https://sacredhour.com/contact/",
+      "observedAt": "2026-09-15T12:03:44Z"
+    }
+  },
+  "fitScore": 95,
+  "evidence": [
+    {
+      "url": "https://sacredhour.com/faqs/",
+      "observedFact": "The business requires 24 hours notice for appointment cancellations, says late cancellations may incur the full service charge if the booking cannot be filled, and requires cancellation by phone or voicemail rather than email except where a spa group coordinator permits email.",
+      "observedAt": "2026-09-15T12:03:44Z"
+    },
+    {
+      "url": "https://sacredhour.com/spa-parties/",
+      "observedFact": "The business actively sells spa parties and custom group gatherings and promotes a monthly immersive sauna ritual, creating recurring event and group-guest audiences.",
+      "observedAt": "2026-09-15T12:03:44Z"
+    },
+    {
+      "url": "https://sacredhour.com/contact/",
+      "observedFact": "The active contact form includes booking, membership, group/private event and gift-card inquiry types and publishes general business email info@sacredhour.com and phone 216-228-9750.",
+      "observedAt": "2026-09-15T12:03:44Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.96,
+      "evidenceIndexes": [0],
+      "recommendedFix": "Demonstrate automated cancellation recovery, waitlist/backfill and rebooking workflows around appointment inventory."
+    },
+    {
+      "category": "event_retention",
+      "confidence": 0.95,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Capture group and event guests into permissioned post-event reward and return-visit journeys."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.88,
+      "evidenceIndexes": [0, 2],
+      "recommendedFix": "Centralize inquiry acknowledgement and follow-up for booking, membership and private-event leads while preserving staff approval."
+    }
+  ],
+  "recommendedEntryOffer": "Spa Booking Recovery + Event Retention Revenue Engine",
+  "notes": "Observed facts come from Sacred Hour's public website. The gap labels are sales hypotheses about where Places Rewards could add measurable workflow value; they do not assert merchant-internal performance or monetary loss."
+}
