@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260915-karma-oasis-painesville",
+  "observedAt": "2026-09-15T12:03:44Z",
+  "business": {
+    "name": "Karma Oasis",
+    "city": "Painesville, OH",
+    "website": "https://karmaoasis.glossgenius.com/",
+    "category": "spa and wellness"
+  },
+  "fitScore": 86,
+  "evidence": [
+    {
+      "url": "https://karmaoasis.glossgenius.com/about",
+      "observedFact": "The active Painesville booking profile publishes current weekly hours, multiple bookable team members, and a 25% cancellation fee for no-shows within 24 hours of a scheduled appointment.",
+      "observedAt": "2026-09-15T12:03:44Z"
+    },
+    {
+      "url": "https://www.bbb.org/us/oh/painesville/profile/spa/karma-oasis-0312-92062042",
+      "observedFact": "BBB lists Karma Oasis at the same Painesville address, reports the business started January 20, 2025, and shows an A rating as of this observation; this independently supports that it is a relatively new active local spa rather than a stale listing.",
+      "observedAt": "2026-09-15T12:03:44Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.93,
+      "evidenceIndexes": [0],
+      "recommendedFix": "Demonstrate appointment reminder, cancellation recovery and fast rebooking workflows designed to protect bookable capacity."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.76,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Demonstrate a lightweight repeat-visit journey for a newer local spa, with permissioned comeback offers after completed or disrupted appointments."
+    }
+  ],
+  "recommendedEntryOffer": "Appointment Recovery + Repeat-Visit Starter Engine",
+  "notes": "The cancellation policy and active booking/team details are observed facts. The repeat-visit opportunity is explicitly a sales hypothesis for a newer appointment-driven business and is not a claim about existing merchant retention performance or monetary loss. No publicContact is included because a general email or phone was not verified from a business-published source during this observation."
+}
