@@ -1,137 +1,104 @@
 #!/usr/bin/env bash
-set -u
+set -Eeuo pipefail
+umask 027
 
 AGENT="/home/placevle/placesrewards-agent-server"
 NODE="/home/placevle/nodevenv/placesrewards-agent-server/24/bin/node"
-APP="/home/placevle/app.placesrewards.com"
+APP_URL="${PLACESREWARDS_HEALTH_URL:-https://app.placesrewards.com/en-us/admin/login}"
 LOG="$AGENT/cron-worker.log"
-SCHEMA_OUT="$AGENT/results/campaigns/live-agent-tools-export.txt"
-SCHEMA_JSON="$AGENT/results/campaigns/live-agent-tools-generic.json"
-ROUTES_JSON="$AGENT/results/campaigns/live-agent-routes.json"
-EXPORT_HELP="$AGENT/results/campaigns/agent-export-tools-help.txt"
-PHP_DIAG="$AGENT/results/campaigns/php-cli-diagnostic.txt"
-ROLE_PROBE="$AGENT/results/campaigns/363-role-and-club-probe.json"
-TOM_DEPLOY_LOG="$AGENT/results/campaigns/northeast-ohio-tom-v2-deploy.txt"
-TOOL_FILE="$APP/app/Services/Agent/AgentToolService.php"
+LOCK="$AGENT/data/worker.lock"
+FAIL_FILE="$AGENT/data/worker-consecutive-failures"
+MAX_LOG_BYTES="${PLACESREWARDS_WORKER_MAX_LOG_BYTES:-10485760}"
+MAX_FAILURES="${PLACESREWARDS_WORKER_MAX_FAILURES:-3}"
+COOLDOWN_SECONDS="${PLACESREWARDS_WORKER_COOLDOWN_SECONDS:-3600}"
+STEP_TIMEOUT="${PLACESREWARDS_WORKER_STEP_TIMEOUT:-240}"
 
-cd "$AGENT" || exit 1
+cd "$AGENT"
+mkdir -p "$AGENT/data"
 
-DESIRED="* * * * * /bin/bash $AGENT/run-worker-cron.sh"
-CURRENT="$(crontab -l 2>/dev/null || true)"
-CLEANED="$(printf '%s\n' "$CURRENT" | grep -v '/placesrewards-agent-server/run-worker-cron\.sh' || true)"
-{ printf '%s\n' "$CLEANED"; printf '%s\n' "$DESIRED"; } | awk 'NF && !seen[$0]++' | crontab -
+if [ ! -x "$NODE" ]; then
+  printf '%s ERROR node runtime missing: %s\n' "$(date -Iseconds)" "$NODE" >&2
+  exit 1
+fi
 
-PHPCLI=""
-for CANDIDATE in /opt/cpanel/ea-php84/root/usr/bin/php /usr/local/bin/php /usr/bin/php /usr/local/bin/ea-php84 /opt/alt/php84/usr/bin/php; do
-  if [ -x "$CANDIDATE" ] && "$CANDIDATE" -r 'exit(PHP_SAPI === "cli" ? 0 : 1);' >/dev/null 2>&1; then PHPCLI="$CANDIDATE"; break; fi
-done
-mkdir -p "$AGENT/bin" "$AGENT/data/backups" "$AGENT/requests/repairs" "$AGENT/results/repairs" "$AGENT/results/revenue" "$AGENT/results/control"
-if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT/bin:$PATH"; fi
+# Never allow overlapping cron runs.
+exec 9>"$LOCK"
+if ! flock -n 9; then
+  exit 0
+fi
 
-{
-  echo "===== $(date -Iseconds) ====="
-  git fetch origin server-runtime
-  git reset --hard origin/server-runtime
-  if [ -n "$PHPCLI" ]; then "$PHPCLI" "$AGENT/scripts/install-treasure-hunt-simple.php" || true; fi
-  mkdir -p "$AGENT/bin" "$AGENT/results/revenue" "$AGENT/results/control"
-  if [ -n "$PHPCLI" ]; then ln -sf "$PHPCLI" "$AGENT/bin/php"; export PATH="$AGENT/bin:$PATH"; fi
+# Keep the worker log bounded without creating another large rotated copy.
+if [ -f "$LOG" ]; then
+  LOG_BYTES="$(wc -c < "$LOG" 2>/dev/null || printf '0')"
+  if [ "$LOG_BYTES" -gt "$MAX_LOG_BYTES" ]; then
+    : > "$LOG"
+    printf '%s WARN worker log exceeded %s bytes and was truncated\n' "$(date -Iseconds)" "$MAX_LOG_BYTES" >> "$LOG"
+  fi
+fi
 
-  "$NODE" scripts/verify-on-change.mjs || true
-  "$NODE" worker.js
-  "$NODE" scripts/github-repair-worker.mjs || true
-  "$NODE" scripts/github-campaign-worker.mjs
+exec >> "$LOG" 2>&1
+printf '===== %s =====\n' "$(date -Iseconds)"
 
-  "$NODE" - "$ROLE_PROBE" <<'NODE'
-import { promises as fs } from 'node:fs';
-const out = process.argv[2];
-const base = (process.env.PLACESREWARDS_API_URL || 'https://app.placesrewards.com/api/agent/v1').replace(/\/+$/,'');
-const key = process.env.PLACESREWARDS_AGENT_KEY || '';
-const headers = { Accept:'application/json', 'X-Agent-Key':key };
-const partnerIds = [
-  '019dc1d1-772a-7024-b79e-75e5413ca154',
-  '019dbfc9-ddf9-7136-951a-124574cf7b3e',
-  '019dbfc7-eb89-726a-9e31-3cd7ee21452d',
-  '019dbfc5-e395-7082-9214-20859f344cce'
-];
-async function get(path){
-  const r = await fetch(base + path, { headers });
-  const text = await r.text();
-  let body = text; try { body = JSON.parse(text); } catch {}
-  return { status:r.status, ok:r.ok, body };
+# Back off for one hour after repeated failures.
+FAILURES=0
+if [ -f "$FAIL_FILE" ]; then
+  read -r FAILURES < "$FAIL_FILE" || FAILURES=0
+fi
+case "$FAILURES" in
+  ''|*[!0-9]*) FAILURES=0 ;;
+esac
+if [ "$FAILURES" -ge "$MAX_FAILURES" ]; then
+  NOW="$(date +%s)"
+  LAST_FAILURE="$(stat -c %Y "$FAIL_FILE" 2>/dev/null || printf '0')"
+  AGE="$((NOW - LAST_FAILURE))"
+  if [ "$AGE" -lt "$COOLDOWN_SECONDS" ]; then
+    printf '%s WARN cooldown active after %s consecutive failures\n' "$(date -Iseconds)" "$FAILURES"
+    exit 0
+  fi
+fi
+
+# Refuse work if the account can no longer create and remove a small file.
+PROBE="$AGENT/data/.quota-write-probe.$$"
+if ! dd if=/dev/zero of="$PROBE" bs=1024 count=64 conv=fsync status=none 2>/dev/null; then
+  printf '%s ERROR quota write probe failed; worker aborted\n' "$(date -Iseconds)"
+  exit 70
+fi
+rm -f "$PROBE"
+
+# Never run automation against an unhealthy customer application.
+if ! curl -fsSL --max-time 25 -o /dev/null "$APP_URL"; then
+  printf '%s ERROR application health check failed: %s\n' "$(date -Iseconds)" "$APP_URL"
+  exit 69
+fi
+
+run_step() {
+  local name="$1"
+  shift
+  printf '%s START %s\n' "$(date -Iseconds)" "$name"
+  if timeout --signal=TERM --kill-after=15s "${STEP_TIMEOUT}s" "$@"; then
+    printf '%s DONE %s\n' "$(date -Iseconds)" "$name"
+    return 0
+  fi
+  local code=$?
+  printf '%s ERROR %s exit=%s\n' "$(date -Iseconds)" "$name" "$code"
+  return "$code"
 }
-const result = { generatedAt:new Date().toISOString(), partnerScopedProbe:await get('/partner/clubs'), adminPartnerClubs:{} };
-for (const id of partnerIds) result.adminPartnerClubs[id] = await get(`/admin/partners/${id}/clubs`);
-await fs.writeFile(out, JSON.stringify(result,null,2),'utf8');
-NODE
 
-  if [ -n "$PHPCLI" ]; then
-    (cd "$APP" && "$PHPCLI" artisan agent:export-tools) > "$SCHEMA_OUT" 2>&1 || true
-    [ -s "$APP/storage/api-docs/agent-tools-generic.json" ] && cp -f "$APP/storage/api-docs/agent-tools-generic.json" "$SCHEMA_JSON"
-    (cd "$APP" && "$PHPCLI" artisan route:list --path=api/agent/v1 --json) > "$ROUTES_JSON" 2>&1 || true
-    (cd "$APP" && "$PHPCLI" artisan help agent:export-tools) > "$EXPORT_HELP" 2>&1 || true
-    if [ -f "$AGENT/scripts/363-schema-inspector.php" ]; then
-      "$PHPCLI" "$AGENT/scripts/363-schema-inspector.php" || true
-    fi
-    if [ -f "$AGENT/scripts/inspect-northeast-ohio-media.php" ]; then
-      "$PHPCLI" "$AGENT/scripts/inspect-northeast-ohio-media.php" || true
-    fi
-    if [ -f "$AGENT/scripts/run-northeast-ohio-tom-v2.php" ]; then
-      "$PHPCLI" "$AGENT/scripts/run-northeast-ohio-tom-v2.php" > "$TOM_DEPLOY_LOG" 2>&1 || true
-    fi
-    if [ -f "$AGENT/scripts/deploy-treasure-hunt-native-demos-v4.php" ]; then
-      "$PHPCLI" "$AGENT/scripts/deploy-treasure-hunt-native-demos-v4.php" || true
-    fi
-    if [ -f "$AGENT/scripts/install-treasure-hunt-scratch-images.php" ]; then
-      "$PHPCLI" "$AGENT/scripts/install-treasure-hunt-scratch-images.php" || true
-    fi
-    if [ -f "$AGENT/scripts/repair-treasure-hunt-cover-browser.php" ]; then
-      "$PHPCLI" "$AGENT/scripts/repair-treasure-hunt-cover-browser.php" || true
-    fi
-    if [ -f "$AGENT/scripts/verify-treasure-hunt-card-content.php" ]; then
-      "$PHPCLI" "$AGENT/scripts/verify-treasure-hunt-card-content.php" || true
-    fi
-    if [ -f "$AGENT/scripts/inspect-treasure-hunt-native-rendering.php" ]; then
-      "$PHPCLI" "$AGENT/scripts/inspect-treasure-hunt-native-rendering.php" || true
-    fi
-    if [ -f "$AGENT/scripts/inspect-treasure-hunt-native-modules.php" ]; then
-      "$PHPCLI" "$AGENT/scripts/inspect-treasure-hunt-native-modules.php" || true
-    fi
-    if [ -f "$AGENT/scripts/install-363-foundation-demo-v2.php" ]; then
-      "$PHPCLI" "$AGENT/scripts/install-363-foundation-demo-v2.php" || true
-    fi
-    if [ -f "$AGENT/scripts/363-demo-link-inspector.php" ]; then
-      "$PHPCLI" "$AGENT/scripts/363-demo-link-inspector.php" || true
-    fi
-  fi
+FAILED=0
+export PLACESREWARDS_AGENT_MAX_JOBS_PER_RUN="${PLACESREWARDS_AGENT_MAX_JOBS_PER_RUN:-10}"
+export AUTOPILOT_MAX_NEW_OBJECTIVES="${AUTOPILOT_MAX_NEW_OBJECTIVES:-2}"
 
-  "$NODE" scripts/resolve-legacy-363-request.mjs || true
-  "$NODE" scripts/autopilot.mjs || true
+run_step core-worker "$NODE" worker.js || FAILED=1
+run_step repair-worker "$NODE" scripts/github-repair-worker.mjs || FAILED=1
+run_step campaign-worker "$NODE" scripts/github-campaign-worker.mjs || FAILED=1
 
-  git add requests/campaigns results/campaigns 2>/dev/null || true
-  if ! git diff --cached --quiet -- requests/campaigns results/campaigns; then
-    if "$NODE" scripts/semantic-result-diff.mjs; then
-      git commit -m "PlacesRewards meaningful campaign state sync $(date -Iseconds)" || true
-      git push origin HEAD:server-runtime || true
-    else
-      git restore --staged --worktree -- requests/campaigns results/campaigns 2>/dev/null || true
-    fi
-  fi
+if [ "$FAILED" -eq 0 ]; then
+  printf '0\n' > "$FAIL_FILE"
+  printf '%s OK worker cycle completed\n' "$(date -Iseconds)"
+  exit 0
+fi
 
-  git add requests/repairs results/repairs 2>/dev/null || true
-  if ! git diff --cached --quiet -- requests/repairs results/repairs; then
-    git commit -m "PlacesRewards repair state sync $(date -Iseconds)" || true
-    git push origin HEAD:server-runtime || true
-  fi
-
-  git add results/revenue 2>/dev/null || true
-  if ! git diff --cached --quiet -- results/revenue; then
-    git commit -m "PlacesRewards revenue analytics contract sync $(date -Iseconds)" || true
-    git push origin HEAD:server-runtime || true
-  fi
-
-  git add results/control 2>/dev/null || true
-  if ! git diff --cached --quiet -- results/control; then
-    git commit -m "PlacesRewards commercial control status sync $(date -Iseconds)" || true
-    git push origin HEAD:server-runtime || true
-  fi
-} >> "$LOG" 2>&1
+FAILURES="$((FAILURES + 1))"
+printf '%s\n' "$FAILURES" > "$FAIL_FILE"
+printf '%s ERROR worker cycle failed; consecutive_failures=%s\n' "$(date -Iseconds)" "$FAILURES"
+exit 1
