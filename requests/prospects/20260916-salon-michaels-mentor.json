@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260916-salon-michaels-mentor",
+  "observedAt": "2026-09-16T12:02:49Z",
+  "business": {
+    "name": "Salon Michaels",
+    "city": "Mentor, OH",
+    "website": "https://www.vagaro.com/salonmichaelscom",
+    "category": "hair salon",
+    "publicContact": {
+      "phone": "440-974-6453",
+      "sourceUrl": "https://www.vagaro.com/salonmichaelscom",
+      "observedAt": "2026-09-16T12:02:49Z"
+    }
+  },
+  "fitScore": 92,
+  "evidence": [
+    {
+      "url": "https://www.vagaro.com/salonmichaelscom",
+      "observedFact": "The active booking profile lists Salon Michaels at 7362 Center Street in Mentor with current services and a public phone number.",
+      "observedAt": "2026-09-16T12:02:49Z"
+    },
+    {
+      "url": "https://www.vagaro.com/salonmichaelscom",
+      "observedFact": "The salon states that appointment time is reserved especially for each guest, requests at least 48 hours notice for appointment adjustments or cancellations, and states that a guest more than 10 minutes after the appointment start can be marked no-show and charged according to policy.",
+      "observedAt": "2026-09-16T12:02:49Z"
+    },
+    {
+      "url": "https://www.vagaro.com/salonmichaelscom",
+      "observedFact": "The salon says it has a long list of loyal customers who have returned for years, including customers dating to its inception.",
+      "observedAt": "2026-09-16T12:02:49Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.96,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Demonstrate cancellation prevention, appointment reminders, waitlist recovery, and fast rebooking workflows around the salon's existing booking policy."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.82,
+      "evidenceIndexes": [2],
+      "recommendedFix": "Build on the salon's demonstrated repeat-client base with permission-based lapsed-client comeback and milestone reward campaigns."
+    }
+  ],
+  "recommendedEntryOffer": "Booking Recovery + Client Reactivation Revenue Engine",
+  "notes": "The cancellation/no-show policy is direct evidence of appointment-slot sensitivity. The longstanding loyal clientele is a positive reactivation asset, not evidence that retention is deficient. No monetary loss is inferred."
+}
