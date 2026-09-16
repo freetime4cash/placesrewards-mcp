@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260916-polishedx-nail-bar-willoughby",
+  "observedAt": "2026-09-16T12:02:49Z",
+  "business": {
+    "name": "Polishedx Nail Bar",
+    "city": "Willoughby, OH",
+    "website": "https://polishedxnailbar.glossgenius.com/",
+    "category": "nail salon"
+  },
+  "fitScore": 90,
+  "evidence": [
+    {
+      "url": "https://polishedxnailbar.glossgenius.com/",
+      "observedFact": "The active booking site lists current Willoughby hours and bookable manicure and gel-extension services, including services that require a $25 deposit.",
+      "observedAt": "2026-09-16T12:02:49Z"
+    },
+    {
+      "url": "https://polishedxnailbar.glossgenius.com/about",
+      "observedFact": "The salon states that clients arriving outside its 15-minute grace period must have the appointment rescheduled to protect service quality and the schedule.",
+      "observedAt": "2026-09-16T12:02:49Z"
+    },
+    {
+      "url": "https://polishedxnailbar.glossgenius.com/about",
+      "observedFact": "The published cancellation policy charges 75% for cancellations within 72 hours, 100% for no-shows or same-day cancellations, can block future booking until an outstanding balance is paid, and can require a 50% retainer for future appointments after an unpaid invoice.",
+      "observedAt": "2026-09-16T12:02:49Z"
+    },
+    {
+      "url": "https://polishedxnailbar.glossgenius.com/contact",
+      "observedFact": "The public contact workflow uses a web form that emails the business owner when a prospective client submits a question.",
+      "observedAt": "2026-09-16T12:02:49Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.99,
+      "evidenceIndexes": [0, 1, 2],
+      "recommendedFix": "Demonstrate automated appointment-save, waitlist-fill, rebooking, and cancellation-recovery workflows around the existing deposit and cancellation policy."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.88,
+      "evidenceIndexes": [2],
+      "recommendedFix": "Provide a permission-based recovery path for clients whose late cancellation, no-show, or unpaid balance interrupted their normal booking cycle."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.73,
+      "evidenceIndexes": [3],
+      "recommendedFix": "Demonstrate immediate acknowledgement and structured follow-up for website inquiries without replacing the salon's existing contact form."
+    }
+  ],
+  "recommendedEntryOffer": "Booking Recovery + Client Reactivation Revenue Engine",
+  "notes": "The published policies provide concrete booking-friction evidence. The follow-up opportunity is a hypothesis based on the form-to-email workflow; public evidence does not establish missed inquiries or monetary loss. No business-published general email or phone was verified, so publicContact is omitted."
+}
