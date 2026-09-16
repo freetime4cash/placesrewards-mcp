@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260916-superelectric-pinball-cleveland",
+  "observedAt": "2026-09-16T12:02:49Z",
+  "business": {
+    "name": "Superelectric Pinball Parlor",
+    "city": "Cleveland, OH",
+    "website": "https://www.superelectric.tv/",
+    "category": "entertainment venue",
+    "publicContact": {
+      "email": "superelectricpinballparlor@gmail.com",
+      "phone": "440-506-4661",
+      "sourceUrl": "https://www.superelectric.tv/",
+      "observedAt": "2026-09-16T12:02:49Z"
+    }
+  },
+  "fitScore": 95,
+  "evidence": [
+    {
+      "url": "https://www.superelectric.tv/",
+      "observedFact": "The active venue publishes current weekly hours, promotes private parties, online gift cards, league nights, and upcoming private-party closures.",
+      "observedAt": "2026-09-16T12:02:49Z"
+    },
+    {
+      "url": "https://www.superelectric.tv/events/",
+      "observedFact": "The venue rents the parlor for private events for up to 60 guests, publishes hourly rental pricing, requires typically at least 48 hours advance notice, and offers a message path for questions before booking.",
+      "observedAt": "2026-09-16T12:02:49Z"
+    },
+    {
+      "url": "https://superelectric-jfco.squarespace.com/leagues",
+      "observedFact": "The Cleveland Pinball League uses recurring multi-week participation and the venue also promotes a monthly family-friendly pinball battle, demonstrating repeat-event behavior.",
+      "observedAt": "2026-09-16T12:02:49Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.97,
+      "evidenceIndexes": [0, 1, 2],
+      "recommendedFix": "Demonstrate an event-to-repeat-visit workflow that captures private-party and tournament guests and gives them a reason to return after the event."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.91,
+      "evidenceIndexes": [0, 2],
+      "recommendedFix": "Use recurring league, tournament, and gift-card audiences for permission-based comeback offers between visits and seasons."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.76,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Demonstrate automated acknowledgement and follow-up for private-event questions and booking inquiries while preserving the existing booking process."
+    }
+  ],
+  "recommendedEntryOffer": "Event-to-Repeat Visit Revenue Engine",
+  "notes": "Observed facts show a strong recurring-event and private-party model. The opportunity is to demonstrate measurable post-event retention and reactivation; public evidence does not prove the business currently lacks an internal retention system or establish any monetary loss."
+}
