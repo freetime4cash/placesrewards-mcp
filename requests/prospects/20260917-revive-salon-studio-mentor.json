@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260917-revive-salon-studio-mentor",
+  "observedAt": "2026-09-17T12:19:37Z",
+  "business": {
+    "name": "Revive Salon Studio",
+    "city": "Mentor, OH",
+    "website": "https://www.vagaro.com/revivesalonstudio",
+    "category": "salon"
+  },
+  "fitScore": 89,
+  "evidence": [
+    {
+      "url": "https://www.vagaro.com/revivesalonstudio",
+      "observedFact": "The current booking profile lists Revive Salon Studio at 9456 Mentor Avenue in Mentor and offers hair, nail, and spa services.",
+      "observedAt": "2026-09-17T12:19:37Z"
+    },
+    {
+      "url": "https://www.vagaro.com/revivesalonstudio",
+      "observedFact": "The business says appointment time is reserved especially for each client and requests at least 24 hours notice for cancellations.",
+      "observedAt": "2026-09-17T12:19:37Z"
+    },
+    {
+      "url": "https://www.vagaro.com/revivesalonstudio",
+      "observedFact": "The published policy says clients who provide a cell phone number or email receive a confirmation request 72 hours before the appointment and a reminder 24 hours before it.",
+      "observedAt": "2026-09-17T12:19:37Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.88,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Demonstrate an appointment recovery layer that complements existing reminders with confirmation tracking and recovery paths when a client cannot keep a reserved slot."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.76,
+      "evidenceIndexes": [0, 2],
+      "recommendedFix": "Demonstrate opt-in repeat-visit and lapsed-client workflows around the salon's recurring service categories without assuming the existing reminder system is deficient."
+    }
+  ],
+  "recommendedEntryOffer": "Booking Recovery + Repeat-Visit Revenue Engine",
+  "notes": "The business already publishes confirmation and reminder practices, so the opportunity is to complement rather than replace them. Reactivation is a sales hypothesis based on recurring service categories; no monetary loss is claimed. Public contact is omitted because this run did not verify phone or email directly from a business-owned source."
+}
