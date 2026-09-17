@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260917-glambella-studios-wickliffe",
+  "observedAt": "2026-09-17T12:19:37Z",
+  "business": {
+    "name": "Glambella Studios",
+    "city": "Wickliffe, OH",
+    "website": "https://glambellastudios.com/",
+    "category": "beauty salon",
+    "publicContact": {
+      "phone": "+1-216-777-4526",
+      "sourceUrl": "https://glambellastudios.com/",
+      "observedAt": "2026-09-17T12:19:37Z"
+    }
+  },
+  "fitScore": 93,
+  "evidence": [
+    {
+      "url": "https://glambellastudios.com/",
+      "observedFact": "The active business website lists current Wickliffe hours, accepts booked appointments and walk-ins, and publishes a cancellation policy.",
+      "observedAt": "2026-09-17T12:19:37Z"
+    },
+    {
+      "url": "https://glambellastudios.com/",
+      "observedFact": "The business requires a non-refundable deposit to secure an appointment, charges 50% of the scheduled cost for cancellations within 24 hours, and says a client 15 minutes late loses the deposit and must rebook.",
+      "observedAt": "2026-09-17T12:19:37Z"
+    },
+    {
+      "url": "https://glambellastudios.com/",
+      "observedFact": "The published policy states that no-show clients will not be permitted to book again.",
+      "observedAt": "2026-09-17T12:19:37Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.98,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Demonstrate automated appointment confirmation, cancellation recovery, and compliant rebooking workflows that reduce preventable booking disruption while preserving the salon's policies."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.94,
+      "evidenceIndexes": [2],
+      "recommendedFix": "Demonstrate a controlled win-back workflow for eligible inactive or missed-appointment clients instead of assuming every no-show should remain permanently unrecoverable."
+    }
+  ],
+  "recommendedEntryOffer": "Booking Recovery + Client Reactivation Revenue Engine",
+  "notes": "Observed facts come from the business's own public website. Reactivation is a sales opportunity hypothesis; public evidence does not establish lost revenue or prove that every no-show client should be recovered."
+}
