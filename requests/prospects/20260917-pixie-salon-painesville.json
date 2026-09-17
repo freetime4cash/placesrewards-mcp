@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260917-pixie-salon-painesville",
+  "observedAt": "2026-09-17T12:19:37Z",
+  "business": {
+    "name": "Pixie Salon",
+    "city": "Painesville, OH",
+    "website": "https://www.vagaro.com/pixiesaloncory",
+    "category": "salon"
+  },
+  "fitScore": 87,
+  "evidence": [
+    {
+      "url": "https://www.vagaro.com/pixiesaloncory",
+      "observedFact": "The current booking profile lists Pixie Salon in Painesville and offers hair, makeup, nail, and facial-waxing services.",
+      "observedAt": "2026-09-17T12:19:37Z"
+    },
+    {
+      "url": "https://www.vagaro.com/pixiesaloncory",
+      "observedFact": "The business tells clients who cannot find a suitable appointment to contact the salon by email or text with a specific schedule request so it can try to accommodate them.",
+      "observedAt": "2026-09-17T12:19:37Z"
+    },
+    {
+      "url": "https://www.vagaro.com/pixiesaloncory",
+      "observedFact": "Appointments must be cancelled or rescheduled 24 hours in advance, and late cancellations or no-shows for appointments valued at $50 or more may incur a 50% cancellation fee.",
+      "observedAt": "2026-09-17T12:19:37Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.94,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Demonstrate a booking-assist and cancellation-recovery workflow that captures schedule requests, routes alternatives, and helps refill eligible openings."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.87,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Demonstrate structured follow-up for clients who cannot find an online appointment rather than relying solely on separate email or text schedule requests."
+    }
+  ],
+  "recommendedEntryOffer": "Booking Assist + Follow-Up Revenue Engine",
+  "notes": "The public evidence establishes a manual fallback path when online availability does not fit a client's schedule and a published cancellation policy. It does not prove missed revenue or deficient staff follow-up. Public contact is omitted because this run did not verify phone or email directly from a business-owned source."
+}
