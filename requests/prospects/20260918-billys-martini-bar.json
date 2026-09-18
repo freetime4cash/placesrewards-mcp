@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260918-billys-martini-bar",
+  "observedAt": "2026-09-18T12:25:55Z",
+  "business": {
+    "name": "Billy's - A Cappelli Martini Bar",
+    "city": "Mentor, OH",
+    "website": "https://www.billysacappellimartinibar.com/",
+    "category": "restaurant and cocktail bar",
+    "publicContact": {
+      "email": "kkobmartini@gmail.com",
+      "phone": "440-585-8815",
+      "sourceUrl": "https://www.billysacappellimartinibar.com/",
+      "observedAt": "2026-09-18T12:25:55Z"
+    }
+  },
+  "fitScore": 93,
+  "evidence": [
+    {
+      "url": "https://www.billysacappellimartinibar.com/",
+      "observedFact": "The active business website publishes weekly recurring promotions including Tuesday Girls Night Out, Wednesday wine and flatbread offers, Thursday live music, Friday Guys & Gals Night Out, and seasonal Saturday DJ dance parties.",
+      "observedAt": "2026-09-18T12:25:55Z"
+    },
+    {
+      "url": "https://www.billysacappellimartinibar.com/",
+      "observedFact": "The business asks guests to subscribe by email for news and updates and explicitly says it wants to keep guests coming back for more.",
+      "observedAt": "2026-09-18T12:25:55Z"
+    },
+    {
+      "url": "https://www.billysacappellimartinibar.com/",
+      "observedFact": "Billy's markets private events ranging from intimate gatherings to full-scale parties, offers catering, and makes Sundays available for private events.",
+      "observedAt": "2026-09-18T12:25:55Z"
+    },
+    {
+      "url": "https://www.billysacappellimartinibar.com/restaurant",
+      "observedFact": "The business publishes current Mentor location information, operating hours and a business phone number, supporting that it is active.",
+      "observedAt": "2026-09-18T12:25:55Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.96,
+      "evidenceIndexes": [0, 2],
+      "recommendedFix": "Demonstrate a private-event and live-event guest capture workflow that converts consenting attendees into trackable return visits and future event bookings."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.92,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Layer segmented comeback rewards and event-triggered reactivation on the business's existing email and recurring weekly promotion strategy; this is an expansion opportunity, not proof that current email marketing is ineffective."
+    }
+  ],
+  "recommendedEntryOffer": "Events + Comeback Revenue Engine",
+  "notes": "The business already demonstrates deliberate repeat-visit marketing, which is treated as evidence of retention value and an integration opportunity rather than a loyalty deficiency. No monetary loss is claimed."
+}
