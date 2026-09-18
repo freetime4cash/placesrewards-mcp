@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260918-willy-nillys-wood-fired-pizza",
+  "observedAt": "2026-09-18T12:25:55Z",
+  "business": {
+    "name": "Willy Nilly's Wood Fired Pizza",
+    "city": "Cleveland, OH",
+    "website": "https://www.willynillyswoodfiredpizza.com/",
+    "category": "food truck and event catering",
+    "publicContact": {
+      "email": "dreamteam0329@outlook.com",
+      "phone": "440-679-0569 / 440-724-2966",
+      "sourceUrl": "https://www.willynillyswoodfiredpizza.com/",
+      "observedAt": "2026-09-18T12:25:55Z"
+    }
+  },
+  "fitScore": 94,
+  "evidence": [
+    {
+      "url": "https://www.willynillyswoodfiredpizza.com/",
+      "observedFact": "The business website is actively publishing a 2026 food-truck schedule with September and October 2026 stops, including Mentor Farmers Market on September 18 and Cleveland Clinic Mentor Campus on September 25 and 28.",
+      "observedAt": "2026-09-18T12:25:55Z"
+    },
+    {
+      "url": "https://www.willynillyswoodfiredpizza.com/",
+      "observedFact": "The business publicly markets private-event and custom catering for company picnics, weddings, graduations and block parties, says its schedule books quickly, and asks customers to contact it early to hold a date.",
+      "observedAt": "2026-09-18T12:25:55Z"
+    },
+    {
+      "url": "https://www.willynillyswoodfiredpizza.com/",
+      "observedFact": "The site states that the truck serves Cleveland, Lake, Geauga, Ashtabula and Summit counties and publishes two business phone numbers and a general business email for event inquiries.",
+      "observedAt": "2026-09-18T12:25:55Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.96,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Demonstrate an event-to-repeat-visit workflow that captures consenting guests at public and private events, issues a trackable comeback reward, and reconnects those guests with future stops and catering opportunities."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.82,
+      "evidenceIndexes": [0],
+      "recommendedFix": "Use the recurring event calendar as a trigger for opt-in reminders and comeback offers to prior event customers; this is an opportunity hypothesis, not evidence that current reactivation is deficient."
+    }
+  ],
+  "recommendedEntryOffer": "Event-to-Repeat Visit Revenue Engine",
+  "notes": "Observed facts are limited to the business's public website. The recurring event calendar and private-event business model create a strong retention use case. No monetary loss or claim about the effectiveness of the business's current retention process is inferred."
+}
