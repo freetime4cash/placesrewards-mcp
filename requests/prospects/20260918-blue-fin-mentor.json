@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260918-blue-fin-mentor",
+  "observedAt": "2026-09-18T12:25:55Z",
+  "business": {
+    "name": "Blue Fin Asian Fusion Hibachi & Sushi Bar",
+    "city": "Mentor, OH",
+    "website": "https://bluefinmentoroh.com/",
+    "category": "restaurant",
+    "publicContact": {
+      "email": "simonakolis@yahoo.com",
+      "phone": "440-290-7383",
+      "sourceUrl": "https://bluefinmentoroh.com/",
+      "observedAt": "2026-09-18T12:25:55Z"
+    }
+  },
+  "fitScore": 89,
+  "evidence": [
+    {
+      "url": "https://bluefinmentoroh.com/",
+      "observedFact": "The active website publishes current Mentor hours, location, phone and email and offers online ordering.",
+      "observedAt": "2026-09-18T12:25:55Z"
+    },
+    {
+      "url": "https://bluefinmentoroh.com/",
+      "observedFact": "Blue Fin actively markets private parties for birthdays, office functions, holiday parties, corporate events and wedding festivities and provides a party-booking path.",
+      "observedAt": "2026-09-18T12:25:55Z"
+    },
+    {
+      "url": "https://bluefinmentoroh.com/",
+      "observedFact": "The restaurant also markets catering packages for birthdays, weddings, corporate events and other occasions alongside its dine-in and online-ordering business.",
+      "observedAt": "2026-09-18T12:25:55Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.94,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Demonstrate a post-party and post-catering guest retention workflow using opt-in rewards, return-visit offers and trackable referrals to turn event audiences into repeat restaurant customers."
+    },
+    {
+      "category": "referral_gap",
+      "confidence": 0.74,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Test a trackable referral offer for event hosts and consenting guests; this is a sales hypothesis based on the public event/catering model, not proof that the business currently lacks referrals."
+    }
+  ],
+  "recommendedEntryOffer": "Private Party + Referral Revenue Engine",
+  "notes": "The event and catering model creates a concrete audience for retention and referral workflows. The referral category is explicitly an opportunity hypothesis; no claim is made that existing referrals are deficient. No monetary loss is inferred."
+}
