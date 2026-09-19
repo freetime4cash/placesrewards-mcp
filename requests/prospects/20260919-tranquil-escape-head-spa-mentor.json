@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260919-tranquil-escape-head-spa-mentor",
+  "observedAt": "2026-09-19T12:49:48Z",
+  "business": {
+    "name": "Tranquil Escape Hair and Scalp Spa",
+    "city": "Mentor, OH",
+    "website": "https://tranquilescape.net/",
+    "category": "hair and scalp spa",
+    "publicContact": {
+      "email": "Tranquilescapehairandscalpspa@gmail.com",
+      "phone": "+1-440-724-7604",
+      "sourceUrl": "https://tranquilescape.net/",
+      "observedAt": "2026-09-19T12:49:48Z"
+    }
+  },
+  "fitScore": 90,
+  "evidence": [
+    {
+      "url": "https://tranquilescape.net/",
+      "observedFact": "The business states that all packages require a booking deposit and that the deposit becomes non-refundable when an appointment is canceled without 24 hours' notice.",
+      "observedAt": "2026-09-19T12:49:48Z"
+    },
+    {
+      "url": "https://tranquilescape.net/",
+      "observedFact": "The business lists current Mentor contact information and hours and states that its hours are by appointment only.",
+      "observedAt": "2026-09-19T12:49:48Z"
+    },
+    {
+      "url": "https://shopping.yahoo.com/beauty/hair/articles/tranquil-escape-hair-scalp-spa-045900661.html",
+      "observedFact": "A December 2025 News-Herald report says the spa was established in May 2024, describes personalized treatment plans and reports that the business was running a $10 spa-credit promotion for every $100 spent.",
+      "observedAt": "2026-09-19T12:49:48Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.96,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Demonstrate appointment recovery and rebooking automation around the existing deposit and cancellation policy."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.84,
+      "evidenceIndexes": [2],
+      "recommendedFix": "Build a permission-based comeback workflow that can extend the business's demonstrated promotional activity into repeat treatment visits."
+    }
+  ],
+  "recommendedEntryOffer": "Appointment Recovery + Repeat-Treatment Revenue Engine",
+  "notes": "Booking requirements are observed from the business-owned website. The reactivation opportunity is a sales hypothesis informed by publicly documented promotional activity and repeatable personalized treatments; no monetary loss is asserted."
+}
