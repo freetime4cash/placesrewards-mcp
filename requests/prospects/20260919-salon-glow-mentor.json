@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260919-salon-glow-mentor",
+  "observedAt": "2026-09-19T12:49:48Z",
+  "business": {
+    "name": "Salon Glow",
+    "city": "Mentor, OH",
+    "website": "https://www.salon-glow.com/",
+    "category": "salon and spa",
+    "publicContact": {
+      "email": "salonglow11@gmail.com",
+      "phone": "+1-440-357-4569",
+      "sourceUrl": "https://www.salon-glow.com/contact",
+      "observedAt": "2026-09-19T12:49:48Z"
+    }
+  },
+  "fitScore": 91,
+  "evidence": [
+    {
+      "url": "https://www.salon-glow.com/contact",
+      "observedFact": "The business requests a 20% deposit for online bookings and requires cancellations and rescheduling to be completed at least 24 hours before the appointment.",
+      "observedAt": "2026-09-19T12:49:48Z"
+    },
+    {
+      "url": "https://www.salon-glow.com/",
+      "observedFact": "The active business website currently offers online booking and gift cards and lists current operating hours at its Mentor location.",
+      "observedAt": "2026-09-19T12:49:48Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.95,
+      "evidenceIndexes": [0],
+      "recommendedFix": "Demonstrate automated appointment recovery and rebooking follow-up around the salon's existing deposit and cancellation workflow."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.78,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Demonstrate a repeat-service reactivation workflow that complements online booking and gift-card activity."
+    }
+  ],
+  "recommendedEntryOffer": "Booking Recovery + Client Reactivation Revenue Engine",
+  "notes": "The deposit and cancellation requirements are observed facts. Reactivation is an opportunity hypothesis based on the active repeat-service booking model and gift-card offering, not proof of deficient retention or monetary loss."
+}
