@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260919-snow-nails-4-u-mentor",
+  "observedAt": "2026-09-19T12:49:48Z",
+  "business": {
+    "name": "Snow Nails 4 U",
+    "city": "Mentor, OH",
+    "website": "https://www.snownails4u.net/",
+    "category": "nail salon",
+    "publicContact": {
+      "email": "snownails4u@gmail.com",
+      "phone": "+1-440-567-3691",
+      "sourceUrl": "https://www.snownails4u.net/",
+      "observedAt": "2026-09-19T12:49:48Z"
+    }
+  },
+  "fitScore": 97,
+  "evidence": [
+    {
+      "url": "https://www.snownails4u.net/",
+      "observedFact": "The business says a non-refundable $30 deposit is required to secure appointments and explicitly says this is intended to help manage its schedule and minimize last-minute cancellations; bookings without payment are canceled.",
+      "observedAt": "2026-09-19T12:49:48Z"
+    },
+    {
+      "url": "https://www.snownails4u.net/",
+      "observedFact": "The business publicly advertises a 2026 repeat-visit promotion in which four visits earn the fifth service free and says it stamps customers' receipt records on each visit; it also advertises a different 2027 repeat-visit promotion.",
+      "observedAt": "2026-09-19T12:49:48Z"
+    },
+    {
+      "url": "https://www.snownails4u.net/",
+      "observedFact": "The business asks customers to provide contact and birth-date information and states that it sends promotions, deals and incentives every week and around birthdays.",
+      "observedAt": "2026-09-19T12:49:48Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.98,
+      "evidenceIndexes": [0],
+      "recommendedFix": "Demonstrate an automated booking recovery workflow that complements the existing deposit policy and helps recover incomplete or disrupted bookings."
+    },
+    {
+      "category": "loyalty_gap",
+      "confidence": 0.99,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Digitize the existing manual stamped-receipt repeat-visit promotion into a trackable Places Rewards digital loyalty program."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.93,
+      "evidenceIndexes": [2],
+      "recommendedFix": "Centralize permission-based promotion and birthday follow-up into an automated customer engagement workflow."
+    }
+  ],
+  "recommendedEntryOffer": "Digital Loyalty + Booking Recovery Revenue Engine",
+  "notes": "Observed facts come from the business-owned website. The loyalty gap refers specifically to an opportunity to digitize the publicly described manual stamped-receipt workflow; it does not claim the existing program is ineffective or quantify lost revenue."
+}
