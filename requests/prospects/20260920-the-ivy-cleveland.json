@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260920-the-ivy-cleveland",
+  "observedAt": "2026-09-20T12:25:54Z",
+  "business": {
+    "name": "The Ivy",
+    "city": "Cleveland, OH",
+    "website": "https://www.ivycle.com/",
+    "category": "nightlife and private event venue",
+    "publicContact": {
+      "email": "Info@ivycle.com",
+      "phone": "216-505-5510",
+      "sourceUrl": "https://www.ivycle.com/",
+      "observedAt": "2026-09-20T12:25:54Z"
+    }
+  },
+  "fitScore": 94,
+  "evidence": [
+    {
+      "url": "https://www.ivycle.com/event-list",
+      "observedFact": "The active venue published multiple September 2026 events with RSVP or ticket actions, including events on September 16, 17, 18 and 19, demonstrating recurring event-driven traffic.",
+      "observedAt": "2026-09-20T12:25:54Z"
+    },
+    {
+      "url": "https://www.ivycle.com/private-events",
+      "observedFact": "The business actively solicits private parties, corporate events, birthdays, bachelor/bachelorette events and VIP experiences through a dedicated request form; published testimonials on that page describe repeat annual/formal-event intent.",
+      "observedAt": "2026-09-20T12:25:54Z"
+    },
+    {
+      "url": "https://www.ivycle.com/",
+      "observedFact": "The business website lists current operating hours, the Cleveland address, phone 216-505-5510 and Info@ivycle.com, supporting current activity and a public business contact path.",
+      "observedAt": "2026-09-20T12:25:54Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.98,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Demonstrate event-attendee capture, post-event offers and repeat-event journeys that turn recurring nightlife and private-event traffic into measurable return visits."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.88,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Demonstrate segmented reactivation for prior event attendees, VIP guests and private-event organizers around future events and celebrations."
+    }
+  ],
+  "recommendedEntryOffer": "Event Retention + Guest Reactivation Revenue Engine",
+  "notes": "Recurring events and private-event demand are observed facts. The opportunity to improve attendee retention/reactivation is a sales hypothesis; no claim is made that the venue lacks existing retention systems or is losing a specific amount of revenue."
+}
