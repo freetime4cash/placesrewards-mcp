@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260920-nailcraft-by-erin-mentor",
+  "observedAt": "2026-09-20T12:25:54Z",
+  "business": {
+    "name": "Nailcraft by Erin",
+    "city": "Mentor, OH",
+    "website": "https://nailcraftbyerin.glossgenius.com/about",
+    "category": "nail salon"
+  },
+  "fitScore": 91,
+  "evidence": [
+    {
+      "url": "https://nailcraftbyerin.glossgenius.com/about",
+      "observedFact": "The active booking page lists current Mentor hours, describes the business as appointment-only, and publishes a 40% cancellation fee for no-shows or cancellations within 24 hours of the scheduled appointment.",
+      "observedAt": "2026-09-20T12:25:54Z"
+    },
+    {
+      "url": "https://nailcraftbyerin.glossgenius.com/contact",
+      "observedFact": "The current contact page provides a web inquiry form and lists the Mentor studio address and operating hours.",
+      "observedAt": "2026-09-20T12:25:54Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.96,
+      "evidenceIndexes": [0],
+      "recommendedFix": "Demonstrate automated appointment recovery and rebooking workflows that complement the existing cancellation policy."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.72,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Demonstrate structured inquiry follow-up and conversion tracking around the existing web contact workflow."
+    }
+  ],
+  "recommendedEntryOffer": "Booking Recovery + Follow-Up Revenue Engine",
+  "notes": "Observed facts are limited to public business pages. The follow-up classification is a sales hypothesis based on the published form-based inquiry path, not proof of missed inquiries or lost revenue. No monetary loss is claimed."
+}
