@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260920-luxe-beauty-boutique-mentor",
+  "observedAt": "2026-09-20T12:25:54Z",
+  "business": {
+    "name": "LUXE BEAUTY BOUTIQUE",
+    "city": "Mentor, OH",
+    "website": "https://luxebeautyboutique.glossgenius.com/",
+    "category": "esthetics and nail salon"
+  },
+  "fitScore": 90,
+  "evidence": [
+    {
+      "url": "https://luxebeautyboutique.glossgenius.com/about",
+      "observedFact": "The active business page describes an esthetics and nail salon suite offering nail, skincare, massage and spray-tanning services and publishes a 50% cancellation fee with a request that clients notify the business to reschedule.",
+      "observedAt": "2026-09-20T12:25:54Z"
+    },
+    {
+      "url": "https://luxebeautyboutique.glossgenius.com/contact",
+      "observedFact": "The current contact page lists operating hours at 9160 Mentor Ave, Suite 106 & 107, and routes customer questions through a web form that the page says will be received by email.",
+      "observedAt": "2026-09-20T12:25:54Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.95,
+      "evidenceIndexes": [0],
+      "recommendedFix": "Demonstrate cancellation recovery, rebooking prompts and repeat-service workflows around the existing appointment policy."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.74,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Demonstrate structured inquiry follow-up and conversion tracking around the existing form-to-email workflow."
+    }
+  ],
+  "recommendedEntryOffer": "Booking Recovery + Follow-Up Revenue Engine",
+  "notes": "The cancellation policy is an observed fact. The follow-up opportunity is a hypothesis based on the publicly visible form-to-email workflow and is not proof that inquiries are currently mishandled. No monetary loss is claimed."
+}
