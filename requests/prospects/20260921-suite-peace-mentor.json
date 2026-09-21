@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260921-suite-peace-mentor",
+  "observedAt": "2026-09-21T12:13:25Z",
+  "business": {
+    "name": "Suite Peace",
+    "city": "Mentor, OH",
+    "website": "https://suitepeace.glossgenius.com/",
+    "category": "salon and spa"
+  },
+  "fitScore": 94,
+  "evidence": [
+    {
+      "url": "https://suitepeace.glossgenius.com/about",
+      "observedFact": "The active booking profile states that after two reschedules/cancellations with less than 48 hours notice, or after a first no-call/no-show, future bookings require a non-refundable 50% deposit.",
+      "observedAt": "2026-09-21T12:13:25Z"
+    },
+    {
+      "url": "https://suitepeace.glossgenius.com/services",
+      "observedFact": "The service menu instructs customers booking a bang trim to text the business when more than one time slot is available, rather than completing that booking entirely through the normal online flow.",
+      "observedAt": "2026-09-21T12:13:25Z"
+    },
+    {
+      "url": "https://suitepeace.glossgenius.com/services",
+      "observedFact": "For customers combining a hair service with a facial, the business instructs them to find possible dates and text before booking because room setup requires an intermission between services.",
+      "observedAt": "2026-09-21T12:13:25Z"
+    },
+    {
+      "url": "https://suitepeace.glossgenius.com/",
+      "observedFact": "The current booking page lists active September 2026-era hours, bookable salon/facial services, and says blowouts can be booked in advance for repeat salon-styled hair.",
+      "observedAt": "2026-09-21T12:13:25Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.98,
+      "evidenceIndexes": [0, 1, 2],
+      "recommendedFix": "Demonstrate an appointment recovery workflow that preserves rebooking opportunities after cancellations and reduces manual coordination for special booking combinations."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.94,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Demonstrate automated follow-up that captures manual text-based booking requests and moves them toward a confirmed appointment without replacing the merchant's existing booking system."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.86,
+      "evidenceIndexes": [0, 3],
+      "recommendedFix": "Demonstrate a permission-based repeat-visit and reactivation workflow for recurring salon and facial services."
+    }
+  ],
+  "recommendedEntryOffer": "Booking Recovery + Follow-Up Revenue Engine",
+  "notes": "Observed facts come from the business's current public booking profile. Reactivation is an opportunity hypothesis based on repeatable services and the stated advance-repeat booking use case; no claim is made that current retention is deficient or that a monetary loss exists."
+}
