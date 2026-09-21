@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260921-es-hair-studio-willoughby",
+  "observedAt": "2026-09-21T12:13:25Z",
+  "business": {
+    "name": "E's Hair Studio",
+    "city": "Willoughby, OH",
+    "website": "https://erinsuknaich.glossgenius.com/",
+    "category": "hair salon",
+    "publicContact": {
+      "phone": "+1-440-409-3837",
+      "sourceUrl": "https://erinsuknaich.glossgenius.com/about",
+      "observedAt": "2026-09-21T12:13:25Z"
+    }
+  },
+  "fitScore": 91,
+  "evidence": [
+    {
+      "url": "https://erinsuknaich.glossgenius.com/about",
+      "observedFact": "The active business profile requires at least 24 hours notice for cancellations/rescheduling, may charge 50% for late cancellations, charges 100% for no-shows, and may require a card to secure an appointment.",
+      "observedAt": "2026-09-21T12:13:25Z"
+    },
+    {
+      "url": "https://erinsuknaich.glossgenius.com/about",
+      "observedFact": "The business says it has built a loyal clientele and publishes current Willoughby hours plus a business-facing phone number.",
+      "observedAt": "2026-09-21T12:13:25Z"
+    },
+    {
+      "url": "https://erinsuknaich.glossgenius.com/services",
+      "observedFact": "The current service menu contains repeatable hair services including root retouch, color, haircuts, blowouts and conditioning/bonding treatments, with online selection available.",
+      "observedAt": "2026-09-21T12:13:25Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.97,
+      "evidenceIndexes": [0],
+      "recommendedFix": "Demonstrate cancellation recovery and rapid rebooking workflows that protect appointment capacity without replacing the salon's existing booking system."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.84,
+      "evidenceIndexes": [1, 2],
+      "recommendedFix": "Demonstrate permission-based repeat-visit reminders and reactivation offers around recurring hair-maintenance services."
+    }
+  ],
+  "recommendedEntryOffer": "Booking Recovery + Repeat-Visit Revenue Engine",
+  "notes": "The business itself states that it has loyal clientele; this is treated as an existing retention asset, not a loyalty deficiency. Reactivation is an opportunity hypothesis based on recurring service categories. No monetary loss is claimed."
+}
