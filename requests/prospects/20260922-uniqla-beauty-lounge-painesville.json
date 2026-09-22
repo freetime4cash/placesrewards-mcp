@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260922-uniqla-beauty-lounge-painesville",
+  "observedAt": "2026-09-22T12:35:14Z",
+  "business": {
+    "name": "Uniqla Beauty Lounge",
+    "city": "Painesville, OH",
+    "website": "https://uniqlabeautylounge.glossgenius.com/",
+    "category": "beauty salon / lash studio"
+  },
+  "fitScore": 96,
+  "evidence": [
+    {
+      "url": "https://uniqlabeautylounge.glossgenius.com/about",
+      "observedFact": "The active booking site says all appointments require a card on file; cancellations without 24-hour notice are charged 50%, no-call/no-shows are charged 100%, and arrivals more than 10 minutes late are automatically canceled.",
+      "observedAt": "2026-09-22T12:35:14Z"
+    },
+    {
+      "url": "https://uniqlabeautylounge.glossgenius.com/services",
+      "observedFact": "The live service menu offers recurring 2-week and 3-week lash fills and requires deposits on multiple full-set services, demonstrating an explicit repeat-appointment cadence.",
+      "observedAt": "2026-09-22T12:35:14Z"
+    },
+    {
+      "url": "https://uniqlabeautylounge.glossgenius.com/about",
+      "observedFact": "Before/after-hours and squeeze-in appointments are available for an additional fee and customers are instructed to contact the business directly to schedule them.",
+      "observedAt": "2026-09-22T12:35:14Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.99,
+      "evidenceIndexes": [0],
+      "recommendedFix": "Demonstrate automated cancellation recovery, rebooking and appointment-protection workflows that complement the existing booking platform."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.96,
+      "evidenceIndexes": [1],
+      "recommendedFix": "Automate due-back reminders and reactivation around the documented 2-week and 3-week lash-fill cadence."
+    },
+    {
+      "category": "followup_friction",
+      "confidence": 0.82,
+      "evidenceIndexes": [2],
+      "recommendedFix": "Provide a structured follow-up workflow for direct-contact squeeze-in and after-hours scheduling requests."
+    }
+  ],
+  "recommendedEntryOffer": "Lash Rebooking + Client Reactivation Revenue Engine",
+  "notes": "Observed facts come from the business's active public booking site. Reactivation opportunity is based on the published recurring fill cadence; this does not assert that the business currently fails to retain clients or loses a specific amount of revenue."
+}
