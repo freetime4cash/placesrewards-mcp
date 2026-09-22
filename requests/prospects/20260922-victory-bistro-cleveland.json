@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260922-victory-bistro-cleveland",
+  "observedAt": "2026-09-22T12:35:14Z",
+  "business": {
+    "name": "Victory Bistro Ultra Lounge",
+    "city": "Cleveland, OH",
+    "website": "https://www.victorybistro.com/",
+    "category": "restaurant / nightlife / event venue",
+    "publicContact": {
+      "email": "events@victorybistro.com",
+      "phone": "+1-440-730-1233",
+      "sourceUrl": "https://www.victorybistro.com/contact",
+      "observedAt": "2026-09-22T12:35:14Z"
+    }
+  },
+  "fitScore": 92,
+  "evidence": [
+    {
+      "url": "https://www.victorybistro.com/",
+      "observedFact": "The active venue advertises recurring Friday live-DJ nights, Sunday Soul Brunch, ladies nights, birthday celebrations, VIP sections, private parties and corporate events.",
+      "observedAt": "2026-09-22T12:35:14Z"
+    },
+    {
+      "url": "https://www.victorybistro.com/",
+      "observedFact": "The business publicly promotes VIP birthday packages, priority reservations and loyalty perks for loyal guests.",
+      "observedAt": "2026-09-22T12:35:14Z"
+    },
+    {
+      "url": "https://www.victorybistro.com/private-events-cleveland",
+      "observedFact": "Victory accepts private-event inquiries for reserved sections, full venue buyouts, corporate happy hours, client entertainment and team celebrations.",
+      "observedAt": "2026-09-22T12:35:14Z"
+    },
+    {
+      "url": "https://www.victorybistro.com/contact",
+      "observedFact": "The current contact page lists the Cleveland location, daily operating hours, events@victorybistro.com and (440) 730-1233.",
+      "observedAt": "2026-09-22T12:35:14Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "event_retention",
+      "confidence": 0.98,
+      "evidenceIndexes": [0, 2],
+      "recommendedFix": "Demonstrate an event-to-next-visit workflow that captures opt-in guests and drives return visits after recurring and private events."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.91,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Layer segmented comeback campaigns around birthdays, brunch, nightlife and VIP guest behavior while complementing the venue's existing loyalty perks."
+    }
+  ],
+  "recommendedEntryOffer": "Event Retention + VIP Reactivation Revenue Engine",
+  "notes": "Victory already demonstrates retention intent through public VIP and loyalty perks. The sales hypothesis is that Places Rewards can extend that existing strategy across recurring events, private-event guests and return-visit automation; no deficiency or monetary loss is asserted."
+}
