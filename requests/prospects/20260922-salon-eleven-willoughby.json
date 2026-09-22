@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "requestType": "public_prospect",
+  "requestId": "20260922-salon-eleven-willoughby",
+  "observedAt": "2026-09-22T12:35:14Z",
+  "business": {
+    "name": "Salon Eleven",
+    "city": "Willoughby, OH",
+    "website": "https://salonelevenwilloughby.com/",
+    "category": "hair salon",
+    "publicContact": {
+      "phone": "+1-216-299-1035",
+      "sourceUrl": "https://salonelevenwilloughby.com/",
+      "observedAt": "2026-09-22T12:35:14Z"
+    }
+  },
+  "fitScore": 93,
+  "evidence": [
+    {
+      "url": "https://www.salonelevenwilloughby.com/services.asp",
+      "observedFact": "The salon's public service policy applies a $25 fee to the next appointment after a no-show or cancellation less than 48 hours before the appointment.",
+      "observedAt": "2026-09-22T12:35:14Z"
+    },
+    {
+      "url": "https://www.salonelevenwilloughby.com/services.asp",
+      "observedFact": "The salon separately applies a $25 rescheduling fee when the same appointment is scheduled and rescheduled more than three times.",
+      "observedAt": "2026-09-22T12:35:14Z"
+    },
+    {
+      "url": "https://salonelevenwilloughby.com/",
+      "observedFact": "The active business site publishes current business hours, the Willoughby location, phone number, special offers and client testimonials.",
+      "observedAt": "2026-09-22T12:35:14Z"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "booking_friction",
+      "confidence": 0.99,
+      "evidenceIndexes": [0, 1],
+      "recommendedFix": "Demonstrate cancellation recovery and simplified rebooking workflows designed to reduce repeated rescheduling friction."
+    },
+    {
+      "category": "reactivation_signal",
+      "confidence": 0.84,
+      "evidenceIndexes": [0, 2],
+      "recommendedFix": "Use opt-in comeback reminders and targeted repeat-visit offers after missed or delayed appointments."
+    }
+  ],
+  "recommendedEntryOffer": "Booking Recovery + Repeat-Visit Revenue Engine",
+  "notes": "The cancellation and repeated-rescheduling policies are direct public evidence of appointment friction. Reactivation is an opportunity hypothesis, not a claim of deficient retention or quantified revenue loss."
+}
