@@ -56,15 +56,13 @@ body{margin:0;background:#f5f7fb;color:#172033;font-family:Arial,sans-serif;font
 @endif
 
 @if(empty($m['screenshot']) && !empty($m['preview_url']))
-<p class="zoom-hint">Live preview from the real TotalContest demo created for this business.</p>
-<iframe class="live-frame" src="{{ $m['preview_url'] }}" title="{{ $m['title'] }} live TotalContest demo" loading="lazy"></iframe>
+<p class="native-note"><strong>External campaign preview:</strong> this step is represented inside the Places Rewards demo so the sequence remains usable even if an external campaign URL changes.</p>
 @endif
 
-@if(!empty($m['preview_url']))
-<p><a class="cta" target="_blank" rel="noopener" href="{{ $m['preview_url'] }}">Open This Demo →</a></p>
-@else
 <p>{{ $m['simple_explanation'] ?? 'Autopilot selects and explains this Places Rewards module based on the business analysis.' }}</p>
-<p><a class="cta" target="_blank" rel="noopener" href="/demo/business/{{ $demo['slug'] }}/module/{{ $m['kind'] }}">Open This Demo →</a></p>
+<p><a class="cta" href="/demo/business/{{ $demo['slug'] }}/module/{{ $m['kind'] }}">Open This Demo →</a></p>
+@if(!empty($m['preview_url']))
+<p class="zoom-hint">An external campaign preview may also be available, but the internal Places Rewards demo above is the primary verified path.</p>
 @endif
 </section>
 @endforeach
