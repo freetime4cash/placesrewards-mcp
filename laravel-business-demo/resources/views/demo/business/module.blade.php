@@ -76,16 +76,21 @@ ul{font-size:21px}
       <p>A customer scans the business QR code and joins the Places Rewards experience.</p>
       <div class="qr" aria-label="Demo QR visual"></div>
       <button class="btn" onclick="document.getElementById('join-status').textContent='Demo enrollment simulated. No production customer record was created.'">Simulate QR Enrollment</button>
-      @if(!empty($native['stamp_enroll_url'] ?? null))
-        <a class="btn secondary" target="_blank" rel="noopener" href="{{ $native['stamp_enroll_url'] }}">Open Native Enrollment Flow</a>
-      @endif
+      <p class="notice"><strong>Demo-safe enrollment:</strong> this simulation verifies the intended flow without sending the prospect to a route that may depend on a signed-in production member session.</p>
       <p id="join-status" style="font-weight:900"></p>
     </section>
 
   @elseif($module['kind']==='loyalty')
+    @php($stampCard=$nativeData['stamp_card'] ?? null)
     <section class="card">
-      <h2>{{ $demo['business'] }} Loyalty Card</h2>
-      <p><strong>Fallback demo:</strong> complete visits to unlock a reward. New Autopilot demos open the real native stamp-card record for this step.</p>
+      <h2>{{ $stampCard?->name ?? ($demo['business'].' Loyalty Card') }}</h2>
+      @if($stampCard)
+        <p><span class="native-badge">REAL STAMP CARD RECORD</span></p>
+        <p>{{ data_get($stampCard->description,'en_US','Visit participating businesses and earn progress toward a reward.') }}</p>
+        <p><strong>Required visits:</strong> {{ (int)($stampCard->stamps_required ?? 10) }} · <strong>Reward:</strong> {{ data_get($stampCard->reward_title,'en_US','Explorer Reward') }}</p>
+      @else
+        <p>Complete visits to unlock a reward. This safe demo page stays available even if the underlying native record has not been provisioned yet.</p>
+      @endif
       <div id="stamps" class="stamps">
         @for($i=1;$i<=10;$i++)<div class="stamp" data-i="{{ $i }}">{{ $i }}</div>@endfor
       </div>
@@ -134,11 +139,16 @@ ul{font-size:21px}
     </section>
 
   @elseif($module['kind']==='voucher')
+    @php($voucherRecord=$nativeData['voucher'] ?? null)
     <section class="card">
-      <h2>Targeted Comeback Offer Demo</h2>
+      <h2>{{ $voucherRecord?->name ?? 'Targeted Comeback Offer Demo' }}</h2>
+      @if($voucherRecord)<p><span class="native-badge">REAL VOUCHER RECORD</span></p>@endif
       <div class="voucher">
-        <h3>Come Back Offer</h3>
-        <p>New Autopilot demos open the real isolated native voucher record for this step.</p>
+        <h3>{{ $voucherRecord ? data_get($voucherRecord->title,'en_US','Come Back Offer') : 'Come Back Offer' }}</h3>
+        <p>{{ $voucherRecord ? data_get($voucherRecord->description,'en_US','Return-visit reward for Treasure Hunt participants.') : 'Return-visit reward for Treasure Hunt participants.' }}</p>
+        @if($voucherRecord)
+          <p><strong>Code:</strong> {{ $voucherRecord->code }} @if(!empty($voucherRecord->points_value)) · <strong>Bonus:</strong> {{ (int)$voucherRecord->points_value }} points @endif</p>
+        @endif
       </div>
     </section>
 
