@@ -56,14 +56,15 @@ class BusinessDemoController extends Controller
 
         abort_unless(is_array($module), 404);
 
-        if ($kind === 'loyalty' && !empty($native['stamp_url'])) {
-            return redirect()->away((string) $native['stamp_url']);
-        }
-        if ($kind === 'voucher' && !empty($native['voucher_url'])) {
-            return redirect()->away((string) $native['voucher_url']);
-        }
-
+        // Keep every demo step inside the demo shell. Native records are loaded
+        // and rendered below instead of redirecting to routes that may change.
         $nativeData = [];
+        if ($kind === 'loyalty' && !empty($native['stamp_card_id'])) {
+            $nativeData['stamp_card'] = StampCard::find($native['stamp_card_id']);
+        }
+        if ($kind === 'voucher' && !empty($native['voucher_id'])) {
+            $nativeData['voucher'] = Voucher::find($native['voucher_id']);
+        }
         if ($kind === 'scratch' && !empty($native['scratch_game_id'])) {
             $nativeData['scratch_game'] = ScratchGame::find($native['scratch_game_id']);
         }
@@ -87,7 +88,9 @@ class BusinessDemoController extends Controller
             ];
         }
 
-        return view('demo.business.module', compact('demo', 'module', 'native', 'nativeData'));
+        $moduleUrl = url('/demo/business/' . $slug . '/module/' . $kind);
+
+        return view('demo.business.module', compact('demo', 'module', 'native', 'nativeData', 'moduleUrl'));
     }
 
     public function nativeBuild(Request $request): JsonResponse
