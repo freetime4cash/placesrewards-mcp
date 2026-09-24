@@ -37,7 +37,11 @@ class BusinessDemoController extends Controller
         $modules = $demo['sequence'] ?? [];
         $active = $sequence ?: 1;
 
-        return view('demo.treasure-hunt.business', compact('demo', 'modules', 'active'));
+        $viewName = view()->exists('demo.treasure-hunt.business')
+            ? 'demo.treasure-hunt.business'
+            : 'demo.treasure-hunt-business';
+
+        return view($viewName, compact('demo', 'modules', 'active'));
     }
 
     public function module(string $slug, string $kind)
