@@ -34,6 +34,7 @@ body{margin:0;background:#f5f7fb;color:#172033;font-family:Arial,sans-serif;font
 .plan{border:3px solid #6c1cff;border-radius:18px;padding:24px;max-width:700px}
 .plan .price{font-size:42px;font-weight:900}
 .qr{width:240px;height:240px;background:repeating-conic-gradient(#111 0 25%,#fff 0 50%) 0/28px 28px;border:14px solid #fff;box-shadow:0 0 0 2px #111;margin:22px 0}
+.module-visual{margin:22px 0;border-radius:18px;overflow:hidden;border:1px solid #e5e7eb;background:#fff}.module-visual img{display:block;width:100%;height:auto;max-height:675px;object-fit:contain}
 ul{font-size:21px}
 @media(max-width:700px){
   body{font-size:19px}.wrap{padding:18px}.hero{padding:30px 18px}.hero h1{font-size:34px}
@@ -55,6 +56,11 @@ ul{font-size:21px}
   <section class="card">
     <div class="why"><strong>Why this step exists:</strong> {{ $module['why'] }}</div>
   </section>
+  @php($visualKinds=['snapshot','enrollment','loyalty','scratch','referral','voucher','analytics','plan'])
+  @if(in_array($module['kind'],$visualKinds,true))
+    @php($moduleImage='demo-'.$demo['slug'].'-'.$module['kind'].'.png')
+    <div class="module-visual"><img src="/{{ $moduleImage }}?v={{ @filemtime(public_path($moduleImage)) ?: 1 }}" alt="{{ $demo['business'] }} {{ $module['title'] }} visual" onerror="this.parentElement.style.display='none'"></div>
+  @endif
 
   @if($module['kind']==='snapshot')
     <section class="card">

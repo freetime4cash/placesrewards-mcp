@@ -221,7 +221,7 @@ class BusinessDemoController extends Controller
 
         $slug = Str::slug((string) $request->input('slug', ''));
         $kind = (string) $request->input('kind', '');
-        abort_unless($slug !== '' && in_array($kind, ['selfie', 'insight'], true), 422, 'Invalid demo asset.');
+        abort_unless($slug !== '' && in_array($kind, ['selfie', 'insight', 'snapshot', 'enrollment', 'loyalty', 'scratch', 'referral', 'voucher', 'analytics', 'plan'], true), 422, 'Invalid demo asset.');
 
         $encoded = (string) $request->input('data_base64', '');
         abort_unless($encoded !== '' && strlen($encoded) <= 12 * 1024 * 1024, 422, 'Asset payload is invalid.');
