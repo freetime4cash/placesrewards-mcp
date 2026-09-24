@@ -6,6 +6,10 @@ Route::post('/demo/internal/native-build', [BusinessDemoController::class, 'nati
     ->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class, \App\Http\Middleware\VerifyCsrfToken::class])
     ->name('demo.business.native-build');
 
+Route::post('/demo/internal/asset-deploy', [BusinessDemoController::class, 'assetDeploy'])
+    ->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class, \App\Http\Middleware\VerifyCsrfToken::class])
+    ->name('demo.business.asset-deploy');
+
 Route::post('/demo/internal/manifest-deploy', [BusinessDemoController::class, 'manifestDeploy'])
     ->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class, \App\Http\Middleware\VerifyCsrfToken::class])
     ->name('demo.business.manifest-deploy');
