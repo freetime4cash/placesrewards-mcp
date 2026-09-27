@@ -27,7 +27,16 @@ function cloneSafe(string $table,string $pid,array $o,?callable $filter=null): a
         $nameCol=in_array('name',$c,true)?'name':(in_array('title',$c,true)?'title':null);
         if(!$nameCol) return ['status'=>'skipped','table'=>$table,'reason'=>'no_name_or_title_column'];
         $wanted=$o[$nameCol]??null;
-        if($wanted!==null){$e=ownerQ($table,$pid)->where($nameCol,$wanted)->first();if($e)return ['status'=>'existing','table'=>$table,'id'=>$e->id??null,'name'=>$wanted];}
+        if($wanted!==null){
+            $e=ownerQ($table,$pid)->where($nameCol,$wanted)->first();
+            if($e){
+                $update=[];
+                foreach($o as $k=>$v) if(in_array($k,$c,true)) $update[$k]=$v;
+                if(in_array('updated_at',$c,true)) $update['updated_at']=now();
+                if($update!==[]) DB::table($table)->where('id',$e->id)->update($update);
+                return ['status'=>'updated','table'=>$table,'id'=>$e->id??null,'name'=>$wanted];
+            }
+        }
         $q=ownerQ($table,$pid); if($filter)$filter($q,$c); $tpl=$q->first();
         if(!$tpl)return ['status'=>'skipped','table'=>$table,'reason'=>'no_template'];
         $d=(array)$tpl;
@@ -52,8 +61,8 @@ try {
 } catch(Throwable $e){$r['records'][]=['status'=>'failed','table'=>'clubs','error'=>$e->getMessage()];}
 
 $cardDefs=[
- ['[DEMO] 363 Foundation Community Rewards','363 Foundation Community Rewards','Build. Support. Earn. Elevate.','A community rewards experience for 363 Foundation supporters, events, referrals, participation and mission-driven engagement.',10],
- ['[DEMO] 363 Foundation Founder Momentum Card','363 Founder Momentum','Participation Creates Momentum','Reward founders and supporters for attendance, referrals, purchases, community actions and milestones.',20]
+ ['[DEMO] 363 Foundation Community Rewards','363 Foundation Community Rewards','Join. Participate. Earn. Grow.','Your 363 Foundation community rewards card. Join the community, check in at eligible events and activities, earn points for participation, unlock supporter rewards, and keep track of your progress in one place. Radio Rich and 363 Foundation use this card to turn one-time engagement into an ongoing community relationship.',10],
+ ['[DEMO] 363 Foundation Founder Momentum Card','363 Founder Momentum','Turn Participation Into Momentum','A progress card for founders, supporters and community builders. Earn recognition for meaningful participation, event attendance, referrals and milestone actions. Use your progress to unlock higher-value community benefits and VIP opportunities.',20]
 ];
 $cardIds=[];
 foreach($cardDefs as [$name,$title,$head,$desc,$ppc]){
@@ -63,10 +72,10 @@ foreach($cardDefs as [$name,$title,$head,$desc,$ppc]){
 $primaryCard=$cardIds[0]??null;
 
 $rewardDefs=[
- ['[DEMO] 363 Foundation Supporter Welcome Reward','363 Supporter Welcome Reward','Welcome supporters with an instant benefit that demonstrates day-one engagement.'],
- ['[DEMO] 363 Foundation Community Builder Reward','363 Community Builder Reward','Reward referrals, introductions and actions that grow the 363 Foundation community.'],
- ['[DEMO] 363 Foundation Event VIP Reward','363 Event VIP Reward','VIP access, recognition or event-based perks for highly engaged supporters.'],
- ['[DEMO] 363 Foundation Milestone Reward','363 Milestone Reward','Unlock a milestone benefit when supporters reach sustained engagement goals.']
+ ['[DEMO] 363 Foundation Supporter Welcome Reward','363 Supporter Welcome Reward','A first-step reward for joining and participating in the 363 Foundation community. Use it to recognize a new supporter and give them an immediate reason to stay connected.'],
+ ['[DEMO] 363 Foundation Community Builder Reward','363 Community Builder Reward','A reward for supporters who help grow the community through referrals, introductions, volunteering or other qualifying community-building actions.'],
+ ['[DEMO] 363 Foundation Event VIP Reward','363 Event VIP Reward','A higher-level reward for engaged supporters. Unlock eligible VIP access, special recognition or event-based benefits after completing the qualifying participation goal.'],
+ ['[DEMO] 363 Foundation Milestone Reward','363 Milestone Reward','A milestone benefit for sustained engagement. Earn it by reaching the qualifying points, participation or progress threshold shown in your Places Rewards account.']
 ];
 foreach($rewardDefs as [$name,$title,$desc]){
  $x=cloneSafe('rewards',$partnerId,['club_id'=>$clubId,'name'=>$name,'title'=>tr($title),'description'=>tr($desc),'is_active'=>1],fn($q,$c)=>in_array('name',$c,true)?$q->where('name','like','%DEMO%'):null);$r['records'][]=$x;
@@ -74,22 +83,22 @@ foreach($rewardDefs as [$name,$title,$desc]){
 }
 
 foreach([
- ['[DEMO] 363 Foundation Action Streak','363 Action Streak','Complete 6 meaningful community actions to unlock a supporter reward.'],
- ['[DEMO] 363 Foundation Live & Event Streak','363 Live + Event Streak','Attend or participate repeatedly to demonstrate retention and recurring engagement.']
+ ['[DEMO] 363 Foundation Action Streak','363 Action Streak','Complete 6 qualifying community actions—such as event participation, referrals or approved supporter activities—to complete your streak and unlock the listed supporter reward.'],
+ ['[DEMO] 363 Foundation Live & Event Streak','363 Live + Event Streak','Attend or participate in 6 qualifying Radio Rich or 363 Foundation live sessions, events or community activations. Collect one stamp for each verified check-in and complete the card to unlock the listed reward.']
 ] as [$name,$title,$desc])$r['records'][]=cloneSafe('stamp_cards',$partnerId,['club_id'=>$clubId,'name'=>$name,'title'=>tr($title),'description'=>tr($desc),'is_active'=>1],fn($q,$c)=>in_array('name',$c,true)?$q->where('name','like','%DEMO%'):null);
 
 foreach([
- ['[DEMO] 363 Foundation Event Access Pass','363 Event Access Pass','Demo voucher for event access, supporter perks or campaign activations.'],
- ['[DEMO] 363 Foundation Community Thank-You','363 Community Thank-You','A limited supporter thank-you voucher for reactivation and appreciation.']
+ ['[DEMO] 363 Foundation Event Access Pass','363 Event Access Pass','Your digital access pass for a qualifying 363 Foundation or Radio Rich event, workshop, mixer or community activation. Save the pass, present it when requested, and use it to connect your attendance to rewards and follow-up.'],
+ ['[DEMO] 363 Foundation Community Thank-You','363 Community Thank-You','A thank-you benefit for verified community participation. Claim this after a qualifying event or activity as recognition for showing up, contributing and staying connected to the 363 Foundation community.']
 ] as [$name,$title,$desc])$r['records'][]=cloneSafe('vouchers',$partnerId,['club_id'=>$clubId,'name'=>$name,'title'=>tr($title),'description'=>tr($desc),'is_active'=>1],fn($q,$c)=>in_array('name',$c,true)?$q->where('name','like','%DEMO%'):null);
 
 foreach([
  ['tiers','[DEMO] 363 Foundation Supporter','363 Supporter','Entry supporter tier demonstrating recognition and progression.'],
  ['tiers','[DEMO] 363 Foundation Builder','363 Builder','Mid-tier recognition for consistent community builders.'],
  ['tiers','[DEMO] 363 Foundation Inner Circle','363 Inner Circle','Top demo tier for highly engaged founders and supporters.'],
- ['scratch_games','[DEMO] 363 Foundation Scratch & Win','363 Foundation Scratch & Win','Instant-win demo for livestreams, events and supporter activation.'],
- ['giveaways','[DEMO] 363 Foundation Spotlight Giveaway','363 Foundation Spotlight Giveaway','Community giveaway for participation, podcasts, events and livestreams.'],
- ['referral_programs','[DEMO] 363 Foundation Community Referral','363 Foundation Community Referral','Reward supporters for bringing aligned people into the 363 community.'],
+ ['scratch_games','[DEMO] 363 Foundation Scratch & Win','Radio Rich + 363 Foundation Scratch & Win','A digital instant-reveal game used during qualifying Radio Rich and 363 Foundation events or community activations. Open the card, reveal the result, and follow the on-screen instructions for any eligible reward or participation bonus.'],
+ ['giveaways','[DEMO] 363 Foundation Spotlight Giveaway','Radio Rich + 363 Foundation Spotlight Giveaway','Enter a qualifying community giveaway connected to Radio Rich, 363 Foundation events, podcasts or live activations. The card explains how to enter, what qualifies, and how winners or rewards are handled.'],
+ ['referral_programs','[DEMO] 363 Foundation Community Referral','Build the Community — Refer a Friend','Invite a friend or supporter to join the 363 Foundation community. After the referred person completes the qualifying action, the referral can count toward the reward or recognition shown in the campaign.'],
  ['segments','[DEMO] 363 Foundation Engaged Supporters','363 Foundation Engaged Supporters','Audience segment for targeted follow-up and reactivation.'],
  ['email_campaigns','[DEMO] 363 Foundation Welcome & Reactivation','363 Foundation Welcome + Reactivation','Lifecycle campaign for supporter onboarding and re-engagement.'],
  ['review_campaigns','[DEMO] 363 Foundation Community Voice','363 Foundation Community Voice','Feedback and review campaign that turns participant sentiment into social proof.']
