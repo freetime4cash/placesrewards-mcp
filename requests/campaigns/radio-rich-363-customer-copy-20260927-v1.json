@@ -1,0 +1,91 @@
+{
+  "requestId": "radio-rich-363-customer-copy-20260927-v1",
+  "approved": true,
+  "campaignName": "Radio Rich + 363 Foundation Customer-Facing Copy Refresh",
+  "steps": [
+    {
+      "name": "Update 363 Community Rewards copy",
+      "method": "PUT",
+      "path": "/api/agent/v1/partner/cards/8a50c3f7-ca4d-48c3-9e2f-8de7e6bf9c70",
+      "body": {
+        "head": {
+          "en": "Join. Participate. Earn. Grow."
+        },
+        "title": {
+          "en": "363 Foundation Community Rewards"
+        },
+        "description": {
+          "en": "Your 363 Foundation community rewards card. Join the community, check in at eligible events and activities, earn points for participation, unlock supporter rewards, and track your progress in one place. Radio Rich and 363 Foundation use this card to turn one-time engagement into an ongoing community relationship."
+        }
+      }
+    },
+    {
+      "name": "Update Founder Momentum copy",
+      "method": "PUT",
+      "path": "/api/agent/v1/partner/cards/ee53dba1-769d-4216-991b-5ab75bbbbe5b",
+      "body": {
+        "head": {
+          "en": "Turn Participation Into Momentum"
+        },
+        "title": {
+          "en": "363 Founder Momentum"
+        },
+        "description": {
+          "en": "A progress card for founders, supporters and community builders. Earn recognition for meaningful participation, event attendance, referrals and milestone actions. Use your progress to unlock higher-value community benefits and VIP opportunities."
+        }
+      }
+    },
+    {
+      "name": "Update Supporter Welcome Reward copy",
+      "method": "PUT",
+      "path": "/api/agent/v1/partner/rewards/09c8cc54-32ab-426a-9a00-f4484f1340ad",
+      "body": {
+        "title": {
+          "en": "363 Supporter Welcome Reward"
+        },
+        "description": {
+          "en": "A first-step reward for joining and participating in the 363 Foundation community. Use it to recognize a new supporter and give them an immediate reason to stay connected."
+        }
+      }
+    },
+    {
+      "name": "Update Community Builder Reward copy",
+      "method": "PUT",
+      "path": "/api/agent/v1/partner/rewards/eaa5901c-3d84-4c8d-988a-d4a196edec06",
+      "body": {
+        "title": {
+          "en": "363 Community Builder Reward"
+        },
+        "description": {
+          "en": "A reward for supporters who help grow the community through referrals, introductions, volunteering or other qualifying community-building actions."
+        }
+      }
+    },
+    {
+      "name": "Update Event VIP Reward copy",
+      "method": "PUT",
+      "path": "/api/agent/v1/partner/rewards/9bdc0141-866c-4413-8794-0e6cc4b5e1f6",
+      "body": {
+        "title": {
+          "en": "363 Event VIP Reward"
+        },
+        "description": {
+          "en": "A higher-level reward for engaged supporters. Unlock eligible VIP access, special recognition or event-based benefits after completing the qualifying participation goal."
+        }
+      }
+    },
+    {
+      "name": "Update Milestone Reward copy",
+      "method": "PUT",
+      "path": "/api/agent/v1/partner/rewards/4274e8db-0ab9-43d5-9091-fa1a78e07ec9",
+      "body": {
+        "title": {
+          "en": "363 Milestone Reward"
+        },
+        "description": {
+          "en": "A milestone benefit for sustained engagement. Earn it by reaching the qualifying points, participation or progress threshold shown in your Places Rewards account."
+        }
+      }
+    }
+  ]
+}
